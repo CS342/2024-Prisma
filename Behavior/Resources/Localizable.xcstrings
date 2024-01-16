@@ -11,12 +11,23 @@
         }
       }
     },
+    "ACCOUNT_REQUIRED_ITEMS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email, Name, and Date of Birth are required."
+          }
+        }
+      }
+    },
     "ACCOUNT_SETUP_DESCRIPTION" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You may login to your existing account. Or create a new one if you don't have one already."
+            "value" : "Login to your existing account, or create one if you are new! "
           }
         }
       }
@@ -26,7 +37,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You are already logged in with the account shown below. Continue or change your account by logging out."
+            "value" : "You are logged in!"
           }
         }
       }
