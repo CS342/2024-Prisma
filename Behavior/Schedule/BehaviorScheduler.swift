@@ -28,7 +28,10 @@ extension BehaviorScheduler {
             // For the normal app usage, we schedule the task for every day at 8:00 AM
             dateComponents = DateComponents(hour: 8, minute: 0)
         }
-
+        
+        // Replaced the localized titles/descriptions for prev questionnaire to the new questionnaire.
+        // Scheduling is kept the same for now.
+        // Path for JSON of modified questionnaire is now inputted.
         return Task(
             title: String(localized: "EMOTION_QUESTIONNAIRE_TITLE"),
             description: String(localized: "EMOTION_QUESTIONNAIRE_DESCRIPTION"),
