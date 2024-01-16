@@ -25,6 +25,8 @@ class BehaviorDelegate: SpeziAppDelegate {
                 AccountConfiguration(configuration: [
                     .requires(\.userId),
                     .requires(\.name),
+                    .requires(\.password),
+                    .requires(\.email),
 
                     // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
                     .collects(\.genderIdentity),
