@@ -36,4 +36,3 @@ struct AccountButton: View {
     AccountButton(isPresented: .constant(false))
 }
 #endif
-
