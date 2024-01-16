@@ -210,7 +210,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Administers baseline surveys, asks health-related questions, and summarizes relevant information"
+            "value" : "Baseline surveys, health-related questions, and summary of relevant information"
           }
         }
       }
@@ -230,7 +230,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Understands, translates, and monitors quantitative and qualitative goals "
+            "value" : "Understanding, translation, and monitoring of quantitative and qualitative goals "
           }
         }
       }
@@ -250,7 +250,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The contact module allows you to display contact information in your application."
+            "value" : "Interventions based on personal health data, semantic context, and new obstacles"
           }
         }
       }
@@ -300,7 +300,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Here are a few key features"
+            "value" : "Here are a few key features of our LLM-based conversational agent"
           }
         }
       }
@@ -473,7 +473,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Support to help make sense of and interpret personal health"
+            "value" : "Support to help make sense of and interpret personal health data"
           }
         }
       }
@@ -514,7 +514,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Healthy Behavior Change"
+            "value" : "Behavior"
           }
         }
       }
