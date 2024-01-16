@@ -30,15 +30,15 @@ extension BehaviorScheduler {
         }
 
         return Task(
-            title: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE"),
-            description: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION"),
+            title: String(localized: "EMOTION_QUESTIONNAIRE_TITLE"),
+            description: String(localized: "EMOTION_QUESTIONNAIRE_DESCRIPTION"),
             schedule: Schedule(
                 start: Calendar.current.startOfDay(for: Date()),
                 repetition: .matching(dateComponents),
                 end: .numberOfEvents(365)
             ),
             notifications: true,
-            context: BehaviorTaskContext.questionnaire(Bundle.main.questionnaire(withName: "SocialSupportQuestionnaire"))
+            context: BehaviorTaskContext.questionnaire(Bundle.main.questionnaire(withName: "EmotionsQuestionnaireTask4"))
         )
     }
 

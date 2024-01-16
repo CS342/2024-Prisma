@@ -134,6 +134,28 @@
         }
       }
     },
+    "EMOTION_QUESTIONNAIRE_DESCRIPTION" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflect on how you felt throughout the day! "
+          }
+        }
+      }
+    },
+    "EMOTION_QUESTIONNAIRE_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emotion Questionnaire"
+          }
+        }
+      }
+    },
     "HEALTHKIT_PERMISSIONS_BUTTON" : {
       "localizations" : {
         "en" : {
@@ -286,6 +308,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "LELAND_STANFORD_BIO" : {
       "localizations" : {
         "en" : {
@@ -430,6 +455,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -440,6 +466,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
