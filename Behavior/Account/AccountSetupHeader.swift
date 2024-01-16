@@ -19,7 +19,7 @@ struct AccountSetupHeader: View {
         VStack {
             HStack {
                 // Plan to replace image with logo of Behavioral App
-                Image(systemName: "star.circle.fill")
+                // Image(systemName: "star.circle.fill")
                 Text("ACCOUNT_TITLE")
                     .font(.largeTitle)
                     .bold()
