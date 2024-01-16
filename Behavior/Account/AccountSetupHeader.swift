@@ -39,7 +39,6 @@ struct AccountSetupHeader: View {
                     Text("ACCOUNT_REQUIRED_ITEMS")
                 }
                 .padding()
-                
             }
         }
             .multilineTextAlignment(.center)
@@ -53,4 +52,3 @@ struct AccountSetupHeader: View {
         .environment(Account())
 }
 #endif
-
