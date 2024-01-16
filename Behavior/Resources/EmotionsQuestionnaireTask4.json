@@ -133,6 +133,14 @@
       "linkId": "8a861e17-b996-4d89-e125-41015c8e72eb",
       "type": "choice",
       "text": "I accomplished ____",
+      "item": [
+        {
+          "linkId": "105749f3-3a3c-4762-e961-f90b4ce212d1",
+          "type": "boolean",
+          "text": "I am proud of my results today. ",
+          "required": false
+        }
+      ],
       "required": false,
       "answerOption": [
         {
@@ -175,21 +183,12 @@
             "display": "None of my goals today"
           }
         }
-      ],
-      "item": [
-        {
-          "linkId": "105749f3-3a3c-4762-e961-f90b4ce212d1",
-          "type": "boolean",
-          "text": "I am proud of my results today. ",
-          "required": false
-        }
       ]
     },
     {
       "linkId": "7ce72c73-2cc3-4897-e722-a43d3e969096",
       "type": "string",
       "text": "How did you challenge yourself today?",
-      "required": false,
       "item": [
         {
           "linkId": "a05786ac-970c-4017-8acb-bd97a97f6267",
@@ -210,13 +209,13 @@
             }
           ]
         }
-      ]
+      ],
+      "required": false
     },
     {
       "linkId": "c8b0111d-dbca-43fd-9ead-6a93e062f6c2",
       "type": "string",
       "text": "How will you challenge yourself tomorrow?",
-      "required": false,
       "item": [
         {
           "linkId": "d1acf1a8-b46a-4d08-9ba0-5586fd7ae1bb",
@@ -266,7 +265,8 @@
             }
           ]
         }
-      ]
+      ],
+      "required": false
     }
   ]
 }
