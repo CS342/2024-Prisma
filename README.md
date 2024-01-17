@@ -1,6 +1,6 @@
 <!--
 
-This source file is part of the CS342 2024 PRISMA project based on the Stanford Spezi Template Application project
+This source file is part of the Behavior based on the Stanford Spezi Template Application project
 
 SPDX-FileCopyrightText: 2023 Stanford University
 
@@ -14,7 +14,7 @@ SPDX-License-Identifier: MIT
 [![codecov](https://codecov.io/gh/CS342/2024-Behavior/graph/badge.svg?token=Kl2PgPHuci)](https://codecov.io/gh/CS342/2024-Behavior)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10521597.svg)](https://doi.org/10.5281/zenodo.10521597)
 
-This repository contains the CS342 2024 PRISMA.
+This repository contains the CS342 2024 PRISMA application.
 The CS342 2024 PRISMA is using the [Spezi](https://github.com/StanfordSpezi/Spezi) ecosystem and builds on top of the [Stanford Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication).
 
 > [!NOTE]  
