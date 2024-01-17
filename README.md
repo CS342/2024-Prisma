@@ -15,7 +15,7 @@ SPDX-License-Identifier: MIT
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10521597.svg)](https://doi.org/10.5281/zenodo.10521597)
 
 This repository contains the CS342 2024 PRISMA application.
-The CS342 2024 PRISMA is using the [Spezi](https://github.com/StanfordSpezi/Spezi) ecosystem and builds on top of the [Stanford Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication).
+The CS342 2024 PRISMA application is using the [Spezi](https://github.com/StanfordSpezi/Spezi) ecosystem and builds on top of the [Stanford Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication).
 
 > [!NOTE]  
 > Do you want to try out the CS342 2024 PRISMA application? You can download it to your iOS device using [TestFlight](https://testflight.apple.com/join/bPu7kUoM)!
