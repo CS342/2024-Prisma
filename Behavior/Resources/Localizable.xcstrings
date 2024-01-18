@@ -135,7 +135,7 @@
       }
     },
     "EMMA_BRUNSKILL_BIO" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -298,7 +298,7 @@
       }
     },
     "JAMES_LANDAY_BIO" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -330,7 +330,7 @@
       }
     },
     "MATTHEW_JOERKE_BIO" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
