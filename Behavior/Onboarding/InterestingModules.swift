@@ -31,10 +31,6 @@ struct InterestingModules: View {
                     title: "INTERESTING_MODULES_AREA3_TITLE",
                     description: "INTERESTING_MODULES_AREA3_DESCRIPTION"
                 )
-//                SequentialOnboardingView.Content(
-//                    title: "INTERESTING_MODULES_AREA4_TITLE",
-//                    description: "INTERESTING_MODULES_AREA4_DESCRIPTION"
-//                )
             ],
             actionText: "INTERESTING_MODULES_BUTTON",
             action: {
