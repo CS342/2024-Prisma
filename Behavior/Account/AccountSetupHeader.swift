@@ -1,5 +1,5 @@
 //
-// This source file is part of the Stanford Spezi Template Application open-source project
+// This source file is part of the Behavior based on the Stanford Spezi Template Application project
 //
 // SPDX-FileCopyrightText: 2023 Stanford University
 //
@@ -17,15 +17,11 @@ struct AccountSetupHeader: View {
     
     var body: some View {
         VStack {
-            HStack {
-                // Plan to replace image with logo of Behavioral App
-                // Image(systemName: "star.circle.fill")
-                Text("ACCOUNT_TITLE")
+            Text("ACCOUNT_TITLE")
                     .font(.largeTitle)
                     .bold()
                     .padding(.bottom)
                     .padding(.top, 30)
-            }
             
             Text("ACCOUNT_SUBTITLE")
                 .padding(.bottom, 8)

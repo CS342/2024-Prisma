@@ -12,7 +12,7 @@
       }
     },
     "ACCOUNT_REQUIRED_ITEMS" : {
-      "extractionState" : "manual",
+      "extractionState" : "automatic",
       "localizations" : {
         "en" : {
           "stringUnit" : {
