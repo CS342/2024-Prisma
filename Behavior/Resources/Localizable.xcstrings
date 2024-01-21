@@ -566,13 +566,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This application demonstrates several Spezi features & modules."
+            "value" : "This application collects data about your step count and active energy burned."
           }
         }
       }
     },
     "WELCOME_TITLE" : {
-      "comment" : "MARK: Welcome",
+      "comment" : "MARK: Welcome to the Behavior Application!",
       "localizations" : {
         "en" : {
           "stringUnit" : {
