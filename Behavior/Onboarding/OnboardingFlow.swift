@@ -50,10 +50,6 @@ struct OnboardingFlow: View {
                 HealthKitPermissions()
             }
             
-            /*if !localNotificationAuthorization {
-                NotificationPermissions()
-            }
-            */
         }
             .task {
                 localNotificationAuthorization = await scheduler.localNotificationAuthorization
