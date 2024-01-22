@@ -29,7 +29,6 @@ class BehaviorDelegate: SpeziAppDelegate {
 
                     // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
                     .collects(\.genderIdentity),
-                    .collects(\.email)
                 ])
 
                 if FeatureFlags.useFirebaseEmulator {
