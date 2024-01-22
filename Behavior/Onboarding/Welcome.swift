@@ -13,43 +13,58 @@ import SwiftUI
 struct Welcome: View {
     @Environment(OnboardingNavigationPath.self) private var onboardingNavigationPath
     
-    
     var body: some View {
-        OnboardingView(
-            title: "WELCOME_TITLE",
-            subtitle: "WELCOME_SUBTITLE",
-            areas: [
-                OnboardingInformationView.Content(
-                    icon: {
-                        Image(systemName: "apps.iphone")
-                            .accessibilityHidden(true)
-                    },
-                    title: "WELCOME_AREA1_TITLE",
-                    description: "WELCOME_AREA1_DESCRIPTION"
-                ),
-                OnboardingInformationView.Content(
-                    icon: {
-                        Image(systemName: "shippingbox.fill")
-                            .accessibilityHidden(true)
-                    },
-                    title: "WELCOME_AREA2_TITLE",
-                    description: "WELCOME_AREA2_DESCRIPTION"
-                ),
-                OnboardingInformationView.Content(
-                    icon: {
-                        Image(systemName: "list.bullet.clipboard.fill")
-                            .accessibilityHidden(true)
-                    },
-                    title: "WELCOME_AREA3_TITLE",
-                    description: "WELCOME_AREA3_DESCRIPTION"
-                )
-            ],
-            actionText: "WELCOME_BUTTON",
-            action: {
-                onboardingNavigationPath.nextStep()
+        Group {
+            GeometryReader { geometry in
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(alignment: .center) {
+                        title
+                        Image(uiImage: Bundle.main.image(withName: "AppIcon-NoBG", fileExtension: "png"))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 0.7 * geometry.size.width)
+                                .accessibilityHidden(true)
+                        Spacer()
+                        description
+                        Spacer()
+                        OnboardingActionsView("WELCOME_BUTTON") {
+                            onboardingNavigationPath.nextStep()
+                        }
+                        Spacer()
+                            .frame(height: 10)
+                    }
+                    .frame(minHeight: geometry.size.height)
+                }
             }
-        )
-            .padding(.top, 24)
+            .padding(24)
+        }
+    }
+    
+    var title: some View {
+        Text("WELCOME_TITLE")
+            .font(.system(size: 60))
+            .fontWeight(.bold)
+            .fontDesign(.rounded)
+            .padding()
+            .multilineTextAlignment(.center)
+            .foregroundStyle(
+                LinearGradient(
+                    colors: [.purple, .blue],
+                    startPoint: .bottomLeading,
+                    endPoint: .topTrailing
+                )
+            )
+    }
+    
+    var description: some View {
+        VStack {
+            Text("Welcome!")
+                .font(.title)
+                .fontWeight(.semibold)
+                .opacity(0.7)
+            Text("WELCOME_SUBTITLE")
+                .padding([.top, .bottom])
+        }
     }
 }
 

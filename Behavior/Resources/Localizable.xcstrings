@@ -16,7 +16,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You may login to your existing account. Or create a new one if you don't have one already."
+            "value" : "Please create an account or sign in below. "
           }
         }
       }
@@ -26,17 +26,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You are already logged in with the account shown below. Continue or change your account by logging out."
-          }
-        }
-      }
-    },
-    "ACCOUNT_SUBTITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Behavior demonstrates the usage of the Firebase Account Module."
+            "value" : "You are successfully signed in with the account shown below. "
           }
         }
       }
@@ -69,16 +59,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Completed Task: %@"
-          }
-        }
-      }
-    },
-    "CONSENT_LOADING_ERROR" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please include a markdown based document named \"ConsentDocument\" in your module Bundle."
           }
         }
       }
@@ -134,12 +114,100 @@
         }
       }
     },
+    "FEATURES_AREA1_DESCRIPTION" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The application will read data about your fitness from your Apple Watch."
+          }
+        }
+      }
+    },
+    "FEATURES_AREA1_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect to an Apple Watch"
+          }
+        }
+      }
+    },
+    "FEATURES_AREA2_DESCRIPTION" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prisma's chatbot can help you set goals and maintain healthy habits."
+          }
+        }
+      }
+    },
+    "FEATURES_AREA2_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chat about Physical Activity"
+          }
+        }
+      }
+    },
+    "FEATURES_AREA3_DESCRIPTION" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prisma can analyze your data for your and point out patterns that it finds."
+          }
+        }
+      }
+    },
+    "FEATURES_AREA3_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find Patterns in Your Data"
+          }
+        }
+      }
+    },
+    "FEATURES_BUTTON" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CONTINUE"
+          }
+        }
+      }
+    },
+    "FEATURES_TITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prisma supports the following features"
+          }
+        }
+      }
+    },
     "HEALTHKIT_PERMISSIONS_BUTTON" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grant Access"
+            "value" : "Allow HealthKit Access"
           }
         }
       }
@@ -149,7 +217,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This onboarding step allows you to customize the onboarding flow to explain how the application uses the HealhtKit data and allows a user to cusomize the selection."
+            "value" : "This study will access data from your iPhone and Apple Watch to monitor your physical activity. Click the button below to grant or deny access to specific data sources."
           }
         }
       }
@@ -159,7 +227,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spezi can access data from HealthKit using the HealthKitDataSource module."
+            "value" : "Permission to read HealthKit Data."
           }
         }
       }
@@ -170,12 +238,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HealthKit Access"
+            "value" : "HealthKit"
           }
         }
       }
     },
     "INTERESTING_MODULES_AREA1_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -186,6 +255,7 @@
       }
     },
     "INTERESTING_MODULES_AREA1_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -196,6 +266,7 @@
       }
     },
     "INTERESTING_MODULES_AREA2_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -206,6 +277,7 @@
       }
     },
     "INTERESTING_MODULES_AREA2_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -216,6 +288,7 @@
       }
     },
     "INTERESTING_MODULES_AREA3_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -226,6 +299,7 @@
       }
     },
     "INTERESTING_MODULES_AREA3_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -236,6 +310,7 @@
       }
     },
     "INTERESTING_MODULES_AREA4_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -246,6 +321,7 @@
       }
     },
     "INTERESTING_MODULES_AREA4_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -256,6 +332,7 @@
       }
     },
     "INTERESTING_MODULES_BUTTON" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -266,6 +343,7 @@
       }
     },
     "INTERESTING_MODULES_SUBTITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -277,6 +355,7 @@
     },
     "INTERESTING_MODULES_TITLE" : {
       "comment" : "MARK: Interesting Modules",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -332,7 +411,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The Spezi Scheduler module enables to send out local notifications when a new event of a task is scheduled."
+            "value" : "This study will periodically send you notifications to complete surveys at random times throughout the day."
           }
         }
       }
@@ -342,7 +421,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spezi Scheduler Notifications."
+            "value" : "Permission to send notifications."
           }
         }
       }
@@ -449,66 +528,6 @@
         }
       }
     },
-    "WELCOME_AREA1_DESCRIPTION" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Spezi Framework builds the foundation of this application."
-          }
-        }
-      }
-    },
-    "WELCOME_AREA1_TITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Spezi Framework"
-          }
-        }
-      }
-    },
-    "WELCOME_AREA2_DESCRIPTION" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spezi uses the Swift Package Manager to import it as a dependency."
-          }
-        }
-      }
-    },
-    "WELCOME_AREA2_TITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swift Package Manager"
-          }
-        }
-      }
-    },
-    "WELCOME_AREA3_DESCRIPTION" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spezi offers several modules including HealthKit integration, questionnaires, and more ..."
-          }
-        }
-      }
-    },
-    "WELCOME_AREA3_TITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spezi Modules"
-          }
-        }
-      }
-    },
     "WELCOME_BUTTON" : {
       "localizations" : {
         "en" : {
@@ -524,7 +543,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This application demonstrates several Spezi features & modules."
+            "value" : "This application supports a research study at Stanford University about physical activity promotion. Press the button below to learn more about this application's features."
           }
         }
       }
@@ -535,10 +554,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spezi\nBehavior"
+            "value" : "PRISMA"
           }
         }
       }
+    },
+    "Welcome!" : {
+
     }
   },
   "version" : "1.0"
