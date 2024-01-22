@@ -722,6 +722,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Behavior/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -927,6 +928,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Behavior/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -975,6 +977,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Behavior/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
