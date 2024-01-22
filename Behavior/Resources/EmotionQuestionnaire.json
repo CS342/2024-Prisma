@@ -1,9 +1,9 @@
 {
   "resourceType": "Questionnaire",
   "language": "en-US",
-  "id": "socialsupport",
-  "name": "SocialSupport",
-  "title": "Social Support",
+  "id": "EmotionQuestionnaire",
+  "name": "EmotionQuestionnaire",
+  "title": "Emotion Questionnaire",
   "description": "This survey measures tangible social support plus a couple of demographic questions.",
   "version": "1",
   "status": "draft",

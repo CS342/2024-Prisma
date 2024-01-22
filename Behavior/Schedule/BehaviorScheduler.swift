@@ -41,7 +41,7 @@ extension BehaviorScheduler {
                 end: .numberOfEvents(365)
             ),
             notifications: true,
-            context: BehaviorTaskContext.questionnaire(Bundle.main.questionnaire(withName: "SocialSupportQuestionnaire"))
+            context: BehaviorTaskContext.questionnaire(Bundle.main.questionnaire(withName: "EmotionQuestionnaire"))
         )
     }
 
