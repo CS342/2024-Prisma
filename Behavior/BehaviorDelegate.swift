@@ -17,7 +17,6 @@ import SpeziOnboarding
 import SpeziScheduler
 import SwiftUI
 
-
 class BehaviorDelegate: SpeziAppDelegate {
     override var configuration: Configuration {
         Configuration(standard: BehaviorStandard()) {
@@ -25,8 +24,6 @@ class BehaviorDelegate: SpeziAppDelegate {
                 AccountConfiguration(configuration: [
                     .requires(\.userId),
                     .requires(\.name),
-
-                    // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
                     .collects(\.genderIdentity),
                     .collects(\.dateOfBirth)
                 ])
@@ -61,7 +58,6 @@ class BehaviorDelegate: SpeziAppDelegate {
                     )
                 }
             }
-            
             BehaviorScheduler()
             OnboardingDataSource()
         }

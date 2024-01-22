@@ -28,7 +28,7 @@ struct OnboardingFlow: View {
         if ProcessInfo.processInfo.isPreviewSimulator {
             return false
         }
-        
+
         return healthKitDataSource.authorized
     }
     
@@ -49,7 +49,6 @@ struct OnboardingFlow: View {
             if HKHealthStore.isHealthDataAvailable() && !healthKitAuthorization {
                 HealthKitPermissions()
             }
-            
         }
             .interactiveDismissDisabled(!completedOnboardingFlow)
     }
