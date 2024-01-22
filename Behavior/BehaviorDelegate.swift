@@ -28,7 +28,7 @@ class BehaviorDelegate: SpeziAppDelegate {
                     .requires(\.dateOfBirth),
 
                     // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
-                    .collects(\.genderIdentity),
+                    .collects(\.genderIdentity)
                 ])
 
                 if FeatureFlags.useFirebaseEmulator {
