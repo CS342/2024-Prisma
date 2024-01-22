@@ -186,7 +186,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CONTINUE"
+            "value" : "Continue"
           }
         }
       }
@@ -391,7 +391,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mock Web Service"
+            "value" : "Data"
           }
         }
       }
