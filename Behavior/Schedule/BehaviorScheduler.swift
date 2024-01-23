@@ -57,7 +57,7 @@ extension BehaviorScheduler {
                     description: String(localized: "END_OF_THE_DAY_SURVEY_DESCRIPTION"),
                     schedule: Schedule(
                         start: Calendar.current.startOfDay(for: .now),
-                        repetition: .matching(.init(hour: 0, minute: 15)), // Every Day at 17:00 PM
+                        repetition: .matching(.init(hour: 17, minute: 00)), // Every Day at 17:00 PM
                         end: .numberOfEvents(356)
                     ),
                     notifications: true,
