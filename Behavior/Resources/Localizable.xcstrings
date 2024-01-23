@@ -135,13 +135,34 @@
       }
     },
     "EMMA_BRUNSKILL_BIO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emma Brunskill is an associate tenured professor in the Computer Science Department at Stanford University. Prof. Brunskill's goal is to create AI systems that learn from few samples to robustly make good decisions, motivated by our applications to healthcare and education. Their lab is part of the Stanford AI Lab, the Stanford Statistical ML group, and AI Safety @Stanford. Prof. Brunskill was previously an assistant professor at Carnegie Mellon University, whose work has been honored by early faculty career awards (National Science Foundation, Office of Naval Research, Microsoft Research (1 of 7 worldwide) ). Their work, together with their amazing lab members, has received several best research paper nominations (CHI, EDMx3) and awards (UAI, RLDM, ITS). They are privileged to serve on the International Machine Learning Society (which coordinates ICML) Board, the Khan Academy Research Advisory Board, the Stanford Faculty Women's Forum Steering Committee, and previously served on the Women in Machine Learning (WIML) board."
+          }
+        }
+      }
     },
     "EMOTION_QUESTIONNAIRE_DESCRIPTION" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflect on how you felt throughout the day!"
+          }
+        }
+      }
     },
     "EMOTION_QUESTIONNAIRE_TITLE" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emotion Questionnaire"
+          }
+        }
+      }
     },
     "HEALTHKIT_PERMISSIONS_BUTTON" : {
       "localizations" : {
@@ -296,15 +317,11 @@
       }
     },
     "JAMES_LANDAY_BIO" : {
-
-    },
-    "LELAND_STANFORD_BIO" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Amasa Leland Stanford (March 9, 1824 – June 21, 1893) was an American industrialist and politician. [...] He and his wife Jane were also the founders of Stanford University, which they named after their late son.\n[https://en.wikipedia.org/wiki/Leland_Stanford]"
+            "value" : "James Landay is a Professor of Computer Science and the Anand Rajaraman and Venky Harinarayan Professor in the School of Engineering at Stanford University. He specializes in human-computer interaction. Landay is the co-founder and Vice-Director of the Stanford Institute for Human-centered Artificial Intelligence (HAI). Prior to joining Stanford, Landay was a Professor of Information Science at Cornell Tech in New York City for one year and a Professor of Computer Science & Engineering at the University of Washington for 10 years. Landay received his BS in EECS from UC Berkeley in 1990, and MS and PhD in Computer Science from Carnegie Mellon University in 1993 and 1996, respectively. His PhD dissertation was the first to demonstrate the use of sketching in user interface design tools."
           }
         }
       }
@@ -320,7 +337,14 @@
       }
     },
     "MATTHEW_JOERKE_BIO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matthew is a fourth year PhD student at Stanford University, where he is co-advised by Prof. Emma Brunskill and Prof. James Landay. His research is at the intersection of human-computer interaction and machine learning, with an emphasis on studying and designing technology to promote wellbeing."
+          }
+        }
+      }
     },
     "MOCK_WEB_SERVICE_TAB_TITLE" : {
       "comment" : "MARK: - Mock Upload Data Storage Provider",
@@ -400,28 +424,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Task: %@"
-          }
-        }
-      }
-    },
-    "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please fill out the Social Support Questionnaire every day."
-          }
-        }
-      }
-    },
-    "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Social Support Questionnaire"
           }
         }
       }
