@@ -27,7 +27,6 @@ extension BehaviorStandard {
         }
         
         if let mockWebService {
-            let id = response.identifier?.value?.value?.string ?? UUID().uuidString
             let jsonRepresentation = (try? String(data: JSONEncoder().encode(response), encoding: .utf8)) ?? ""
             try? await mockWebService.upload(path: path, body: jsonRepresentation)
             return

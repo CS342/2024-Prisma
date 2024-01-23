@@ -153,6 +153,9 @@
     "Currently there are no surveys available, you will be notified about upcoming surveys." : {
 
     },
+    "EMMA_BRUNSKILL_BIO" : {
+
+    },
     "END_OF_THE_DAY_SURVEY_DESCRIPTION" : {
       "localizations" : {
         "en" : {
@@ -433,13 +436,16 @@
         }
       }
     },
+    "JAMES_LANDAY_BIO" : {
+
+    },
     "LELAND_STANFORD_BIO" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Amasa Leland Stanford (March 9, 1824 – June 21, 1893) was an American industrialist and politician. [...] He and his wife Jane were also the founders of Stanford University, which they named after their late son.\n[https://en.wikipedia.org/wiki/Leland_Stanford]"
+            "value" : "James Landay is a Professor of Computer Science and the Anand Rajaraman and Venky Harinarayan Professor in the School of Engineering at Stanford University. He specializes in human-computer interaction. Landay is the co-founder and Vice-Director of the Stanford Institute for Human-centered Artificial Intelligence (HAI). Prior to joining Stanford, Landay was a Professor of Information Science at Cornell Tech in New York City for one year and a Professor of Computer Science & Engineering at the University of Washington for 10 years. Landay received his BS in EECS from UC Berkeley in 1990, and MS and PhD in Computer Science from Carnegie Mellon University in 1993 and 1996, respectively. His PhD dissertation was the first to demonstrate the use of sketching in user interface design tools."
           }
         }
       }
@@ -453,6 +459,9 @@
           }
         }
       }
+    },
+    "MATTHEW_JOERKE_BIO" : {
+
     },
     "MID_DAY_SURVEY_DESCRIPTION" : {
       "localizations" : {
