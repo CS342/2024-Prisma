@@ -134,6 +134,26 @@
         }
       }
     },
+    "EMOTION_QUESTIONNAIRE_DESCRIPTION" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reflect on how you felt throughout the day! "
+          }
+        }
+      }
+    },
+    "EMOTION_QUESTIONNAIRE_TITLE" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emotion Questionnaire"
+          }
+        }
+      }
+    },
     "EMMA_BRUNSKILL_BIO" : {
       "localizations" : {
         "en" : {
@@ -450,6 +470,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -460,6 +481,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
