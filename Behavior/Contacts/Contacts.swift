@@ -21,7 +21,7 @@ struct Contacts: View {
             ),
             title: "Study Coordinator & Developer",
             contactOptions: [
-                .email(addresses: ["joerke@stanford.edu"]),
+                .email(addresses: ["joerke@stanford.edu"])
             ]
         ),
         Contact(
