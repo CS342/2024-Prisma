@@ -12,7 +12,6 @@ extension BehaviorStandard {
             return
         }
         let path: String
-        let resource: ResourceProxy
         
         // retrieve id of HKSample (e.g. HKQuantityTypeIdentifierStepCount)
         let identifier = quantityType.identifier
@@ -24,7 +23,7 @@ extension BehaviorStandard {
         do {
             path = try await getPath(module: .health(identifier)) + "raw/\(effectiveTimestamp)"
         } catch {
-            logger.error("Failed to set data in Firestore: \(error)")
+            print("Failed to define path: \(error.localizedDescription)")
             return
         }
         

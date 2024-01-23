@@ -14,6 +14,8 @@ import SwiftUI
 
 struct ScheduleView: View {
     @Environment(BehaviorScheduler.self) private var scheduler
+    @Binding var presentingAccount: Bool
+    
     
     private var relevantEventContexts: [EventContext] {
         scheduler.tasks
@@ -58,14 +60,24 @@ struct ScheduleView: View {
                 }
             }
                 .navigationTitle("SCHEDULE_LIST_TITLE")
+                .toolbar {
+                    if AccountButton.shouldDisplay {
+                        AccountButton(isPresented: $presentingAccount)
+                    }
+                }
         }
+    }
+    
+    
+    init(presentingAccount: Binding<Bool>) {
+        self._presentingAccount = presentingAccount
     }
 }
 
 
 #if DEBUG
 #Preview("ScheduleView") {
-    ScheduleView()
+    ScheduleView(presentingAccount: .constant(false))
         .previewWith(standard: BehaviorStandard()) {
             BehaviorScheduler()
         }

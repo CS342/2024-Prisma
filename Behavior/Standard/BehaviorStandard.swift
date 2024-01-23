@@ -71,8 +71,14 @@ actor BehaviorStandard: Standard, EnvironmentAccessible, HealthKitConstraint, On
     /// The firestore path for a given `Module`.
     /// - Parameter module: The `Module` that is requested.
     func getPath(module: Module) async throws -> String {
-        guard let details = await account.details else {
-            throw BehaviorStandardError.userNotAuthenticatedYet
+        let accountId: String
+        if mockWebService != nil {
+            accountId = "USER_ID"
+        } else {
+            guard let details = await account.details else {
+                throw BehaviorStandardError.userNotAuthenticatedYet
+            }
+            accountId = details.accountId
         }
         
         /// the "MODULE/SUBTYPE" string.
@@ -88,7 +94,7 @@ actor BehaviorStandard: Standard, EnvironmentAccessible, HealthKitConstraint, On
         }
         
         // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
-        return "studies/\(BehaviorStandard.STUDYID)/users/\(details.accountId)/\(moduleText)/"
+        return "studies/\(BehaviorStandard.STUDYID)/users/\(accountId)/\(moduleText)/"
     }
 
     func deletedAccount() async throws {

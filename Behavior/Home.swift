@@ -30,12 +30,12 @@ struct HomeView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            ChatView()
+            ChatView(presentingAccount: $presentingAccount)
                 .tag(Tabs.chat)
                 .tabItem {
                     Label("Chat", systemImage: "message.fill")
                 }
-            ScheduleView()
+            ScheduleView(presentingAccount: $presentingAccount)
                 .tag(Tabs.schedule)
                 .tabItem {
                     Label("SCHEDULE_TAB_TITLE", systemImage: "list.clipboard")

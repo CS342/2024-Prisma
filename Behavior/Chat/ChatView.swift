@@ -10,13 +10,25 @@ import Foundation
 import SwiftUI
 
 
-/// Displays the contacts for the Spezi Template Application.
 struct ChatView: View {
+    @Binding var presentingAccount: Bool
+    
+    
     var body: some View {
         NavigationStack {
             Text("Coming soon!")
                 .navigationTitle("Chat")
+                .toolbar {
+                    if AccountButton.shouldDisplay {
+                        AccountButton(isPresented: $presentingAccount)
+                    }
+                }
         }
+    }
+    
+    
+    init(presentingAccount: Binding<Bool>) {
+        self._presentingAccount = presentingAccount
     }
 }
 
@@ -24,7 +36,7 @@ struct ChatView: View {
 #if DEBUG
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatView(presentingAccount: .constant(false))
     }
 }
 #endif
