@@ -75,6 +75,11 @@
 		A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */; };
 		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
 		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
+		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
+		F8AF6FAC2B5F42C40011C32D /* afternoon-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */; };
+		F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */; };
+		F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */; };
+		F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +149,11 @@
 		A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
 		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
 		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
+		F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "afternoon-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "end-of-day-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "morning-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mid-day-en-US.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +249,10 @@
 		2FE5DC2D29EDD792004B9AB4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */,
+				F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */,
+				F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */,
+				F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */,
 				653A255428338800005D4D48 /* Assets.xcassets */,
 				2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */,
 				2FE5DC2C29EDD78E004B9AB4 /* ConsentDocument.md */,
@@ -252,9 +266,8 @@
 		2FE5DC3B29EDD7D0004B9AB4 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				F8AF6FA02B5F3A590011C32D /* EventContext */,
 				2FE5DC4D29EDD7FA004B9AB4 /* Bundle+Questionnaire.swift */,
-				2FE5DC4929EDD7FA004B9AB4 /* EventContext.swift */,
-				2FE5DC4A29EDD7FA004B9AB4 /* EventContextView.swift */,
 				2FE5DC4829EDD7FA004B9AB4 /* ScheduleView.swift */,
 				2FE5DC4C29EDD7FA004B9AB4 /* BehaviorScheduler.swift */,
 				2FE5DC4B29EDD7FA004B9AB4 /* BehaviorTaskContext.swift */,
@@ -377,6 +390,16 @@
 				F8AF6F9E2B5F35400011C32D /* ChatView.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		F8AF6FA02B5F3A590011C32D /* EventContext */ = {
+			isa = PBXGroup;
+			children = (
+				2FE5DC4A29EDD7FA004B9AB4 /* EventContextView.swift */,
+				F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */,
+				2FE5DC4929EDD7FA004B9AB4 /* EventContext.swift */,
+			);
+			path = EventContext;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,11 +557,15 @@
 			files = (
 				2FC3439229EE634B002D773C /* ConsentDocument.md in Resources */,
 				F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */,
+				F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */,
 				2FC3439129EE6349002D773C /* AppIcon.png in Resources */,
+				F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */,
 				653A255528338800005D4D48 /* Assets.xcassets in Resources */,
 				2FC3439029EE6346002D773C /* SocialSupportQuestionnaire.json in Resources */,
+				F8AF6FAC2B5F42C40011C32D /* afternoon-en-US.json in Resources */,
 				2FA0BFED2ACC977500E0EF83 /* Localizable.xcstrings in Resources */,
 				2F6025CB29BBE70F0045459E /* GoogleService-Info.plist in Resources */,
+				F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +627,7 @@
 				2FE5DC4729EDD7F2004B9AB4 /* CodableArray+RawRepresentable.swift in Sources */,
 				A9720E432ABB68CC00872D23 /* AccountSetupHeader.swift in Sources */,
 				2FE5DC4029EDD7EE004B9AB4 /* FeatureFlags.swift in Sources */,
+				F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */,
 				2FE5DC4629EDD7F2004B9AB4 /* Bundle+Image.swift in Sources */,
 				2FE5DC4F29EDD7FA004B9AB4 /* EventContext.swift in Sources */,
 				2FE5DC5029EDD7FA004B9AB4 /* EventContextView.swift in Sources */,
