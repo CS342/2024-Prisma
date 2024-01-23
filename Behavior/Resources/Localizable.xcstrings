@@ -318,6 +318,7 @@
       }
     },
     "NOTIFICATION_PERMISSIONS_BUTTON" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -328,6 +329,7 @@
       }
     },
     "NOTIFICATION_PERMISSIONS_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -338,6 +340,7 @@
       }
     },
     "NOTIFICATION_PERMISSIONS_SUBTITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -349,6 +352,7 @@
     },
     "NOTIFICATION_PERMISSIONS_TITLE" : {
       "comment" : "MARK: Notifications",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

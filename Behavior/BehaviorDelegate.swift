@@ -19,6 +19,7 @@ import SwiftUI
 
 class BehaviorDelegate: SpeziAppDelegate {
     override var configuration: Configuration {
+        // swiftlint:disable closure_body_length
         Configuration(standard: BehaviorStandard()) {
             if !FeatureFlags.disableFirebase {
                 AccountConfiguration(configuration: [
