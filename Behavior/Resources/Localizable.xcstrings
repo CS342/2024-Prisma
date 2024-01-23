@@ -46,10 +46,24 @@
       }
     },
     "AFTERNOON_SURVEY_DESCRIPTION" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill out the Afternoon Survey every day between 11AM-2PM."
+          }
+        }
+      }
     },
     "AFTERNOON_SURVEY_TITLE" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afternoon Survey"
+          }
+        }
+      }
     },
     "Chat" : {
 
@@ -140,10 +154,24 @@
 
     },
     "END_OF_THE_DAY_SURVEY_DESCRIPTION" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill out the End-of-day Survey every day between 11AM-2PM."
+          }
+        }
+      }
     },
     "END_OF_THE_DAY_SURVEY_TITLE" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End-of-day Survey"
+          }
+        }
+      }
     },
     "Expired at %@" : {
 
@@ -406,6 +434,7 @@
       }
     },
     "LELAND_STANFORD_BIO" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -426,10 +455,24 @@
       }
     },
     "MID_DAY_SURVEY_DESCRIPTION" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill out the Mid-day Survey every day between 11AM-2PM."
+          }
+        }
+      }
     },
     "MID_DAY_SURVEY_TITLE" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mid-day Survey"
+          }
+        }
+      }
     },
     "MOCK_WEB_SERVICE_TAB_TITLE" : {
       "comment" : "MARK: - Mock Upload Data Storage Provider",
@@ -437,16 +480,41 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Data"
+            "value" : "Mock Web Service"
           }
         }
       }
     },
     "MORNING_SURVEY_DESCRIPTION" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill out the Morning Survey every day between 8-11AM."
+          }
+        }
+      }
     },
     "MORNING_SURVEY_TITLE" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morning Survey"
+          }
+        }
+      }
+    },
+    "NO_SURVEYS_MESSAGE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currently there are no surveys available, you will be notified about upcoming surveys."
+          }
+        }
+      }
     },
     "NOTIFICATION_PERMISSIONS_BUTTON" : {
       "localizations" : {
