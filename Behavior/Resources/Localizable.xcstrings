@@ -134,12 +134,22 @@
         }
       }
     },
+    "EMMA_BRUNSKILL_BIO" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emma Brunskill is an associate tenured professor in the Computer Science Department at Stanford University. Prof. Brunskill's goal is to create AI systems that learn from few samples to robustly make good decisions, motivated by our applications to healthcare and education. Their lab is part of the Stanford AI Lab, the Stanford Statistical ML group, and AI Safety @Stanford. Prof. Brunskill was previously an assistant professor at Carnegie Mellon University, whose work has been honored by early faculty career awards (National Science Foundation, Office of Naval Research, Microsoft Research (1 of 7 worldwide) ). Their work, together with their amazing lab members, has received several best research paper nominations (CHI, EDMx3) and awards (UAI, RLDM, ITS). They are privileged to serve on the International Machine Learning Society (which coordinates ICML) Board, the Khan Academy Research Advisory Board, the Stanford Faculty Women's Forum Steering Committee, and previously served on the Women in Machine Learning (WIML) board."
+          }
+        }
+      }
+    },
     "EMOTION_QUESTIONNAIRE_DESCRIPTION" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reflect on how you felt throughout the day! "
+            "value" : "Reflect on how you felt throughout the day!"
           }
         }
       }
@@ -150,16 +160,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emotion Questionnaire"
-          }
-        }
-      }
-    },
-    "EMMA_BRUNSKILL_BIO" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Emma Brunskill is an associate tenured professor in the Computer Science Department at Stanford University. Prof. Brunskill's goal is to create AI systems that learn from few samples to robustly make good decisions, motivated by our applications to healthcare and education. Their lab is part of the Stanford AI Lab, the Stanford Statistical ML group, and AI Safety @Stanford. Prof. Brunskill was previously an assistant professor at Carnegie Mellon University, whose work has been honored by early faculty career awards (National Science Foundation, Office of Naval Research, Microsoft Research (1 of 7 worldwide) ). Their work, together with their amazing lab members, has received several best research paper nominations (CHI, EDMx3) and awards (UAI, RLDM, ITS). They are privileged to serve on the International Machine Learning Society (which coordinates ICML) Board, the Khan Academy Research Advisory Board, the Stanford Faculty Women's Forum Steering Committee, and previously served on the Women in Machine Learning (WIML) board."
           }
         }
       }
@@ -357,47 +357,6 @@
         }
       }
     },
-    "NOTIFICATION_PERMISSIONS_BUTTON" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Allow Notifications"
-          }
-        }
-      }
-    },
-    "NOTIFICATION_PERMISSIONS_DESCRIPTION" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Spezi Scheduler module enables to send out local notifications when a new event of a task is scheduled."
-          }
-        }
-      }
-    },
-    "NOTIFICATION_PERMISSIONS_SUBTITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spezi Scheduler Notifications."
-          }
-        }
-      }
-    },
-    "NOTIFICATION_PERMISSIONS_TITLE" : {
-      "comment" : "MARK: Notifications",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notifications"
-          }
-        }
-      }
-    },
     "PROJECT_LICENSE_DESCRIPTION" : {
       "localizations" : {
         "en" : {
@@ -465,28 +424,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Task: %@"
-          }
-        }
-      }
-    },
-    "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please fill out the Social Support Questionnaire every day."
-          }
-        }
-      }
-    },
-    "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Social Support Questionnaire"
           }
         }
       }
@@ -566,7 +503,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This application demonstrates several Spezi features & modules."
+            "value" : "This application collects data about your step count and active energy burned."
           }
         }
       }
@@ -577,7 +514,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spezi\nBehavior"
+            "value" : "Welcome to the Behavior Application!"
           }
         }
       }
