@@ -80,6 +80,10 @@
 		F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */; };
 		F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */; };
 		F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */; };
+		F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB32B5F6EDC0011C32D /* Module.swift */; };
+		F8AF6FB62B5F71460011C32D /* BehaviorStandard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */; };
+		F8AF6FB92B5F72650011C32D /* BehaviorStandard+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */; };
+		F8AF6FBC2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +158,10 @@
 		F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "end-of-day-en-US.json"; sourceTree = "<group>"; };
 		F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "morning-en-US.json"; sourceTree = "<group>"; };
 		F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mid-day-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FB32B5F6EDC0011C32D /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+Extension.swift"; sourceTree = "<group>"; };
+		F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+HealthKit.swift"; sourceTree = "<group>"; };
+		F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+Questionnaire.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,10 +339,10 @@
 		653A254F283387FE005D4D48 /* Behavior */ = {
 			isa = PBXGroup;
 			children = (
+				F8AF6FB12B5F6EC80011C32D /* Standard */,
 				F8AF6F9C2B5F352F0011C32D /* Chat */,
 				653A2550283387FE005D4D48 /* Behavior.swift */,
 				2F5E32BC297E05EA003432F8 /* BehaviorDelegate.swift */,
-				2FF53D8C2A8729D600042B76 /* BehaviorStandard.swift */,
 				2F4E23822989D51F0013F3D9 /* BehaviorTestingSetup.swift */,
 				2FC975A72978F11A00BA99FE /* Home.swift */,
 				A9720E412ABB68B300872D23 /* Account */,
@@ -400,6 +408,18 @@
 				2FE5DC4929EDD7FA004B9AB4 /* EventContext.swift */,
 			);
 			path = EventContext;
+			sourceTree = "<group>";
+		};
+		F8AF6FB12B5F6EC80011C32D /* Standard */ = {
+			isa = PBXGroup;
+			children = (
+				2FF53D8C2A8729D600042B76 /* BehaviorStandard.swift */,
+				F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */,
+				F8AF6FB32B5F6EDC0011C32D /* Module.swift */,
+				F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */,
+				F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */,
+			);
+			path = Standard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -629,17 +649,21 @@
 				2FE5DC4029EDD7EE004B9AB4 /* FeatureFlags.swift in Sources */,
 				F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */,
 				2FE5DC4629EDD7F2004B9AB4 /* Bundle+Image.swift in Sources */,
+				F8AF6FB92B5F72650011C32D /* BehaviorStandard+HealthKit.swift in Sources */,
 				2FE5DC4F29EDD7FA004B9AB4 /* EventContext.swift in Sources */,
 				2FE5DC5029EDD7FA004B9AB4 /* EventContextView.swift in Sources */,
+				F8AF6FB62B5F71460011C32D /* BehaviorStandard+Extension.swift in Sources */,
 				2F4E23832989D51F0013F3D9 /* BehaviorTestingSetup.swift in Sources */,
 				2FE5DC5329EDD7FA004B9AB4 /* Bundle+Questionnaire.swift in Sources */,
 				2FE5DC5129EDD7FA004B9AB4 /* BehaviorTaskContext.swift in Sources */,
+				F8AF6FBC2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift in Sources */,
 				56F6F2A02AB441930022FE5A /* ContributionsList.swift in Sources */,
 				566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */,
 				5680DD392AB8983D004E6D4A /* PackageCell.swift in Sources */,
 				2F5E32BD297E05EA003432F8 /* BehaviorDelegate.swift in Sources */,
 				2FE5DC5229EDD7FA004B9AB4 /* BehaviorScheduler.swift in Sources */,
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
+				F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */,
 				653A2551283387FE005D4D48 /* Behavior.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
 				2F65B44E2A3B8B0600A36932 /* NotificationPermissions.swift in Sources */,

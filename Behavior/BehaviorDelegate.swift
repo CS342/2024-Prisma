@@ -24,11 +24,7 @@ class BehaviorDelegate: SpeziAppDelegate {
             if !FeatureFlags.disableFirebase {
                 AccountConfiguration(configuration: [
                     .requires(\.userId),
-                    .requires(\.name),
-
-                    // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
-                    .collects(\.genderIdentity),
-                    .collects(\.dateOfBirth)
+                    .requires(\.name)
                 ])
 
                 if FeatureFlags.useFirebaseEmulator {

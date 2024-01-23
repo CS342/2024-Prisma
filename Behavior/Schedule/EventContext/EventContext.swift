@@ -11,7 +11,7 @@ import SpeziScheduler
 
 
 struct EventContext: Comparable, Identifiable {
-    static let eventTimeout: TimeInterval = 60 * 2 // Timeout for user to answer the question is 1 hour.
+    static let eventTimeout: TimeInterval = 60 * 60 // Timeout for user to answer the question is 1 hour.
     
     let event: Event
     let task: SpeziScheduler.Task<BehaviorTaskContext>
