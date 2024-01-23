@@ -17,9 +17,9 @@ import SpeziOnboarding
 import SpeziScheduler
 import SwiftUI
 
+
 class BehaviorDelegate: SpeziAppDelegate {
     override var configuration: Configuration {
-        // swiftlint:disable closure_body_length
         Configuration(standard: BehaviorStandard()) {
             if !FeatureFlags.disableFirebase {
                 AccountConfiguration(configuration: [
@@ -48,16 +48,7 @@ class BehaviorDelegate: SpeziAppDelegate {
             }
 
             if HKHealthStore.isHealthDataAvailable() {
-                HealthKit {
-                    CollectSample(
-                        HKQuantityType(.stepCount),
-                        deliverySetting: .background(.afterAuthorizationAndApplicationWillLaunch)
-                    )
-                    CollectSample(
-                        HKQuantityType(.activeEnergyBurned),
-                        deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
-                    )
-                }
+                healthKit
             }
             BehaviorScheduler()
             OnboardingDataSource()
@@ -83,6 +74,10 @@ class BehaviorDelegate: SpeziAppDelegate {
         HealthKit {
             CollectSample(
                 HKQuantityType(.stepCount),
+                deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
+            )
+            CollectSample(
+                HKQuantityType(.activeEnergyBurned),
                 deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
             )
         }

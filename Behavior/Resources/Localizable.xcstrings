@@ -317,51 +317,7 @@
         }
       }
     },
-    "NOTIFICATION_PERMISSIONS_BUTTON" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Allow Notifications"
-          }
-        }
-      }
-    },
-    "NOTIFICATION_PERMISSIONS_DESCRIPTION" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Spezi Scheduler module enables to send out local notifications when a new event of a task is scheduled."
-          }
-        }
-      }
-    },
-    "NOTIFICATION_PERMISSIONS_SUBTITLE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spezi Scheduler Notifications."
-          }
-        }
-      }
-    },
-    "NOTIFICATION_PERMISSIONS_TITLE" : {
-      "comment" : "MARK: Notifications",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notifications"
-          }
-        }
-      }
-    },
+
     "PROJECT_LICENSE_DESCRIPTION" : {
       "localizations" : {
         "en" : {
@@ -534,12 +490,12 @@
       }
     },
     "WELCOME_TITLE" : {
-      "comment" : "MARK: Welcome to the Behavior Application!",
+      "comment" : "MARK: Welcome",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spezi\nBehavior"
+            "value" : "Welcome to the Behavior Application!"
           }
         }
       }
