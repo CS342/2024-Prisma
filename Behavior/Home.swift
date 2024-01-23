@@ -35,7 +35,7 @@ struct HomeView: View {
                 .tabItem {
                     Label("Chat", systemImage: "message.fill")
                 }
-            ScheduleView(presentingAccount: $presentingAccount)
+            ScheduleView()
                 .tag(Tabs.schedule)
                 .tabItem {
                     Label("SCHEDULE_TAB_TITLE", systemImage: "list.clipboard")

@@ -1,0 +1,444 @@
+{
+    "resourceType": "Questionnaire",
+    "language": "en-US",
+    "title": "Morning Survey",
+    "status": "active",
+    "publisher": "Stanford HPDS",
+    "meta":
+    {
+        "profile":
+        [
+            "http://cardinalkit.org/fhir/StructureDefinition/sdf-Questionnaire"
+        ],
+        "tag":
+        [
+            {
+                "system": "urn:ietf:bcp:47",
+                "code": "en-US",
+                "display": "English"
+            }
+        ]
+    },
+    "useContext":
+    [
+        {
+            "code":
+            {
+                "system": "http://hl7.org/fhir/ValueSet/usage-context-type",
+                "code": "focus",
+                "display": "Clinical Focus"
+            },
+            "valueCodeableConcept":
+            {
+                "coding":
+                [
+                    {
+                        "system": "urn:oid:2.16.578.1.12.4.1.1.8655",
+                        "display": "Morning Survey"
+                    }
+                ]
+            }
+        }
+    ],
+    "contact":
+    [
+        {
+            "name": "http://cardinalkit.org"
+        }
+    ],
+    "subjectType":
+    [
+        "Patient"
+    ],
+    "url": "http://cardinalkit.org/fhir/questionnaire/1c51efe8-5e21-4cdf-89d7-9205bd8745e8",
+    "item":
+    [
+        {
+            "linkId": "morning/sleep-quality",
+            "type": "choice",
+            "text": "How would you rate the quality of your sleep overall last night?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/sleep-quality/excellent",
+                        "code": "excellent",
+                        "system": "https://hpds.stanford.edu/sleep-quality/5-scale-likert",
+                        "display": "Excellent "
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/sleep-quality/above-average",
+                        "code": "above-average",
+                        "system": "https://hpds.stanford.edu/sleep-quality/5-scale-likert",
+                        "display": "Above Average"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/sleep-quality/average",
+                        "code": "average",
+                        "system": "https://hpds.stanford.edu/sleep-quality/5-scale-likert",
+                        "display": "Average"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/sleep-quality/below-average",
+                        "code": "below-average",
+                        "system": "https://hpds.stanford.edu/sleep-quality/5-scale-likert",
+                        "display": "Below Average"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/sleep-quality/terrible",
+                        "code": "terrible",
+                        "system": "https://hpds.stanford.edu/sleep-quality/5-scale-likert",
+                        "display": "Terrible"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "morning/physical-activity",
+            "type": "choice",
+            "text": "Did you do physical activity yesterday?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/physical-activity/yes",
+                        "code": "yes",
+                        "system": "https://hpds.stanford.edu/yes-no",
+                        "display": "Yes"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/physical-activity/no",
+                        "code": "no",
+                        "system": "https://hpds.stanford.edu/yes-no",
+                        "display": "No"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "morning/at-assigned-office",
+            "type": "choice",
+            "text": "Are you currently at your assigned office space?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/at-assigned-office/yes",
+                        "code": "yes",
+                        "system": "https://hpds.stanford.edu/yes-no",
+                        "display": "Yes"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/at-assigned-office/no",
+                        "code": "no",
+                        "system": "https://hpds.stanford.edu/yes-no",
+                        "display": "No"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "morning/stress-level",
+            "type": "choice",
+            "text": "What best describes your level of stress right now on a scale of 0-10 from not at all stressed \"0\" to Extremely stressed \"10\"?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/0",
+                        "code": "0",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "0 - Not at all stressed"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/1",
+                        "code": "1",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "1"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/2",
+                        "code": "2",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "2"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/3",
+                        "code": "3",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "3"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/4",
+                        "code": "4",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "4"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/5",
+                        "code": "5",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "5"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/6",
+                        "code": "6",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "6"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/7",
+                        "code": "7",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "7"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/8",
+                        "code": "8",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "8"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/9",
+                        "code": "9",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "9"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/stress-level/10",
+                        "code": "10",
+                        "system": "https://hpds.stanford.edu/stress-level/10-scale-integer",
+                        "display": "10 - Extremely stressed"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "morning/activated",
+            "type": "choice",
+            "text": "How activated do you feel right now on a scale of 1-7 from not at all activated \"1\" to extremely activated \"7\"? Note: Activated means charged, alert, or energized physically and mentally.",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/1",
+                        "code": "1",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "1 - Not at all activated"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/2",
+                        "code": "2",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "2"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/3",
+                        "code": "3",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "3"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/4",
+                        "code": "4",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "4"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/5",
+                        "code": "5",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "5"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/6",
+                        "code": "6",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "6"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/activated/7",
+                        "code": "7",
+                        "system": "https://hpds.stanford.edu/activated/7-scale-likert",
+                        "display": "7 - Extremeley activated"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "morning/affect",
+            "type": "choice",
+            "text": "How positive, neutral, or negative do you feel right now?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/extremely-positive",
+                        "code": "extremely-positive",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Extremely Positive"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/moderately-positive",
+                        "code": "moderately-positive",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Moderately Positive"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/slightly-positive",
+                        "code": "slightly-positive",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Slightly Positive"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/neutral",
+                        "code": "neutral",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Neutral"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/slightly-negative",
+                        "code": "slightly-negative",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Slightly Negative"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/moderately-negative",
+                        "code": "moderately-negative-",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Moderately Negative "
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/affect/extremely-negative",
+                        "code": "extremely-negative",
+                        "system": "https://hpds.stanford.edu/affect/7-scale-likert",
+                        "display": "Extremely Negative"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "morning/social-context",
+            "type": "choice",
+            "text": "What is your current social context?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/social-context/alone",
+                        "code": "alone",
+                        "system": "https://hpds.stanford.edu/social-context",
+                        "display": "Alone"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "morning/social-context/interacting-with-others",
+                        "code": "interacting-with-others",
+                        "system": "https://hpds.stanford.edu/social-context",
+                        "display": "Interacting with others"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "ACCOUNT_NEXT" : {
       "localizations" : {
         "en" : {
@@ -42,6 +45,15 @@
         }
       }
     },
+    "AFTERNOON_SURVEY_DESCRIPTION" : {
+
+    },
+    "AFTERNOON_SURVEY_TITLE" : {
+
+    },
+    "Chat" : {
+
+    },
     "CLOSE" : {
       "comment" : "MARK: General",
       "localizations" : {
@@ -53,7 +65,17 @@
         }
       }
     },
+    "Coming soon!" : {
+
+    },
+    "Completed at %@" : {
+
+    },
+    "Completed notification" : {
+
+    },
     "COMPLETED_TASK_LABEL %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -113,6 +135,24 @@
           }
         }
       }
+    },
+    "Currently there are no surveys available, you will be notified about upcoming surveys." : {
+
+    },
+    "END_OF_THE_DAY_SURVEY_DESCRIPTION" : {
+
+    },
+    "END_OF_THE_DAY_SURVEY_TITLE" : {
+
+    },
+    "Expired at %@" : {
+
+    },
+    "Expired notification" : {
+
+    },
+    "Expires in %@" : {
+
     },
     "FEATURES_AREA1_DESCRIPTION" : {
       "extractionState" : "manual",
@@ -385,6 +425,12 @@
         }
       }
     },
+    "MID_DAY_SURVEY_DESCRIPTION" : {
+
+    },
+    "MID_DAY_SURVEY_TITLE" : {
+
+    },
     "MOCK_WEB_SERVICE_TAB_TITLE" : {
       "comment" : "MARK: - Mock Upload Data Storage Provider",
       "localizations" : {
@@ -395,6 +441,12 @@
           }
         }
       }
+    },
+    "MORNING_SURVEY_DESCRIPTION" : {
+
+    },
+    "MORNING_SURVEY_TITLE" : {
+
     },
     "NOTIFICATION_PERMISSIONS_BUTTON" : {
       "localizations" : {
@@ -478,6 +530,19 @@
         }
       }
     },
+    "Scheduled at %@" : {
+
+    },
+    "Scheduled between %@ and %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Scheduled between %1$@ and %2$@"
+          }
+        }
+      }
+    },
     "TASK_CONTEXT_ACTION_QUESTIONNAIRE" : {
       "localizations" : {
         "en" : {
@@ -499,6 +564,7 @@
       }
     },
     "TASK_LABEL %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -509,6 +575,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -519,6 +586,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -527,6 +595,9 @@
           }
         }
       }
+    },
+    "Upcoming notification" : {
+
     },
     "WELCOME_BUTTON" : {
       "localizations" : {
