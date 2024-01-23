@@ -134,6 +134,15 @@
         }
       }
     },
+    "EMMA_BRUNSKILL_BIO" : {
+
+    },
+    "EMOTION_QUESTIONNAIRE_DESCRIPTION" : {
+
+    },
+    "EMOTION_QUESTIONNAIRE_TITLE" : {
+
+    },
     "HEALTHKIT_PERMISSIONS_BUTTON" : {
       "localizations" : {
         "en" : {
@@ -286,7 +295,11 @@
         }
       }
     },
+    "JAMES_LANDAY_BIO" : {
+
+    },
     "LELAND_STANFORD_BIO" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -306,6 +319,9 @@
         }
       }
     },
+    "MATTHEW_JOERKE_BIO" : {
+
+    },
     "MOCK_WEB_SERVICE_TAB_TITLE" : {
       "comment" : "MARK: - Mock Upload Data Storage Provider",
       "localizations" : {
@@ -317,7 +333,6 @@
         }
       }
     },
-
     "PROJECT_LICENSE_DESCRIPTION" : {
       "localizations" : {
         "en" : {
@@ -390,6 +405,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -400,6 +416,7 @@
       }
     },
     "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
