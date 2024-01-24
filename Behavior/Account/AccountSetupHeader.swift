@@ -18,16 +18,23 @@ struct AccountSetupHeader: View {
     var body: some View {
         VStack {
             Text("ACCOUNT_TITLE")
-                .font(.largeTitle)
-                .bold()
-                .padding(.bottom)
-                .padding(.top, 30)
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.bottom)
+                    .padding(.top, 30)
+            
             Text("ACCOUNT_SUBTITLE")
                 .padding(.bottom, 8)
+            Divider()
             if account.signedIn, case .generic = setupState {
                 Text("ACCOUNT_SIGNED_IN_DESCRIPTION")
+                    .padding()
             } else {
-                Text("ACCOUNT_SETUP_DESCRIPTION")
+                VStack {
+                    Text("ACCOUNT_SETUP_DESCRIPTION")
+                    Text("ACCOUNT_REQUIRED_ITEMS")
+                }
+                .padding()
             }
         }
             .multilineTextAlignment(.center)

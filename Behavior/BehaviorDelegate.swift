@@ -25,8 +25,10 @@ class BehaviorDelegate: SpeziAppDelegate {
                 AccountConfiguration(configuration: [
                     .requires(\.userId),
                     .requires(\.name),
-                    .collects(\.genderIdentity),
-                    .collects(\.dateOfBirth)
+                    .requires(\.dateOfBirth),
+
+                    // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
+                    .collects(\.genderIdentity)
                 ])
 
                 if FeatureFlags.useFirebaseEmulator {
