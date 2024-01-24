@@ -1,12 +1,26 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "ACCOUNT_NEXT" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Next"
+          }
+        }
+      }
+    },
+    "ACCOUNT_REQUIRED_ITEMS" : {
+      "extractionState" : "automatic",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email, Name, and Date of Birth are required."
           }
         }
       }
@@ -62,6 +76,9 @@
         }
       }
     },
+    "Chat" : {
+
+    },
     "CLOSE" : {
       "comment" : "MARK: General",
       "localizations" : {
@@ -72,6 +89,15 @@
           }
         }
       }
+    },
+    "Coming soon!" : {
+
+    },
+    "Completed at %@" : {
+
+    },
+    "Completed notification" : {
+
     },
     "CONTACTS_NAVIGATION_TITLE" : {
       "localizations" : {
@@ -124,6 +150,9 @@
         }
       }
     },
+    "Currently there are no surveys available, you will be notified about upcoming surveys." : {
+
+    },
     "EMMA_BRUNSKILL_BIO" : {
 
     },
@@ -146,6 +175,15 @@
           }
         }
       }
+    },
+    "Expired at %@" : {
+
+    },
+    "Expired notification" : {
+
+    },
+    "Expires in %@" : {
+
     },
     "FEATURES_AREA1_DESCRIPTION" : {
       "extractionState" : "manual",
@@ -277,7 +315,6 @@
       }
     },
     "JAMES_LANDAY_BIO" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -363,6 +400,7 @@
       }
     },
     "NOTIFICATION_PERMISSIONS_BUTTON" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -373,6 +411,7 @@
       }
     },
     "NOTIFICATION_PERMISSIONS_DESCRIPTION" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -383,6 +422,7 @@
       }
     },
     "NOTIFICATION_PERMISSIONS_SUBTITLE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -394,6 +434,7 @@
     },
     "NOTIFICATION_PERMISSIONS_TITLE" : {
       "comment" : "MARK: Notifications",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -443,6 +484,9 @@
           }
         }
       }
+    },
+    "Scheduled at %@" : {
+
     },
     "Scheduled between %@ and %@" : {
       "localizations" : {
@@ -507,6 +551,9 @@
         }
       }
     },
+    "Upcoming notification" : {
+
+    },
     "WELCOME_BUTTON" : {
       "localizations" : {
         "en" : {
@@ -537,6 +584,9 @@
           }
         }
       }
+    },
+    "Welcome!" : {
+
     }
   },
   "version" : "1.0"

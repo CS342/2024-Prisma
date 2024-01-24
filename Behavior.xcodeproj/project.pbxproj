@@ -16,7 +16,6 @@
 		2F4FC8D729EE69D300BFFE26 /* MockUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4FC8D629EE69D300BFFE26 /* MockUpload.swift */; };
 		2F5E32BD297E05EA003432F8 /* BehaviorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E32BC297E05EA003432F8 /* BehaviorDelegate.swift */; };
 		2F6025CB29BBE70F0045459E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6025CA29BBE70F0045459E /* GoogleService-Info.plist */; };
-		2F65B44E2A3B8B0600A36932 /* NotificationPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F65B44D2A3B8B0600A36932 /* NotificationPermissions.swift */; };
 		2FA0BFED2ACC977500E0EF83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */; };
 		2FB099AF2A875DF100B20952 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB099AE2A875DF100B20952 /* FirebaseAuth */; };
 		2FB099B12A875DF100B20952 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB099B02A875DF100B20952 /* FirebaseFirestore */; };
@@ -82,6 +81,7 @@
 		F8AF6FB62B5F71460011C32D /* BehaviorStandard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */; };
 		F8AF6FB92B5F72650011C32D /* BehaviorStandard+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */; };
 		F8AF6FBC2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */; };
+		F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +109,6 @@
 		2F4FC8D629EE69D300BFFE26 /* MockUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUpload.swift; sourceTree = "<group>"; };
 		2F5E32BC297E05EA003432F8 /* BehaviorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorDelegate.swift; sourceTree = "<group>"; };
 		2F6025CA29BBE70F0045459E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2F65B44D2A3B8B0600A36932 /* NotificationPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissions.swift; sourceTree = "<group>"; };
 		2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2FAEC07F297F583900C11C42 /* Behavior.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Behavior.entitlements; sourceTree = "<group>"; };
 		2FC94CD4298B0A1D009C8209 /* Behavior.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Behavior.xctestplan; sourceTree = "<group>"; };
@@ -158,6 +157,7 @@
 		F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+Extension.swift"; sourceTree = "<group>"; };
 		F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+HealthKit.swift"; sourceTree = "<group>"; };
 		F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+Questionnaire.swift"; sourceTree = "<group>"; };
+		F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,7 +245,7 @@
 				2FE5DC3229EDD7CA004B9AB4 /* Features.swift */,
 				2FE5DCAC29EE6107004B9AB4 /* AccountOnboarding.swift */,
 				2FE5DC3029EDD7CA004B9AB4 /* HealthKitPermissions.swift */,
-				2F65B44D2A3B8B0600A36932 /* NotificationPermissions.swift */,
+				F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -652,13 +652,13 @@
 				56F6F2A02AB441930022FE5A /* ContributionsList.swift in Sources */,
 				566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */,
 				5680DD392AB8983D004E6D4A /* PackageCell.swift in Sources */,
+				F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */,
 				2F5E32BD297E05EA003432F8 /* BehaviorDelegate.swift in Sources */,
 				2FE5DC5229EDD7FA004B9AB4 /* BehaviorScheduler.swift in Sources */,
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
 				F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */,
 				653A2551283387FE005D4D48 /* Behavior.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
-				2F65B44E2A3B8B0600A36932 /* NotificationPermissions.swift in Sources */,
 				5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */,
 				27FA29902A388E9B009CAC45 /* ModalView.swift in Sources */,
 				2FE5DC2629EDD38A004B9AB4 /* Contacts.swift in Sources */,

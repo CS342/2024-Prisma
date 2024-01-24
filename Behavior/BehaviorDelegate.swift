@@ -48,7 +48,6 @@ class BehaviorDelegate: SpeziAppDelegate {
             if HKHealthStore.isHealthDataAvailable() {
                 healthKit
             }
-            
             BehaviorScheduler()
             OnboardingDataSource()
         }
@@ -73,6 +72,7 @@ class BehaviorDelegate: SpeziAppDelegate {
         HealthKit {
             CollectSamples(
                 [
+                    HKQuantityType(.activeEnergyBurned),
                     HKQuantityType(.stepCount),
                     HKQuantityType(.distanceWalkingRunning),
                     HKQuantityType(.vo2Max),
