@@ -1,5 +1,5 @@
 #
-# This source file is part of the Behavior based on the Stanford Spezi Template Application project
+# This source file is part of the Stanford Prisma Application based on the Stanford Spezi Template Application project
 #
 # SPDX-FileCopyrightText: 2023 Stanford University
 #
@@ -18,4 +18,4 @@ authors:
 - family-names: "Aalami"
   given-names: "Oliver"
   orcid: "https://orcid.org/0000-0002-7799-2429"
-title: "Behavior"
+title: "Prisma"
