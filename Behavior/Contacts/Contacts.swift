@@ -16,31 +16,64 @@ struct Contacts: View {
     let contacts = [
         Contact(
             name: PersonNameComponents(
-                givenName: "Leland",
-                familyName: "Stanford"
+                givenName: "Matthew",
+                familyName: "Jörke,"
             ),
-            image: Image(systemName: "figure.wave.circle"), // swiftlint:disable:this accessibility_label_for_image
-            title: "University Founder",
-            description: String(localized: "LELAND_STANFORD_BIO"),
+            image: Image(systemName: "person.crop.circle"), // swiftlint:disable:this accessibility_label_for_image
+            title: "PhD Student",
+            description: String(localized: "MATTHEW_JOERKE_BIO"),
             organization: "Stanford University",
-            address: {
-                let address = CNMutablePostalAddress()
-                address.country = "USA"
-                address.state = "CA"
-                address.postalCode = "94305"
-                address.city = "Stanford"
-                address.street = "450 Serra Mall"
-                return address
-            }(),
             contactOptions: [
-                .call("+1 (650) 723-2300"),
-                .text("+1 (650) 723-2300"),
-                .email(addresses: ["contact@stanford.edu"]),
+                .email(addresses: ["joerke@stanford.edu"]),
                 ContactOption(
                     image: Image(systemName: "safari.fill"), // swiftlint:disable:this accessibility_label_for_image
                     title: "Website",
                     action: {
-                        if let url = URL(string: "https://stanford.edu") {
+                        if let url = URL(string: "https://matthewjoerke.com/") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                )
+            ]
+        ),
+        Contact(
+            name: PersonNameComponents(
+                givenName: "Emma",
+                familyName: "Brunskill"
+            ),
+            image: Image(systemName: "person.crop.circle"), // swiftlint:disable:this accessibility_label_for_image
+            title: "Associate Professor (Tenured)",
+            description: String(localized: "EMMA_BRUNSKILL_BIO"),
+            organization: "Stanford University",
+            contactOptions: [
+                .email(addresses: ["ebrun@cs.stanford.edu"]),
+                ContactOption(
+                    image: Image(systemName: "safari.fill"), // swiftlint:disable:this accessibility_label_for_image
+                    title: "Website",
+                    action: {
+                        if let url = URL(string: "https://cs.stanford.edu/people/ebrun/") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                )
+            ]
+        ),
+        Contact(
+            name: PersonNameComponents(
+                givenName: "James",
+                familyName: "Landay,"
+            ),
+            image: Image(systemName: "person.crop.circle"), // swiftlint:disable:this accessibility_label_for_image
+            title: "Professor of Computer Science",
+            description: String(localized: "JAMES_LANDAY_BIO"),
+            organization: "Stanford University",
+            contactOptions: [
+                .email(addresses: ["landay@stanford.edu"]),
+                ContactOption(
+                    image: Image(systemName: "safari.fill"), // swiftlint:disable:this accessibility_label_for_image
+                    title: "Website",
+                    action: {
+                        if let url = URL(string: "https://profiles.stanford.edu/james-landay") {
                             UIApplication.shared.open(url)
                         }
                     }

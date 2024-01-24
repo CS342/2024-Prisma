@@ -52,7 +52,6 @@ class BehaviorDelegate: SpeziAppDelegate {
             if HKHealthStore.isHealthDataAvailable() {
                 healthKit
             }
-            
             BehaviorScheduler()
             OnboardingDataSource()
         }
@@ -77,6 +76,10 @@ class BehaviorDelegate: SpeziAppDelegate {
         HealthKit {
             CollectSample(
                 HKQuantityType(.stepCount),
+                deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
+            )
+            CollectSample(
+                HKQuantityType(.activeEnergyBurned),
                 deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
             )
         }

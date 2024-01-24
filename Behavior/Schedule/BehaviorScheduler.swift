@@ -28,17 +28,20 @@ extension BehaviorScheduler {
             // For the normal app usage, we schedule the task for every day at 8:00 AM
             dateComponents = DateComponents(hour: 8, minute: 0)
         }
-
+        
+        // Replaced the localized titles/descriptions for prev questionnaire to the new questionnaire.
+        // Scheduling is kept the same for now.
+        // Path for JSON of modified questionnaire is now inputted.
         return Task(
-            title: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE"),
-            description: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION"),
+            title: String(localized: "EMOTION_QUESTIONNAIRE_TITLE"),
+            description: String(localized: "EMOTION_QUESTIONNAIRE_DESCRIPTION"),
             schedule: Schedule(
                 start: Calendar.current.startOfDay(for: Date()),
                 repetition: .matching(dateComponents),
                 end: .numberOfEvents(365)
             ),
             notifications: true,
-            context: BehaviorTaskContext.questionnaire(Bundle.main.questionnaire(withName: "SocialSupportQuestionnaire"))
+            context: BehaviorTaskContext.questionnaire(Bundle.main.questionnaire(withName: "EmotionQuestionnaire"))
         )
     }
 
