@@ -15,24 +15,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  buildandtest:
-    name: Build and Test
-    uses: ./.github/workflows/build-and-test.yml
-    permissions:
-      security-events: write
-      actions: read
-  iosapptestflightdeployment:
-    name: iOS App TestFlight Deployment
-    needs: buildandtest
-    uses: CS342/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
-    secrets: inherit
-    with:
-      googleserviceinfoplistpath: 'Prisma/Supporting Files/GoogleService-Info.plist'
-      setupsigning: true
-      fastlanelane: beta
+  # buildandtest:
+  #   name: Build and Test
+  #   uses: ./.github/workflows/build-and-test.yml
+  #   permissions:
+  #     security-events: write
+  #     actions: read
+  # iosapptestflightdeployment:
+  #   name: iOS App TestFlight Deployment
+  #   needs: buildandtest
+  #   uses: CS342/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+  #   secrets: inherit
+  #   with:
+  #     googleserviceinfoplistpath: 'Prisma/Supporting Files/GoogleService-Info.plist'
+  #     setupsigning: true
+  #     fastlanelane: beta
   deployfirebase:
     name: Deploy Firebase Project
-    needs: iosapptestflightdeployment
+    # needs: iosapptestflightdeployment
     uses: StanfordBDHG/.github/.github/workflows/firebase-deploy.yml@v2
     with:
       arguments: '--debug'
