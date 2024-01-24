@@ -1,0 +1,273 @@
+{
+    "resourceType": "Questionnaire",
+    "language": "en-US",
+    "title": "End-of-Day Survey",
+    "status": "active",
+    "publisher": "Stanford HPDS",
+    "meta":
+    {
+        "profile":
+        [
+            "http://cardinalkit.org/fhir/StructureDefinition/sdf-Questionnaire"
+        ],
+        "tag":
+        [
+            {
+                "system": "urn:ietf:bcp:47",
+                "code": "en-US",
+                "display": "English"
+            }
+        ]
+    },
+    "useContext":
+    [
+        {
+            "code":
+            {
+                "system": "http://hl7.org/fhir/ValueSet/usage-context-type",
+                "code": "focus",
+                "display": "Clinical Focus"
+            },
+            "valueCodeableConcept":
+            {
+                "coding":
+                [
+                    {
+                        "system": "urn:oid:2.16.578.1.12.4.1.1.8655",
+                        "display": "End-of-Day Survey"
+                    }
+                ]
+            }
+        }
+    ],
+    "contact":
+    [
+        {
+            "name": "http://cardinalkit.org"
+        }
+    ],
+    "subjectType":
+    [
+        "Patient"
+    ],
+    "url": "http://cardinalkit.org/fhir/questionnaire/66619163-818c-4efc-865c-e6c3bbda87ef",
+    "item":
+    [
+        {
+            "linkId": "end-of-day/creativity",
+            "type": "choice",
+            "text": "Overall, how creative did you feel today?",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/creativity/not-at-all-creative",
+                        "code": "not-at-all-creative",
+                        "system": "https://hpds.stanford.edu/creativity/5-scale-likert",
+                        "display": "Not at all creative"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/creativity/somewhat-creative",
+                        "code": "somewhat-creative",
+                        "system": "https://hpds.stanford.edu/creativity/5-scale-likert",
+                        "display": "Somewhat creative"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/creativity/neither-creative-nor-uncreative",
+                        "code": "neither-creative-nor-uncreative",
+                        "system": "https://hpds.stanford.edu/creativity/5-scale-likert",
+                        "display": "Neither creative nor uncreative"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/creativity/mostly-creative",
+                        "code": "mostly-creative",
+                        "system": "https://hpds.stanford.edu/creativity/5-scale-likert",
+                        "display": "Mostly creative"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/creativity/highly-creative",
+                        "code": "highly-creative",
+                        "system": "https://hpds.stanford.edu/creativity/5-scale-likert",
+                        "display": "Highly creative"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "end-of-day/passage-of-time",
+            "type": "choice",
+            "text": "During work today, how would you rate the passage of time? If you were not at work today, please select \"Not applicable.\"",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/very-slow",
+                        "code": "very-slow",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Very slow"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/moderately-slow",
+                        "code": "moderately-slow",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Moderately slow"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/slightly-slow",
+                        "code": "slightly-slow",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Slightly slow"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/neither-slow-nor-fast",
+                        "code": "neither-slow-nor-fast",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Neither slow nor fast"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/slightly-fast",
+                        "code": "slightly-fast",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Slightly fast"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/moderately-fast",
+                        "code": "moderately-fast",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Moderately fast"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/very-fast",
+                        "code": "very-fast",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Very fast"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/passage-of-time/not-applicable",
+                        "code": "not-applicable",
+                        "system": "https://hpds.stanford.edu/passage-of-time/7-scale-likert",
+                        "display": "Not applicable"
+                    }
+                }
+            ]
+        },
+        {
+            "linkId": "end-of-day/sense-of-belonging",
+            "type": "choice",
+            "text": "Please choose the value that best describes how you felt on average today about your workplace on a scale of 1-7, from I do not fit in my workplace \"1\" to I definitely fit in my workplace \"7.\" If you were not at work today, please select \"Not applicable.\"",
+            "required": true,
+            "answerOption":
+            [
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/1",
+                        "code": "1",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "1 - I do not fit into my workplace"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/2",
+                        "code": "2",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "2"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/3",
+                        "code": "3",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "3"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/4",
+                        "code": "4",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "4"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/5",
+                        "code": "5",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "5"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/6",
+                        "code": "6",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "6"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/7",
+                        "code": "7",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "7 - I definitely fit in my workplace"
+                    }
+                },
+                {
+                    "valueCoding":
+                    {
+                        "id": "end-of-day/sense-of-belonging/not-applicable",
+                        "code": "not-applicable",
+                        "system": "https://hpds.stanford.edu/sense-of-belonging/7-scale-integer",
+                        "display": "Not applicable"
+                    }
+                }
+            ]
+        }
+    ]
+}

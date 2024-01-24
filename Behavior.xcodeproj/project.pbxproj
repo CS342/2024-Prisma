@@ -22,15 +22,12 @@
 		2FB099B32A875DF100B20952 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB099B22A875DF100B20952 /* FirebaseFirestoreSwift */; };
 		2FB099B62A875E2B00B20952 /* HealthKitOnFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB099B52A875E2B00B20952 /* HealthKitOnFHIR */; };
 		2FBD738C2A3BD150004228E7 /* SpeziScheduler in Frameworks */ = {isa = PBXBuildFile; productRef = 2FBD738B2A3BD150004228E7 /* SpeziScheduler */; };
-		2FC3439029EE6346002D773C /* EmotionQuestionnaire.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FE5DC5529EDD811004B9AB4 /* EmotionQuestionnaire.json */; };
-		2FC3439129EE6349002D773C /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE5DC2A29EDD78D004B9AB4 /* AppIcon.png */; };
 		2FC3439229EE634B002D773C /* ConsentDocument.md in Resources */ = {isa = PBXBuildFile; fileRef = 2FE5DC2C29EDD78E004B9AB4 /* ConsentDocument.md */; };
 		2FC975A82978F11A00BA99FE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC975A72978F11A00BA99FE /* Home.swift */; };
 		2FE5DC2629EDD38A004B9AB4 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC2529EDD38A004B9AB4 /* Contacts.swift */; };
-		2FE5DC3529EDD7CA004B9AB4 /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC2F29EDD7CA004B9AB4 /* Consent.swift */; };
 		2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3029EDD7CA004B9AB4 /* HealthKitPermissions.swift */; };
 		2FE5DC3729EDD7CA004B9AB4 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3129EDD7CA004B9AB4 /* OnboardingFlow.swift */; };
-		2FE5DC3829EDD7CA004B9AB4 /* InterestingModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3229EDD7CA004B9AB4 /* InterestingModules.swift */; };
+		2FE5DC3829EDD7CA004B9AB4 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3229EDD7CA004B9AB4 /* Features.swift */; };
 		2FE5DC3A29EDD7CA004B9AB4 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3429EDD7CA004B9AB4 /* Welcome.swift */; };
 		2FE5DC4029EDD7EE004B9AB4 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3E29EDD7ED004B9AB4 /* FeatureFlags.swift */; };
 		2FE5DC4129EDD7EE004B9AB4 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3F29EDD7EE004B9AB4 /* StorageKeys.swift */; };
@@ -58,7 +55,6 @@
 		2FE5DCB129EE6107004B9AB4 /* AccountOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DCAC29EE6107004B9AB4 /* AccountOnboarding.swift */; };
 		2FF53D8B2A8725DE00042B76 /* SpeziMockWebService in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF53D8A2A8725DE00042B76 /* SpeziMockWebService */; };
 		2FF53D8D2A8729D600042B76 /* BehaviorStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF53D8C2A8729D600042B76 /* BehaviorStandard.swift */; };
-		35B8E0BD2B5F3915005F64F4 /* EmotionQuestionnaire.json.license in Resources */ = {isa = PBXBuildFile; fileRef = 35B8E0BC2B5F3915005F64F4 /* EmotionQuestionnaire.json.license */; };
 		5661551D2AB8384200209B80 /* SwiftPackageList in Frameworks */ = {isa = PBXBuildFile; productRef = 5661551C2AB8384200209B80 /* SwiftPackageList */; };
 		566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566155282AB8447C00209B80 /* Package+LicenseType.swift */; };
 		5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5661552D2AB854C000209B80 /* PackageHelper.swift */; };
@@ -74,6 +70,18 @@
 		A9D83F962B083794000D0C78 /* SpeziFirebaseAccountStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A9D83F952B083794000D0C78 /* SpeziFirebaseAccountStorage */; };
 		A9DFE8A92ABE551400428242 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFE8A82ABE551400428242 /* AccountButton.swift */; };
 		A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */; };
+		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
+		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
+		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
+		F8AF6FAC2B5F42C40011C32D /* afternoon-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */; };
+		F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */; };
+		F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */; };
+		F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */; };
+		F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB32B5F6EDC0011C32D /* Module.swift */; };
+		F8AF6FB62B5F71460011C32D /* BehaviorStandard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */; };
+		F8AF6FB92B5F72650011C32D /* BehaviorStandard+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */; };
+		F8AF6FBC2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */; };
+		F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,10 +115,9 @@
 		2FC975A72978F11A00BA99FE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		2FE5DC2529EDD38A004B9AB4 /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		2FE5DC2C29EDD78E004B9AB4 /* ConsentDocument.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ConsentDocument.md; sourceTree = "<group>"; };
-		2FE5DC2F29EDD7CA004B9AB4 /* Consent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
 		2FE5DC3029EDD7CA004B9AB4 /* HealthKitPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitPermissions.swift; sourceTree = "<group>"; };
 		2FE5DC3129EDD7CA004B9AB4 /* OnboardingFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
-		2FE5DC3229EDD7CA004B9AB4 /* InterestingModules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingModules.swift; sourceTree = "<group>"; };
+		2FE5DC3229EDD7CA004B9AB4 /* Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Features.swift; sourceTree = "<group>"; };
 		2FE5DC3429EDD7CA004B9AB4 /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		2FE5DC3E29EDD7ED004B9AB4 /* FeatureFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		2FE5DC3F29EDD7EE004B9AB4 /* StorageKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
@@ -123,10 +130,8 @@
 		2FE5DC4B29EDD7FA004B9AB4 /* BehaviorTaskContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorTaskContext.swift; sourceTree = "<group>"; };
 		2FE5DC4C29EDD7FA004B9AB4 /* BehaviorScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorScheduler.swift; sourceTree = "<group>"; };
 		2FE5DC4D29EDD7FA004B9AB4 /* Bundle+Questionnaire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Questionnaire.swift"; sourceTree = "<group>"; };
-		2FE5DC5529EDD811004B9AB4 /* EmotionQuestionnaire.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmotionQuestionnaire.json; sourceTree = "<group>"; };
 		2FE5DCAC29EE6107004B9AB4 /* AccountOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountOnboarding.swift; sourceTree = "<group>"; };
 		2FF53D8C2A8729D600042B76 /* BehaviorStandard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorStandard.swift; sourceTree = "<group>"; };
-		35B8E0BC2B5F3915005F64F4 /* EmotionQuestionnaire.json.license */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmotionQuestionnaire.json.license; sourceTree = "<group>"; };
 		566155282AB8447C00209B80 /* Package+LicenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Package+LicenseType.swift"; sourceTree = "<group>"; };
 		5661552D2AB854C000209B80 /* PackageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageHelper.swift; sourceTree = "<group>"; };
 		5680DD382AB8983D004E6D4A /* PackageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCell.swift; sourceTree = "<group>"; };
@@ -141,6 +146,18 @@
 		A9720E422ABB68CC00872D23 /* AccountSetupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSetupHeader.swift; sourceTree = "<group>"; };
 		A9DFE8A82ABE551400428242 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 		A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
+		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
+		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
+		F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "afternoon-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "end-of-day-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "morning-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mid-day-en-US.json"; sourceTree = "<group>"; };
+		F8AF6FB32B5F6EDC0011C32D /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+Extension.swift"; sourceTree = "<group>"; };
+		F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+HealthKit.swift"; sourceTree = "<group>"; };
+		F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorStandard+Questionnaire.swift"; sourceTree = "<group>"; };
+		F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,10 +242,10 @@
 			children = (
 				2FE5DC3129EDD7CA004B9AB4 /* OnboardingFlow.swift */,
 				2FE5DC3429EDD7CA004B9AB4 /* Welcome.swift */,
-				2FE5DC3229EDD7CA004B9AB4 /* InterestingModules.swift */,
+				2FE5DC3229EDD7CA004B9AB4 /* Features.swift */,
 				2FE5DCAC29EE6107004B9AB4 /* AccountOnboarding.swift */,
-				2FE5DC2F29EDD7CA004B9AB4 /* Consent.swift */,
 				2FE5DC3029EDD7CA004B9AB4 /* HealthKitPermissions.swift */,
+				F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -236,12 +253,14 @@
 		2FE5DC2D29EDD792004B9AB4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */,
+				F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */,
+				F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */,
+				F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */,
 				653A255428338800005D4D48 /* Assets.xcassets */,
 				2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */,
 				2FE5DC2C29EDD78E004B9AB4 /* ConsentDocument.md */,
-				2FE5DC2A29EDD78D004B9AB4 /* AppIcon.png */,
-				2FE5DC5529EDD811004B9AB4 /* EmotionQuestionnaire.json */,
-				35B8E0BC2B5F3915005F64F4 /* EmotionQuestionnaire.json.license */,
+				F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -249,9 +268,8 @@
 		2FE5DC3B29EDD7D0004B9AB4 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				F8AF6FA02B5F3A590011C32D /* EventContext */,
 				2FE5DC4D29EDD7FA004B9AB4 /* Bundle+Questionnaire.swift */,
-				2FE5DC4929EDD7FA004B9AB4 /* EventContext.swift */,
-				2FE5DC4A29EDD7FA004B9AB4 /* EventContextView.swift */,
 				2FE5DC4829EDD7FA004B9AB4 /* ScheduleView.swift */,
 				2FE5DC4C29EDD7FA004B9AB4 /* BehaviorScheduler.swift */,
 				2FE5DC4B29EDD7FA004B9AB4 /* BehaviorTaskContext.swift */,
@@ -317,9 +335,10 @@
 			children = (
 				653A2550283387FE005D4D48 /* Behavior.swift */,
 				2F5E32BC297E05EA003432F8 /* BehaviorDelegate.swift */,
-				2FF53D8C2A8729D600042B76 /* BehaviorStandard.swift */,
 				2F4E23822989D51F0013F3D9 /* BehaviorTestingSetup.swift */,
 				2FC975A72978F11A00BA99FE /* Home.swift */,
+				F8AF6FB12B5F6EC80011C32D /* Standard */,
+				F8AF6F9C2B5F352F0011C32D /* Chat */,
 				A9720E412ABB68B300872D23 /* Account */,
 				2FE5DC2829EDD398004B9AB4 /* Onboarding */,
 				2FE5DC3B29EDD7D0004B9AB4 /* Schedule */,
@@ -365,6 +384,36 @@
 				A9DFE8A82ABE551400428242 /* AccountButton.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		F8AF6F9C2B5F352F0011C32D /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F8AF6F9E2B5F35400011C32D /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F8AF6FA02B5F3A590011C32D /* EventContext */ = {
+			isa = PBXGroup;
+			children = (
+				2FE5DC4A29EDD7FA004B9AB4 /* EventContextView.swift */,
+				F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */,
+				2FE5DC4929EDD7FA004B9AB4 /* EventContext.swift */,
+			);
+			path = EventContext;
+			sourceTree = "<group>";
+		};
+		F8AF6FB12B5F6EC80011C32D /* Standard */ = {
+			isa = PBXGroup;
+			children = (
+				2FF53D8C2A8729D600042B76 /* BehaviorStandard.swift */,
+				F8AF6FB82B5F72650011C32D /* BehaviorStandard+HealthKit.swift */,
+				F8AF6FB32B5F6EDC0011C32D /* Module.swift */,
+				F8AF6FB52B5F71460011C32D /* BehaviorStandard+Extension.swift */,
+				F8AF6FBB2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift */,
+			);
+			path = Standard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,12 +570,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC3439229EE634B002D773C /* ConsentDocument.md in Resources */,
-				35B8E0BD2B5F3915005F64F4 /* EmotionQuestionnaire.json.license in Resources */,
-				2FC3439129EE6349002D773C /* AppIcon.png in Resources */,
+				F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */,
+				F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */,
+				F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */,
 				653A255528338800005D4D48 /* Assets.xcassets in Resources */,
-				2FC3439029EE6346002D773C /* EmotionQuestionnaire.json in Resources */,
+				F8AF6FAC2B5F42C40011C32D /* afternoon-en-US.json in Resources */,
 				2FA0BFED2ACC977500E0EF83 /* Localizable.xcstrings in Resources */,
 				2F6025CB29BBE70F0045459E /* GoogleService-Info.plist in Resources */,
+				F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,8 +627,7 @@
 				2FE5DCB129EE6107004B9AB4 /* AccountOnboarding.swift in Sources */,
 				2F4FC8D729EE69D300BFFE26 /* MockUpload.swift in Sources */,
 				2FE5DC3A29EDD7CA004B9AB4 /* Welcome.swift in Sources */,
-				2FE5DC3829EDD7CA004B9AB4 /* InterestingModules.swift in Sources */,
-				2FE5DC3529EDD7CA004B9AB4 /* Consent.swift in Sources */,
+				2FE5DC3829EDD7CA004B9AB4 /* Features.swift in Sources */,
 				2FE5DC4529EDD7F2004B9AB4 /* Binding+Negate.swift in Sources */,
 				2FC975A82978F11A00BA99FE /* Home.swift in Sources */,
 				2FE5DC4E29EDD7FA004B9AB4 /* ScheduleView.swift in Sources */,
@@ -585,21 +635,28 @@
 				2FE5DC3729EDD7CA004B9AB4 /* OnboardingFlow.swift in Sources */,
 				2F1AC9DF2B4E840E00C24973 /* Behavior.docc in Sources */,
 				2FF53D8D2A8729D600042B76 /* BehaviorStandard.swift in Sources */,
+				F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */,
 				2FE5DC4729EDD7F2004B9AB4 /* CodableArray+RawRepresentable.swift in Sources */,
 				A9720E432ABB68CC00872D23 /* AccountSetupHeader.swift in Sources */,
 				2FE5DC4029EDD7EE004B9AB4 /* FeatureFlags.swift in Sources */,
+				F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */,
 				2FE5DC4629EDD7F2004B9AB4 /* Bundle+Image.swift in Sources */,
+				F8AF6FB92B5F72650011C32D /* BehaviorStandard+HealthKit.swift in Sources */,
 				2FE5DC4F29EDD7FA004B9AB4 /* EventContext.swift in Sources */,
 				2FE5DC5029EDD7FA004B9AB4 /* EventContextView.swift in Sources */,
+				F8AF6FB62B5F71460011C32D /* BehaviorStandard+Extension.swift in Sources */,
 				2F4E23832989D51F0013F3D9 /* BehaviorTestingSetup.swift in Sources */,
 				2FE5DC5329EDD7FA004B9AB4 /* Bundle+Questionnaire.swift in Sources */,
 				2FE5DC5129EDD7FA004B9AB4 /* BehaviorTaskContext.swift in Sources */,
+				F8AF6FBC2B5F74EA0011C32D /* BehaviorStandard+Questionnaire.swift in Sources */,
 				56F6F2A02AB441930022FE5A /* ContributionsList.swift in Sources */,
 				566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */,
 				5680DD392AB8983D004E6D4A /* PackageCell.swift in Sources */,
+				F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */,
 				2F5E32BD297E05EA003432F8 /* BehaviorDelegate.swift in Sources */,
 				2FE5DC5229EDD7FA004B9AB4 /* BehaviorScheduler.swift in Sources */,
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
+				F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */,
 				653A2551283387FE005D4D48 /* Behavior.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
 				5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */,
@@ -721,6 +778,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Behavior/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -783,7 +841,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavioruitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_ELicenseRef-Behavior_LOC_STRINGS" = NO;
 				SWIFT_VERSION = 5.0;
@@ -926,6 +984,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Behavior/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -974,6 +1033,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Behavior/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Behavior uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -1057,7 +1117,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavioruitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_ELicenseRef-Behavior_LOC_STRINGS" = NO;
 				SWIFT_VERSION = 5.0;
@@ -1076,7 +1136,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavioruitests;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_ELicenseRef-Behavior_LOC_STRINGS" = NO;
 				SWIFT_VERSION = 5.0;

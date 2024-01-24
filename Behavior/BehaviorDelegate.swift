@@ -24,11 +24,7 @@ class BehaviorDelegate: SpeziAppDelegate {
             if !FeatureFlags.disableFirebase {
                 AccountConfiguration(configuration: [
                     .requires(\.userId),
-                    .requires(\.name),
-                    .requires(\.dateOfBirth),
-
-                    // additional values stored using the `FirestoreAccountStorage` within our Standard implementation
-                    .collects(\.genderIdentity)
+                    .requires(\.name)
                 ])
 
                 if FeatureFlags.useFirebaseEmulator {
@@ -74,12 +70,24 @@ class BehaviorDelegate: SpeziAppDelegate {
     
     private var healthKit: HealthKit {
         HealthKit {
-            CollectSample(
-                HKQuantityType(.stepCount),
-                deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
-            )
-            CollectSample(
-                HKQuantityType(.activeEnergyBurned),
+            CollectSamples(
+                [
+                    HKQuantityType(.activeEnergyBurned),
+                    HKQuantityType(.stepCount),
+                    HKQuantityType(.distanceWalkingRunning),
+                    HKQuantityType(.vo2Max),
+                    HKQuantityType(.heartRate),
+                    HKQuantityType(.restingHeartRate),
+                    HKQuantityType(.oxygenSaturation),
+                    HKQuantityType(.respiratoryRate),
+                    HKQuantityType(.walkingHeartRateAverage)
+                ],
+                /// predicate to request data from one month in the past to present.
+                predicate: HKQuery.predicateForSamples(
+                    withStart: Calendar.current.date(byAdding: .month, value: -1, to: .now),
+                    end: nil,
+                    options: .strictEndDate
+                ),
                 deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
             )
         }

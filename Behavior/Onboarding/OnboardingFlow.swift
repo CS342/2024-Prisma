@@ -36,20 +36,23 @@ struct OnboardingFlow: View {
     var body: some View {
         OnboardingStack(onboardingFlowComplete: $completedOnboardingFlow) {
             Welcome()
-            InterestingModules()
+            Features()
             
             if !FeatureFlags.disableFirebase {
                 AccountOnboarding()
             }
             
-            #if !(targetEnvironment(simulator) && (arch(i386) || arch(x86_64)))
-                Consent()
-            #endif
-            
             if HKHealthStore.isHealthDataAvailable() && !healthKitAuthorization {
                 HealthKitPermissions()
             }
+            
+            if !localNotificationAuthorization {
+                NotificationPermissions()
+            }
         }
+            .task {
+                localNotificationAuthorization = await scheduler.localNotificationAuthorization
+            }
             .interactiveDismissDisabled(!completedOnboardingFlow)
     }
 }

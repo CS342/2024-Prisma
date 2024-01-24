@@ -26,9 +26,12 @@ actor BehaviorStandard: Standard, EnvironmentAccessible, HealthKitConstraint, On
     enum BehaviorStandardError: Error {
         case userNotAuthenticatedYet
     }
+    
+    /// modify this study id to change the Firebase bucket.
+    static let STUDYID = "testing"
 
     private static var userCollection: CollectionReference {
-        Firestore.firestore().collection("users")
+        Firestore.firestore().collection("studies").document(STUDYID).collection("users")
     }
 
     @Dependency var mockWebService: MockWebService?
@@ -36,8 +39,7 @@ actor BehaviorStandard: Standard, EnvironmentAccessible, HealthKitConstraint, On
 
     @AccountReference var account: Account
 
-    private let logger = Logger(subsystem: "Behavior", category: "Standard")
-    
+    let logger = Logger(subsystem: "Behavior", category: "Standard")
     
     private var userDocumentReference: DocumentReference {
         get async throws {
@@ -65,61 +67,34 @@ actor BehaviorStandard: Standard, EnvironmentAccessible, HealthKitConstraint, On
             _accountStorage = Dependency(wrappedValue: FirestoreAccountStorage(storeIn: BehaviorStandard.userCollection))
         }
     }
-
-
-    func add(sample: HKSample) async {
-        if let mockWebService {
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
-            let jsonRepresentation = (try? String(data: encoder.encode(sample.resource), encoding: .utf8)) ?? ""
-            try? await mockWebService.upload(path: "healthkit/\(sample.uuid.uuidString)", body: jsonRepresentation)
-            return
+    
+    /// The firestore path for a given `Module`.
+    /// - Parameter module: The `Module` that is requested.
+    func getPath(module: Module) async throws -> String {
+        let accountId: String
+        if mockWebService != nil {
+            accountId = "USER_ID"
+        } else {
+            guard let details = await account.details else {
+                throw BehaviorStandardError.userNotAuthenticatedYet
+            }
+            accountId = details.accountId
         }
         
-        do {
-            try await healthKitDocument(id: sample.id).setData(from: sample.resource)
-        } catch {
-            logger.error("Could not store HealthKit sample: \(error)")
-        }
-    }
-    
-    func remove(sample: HKDeletedObject) async {
-        if let mockWebService {
-            try? await mockWebService.remove(path: "healthkit/\(sample.uuid.uuidString)")
-            return
+        /// the "MODULE/SUBTYPE" string.
+        var moduleText: String
+        
+        switch module {
+        case .questionnaire(let type):
+            // Questionnaire responses
+            moduleText = "\(module.description)/\(type)"
+        case .health(let type):
+            // HealthKit observations
+            moduleText = "\(module.description)/\(type.healthKitDescription)"
         }
         
-        do {
-            try await healthKitDocument(id: sample.uuid).delete()
-        } catch {
-            logger.error("Could not remove HealthKit sample: \(error)")
-        }
-    }
-    
-    func add(response: ModelsR4.QuestionnaireResponse) async {
-        let id = response.identifier?.value?.value?.string ?? UUID().uuidString
-        
-        if let mockWebService {
-            let jsonRepresentation = (try? String(data: JSONEncoder().encode(response), encoding: .utf8)) ?? ""
-            try? await mockWebService.upload(path: "questionnaireResponse/\(id)", body: jsonRepresentation)
-            return
-        }
-        
-        do {
-            try await userDocumentReference
-                .collection("QuestionnaireResponse") // Add all HealthKit sources in a /QuestionnaireResponse collection.
-                .document(id) // Set the document identifier to the id of the response.
-                .setData(from: response)
-        } catch {
-            logger.error("Could not store questionnaire response: \(error)")
-        }
-    }
-    
-    
-    private func healthKitDocument(id uuid: UUID) async throws -> DocumentReference {
-        try await userDocumentReference
-            .collection("HealthKit") // Add all HealthKit sources in a /HealthKit collection.
-            .document(uuid.uuidString) // Set the document identifier to the UUID of the document.
+        // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
+        return "studies/\(BehaviorStandard.STUDYID)/users/\(accountId)/\(moduleText)/"
     }
 
     func deletedAccount() async throws {

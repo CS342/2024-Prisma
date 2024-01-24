@@ -13,107 +13,64 @@ import SwiftUI
 
 
 struct ScheduleView: View {
-    @Environment(BehaviorStandard.self) private var standard
     @Environment(BehaviorScheduler.self) private var scheduler
-    @State private var eventContextsByDate: [Date: [EventContext]] = [:]
-    @State private var presentedContext: EventContext?
-
-
-    @Binding private var presentingAccount: Bool
+    @Binding var presentingAccount: Bool
     
     
-    private var startOfDays: [Date] {
-        Array(eventContextsByDate.keys)
+    private var relevantEventContexts: [EventContext] {
+        scheduler.tasks
+            .flatMap { task in
+                task
+                    .events(
+                        from: Calendar.current.startOfDay(for: .now),
+                        to: .numberOfEventsOrEndDate(
+                            100,
+                            Calendar.current.date(
+                                byAdding: .init(day: 1), to: Calendar.current.startOfDay(for: .now)
+                            ) ?? .now
+                        )
+                    )
+                    .map { event in
+                        EventContext(event: event, task: task)
+                    }
+            }
+            .sorted()
     }
-    
     
     var body: some View {
         NavigationStack {
-            List(startOfDays, id: \.timeIntervalSinceNow) { startOfDay in
-                Section(format(startOfDay: startOfDay)) {
-                    ForEach(eventContextsByDate[startOfDay] ?? [], id: \.event) { eventContext in
-                        EventContextView(eventContext: eventContext)
-                            .onTapGesture {
-                                if !eventContext.event.complete {
-                                    presentedContext = eventContext
-                                }
-                            }
+            ScrollView(.vertical) {
+                if relevantEventContexts.isEmpty {
+                    Text("Currently there are no surveys available, you will be notified about upcoming surveys.")
+                        .multilineTextAlignment(.center)
+                        .frame(idealWidth: .infinity)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(.background.secondary)
+                                .shadow(radius: 5)
+                        }
+                        .padding()
+                } else {
+                    ForEach(relevantEventContexts) { eventContext in
+                        EventContextCard(
+                            eventContext: eventContext
+                        )
                     }
                 }
             }
-                .onChange(of: scheduler) {
-                    calculateEventContextsByDate()
-                }
-                .task {
-                    calculateEventContextsByDate()
-                }
-                .sheet(item: $presentedContext) { presentedContext in
-                    destination(withContext: presentedContext)
-                }
+                .navigationTitle("SCHEDULE_LIST_TITLE")
                 .toolbar {
                     if AccountButton.shouldDisplay {
                         AccountButton(isPresented: $presentingAccount)
                     }
                 }
-                .navigationTitle("SCHEDULE_LIST_TITLE")
         }
     }
     
     
     init(presentingAccount: Binding<Bool>) {
         self._presentingAccount = presentingAccount
-    }
-    
-    
-    private func destination(withContext eventContext: EventContext) -> some View {
-        @ViewBuilder var destination: some View {
-            switch eventContext.task.context {
-            case let .questionnaire(questionnaire):
-                QuestionnaireView(questionnaire: questionnaire) { result in
-                    presentedContext = nil
-
-                    guard case let .completed(response) = result else {
-                        return // user cancelled the task
-                    }
-
-                    eventContext.event.complete(true)
-                    await standard.add(response: response)
-                }
-            case let .test(string):
-                ModalView(text: string, buttonText: String(localized: "CLOSE")) {
-                    await eventContext.event.complete(true)
-                }
-            }
-        }
-        return destination
-    }
-    
-    
-    private func format(startOfDay: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: startOfDay)
-    }
-    
-    private func calculateEventContextsByDate() {
-        let eventContexts = scheduler.tasks.flatMap { task in
-            task
-                .events(
-                    from: Calendar.current.startOfDay(for: .now),
-                    to: .numberOfEventsOrEndDate(100, .now)
-                )
-                .map { event in
-                    EventContext(event: event, task: task)
-                }
-        }
-            .sorted()
-        
-        let newEventContextsByDate = Dictionary(grouping: eventContexts) { eventContext in
-            Calendar.current.startOfDay(for: eventContext.event.scheduledAt)
-        }
-        
-        eventContextsByDate = newEventContextsByDate
     }
 }
 
@@ -123,9 +80,6 @@ struct ScheduleView: View {
     ScheduleView(presentingAccount: .constant(false))
         .previewWith(standard: BehaviorStandard()) {
             BehaviorScheduler()
-            AccountConfiguration {
-                MockUserIdPasswordAccountService()
-            }
         }
 }
 #endif

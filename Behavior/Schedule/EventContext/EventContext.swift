@@ -6,16 +6,27 @@
 // SPDX-License-Identifier: MIT
 //
 
+import Foundation
 import SpeziScheduler
 
 
 struct EventContext: Comparable, Identifiable {
+    static let eventTimeout: TimeInterval = 60 * 60 // Timeout for user to answer the question is 1 hour.
+    
     let event: Event
-    let task: Task<BehaviorTaskContext>
+    let task: SpeziScheduler.Task<BehaviorTaskContext>
     
     
     var id: Event.ID {
         event.id
+    }
+    
+    var active: Bool {
+        event.due && event.scheduledAt.addingTimeInterval(EventContext.eventTimeout) > .now
+    }
+    
+    var expired: Bool {
+        event.due && event.scheduledAt.addingTimeInterval(EventContext.eventTimeout) < .now
     }
     
     

@@ -14,6 +14,7 @@ import SwiftUI
 struct HomeView: View {
     enum Tabs: String {
         case schedule
+        case chat
         case contact
         case mockUpload
     }
@@ -29,6 +30,11 @@ struct HomeView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
+            ChatView(presentingAccount: $presentingAccount)
+                .tag(Tabs.chat)
+                .tabItem {
+                    Label("Chat", systemImage: "message.fill")
+                }
             ScheduleView(presentingAccount: $presentingAccount)
                 .tag(Tabs.schedule)
                 .tabItem {
