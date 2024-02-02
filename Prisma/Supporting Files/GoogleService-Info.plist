@@ -3,29 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBACX46ZHFqV2xJXGU3LxX-Ila5AwJuQdM</string>
+	<string>API_KEY</string>
 	<key>GCM_SENDER_ID</key>
 	<string>53986935541</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>edu.stanford.cs342.2024.behavior</string>
+	<string>edu.stanford.prisma</string>
 	<key>PROJECT_ID</key>
 	<string>prism-627d5</string>
 	<key>STORAGE_BUCKET</key>
 	<string>prism-627d5.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:53986935541:ios:a7e6304bc7d88ff7693bbc</string>
+	<string>1:53986935541:ios:095f5aa7e763b130693bbc</string>
 	<key>DATABASE_URL</key>
 	<string>https://prism-627d5-default-rtdb.firebaseio.com</string>
 </dict>
