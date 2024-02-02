@@ -6,6 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
+import FirebaseCore
+import FirebaseMessaging
 import Spezi
 import SpeziAccount
 import SpeziFirebaseAccount
@@ -17,7 +19,6 @@ import SpeziOnboarding
 import SpeziScheduler
 import SwiftUI
 
-
 class PrismaDelegate: SpeziAppDelegate {
     override var configuration: Configuration {
         Configuration(standard: PrismaStandard()) {
@@ -26,7 +27,7 @@ class PrismaDelegate: SpeziAppDelegate {
                     .requires(\.userId),
                     .requires(\.name)
                 ])
-
+                
                 if FeatureFlags.useFirebaseEmulator {
                     FirebaseAccountConfiguration(
                         authenticationMethods: [.emailAndPassword, .signInWithApple],
@@ -44,7 +45,7 @@ class PrismaDelegate: SpeziAppDelegate {
             } else {
                 MockWebService()
             }
-
+            
             if HKHealthStore.isHealthDataAvailable() {
                 healthKit
             }

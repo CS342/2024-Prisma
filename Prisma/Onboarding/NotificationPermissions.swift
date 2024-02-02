@@ -17,6 +17,8 @@ struct NotificationPermissions: View {
     
     @State private var notificationProcessing = false
     
+    @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
+    
     
     var body: some View {
         OnboardingView(
@@ -46,7 +48,7 @@ struct NotificationPermissions: View {
                             if ProcessInfo.processInfo.isPreviewSimulator {
                                 try await _Concurrency.Task.sleep(for: .seconds(5))
                             } else {
-                                try await scheduler.requestLocalNotificationAuthorization()
+                                PrismaPushNotifications.shared.requestNotificationAuthorization()
                             }
                         } catch {
                             print("Could not request notification permissions.")

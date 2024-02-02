@@ -13,7 +13,8 @@ enum StorageKeys {
     static let onboardingFlowComplete = "onboardingFlow.complete"
     /// A `Step` flag indicating the current step in the onboarding process.
     static let onboardingFlowStep = "onboardingFlow.step"
-    
+    /// A `Bool` flag indicating whether or not push notifications are allowed.
+    static let pushNotificationsAllowed = "pushNotifications.allowed"
     
     // MARK: - Home
     /// The currently selected home tab.

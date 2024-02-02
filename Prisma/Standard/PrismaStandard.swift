@@ -106,6 +106,10 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         }
     }
     
+    /// Stores a user's specific token utilized for push notifications within their document directory.
+    func storeToken(token: String) async {
+    }
+    
     /// Stores the given consent form in the user's document directory with a unique timestamped filename.
     ///
     /// - Parameter consent: The consent form's data to be stored as a `PDFDocument`.
