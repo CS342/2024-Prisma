@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import WebKit
 
 
 struct ChatView: View {
@@ -16,17 +17,21 @@ struct ChatView: View {
     
     var body: some View {
         NavigationStack {
-            Text("Coming soon!")
-                .navigationTitle("Chat")
-                .toolbar {
-                    if AccountButton.shouldDisplay {
-                        AccountButton(isPresented: $presentingAccount)
+            if let url = URL(string: "https://www.google.com/") {
+                WebView(url: url)
+                    .navigationTitle("chat")
+                    .toolbar {
+                        if AccountButton.shouldDisplay {
+                            AccountButton(isPresented: $presentingAccount)
+                        }
                     }
-                }
+                    .edgesIgnoringSafeArea(.bottom)
+            } else {
+                Text("Invalid URL")
+            }
         }
     }
-    
-    
+
     init(presentingAccount: Binding<Bool>) {
         self._presentingAccount = presentingAccount
     }
