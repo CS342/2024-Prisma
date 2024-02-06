@@ -3,7 +3,10 @@
 //  Prisma
 //
 //  Created by Dhruv Naik on 2/1/24.
+
+//  SPDX-FileCopyrightText: 2023 Stanford University
 //
+//  SPDX-License-Identifier: MIT
 
 import Foundation
 import Spezi

@@ -1,6 +1,9 @@
 //
 //  ToggleTestView.swift
 //  Prisma
+//  SPDX-FileCopyrightText: 2023 Stanford University
+//
+//  SPDX-License-Identifier: MIT
 //
 //  Created by Dhruv Naik on 2/1/24.
 //
