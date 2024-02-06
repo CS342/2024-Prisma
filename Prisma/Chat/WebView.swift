@@ -13,7 +13,9 @@ struct WebView: UIViewRepresentable {
     var url: URL
 
     func makeUIView(context: Context) -> WKWebView {
-        WKWebView()
+        let webView = WKWebView(frame: .zero)
+        webView.scrollView.isScrollEnabled = true
+        return webView
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
