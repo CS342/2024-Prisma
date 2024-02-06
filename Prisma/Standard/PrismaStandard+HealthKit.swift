@@ -12,6 +12,25 @@ import ModelsR4
 import SpeziFirestore
 import SpeziHealthKit
 
+/*
+ 
+ HKQuantityType(.vo2Max),
+ HKQuantityType(.heartRate),
+ HKQuantityType(.restingHeartRate),
+ HKQuantityType(.oxygenSaturation),
+ HKQuantityType(.respiratoryRate),
+ HKQuantityType(.walkingHeartRateAverage)
+ 
+
+ var includeVo2Max = true
+ var includeHeartRate = true
+ var includeRestingHeartRate = true
+ var includeOxygenSaturation = true
+ var includeRespiratoryRate = true
+ var includeWalkingHRAverage = true
+ */
+
+
 extension PrismaStandard {
     /// Adds a new `HKSample` to the Firestore.
     /// - Parameter response: The `HKSample` that should be added.
@@ -19,6 +38,30 @@ extension PrismaStandard {
         guard let quantityType = sample.sampleType as? HKQuantityType else {
             return
         }
+
+        var sampleToToggleNameMapping: [HKQuantityType?: String] = [
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned): "includeActiveEnergyBurned",
+            HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
+            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
+            HKQuantityType.quantityType(forIdentifier: .vo2Max): "includeVo2Max",
+            HKQuantityType.quantityType(forIdentifier: .heartRate): "includeHeartRate",
+            HKQuantityType.quantityType(forIdentifier: .restingHeartRate): "includeRestingHeartRate",
+            HKQuantityType.quantityType(forIdentifier: .oxygenSaturation): "includeOxygenSaturation",
+            HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
+            HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
+        ]
+        var toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
+        
+        if let variableName = sampleToToggleNameMapping[quantityType] {
+            let response: Bool = toggleNameToBoolMapping[variableName] ?? false
+            
+            if !response {
+                return
+            }
+        } else {
+            return
+        }
+        
         let path: String
         
         // retrieve id of HKSample (e.g. HKQuantityTypeIdentifierStepCount)

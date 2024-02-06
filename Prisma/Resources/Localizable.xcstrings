@@ -314,6 +314,33 @@
         }
       }
     },
+    "Include Active Energy Burned" : {
+
+    },
+    "Include Distance Walking Running" : {
+
+    },
+    "Include Heart Rate" : {
+
+    },
+    "Include Oxygen Saturation" : {
+
+    },
+    "Include Respiratory Rate" : {
+
+    },
+    "Include Resting Heart Rate" : {
+
+    },
+    "Include Step Count Upload" : {
+
+    },
+    "Include Vo2 Max" : {
+
+    },
+    "Include Walking Heart Rate Average" : {
+
+    },
     "JAMES_LANDAY_BIO" : {
       "localizations" : {
         "en" : {
@@ -439,6 +466,9 @@
           }
         }
       }
+    },
+    "Privacy Settings" : {
+
     },
     "PROJECT_LICENSE_DESCRIPTION" : {
       "localizations" : {
