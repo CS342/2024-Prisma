@@ -79,7 +79,7 @@
 		F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */; };
 		F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */; };
 		F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */; };
-		F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB32B5F6EDC0011C32D /* Module.swift */; };
+		F8AF6FB42B5F6EDC0011C32D /* PrismaModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */; };
 		F8AF6FB62B5F71460011C32D /* PrismaStandard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */; };
 		F8AF6FB92B5F72650011C32D /* PrismaStandard+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */; };
 		F8AF6FBC2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */; };
@@ -156,7 +156,7 @@
 		F8AF6FA92B5F42C40011C32D /* end-of-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "end-of-day-en-US.json"; sourceTree = "<group>"; };
 		F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "morning-en-US.json"; sourceTree = "<group>"; };
 		F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mid-day-en-US.json"; sourceTree = "<group>"; };
-		F8AF6FB32B5F6EDC0011C32D /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrismaModule.swift; sourceTree = "<group>"; };
 		F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+Extension.swift"; sourceTree = "<group>"; };
 		F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+HealthKit.swift"; sourceTree = "<group>"; };
 		F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+Questionnaire.swift"; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 			children = (
 				2FF53D8C2A8729D600042B76 /* PrismaStandard.swift */,
 				F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */,
-				F8AF6FB32B5F6EDC0011C32D /* Module.swift */,
+				F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */,
 				F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */,
 				F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */,
 			);
@@ -671,7 +671,7 @@
 				2F5E32BD297E05EA003432F8 /* PrismaDelegate.swift in Sources */,
 				2FE5DC5229EDD7FA004B9AB4 /* PrismaScheduler.swift in Sources */,
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
-				F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */,
+				F8AF6FB42B5F6EDC0011C32D /* PrismaModule.swift in Sources */,
 				653A2551283387FE005D4D48 /* Prisma.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
 				5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */,

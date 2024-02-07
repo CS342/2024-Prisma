@@ -8,14 +8,16 @@
 
 import FirebaseCore
 import FirebaseMessaging
+import Spezi
 import SwiftUI
 
-class PrismaPushNotifications {
-    static let shared = PrismaPushNotifications()
-    private init() {}
-    
+
+class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDelegate, UNUserNotificationCenterDelegate, EnvironmentAccessible {
+    @StandardActor var standard: PrismaStandard
     @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
     
+    override init() {}
+     
     /// Prompts the user to allow notifications on their device, storing that result on disk to reference on app startup.
     func requestNotificationAuthorization() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -37,19 +39,13 @@ class PrismaPushNotifications {
             }
         }
     }
-}
-
-extension PrismaDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
-    // MARK: - Token Management
     
+    // MARK: - Token Management
     /// This function sets the messaging delegate in order to receive registration tokens.
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        if FeatureFlags.disableFirebase {
-            FirebaseApp.configure()
-        }
         Messaging.messaging().delegate = self
         return true
     }
@@ -90,9 +86,11 @@ extension PrismaDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         // Update the token in Firestore:
         
         // The standard is an actor, which protects against data races and conforms to
-        // immutable data practice, therefore we must create an instance of the PrismaStandard to
-        // call our function to store the token.
-//        let notificationInstance = PrismaStandard()
-//        await notificationInstance.storeToken(token: fcmToken)
+        // immutable data practice
+        
+        // get into new asynchronous context and execute
+        Task {
+            await standard.storeToken(token: fcmToken)
+        }
     }
 }

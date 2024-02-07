@@ -7,6 +7,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseMessaging
 import FirebaseStorage
 import HealthKitOnFHIR
 import OSLog
@@ -22,7 +23,7 @@ import SpeziQuestionnaire
 import SwiftUI
 
 
-actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, OnboardingConstraint, AccountStorageConstraint {
+actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, OnboardingConstraint, AccountStorageConstraint  {
     enum PrismaStandardError: Error {
         case userNotAuthenticatedYet
     }
@@ -70,7 +71,7 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
     
     /// The firestore path for a given `Module`.
     /// - Parameter module: The `Module` that is requested.
-    func getPath(module: Module) async throws -> String {
+    func getPath(module: PrismaModule) async throws -> String {
         let accountId: String
         if mockWebService != nil {
             accountId = "USER_ID"
@@ -106,31 +107,31 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         }
     }
     
-//    func storeToken(token: String?) async {
-//        struct FirebaseDocumentTokenData: Codable {
-//            let apns_token: String?
-//        }
-//        
-//        do {
-//            let userDocument = try await userDocumentReference.getDocument()
-//            if userDocument.exists {
-//                let existingTokenData = try await userDocumentReference.getDocument(as: FirebaseDocumentTokenData.self)
-//                
-//                // Unwrap existingTokenData.apns_token and provide a default value if it's nil
-//                if existingTokenData.apns_token != nil {
-//                    if existingTokenData.apns_token != token {
-//                        try await userDocumentReference.updateData(["apns_token": token ?? ""])
-//                    }
-//                }
-//                // user currently doesn't have apns token, must initialize a new field
-//                else {
-//                    try await userDocumentReference.setData(["apns_token": token ?? ""], merge: true)
-//                }
-//            }
-//        } catch {
-//            print("Error retrieving user document: \(error)")
-//        }
-//    }
+    func storeToken(token: String?) async {
+        struct FirebaseDocumentTokenData: Codable {
+            let apnsToken: String?
+        }
+        
+        do {
+            let userDocument = try await userDocumentReference.getDocument()
+            if userDocument.exists {
+                let existingTokenData = try await userDocumentReference.getDocument(as: FirebaseDocumentTokenData.self)
+                
+                // Unwrap existingTokenData.apns_token and provide a default value if it's nil
+                if existingTokenData.apnsToken != nil {
+                    if existingTokenData.apnsToken != token {
+                        try await userDocumentReference.updateData(["apnsToken": token ?? ""])
+                    }
+                }
+                // user currently doesn't have apns token, must initialize a new field
+                else {
+                    try await userDocumentReference.setData(["apnsToken": token ?? ""], merge: true)
+                }
+            }
+        } catch {
+            print("Error retrieving user document: \(error)")
+        }
+    }
         
     /// Stores the given consent form in the user's document directory with a unique timestamped filename.
     ///
