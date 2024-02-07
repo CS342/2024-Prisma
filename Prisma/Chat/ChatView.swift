@@ -14,21 +14,19 @@ import WebKit
 struct ChatView: View {
     @Binding var presentingAccount: Bool
     
-    
     var body: some View {
         NavigationStack {
-            if let url = URL(string: "http://localhost:3000") {
-                WebView(url: url)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .navigationTitle("chat")
-                    .toolbar {
-                        if AccountButton.shouldDisplay {
-                            AccountButton(isPresented: $presentingAccount)
-                        }
-                    }
-                    .edgesIgnoringSafeArea(.bottom)
-            } else {
-                Text("Invalid URL")
+            GeometryReader { geometry in
+                if let url = URL(string: "http://localhost:3000") {
+                    WebView(url: url)
+                        .navigationTitle("Chat")
+                        .frame(
+                            width: geometry.size.width,
+                            height: geometry.size.height
+                        )
+                } else {
+                    Text("Invalid URL")
+                }
             }
         }
     }
