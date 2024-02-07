@@ -39,15 +39,14 @@ class PrismaPushNotifications {
     }
 }
 
-extension PrismaDelegate: MessagingDelegate {
+extension PrismaDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     // MARK: - Token Management
     
-    /// This function
+    /// This function sets the messaging delegate in order to receive registration tokens.
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        // to do: handle cases where app is launched through clicking a notification + include logic to route the app ui as desired
         if FeatureFlags.disableFirebase {
             FirebaseApp.configure()
         }
@@ -67,8 +66,8 @@ extension PrismaDelegate: MessagingDelegate {
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
-            Messaging.messaging().apnsToken = deviceToken
-        }
+        Messaging.messaging().apnsToken = deviceToken
+    }
     
     
     /// This function listens for token refreshes and updates the specific user token to Firestore.
@@ -81,16 +80,19 @@ extension PrismaDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(String(describing: fcmToken))")
         
-        let tokenDict: [String: String] = ["token": fcmToken ?? ""]
+        let tokenDict: [String: String] = ["apns_token": fcmToken ?? ""]
         NotificationCenter.default.post(
             name: Notification.Name("FCMToken"),
             object: nil,
             userInfo: tokenDict
         )
         
-        // Update the token in Firestore
-//        PrismaStandard.storeToken() // to be implemented in PrismaStandard.swift
+        // Update the token in Firestore:
         
-        
+        // The standard is an actor, which protects against data races and conforms to
+        // immutable data practice, therefore we must create an instance of the PrismaStandard to
+        // call our function to store the token.
+//        let notificationInstance = PrismaStandard()
+//        await notificationInstance.storeToken(token: fcmToken)
     }
 }

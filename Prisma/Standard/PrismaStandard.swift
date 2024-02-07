@@ -106,10 +106,32 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         }
     }
     
-    /// Stores a user's specific token utilized for push notifications within their document directory.
-    func storeToken(token: String) async {
-    }
-    
+//    func storeToken(token: String?) async {
+//        struct FirebaseDocumentTokenData: Codable {
+//            let apns_token: String?
+//        }
+//        
+//        do {
+//            let userDocument = try await userDocumentReference.getDocument()
+//            if userDocument.exists {
+//                let existingTokenData = try await userDocumentReference.getDocument(as: FirebaseDocumentTokenData.self)
+//                
+//                // Unwrap existingTokenData.apns_token and provide a default value if it's nil
+//                if existingTokenData.apns_token != nil {
+//                    if existingTokenData.apns_token != token {
+//                        try await userDocumentReference.updateData(["apns_token": token ?? ""])
+//                    }
+//                }
+//                // user currently doesn't have apns token, must initialize a new field
+//                else {
+//                    try await userDocumentReference.setData(["apns_token": token ?? ""], merge: true)
+//                }
+//            }
+//        } catch {
+//            print("Error retrieving user document: \(error)")
+//        }
+//    }
+        
     /// Stores the given consent form in the user's document directory with a unique timestamped filename.
     ///
     /// - Parameter consent: The consent form's data to be stored as a `PDFDocument`.
