@@ -2,10 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>CLIENT_ID</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>REVERSED_CLIENT_ID</string>
 	<key>API_KEY</key>
-	<string>API_KEY</string>
+	<string>API_KEY________________________________</string>
 	<key>GCM_SENDER_ID</key>
-	<string>53986935541</string>
+	<string>GCM_SENDER_ID</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
@@ -26,7 +30,6 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:53986935541:ios:a7e6304bc7d88ff7693bbc</string>
-	<key>DATABASE_URL</key>
-	<string>https://prism-627d5-default-rtdb.firebaseio.com</string>
+	<string>1:123456789012:ios:1234567890123456789012</string>
 </dict>
 </plist>

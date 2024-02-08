@@ -19,6 +19,7 @@ import SpeziOnboarding
 import SpeziScheduler
 import SwiftUI
 
+
 class PrismaDelegate: SpeziAppDelegate {
     override var configuration: Configuration {
         Configuration(standard: PrismaStandard()) {
@@ -93,5 +94,21 @@ class PrismaDelegate: SpeziAppDelegate {
                 deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
             )
         }
+    }
+    
+    
+    /// When the app successfully registers for remote notifications, it receives a device
+    /// token from Apple's push notification service (APNs). The deviceToken parameter
+    /// contains a unique identifier for the device, which the app uses to receive remote
+    /// notifications.
+    ///
+    /// We assign the APNs token received from Apple to the apnsToken property of the
+    /// Messaging class provided by the Firebase SDK. Firebase uses this token to communicate with
+    /// APNs and send notifications to the device.
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+        Messaging.messaging().apnsToken = deviceToken
     }
 }

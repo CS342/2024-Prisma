@@ -9,60 +9,37 @@
 import FirebaseCore
 import FirebaseMessaging
 import Spezi
+import SpeziFirebaseConfiguration
 import SwiftUI
 
 
 class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDelegate, UNUserNotificationCenterDelegate, EnvironmentAccessible {
     @StandardActor var standard: PrismaStandard
+    
+    @Dependency private var configureFirebaseApp: ConfigureFirebaseApp
+    
     @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
     
+    
     override init() {}
-     
+    
+    
+    func configure() {
+        Messaging.messaging().delegate = self
+    }
+    
+    
     /// Prompts the user to allow notifications on their device, storing that result on disk to reference on app startup.
-    func requestNotificationAuthorization() {
+    func requestNotificationAuthorization() async throws {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         // prompt the user to allow notifications
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { [self] granted, error in
-            if let error = error {
-                print("Error requesting notification authorization: \(error.localizedDescription)")
-                return
-            }
-            // UIApplication methods must run on a main thread
-            DispatchQueue.main.async {
-                if granted {
-                    self.pushNotificationsAllowed = true
-                    // generate apns token, triggers didRegisterForRemoteNotificationsWithDeviceToken()
-                    UIApplication.shared.registerForRemoteNotifications()
-                } else {
-                    self.pushNotificationsAllowed = false
-                }
-            }
+        if try await UNUserNotificationCenter.current().requestAuthorization(options: authOptions) {
+            self.pushNotificationsAllowed = true
+            // Generate apns token, triggers didRegisterForRemoteNotificationsWithDeviceToken()
+            await UIApplication.shared.registerForRemoteNotifications()
+        } else {
+            self.pushNotificationsAllowed = false
         }
-    }
-    
-    // MARK: - Token Management
-    /// This function sets the messaging delegate in order to receive registration tokens.
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
-    ) -> Bool {
-        Messaging.messaging().delegate = self
-        return true
-    }
-    
-    /// When the app successfully registers for remote notifications, it receives a device
-    /// token from Apple's push notification service (APNs). The deviceToken parameter
-    /// contains a unique identifier for the device, which the app uses to receive remote
-    /// notifications. 
-    ///
-    /// We assign the APNs token received from Apple to the apnsToken property of the
-    /// Messaging class provided by the Firebase SDK. Firebase uses this token to communicate with
-    /// APNs and send notifications to the device.
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-        Messaging.messaging().apnsToken = deviceToken
     }
     
     
