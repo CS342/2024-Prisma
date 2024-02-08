@@ -76,6 +76,9 @@
         }
       }
     },
+    "chat" : {
+
+    },
     "Chat" : {
 
     },
@@ -89,9 +92,6 @@
           }
         }
       }
-    },
-    "Coming soon!" : {
-
     },
     "Completed at %@" : {
 
@@ -313,6 +313,9 @@
           }
         }
       }
+    },
+    "Invalid URL" : {
+
     },
     "JAMES_LANDAY_BIO" : {
       "localizations" : {
