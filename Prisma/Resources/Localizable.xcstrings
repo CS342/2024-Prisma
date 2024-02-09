@@ -76,6 +76,9 @@
         }
       }
     },
+    "chat" : {
+
+    },
     "Chat" : {
 
     },
@@ -89,9 +92,6 @@
           }
         }
       }
-    },
-    "Coming soon!" : {
-
     },
     "Completed at %@" : {
 
@@ -314,6 +314,7 @@
         }
       }
     },
+    "Invalid URL" : {},
     "Include Active Energy Burned" : {
 
     },
