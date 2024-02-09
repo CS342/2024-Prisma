@@ -71,6 +71,8 @@
 		A9DFE8A92ABE551400428242 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFE8A82ABE551400428242 /* AccountButton.swift */; };
 		A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
+		AC69903E2B6C5A2F00D92970 /* PrivacyControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903D2B6C5A2F00D92970 /* PrivacyControls.swift */; };
+		AC6990402B6C627100D92970 /* ToggleTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903F2B6C627100D92970 /* ToggleTestView.swift */; };
 		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
 		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
 		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
@@ -148,6 +150,8 @@
 		A9DFE8A82ABE551400428242 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 		A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		AC69903D2B6C5A2F00D92970 /* PrivacyControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyControls.swift; sourceTree = "<group>"; };
+		AC69903F2B6C627100D92970 /* ToggleTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTestView.swift; sourceTree = "<group>"; };
 		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
 		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 		AC4A1ED12B69D91D0095D1AE /* PrivacyControls */ = {
 			isa = PBXGroup;
 			children = (
+				AC69903D2B6C5A2F00D92970 /* PrivacyControls.swift */,
+				AC69903F2B6C627100D92970 /* ToggleTestView.swift */,
 			);
 			path = PrivacyControls;
 			sourceTree = "<group>";
@@ -669,6 +675,8 @@
 				2FE5DC5229EDD7FA004B9AB4 /* PrismaScheduler.swift in Sources */,
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
 				F8AF6FB42B5F6EDC0011C32D /* Module.swift in Sources */,
+				AC6990402B6C627100D92970 /* ToggleTestView.swift in Sources */,
+				AC69903E2B6C5A2F00D92970 /* PrivacyControls.swift in Sources */,
 				653A2551283387FE005D4D48 /* Prisma.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
 				5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */,
