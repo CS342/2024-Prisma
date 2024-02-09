@@ -16,7 +16,7 @@ struct ChatView: View {
     
     var body: some View {
         NavigationStack {
-            if let url = URL(string: "http://localhost:3000/") {
+            if let url = URL(string: "http://localhost:3000") {
                 WebView(url: url)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .navigationTitle("chat")
