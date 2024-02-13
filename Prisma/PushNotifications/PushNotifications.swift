@@ -1,9 +1,15 @@
 //
-//  This file implements functions necessary for push notifications to be implemented within the Prisma application.
-//  Includes methods for monitoring token refresh, using methods from the PrismaStandard to upload them to a user's
-//  collection in Firebase.
+// This source file is part of the Stanford Prisma Application based on the Stanford Spezi Template Application project.
 //
-//  Created by Bryant Jimenez on 2/1/24.
+// SPDX-FileCopyrightText: 2023 Stanford University
+//
+// SPDX-License-Identifier: MIT
+//
+// This file implements functions necessary for push notifications to be implemented within the Prisma application.
+// Includes methods for monitoring token refresh, using methods from the PrismaStandard to upload them to a user's
+// collection in Firebase.
+//
+// Created by Bryant Jimenez on 2/1/24.
 //
 
 import FirebaseCore
