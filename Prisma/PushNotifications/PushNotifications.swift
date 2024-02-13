@@ -51,23 +51,25 @@ class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDele
     /// - the user uninstalls/reinstall the app
     /// - the user clears app data.
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("Firebase registration token: \(String(describing: fcmToken))")
-        
-        let tokenDict: [String: String] = ["apns_token": fcmToken ?? ""]
-        NotificationCenter.default.post(
-            name: Notification.Name("FCMToken"),
-            object: nil,
-            userInfo: tokenDict
-        )
-        
-        // Update the token in Firestore:
-        
-        // The standard is an actor, which protects against data races and conforms to
-        // immutable data practice
-        
-        // get into new asynchronous context and execute
-        Task {
-            await standard.storeToken(token: fcmToken)
+        if pushNotificationsAllowed {
+            print("Firebase registration token: \(String(describing: fcmToken))")
+            
+            let tokenDict: [String: String] = ["apns_token": fcmToken ?? ""]
+            NotificationCenter.default.post(
+                name: Notification.Name("FCMToken"),
+                object: nil,
+                userInfo: tokenDict
+            )
+            
+            // Update the token in Firestore:
+            
+            // The standard is an actor, which protects against data races and conforms to
+            // immutable data practice
+            
+            // get into new asynchronous context and execute
+            Task {
+                await standard.storeToken(token: fcmToken)
+            }
         }
     }
 }
