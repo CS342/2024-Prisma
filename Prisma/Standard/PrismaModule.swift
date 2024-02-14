@@ -10,7 +10,7 @@ import HealthKit
 
 
 /// A `Module` is a type of data that can be uploaded to the Firestore.
-enum Module {
+enum PrismaModule {
     /// The questionnaire type with the `String` id.
     case questionnaire(String)
     /// The health type with the `HKQuantityTypeIdentifier` as a String.

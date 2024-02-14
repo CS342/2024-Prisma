@@ -14,8 +14,11 @@ import SwiftUI
 struct NotificationPermissions: View {
     @Environment(PrismaScheduler.self) private var scheduler
     @Environment(OnboardingNavigationPath.self) private var onboardingNavigationPath
+    @Environment(PrismaPushNotifications.self) private var pushNotifications
     
     @State private var notificationProcessing = false
+    
+    @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
     
     
     var body: some View {
@@ -46,7 +49,7 @@ struct NotificationPermissions: View {
                             if ProcessInfo.processInfo.isPreviewSimulator {
                                 try await _Concurrency.Task.sleep(for: .seconds(5))
                             } else {
-                                try await scheduler.requestLocalNotificationAuthorization()
+                                try await pushNotifications.requestNotificationAuthorization()
                             }
                         } catch {
                             print("Could not request notification permissions.")
