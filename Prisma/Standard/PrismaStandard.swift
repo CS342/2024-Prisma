@@ -7,6 +7,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseMessaging
 import FirebaseStorage
 import HealthKitOnFHIR
 import OSLog
@@ -70,7 +71,7 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
     
     /// The firestore path for a given `Module`.
     /// - Parameter module: The `Module` that is requested.
-    func getPath(module: Module) async throws -> String {
+    func getPath(module: PrismaModule) async throws -> String {
         let accountId: String
         if mockWebService != nil {
             accountId = "USER_ID"
@@ -106,6 +107,32 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         }
     }
     
+    func storeToken(token: String?) async {
+        struct FirebaseDocumentTokenData: Codable {
+            let apnsToken: String?
+        }
+        
+        do {
+            let userDocument = try await userDocumentReference.getDocument()
+            if userDocument.exists {
+                let existingTokenData = try await userDocumentReference.getDocument(as: FirebaseDocumentTokenData.self)
+                
+                // Unwrap existingTokenData.apns_token and provide a default value if it's nil
+                if existingTokenData.apnsToken != nil {
+                    if existingTokenData.apnsToken != token {
+                        try await userDocumentReference.updateData(["apnsToken": token ?? ""])
+                    }
+                }
+                // user currently doesn't have apns token, must initialize a new field
+                else {
+                    try await userDocumentReference.setData(["apnsToken": token ?? ""], merge: true)
+                }
+            }
+        } catch {
+            print("Error retrieving user document: \(error)")
+        }
+    }
+        
     /// Stores the given consent form in the user's document directory with a unique timestamped filename.
     ///
     /// - Parameter consent: The consent form's data to be stored as a `PDFDocument`.
