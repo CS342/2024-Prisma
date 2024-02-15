@@ -174,6 +174,19 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         }
         try await accountStorage.create(identifier, details)
     }
+    
+    func setAccountTimestamp() async {
+        // Add a "created_at" timestamp to the newly created user document
+        let timestamp = Timestamp(date: Date())
+        do {
+            try await self.userDocumentReference.setData([
+                "created_at": timestamp
+            ], merge: true)
+            print("Added timestamp to user document")
+        } catch {
+            print("Error updating document: \(error)")
+        }
+    }
 
     func load(_ identifier: AdditionalRecordId, _ keys: [any AccountKey.Type]) async throws -> PartialAccountDetails {
         guard let accountStorage else {

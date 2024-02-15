@@ -13,6 +13,7 @@ import SwiftUI
 
 struct AccountOnboarding: View {
     @Environment(Account.self) private var account
+    @Environment(PrismaStandard.self) private var standard
     @Environment(OnboardingNavigationPath.self) private var onboardingNavigationPath
     
     
@@ -21,6 +22,7 @@ struct AccountOnboarding: View {
             Task {
                 // Placing the nextStep() call inside this task will ensure that the sheet dismiss animation is
                 // played till the end before we navigate to the next step.
+                await standard.setAccountTimestamp()
                 onboardingNavigationPath.nextStep()
             }
         } header: {
