@@ -88,7 +88,12 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(from: sample.resource)
+            let deviceName = sample.sourceRevision.source.name
+            let resource = try sample.resource
+            let encoder = FirebaseFirestore.Firestore.Encoder()
+            var firestoreResource = try encoder.encode(resource)
+            firestoreResource["device"] = deviceName
+            try await Firestore.firestore().document(path).setData(firestoreResource)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
