@@ -23,7 +23,7 @@ extension String {
 }
 
 extension Date {
-    /// converts Date obejct to local time.
+    /// converts Date object to local time.
     func localISOFormat() -> String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withFullDate, .withTime, .withColonSeparatorInTime, .withFractionalSeconds]

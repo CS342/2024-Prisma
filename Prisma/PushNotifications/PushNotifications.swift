@@ -78,4 +78,24 @@ class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDele
             }
         }
     }
+    
+    
+    /// This function processes incoming remote notifications for the Prisma app.
+    /// The system calls this method when Prisma is running either in the foreground or background. When a
+    /// remote notification is received, we write a timestamp to the notification document in Firestore indicating that
+    /// the notification was received.
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
+        print(userInfo)
+        // get current time
+        let currentTime = Date().localISOFormat()
+        Task {
+            await standard.addNotificationReceivedTimestamp(timestamp: currentTime)
+        }
+        
+        // In the future, if different actions desired to be completed in the background based on notification data received,
+        // handle that functionality and return any of .newData, .noData, .failed. For now, no new data retrieved
+        // from the background fetch.
+        return .noData
+    }
+
 }

@@ -86,12 +86,15 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         var moduleText: String
         
         switch module {
-        case .questionnaire(let type):
-            // Questionnaire responses
-            moduleText = "\(module.description)/\(type)"
-        case .health(let type):
-            // HealthKit observations
-            moduleText = "\(module.description)/\(type.healthKitDescription)"
+            case .questionnaire(let type):
+                // Questionnaire responses
+                moduleText = "\(module.description)/\(type)"
+            case .health(let type):
+                // HealthKit observations
+                moduleText = "\(module.description)/\(type.healthKitDescription)"
+            case .notifications(let timestamp):
+                // notifications for user
+                moduleText = "\(module.description)/\(timestamp)"
         }
         
         // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
@@ -107,6 +110,10 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         }
     }
     
+    
+    /// Stores the user device APNs Token in the user's document directory.
+    ///
+    /// - Parameter token: The specific device token to be stored as a `String`.
     func storeToken(token: String?) async {
         struct FirebaseDocumentTokenData: Codable {
             let apnsToken: String?
