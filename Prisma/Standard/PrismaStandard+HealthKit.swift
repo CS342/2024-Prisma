@@ -102,7 +102,6 @@ extension PrismaStandard {
     func remove(sample: HKDeletedObject) async { }
     
     func addDeleteFlag(quantityType: String, timestamp: String) async {
-        
         let path: String
         
         do {
@@ -114,11 +113,9 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            let encoder = FirebaseFirestore.Firestore.Encoder()
             try await Firestore.firestore().document(path).setData(["deleteFlag" : "true"])
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
-        
     }
 }

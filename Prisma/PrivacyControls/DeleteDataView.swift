@@ -9,26 +9,32 @@ import Foundation
 import Spezi
 import SwiftUI
 
-
 struct DeleteDataView: View {
    @Bindable var privacyModule = PrivacyModule()
+//    @Environment(PrismaStandard.self) private var standard
+    @State private var items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
 
     
     var body: some View {
         NavigationView {
-                    Form {
-                        Toggle("Include Step Count Upload", isOn: $privacyModule.includeStepCountUpload)
-                        Toggle("Include Active Energy Burned", isOn: $privacyModule.includeActiveEnergyBurned)
-                        Toggle("Include Distance Walking Running", isOn: $privacyModule.includeDistanceWalkingRunning)
-                        Toggle("Include Vo2 Max", isOn: $privacyModule.includeVo2Max)
-                        Toggle("Include Heart Rate", isOn: $privacyModule.includeHeartRate)
-                        Toggle("Include Resting Heart Rate", isOn: $privacyModule.includeRestingHeartRate)
-                        Toggle("Include Oxygen Saturation", isOn: $privacyModule.includeOxygenSaturation)
-                        Toggle("Include Respiratory Rate", isOn: $privacyModule.includeRespiratoryRate)
-                        Toggle("Include Walking Heart Rate Average", isOn: $privacyModule.includeWalkingHRAverage)
-                    }
-                    .navigationBarTitle("Manage Health Data")
+            List {
+                // Display each item in the list
+                ForEach(items, id: \.self) { item in
+                    Text(item)
+                }
+                // Handle deletion
+                .onDelete(perform: deleteItems)
+            }
+            .navigationTitle("All Recorded Data")
+            // Add an Edit button to enable deletion
+            .navigationBarItems(trailing: EditButton())
         }
+    }
+
+    // Method to delete items
+    func deleteItems(at offsets: IndexSet) {
+        items.remove(atOffsets: offsets) // Update the data model
+//        standard.addDeleteFlag(quantityType: "stepcount", timestamp: "")
     }
 }
 
