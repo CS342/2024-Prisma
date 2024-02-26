@@ -113,7 +113,7 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(["deleteFlag" : "true"])
+            try await Firestore.firestore().document(path).setData(["deleteFlag": "true"])
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }

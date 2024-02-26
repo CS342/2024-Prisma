@@ -76,7 +76,7 @@
         }
       }
     },
-    "chat" : {
+    "All Recorded Data" : {
 
     },
     "Chat" : {
@@ -314,7 +314,6 @@
         }
       }
     },
-    "Invalid URL" : {},
     "Include Active Energy Burned" : {
 
     },
@@ -340,6 +339,9 @@
 
     },
     "Include Walking Heart Rate Average" : {
+
+    },
+    "Invalid URL" : {
 
     },
     "JAMES_LANDAY_BIO" : {
@@ -470,6 +472,18 @@
     },
     "Privacy Settings" : {
 
+    },
+    "PRIVACY_CONTROLS_TITLE" : {
+      "comment" : "MARK: - Privacy Controls",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Controls"
+          }
+        }
+      }
     },
     "PROJECT_LICENSE_DESCRIPTION" : {
       "localizations" : {

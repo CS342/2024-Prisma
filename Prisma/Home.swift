@@ -17,6 +17,7 @@ struct HomeView: View {
         case chat
         case contact
         case mockUpload
+        case privacy
     }
     
     static var accountEnabled: Bool {
@@ -44,6 +45,11 @@ struct HomeView: View {
                 .tag(Tabs.contact)
                 .tabItem {
                     Label("CONTACTS_TAB_TITLE", systemImage: "person.fill")
+                }
+            DeleteDataView()
+                .tag(Tabs.privacy)
+                .tabItem {
+                    Label("PRIVACY_CONTROLS_TITLE", systemImage: "person.fill")
                 }
             if FeatureFlags.disableFirebase {
                 MockUpload(presentingAccount: $presentingAccount)
