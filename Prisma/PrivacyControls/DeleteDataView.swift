@@ -8,19 +8,25 @@
 import Foundation
 import Spezi
 import SwiftUI
+import FirebaseFirestore
 
 struct DeleteDataView: View {
-   @Bindable var privacyModule = PrivacyModule()
+//    @Environment(PrivacyModule.self) private var privacyModule
     @Environment(PrismaStandard.self) private var standard
-    @State private var items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    @State private var timeArrayStatic = ["2023-11-14T20:39:44.467", "2023-11-14T20:41:00.000", "2023-11-14T20:42:00.000"]
+//    var timeArray = getLastTimestamps(quantityType: "stepcount")
 
+    
+
+    // read in top 10 time stamps from Matt's data
     
     var body: some View {
         NavigationView {
+            
             List {
                 // Display each item in the list
-                ForEach(items, id: \.self) { item in
-                    Text(item)
+                ForEach(timeArrayStatic, id: \.self) { timestamp in
+                    Text(timestamp)
                 }
                 // Handle deletion
                 .onDelete(perform: deleteItems)
@@ -38,16 +44,41 @@ struct DeleteDataView: View {
     // figure out how to pass timestamp to the addDeleteFlag
     
     // later step: how to add more data points (hit "show more")
-    
     func deleteItems(at offsets: IndexSet) {
         // grab timestamp and then send it to addDelete Flag
-        items.remove(atOffsets: offsets) // Update the data model
+        timeArrayStatic.remove(atOffsets: offsets) // Update the data model
         // if line 44 fails, the user will think it was deleted but it might not have been deleted in firestore
-//        Task {
-//            await standard.addDeleteFlag(quantityType: "stepcount", timestamp: "")
-//        }
+        Task {
+            // QUESTION: how do we pass in the quantityType variable to getPath()?
+            await standard.addDeleteFlag(quantityType: "stepcount", timestamp: "2023-11-14T20:39:44.467")
+            print("added delete flag")
+        }
         // wait for addDeleteFlag to finish BEFORE showing that that piece of data was deleted on the UI side
     }
+    
+//    func getLastTimestamps(quantityType: String) async -> [String] {
+//        var path: String = ""
+//
+//        do {
+//            path = try await standard.getPath(module: .health(quantityType)) + "raw/"
+//        } catch {
+//            print("Error retrieving user document: \(error)")
+//        }
+//
+//        var lastTimestampsArr: [String] = []
+//
+//        do {
+//            let querySnapshot = try await Firestore.firestore().collection(path).getDocuments()
+//            for document in querySnapshot.documents {
+//                lastTimestampsArr.append(document.documentID)
+//                print("\(document.documentID) => \(document.data())")
+//            }
+//        } catch {
+//            print("Error getting documents: \(error)")
+//        }
+//
+//        return lastTimestampsArr
+//    }
 }
 
 #Preview {

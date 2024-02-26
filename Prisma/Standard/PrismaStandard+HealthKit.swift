@@ -105,7 +105,9 @@ extension PrismaStandard {
         let path: String
         
         do {
-            path = try await getPath(module: .health(quantityType)) + "raw/\(timestamp)"
+//            path = try await getPath(module: .health(quantityType)) + "raw/\(timestamp)"
+            path = "studies/testing/users/hx32uiK4BTPHHku5UKuqHtTLtzt2/health/stepcount/raw/2023-11-14T20:39:44.467"
+            print("PATH FROM GET PATH: " + path)
         } catch {
             print("Failed to define path: \(error.localizedDescription)")
             return
@@ -113,7 +115,10 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(["deleteFlag": "true"])
+            // get all the data from firestore first
+            // then add another key-value pair with deleteFlag: "true"
+            let newData = ["deleteFlag": "true"]
+            try await Firestore.firestore().document(path).setData(newData, merge: true)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }

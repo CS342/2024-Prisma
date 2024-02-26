@@ -49,7 +49,7 @@ struct HomeView: View {
             DeleteDataView()
                 .tag(Tabs.privacy)
                 .tabItem {
-                    Label("PRIVACY_CONTROLS_TITLE", systemImage: "person.fill")
+                    Label("PRIVACY_CONTROLS_TITLE", systemImage: "gear")
                 }
             if FeatureFlags.disableFirebase {
                 MockUpload(presentingAccount: $presentingAccount)

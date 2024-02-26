@@ -11,13 +11,20 @@
 import Foundation
 import Spezi
 import SwiftUI
+import FirebaseFirestore
 
 
-@Observable
-public class PrivacyModule: DefaultInitializable, EnvironmentAccessible {
-    var configuration: Configuration {
-        Configuration(standard: PrismaStandard()) { }
+//@Observable
+class PrivacyModule: Module/*, DefaultInitializable*/, EnvironmentAccessible {
+    @StandardActor var standard: PrismaStandard
+    
+//    var configuration: Configuration {
+//        Configuration(standard: PrismaStandard()) { }
+//    }
+    func configure() {
     }
+    
+    
     var includeStepCountUpload = false
     var includeActiveEnergyBurned = true
     var includeDistanceWalkingRunning = true
@@ -28,7 +35,6 @@ public class PrivacyModule: DefaultInitializable, EnvironmentAccessible {
     var includeRespiratoryRate = true
     var includeWalkingHRAverage = true
     
-    public required init() {}
     
     public func getCurrentToggles() -> [String: Bool] {
         [
@@ -43,4 +49,29 @@ public class PrivacyModule: DefaultInitializable, EnvironmentAccessible {
             "includeWalkingHRAverage": includeWalkingHRAverage
         ]
     }
+//    public func getLastTimestamps(quantityType: String) async -> [String] {
+//        var path: String = ""
+//
+//        do {
+//            path = try await standard.getPath(module: .health(quantityType)) + "raw/"
+//        } catch {
+//            print("Error retrieving user document: \(error)")
+//        }
+//        
+//        var lastTimestampsArr: [String] = []
+//        
+//        do {
+//            let querySnapshot = try await Firestore.firestore().collection(path).getDocuments()
+//            for document in querySnapshot.documents {
+//                lastTimestampsArr.append(document.documentID)
+////                print("\(document.documentID) => \(document.data())")
+//            }
+//        } catch {
+//            print("Error getting documents: \(error)")
+//        }
+//        
+//        return lastTimestampsArr
+//    }
+    
+    
 }
