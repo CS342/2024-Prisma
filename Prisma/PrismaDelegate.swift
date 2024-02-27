@@ -74,16 +74,30 @@ class PrismaDelegate: SpeziAppDelegate {
     private var healthKit: HealthKit {
         HealthKit {
             CollectSamples(
+            /// https://developer.apple.com/documentation/healthkit/data_types#2939032
                 [
-                    HKQuantityType(.activeEnergyBurned),
+                    // Activity
                     HKQuantityType(.stepCount),
                     HKQuantityType(.distanceWalkingRunning),
-                    HKQuantityType(.vo2Max),
+                    HKQuantityType(.basalEnergyBurned),
+                    HKQuantityType(.activeEnergyBurned),
+                    HKQuantityType(.flightsClimbed),
+                    HKQuantityType(.appleExerciseTime),
+                    HKQuantityType(.appleMoveTime),
+                    HKQuantityType(.appleStandTime),
+                    
+                    // Vital Signs
                     HKQuantityType(.heartRate),
                     HKQuantityType(.restingHeartRate),
+                    HKQuantityType(.heartRateVariabilitySDNN),
+                    HKQuantityType(.walkingHeartRateAverage),
                     HKQuantityType(.oxygenSaturation),
                     HKQuantityType(.respiratoryRate),
-                    HKQuantityType(.walkingHeartRateAverage)
+                    HKQuantityType(.bodyTemperature),
+                    
+                    // Other events
+                    HKCategoryType(.sleepAnalysis),
+                    HKWorkoutType.workoutType()
                 ],
                 /// predicate to request data from one month in the past to present.
                 predicate: HKQuery.predicateForSamples(
