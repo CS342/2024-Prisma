@@ -50,6 +50,8 @@ extension PrismaStandard {
             HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
             HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
         ]
+        
+        HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)
         let toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
         
         if let variableName = sampleToToggleNameMapping[quantityType] {
@@ -101,11 +103,17 @@ extension PrismaStandard {
     
     func remove(sample: HKDeletedObject) async { }
     
-    func addDeleteFlag(selectedQuantityType: String, timestamp: String) async {
+    func addDeleteFlag(selectedQuantityType: HKQuantityType, timestamp: String) async {
         let path: String
         
         do {
-            path = try await userCustomGetPath(moduleText: "health") + "/\(selectedQuantityType)/raw/\(timestamp)"
+            // protect against nil values for the quantityType identifier
+            guard let identifier = HKQuantityType.quantityType(forIdentifier: .stepCount)?.identifier else {
+                print("Error: Quantity type identifier is nil.")
+                return
+            }
+            // call getPath to get the path for this user, up until this specific quantityType
+            path = try await getPath(module: .health(identifier)) + "/raw/\(timestamp)"
 
             print("PATH FROM GET PATH: " + path)
         } catch {
