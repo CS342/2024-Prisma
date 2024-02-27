@@ -18,10 +18,8 @@ extension String {
         }
         
         let prefixes = ["HKQuantityTypeIdentifier", "HKCategoryTypeIdentifier", "HKCorrelationTypeIdentifier", "HKWorkoutTypeIdentifier"]
-        for prefix in prefixes {
-            if self.hasPrefix(prefix) {
-                return self.dropFirst(prefix.count).lowercased()
-            }
+        for prefix in prefixes where self.hasPrefix(prefix) {
+            return self.dropFirst(prefix.count).lowercased()
         }
         return "unknown"
     }
