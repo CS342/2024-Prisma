@@ -11,20 +11,13 @@
 import Foundation
 import Spezi
 import SwiftUI
-import FirebaseFirestore
 
 
-//@Observable
-class PrivacyModule: Module/*, DefaultInitializable*/, EnvironmentAccessible {
-    @StandardActor var standard: PrismaStandard
-    
-//    var configuration: Configuration {
-//        Configuration(standard: PrismaStandard()) { }
-//    }
-    func configure() {
+@Observable
+public class PrivacyModule: DefaultInitializable, EnvironmentAccessible {
+    var configuration: Configuration {
+        Configuration(standard: PrismaStandard()) { }
     }
-    
-    
     var includeStepCountUpload = false
     var includeActiveEnergyBurned = true
     var includeDistanceWalkingRunning = true
@@ -35,6 +28,7 @@ class PrivacyModule: Module/*, DefaultInitializable*/, EnvironmentAccessible {
     var includeRespiratoryRate = true
     var includeWalkingHRAverage = true
     
+    public required init() {}
     
     public func getCurrentToggles() -> [String: Bool] {
         [

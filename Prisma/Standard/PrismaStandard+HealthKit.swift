@@ -39,7 +39,7 @@ extension PrismaStandard {
             return
         }
         
-        var sampleToToggleNameMapping: [HKQuantityType?: String] = [
+        let sampleToToggleNameMapping: [HKQuantityType?: String] = [
             HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned): "includeActiveEnergyBurned",
             HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
@@ -50,7 +50,7 @@ extension PrismaStandard {
             HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
             HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
         ]
-        var toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
+        let toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
         
         if let variableName = sampleToToggleNameMapping[quantityType] {
             let response: Bool = toggleNameToBoolMapping[variableName] ?? false
@@ -101,12 +101,12 @@ extension PrismaStandard {
     
     func remove(sample: HKDeletedObject) async { }
     
-    func addDeleteFlag(quantityType: String, timestamp: String) async {
+    func addDeleteFlag(selectedQuantityType: String, timestamp: String) async {
         let path: String
         
         do {
-//            path = try await getPath(module: .health(quantityType)) + "raw/\(timestamp)"
-            path = "studies/testing/users/hx32uiK4BTPHHku5UKuqHtTLtzt2/health/stepcount/raw/2023-11-14T20:39:44.467"
+            path = try await userCustomGetPath(moduleText: "health") + "/\(selectedQuantityType)/raw/\(timestamp)"
+
             print("PATH FROM GET PATH: " + path)
         } catch {
             print("Failed to define path: \(error.localizedDescription)")
@@ -115,10 +115,11 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            // get all the data from firestore first
-            // then add another key-value pair with deleteFlag: "true"
+            // add another key-value pair field for the delete flag
+            // merge new key-value with pre-existing data instead of overwriting it
             let newData = ["deleteFlag": "true"]
             try await Firestore.firestore().document(path).setData(newData, merge: true)
+            print("Successfully set deleteFlag to true.")
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
