@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 import WebKit
-
+import Firebase
 
 struct ChatView: View {
     @Binding var presentingAccount: Bool
@@ -17,7 +17,7 @@ struct ChatView: View {
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
-                if let url = URL(string: "http://localhost:3000") {
+                if let url = URL(string: "http://localhost:3000?token=\(generateJWT() ?? "")") {
                     WebView(url: url)
                         .navigationTitle("Chat")
                         .frame(
@@ -29,12 +29,67 @@ struct ChatView: View {
                 }
             }
         }
+        .onAppear {
+            signInWithFirebase()
+        }
     }
 
     init(presentingAccount: Binding<Bool>) {
         self._presentingAccount = presentingAccount
     }
 }
+
+func generateJWT(completion: @escaping (String?) -> Void ) {
+    if let currentUser = Auth.auth().currentUser {
+        currentUser.getIDTokenForcingRefresh(true) { token, error in
+            if let error = error {
+                print("Error getting ID token: \(error.localizedDescription)")
+                completion(nil)
+            } else if let token = token {
+                print("JWT is: \(token)")
+                sendTokenToBackend(token: token, completion: completion)
+            } else {
+                print("No token received.")
+                completion(nil)
+            }
+        }
+    } else {
+        print("No current user")
+        completion(nil)
+    }
+}
+
+func sendTokenToBackend(token: String, completion: @escaping (String?) -> Void) {
+    let url = URL(string: "https://your-backend-url.com/api/endpoint")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            // Handle response from backend
+            if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                print("Response from backend: \(responseString)")
+                completion(responseString)
+            } else if let error = error {
+                print("Error sending token to backend: \(error.localizedDescription)")
+                completion(nil)
+            } else {
+                print("No response received from backend")
+                completion(nil)
+            }
+        }
+        task.resume()
+}
+
+func signInWithFirebase() {
+    Auth.auth().signInAnonymously { (authResult, error) in
+        if let error = error {
+            print("Error signing in anonymously.")
+            return
+        }
+    }
+}
+    
 
 
 #if DEBUG
