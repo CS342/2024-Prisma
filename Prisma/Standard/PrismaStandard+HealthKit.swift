@@ -6,9 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
-import ModelsR4
 import FirebaseFirestore
 import HealthKitOnFHIR
+import ModelsR4
 import SpeziFirestore
 import SpeziHealthKit
 
@@ -65,7 +65,7 @@ extension PrismaStandard {
         
         
         // convert the startDate of the HKSample to local time
-        let timeIndex = getTimeIndex(startDate: sample.startDate, endDate: sample.endDate)
+        let timeIndex = constructTimeIndex(startDate: sample.startDate, endDate: sample.endDate)
         let effectiveTimestamp = sample.startDate.localISOFormat()
         
         

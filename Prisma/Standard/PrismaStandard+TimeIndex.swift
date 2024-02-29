@@ -10,20 +10,26 @@
 
 import Foundation
 
-func getTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
+func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
     let calendar = Calendar.current
     let startComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate)
     let endComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: endDate)
     let isRange = startDate != endDate
     
     var timeIndex: [String: Any?] = ["range": isRange]
+    // TODO: add timezone
     
     addTimeIndexComponents(&timeIndex, dateComponents: startComponents, suffix: ".start")
     
-    if isRange { // only write end date and range if it is a range type
+    if isRange {
+        // only write end date and range if the sample is a range type
         addTimeIndexComponents(&timeIndex, dateComponents: endComponents, suffix: ".end")
         addTimeIndexRangeComponents(&timeIndex, startComponents: startComponents, endComponents: endComponents)
     }
+    
+    print("Start: ", startDate.localISOFormat())
+    print("End: ", endDate.localISOFormat())
+    print(timeIndex)
     
     return timeIndex
 }
@@ -62,11 +68,6 @@ func addTimeIndexRangeComponents(_ timeIndex: inout [String: Any?], startCompone
         end: endComponents.hour,
         maxValue: 23
     )
-    timeIndex["minute.range"] = getRange(
-        start: startComponents.minute,
-        end: endComponents.minute,
-        maxValue: 59
-    )
     timeIndex["dayMinute.range"] = getRange(
         start: calculateDayMinute(hour: startComponents.hour, minute: startComponents.minute),
         end: calculateDayMinute(hour: endComponents.hour, minute: endComponents.minute),
@@ -77,11 +78,9 @@ func addTimeIndexRangeComponents(_ timeIndex: inout [String: Any?], startCompone
         end: calculate15MinBucket(hour: endComponents.hour, minute: endComponents.minute),
         maxValue: 95
     )
-    timeIndex["second.range"] = getRange(
-        start: startComponents.second,
-        end: endComponents.second,
-        maxValue: 59
-    )
+    
+    // Minute and second ranges are not likely to be accurate since they often will fill the whole range.
+    // We will also never query on individual minutes or seconds worth of data.
 }
 
 // swiftlint:disable discouraged_optional_collection
