@@ -12,12 +12,14 @@ import Foundation
 
 func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
     let calendar = Calendar.current
-    let startComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: startDate)
-    let endComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: endDate)
+    let startComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .timeZone], from: startDate)
+    let endComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .timeZone], from: endDate)
     let isRange = startDate != endDate
     
-    var timeIndex: [String: Any?] = ["range": isRange]
-    // TODO: add timezone
+    var timeIndex: [String: Any?] = [
+        "range": isRange,
+        "timezone": startComponents.timeZone
+    ]
     
     addTimeIndexComponents(&timeIndex, dateComponents: startComponents, suffix: ".start")
     
