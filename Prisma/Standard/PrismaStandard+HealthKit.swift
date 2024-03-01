@@ -39,7 +39,7 @@ extension PrismaStandard {
             return
         }
 
-        var sampleToToggleNameMapping: [HKQuantityType?: String] = [
+        let sampleToToggleNameMapping: [HKQuantityType?: String] = [
             HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned): "includeActiveEnergyBurned",
             HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
@@ -50,7 +50,7 @@ extension PrismaStandard {
             HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
             HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
         ]
-        var toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
+        let toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
         
         if let variableName = sampleToToggleNameMapping[quantityType] {
             let response: Bool = toggleNameToBoolMapping[variableName] ?? false

@@ -76,9 +76,6 @@
         }
       }
     },
-    "chat" : {
-
-    },
     "Chat" : {
 
     },
@@ -314,7 +311,6 @@
         }
       }
     },
-    "Invalid URL" : {},
     "Include Active Energy Burned" : {
 
     },
@@ -340,6 +336,9 @@
 
     },
     "Include Walking Heart Rate Average" : {
+
+    },
+    "Invalid URL" : {
 
     },
     "JAMES_LANDAY_BIO" : {
