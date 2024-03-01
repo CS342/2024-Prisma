@@ -314,33 +314,6 @@
         }
       }
     },
-    "Include Active Energy Burned" : {
-
-    },
-    "Include Distance Walking Running" : {
-
-    },
-    "Include Heart Rate" : {
-
-    },
-    "Include Oxygen Saturation" : {
-
-    },
-    "Include Respiratory Rate" : {
-
-    },
-    "Include Resting Heart Rate" : {
-
-    },
-    "Include Step Count Upload" : {
-
-    },
-    "Include Vo2 Max" : {
-
-    },
-    "Include Walking Heart Rate Average" : {
-
-    },
     "Invalid URL" : {
 
     },
@@ -469,9 +442,6 @@
           }
         }
       }
-    },
-    "Privacy Settings" : {
-
     },
     "PRIVACY_CONTROLS_TITLE" : {
       "comment" : "MARK: - Privacy Controls",

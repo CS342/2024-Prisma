@@ -110,6 +110,10 @@ class PrismaDelegate: SpeziAppDelegate {
         }
     }
     
+    public func getHealthKit() -> HealthKit {
+        return healthKit
+    }
+    
     
     /// When the app successfully registers for remote notifications, it receives a device
     /// token from Apple's push notification service (APNs). The deviceToken parameter

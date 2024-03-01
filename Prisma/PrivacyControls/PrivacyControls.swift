@@ -15,27 +15,28 @@ import SwiftUI
 
 
 @Observable
-public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible {
-    var configuration: Configuration {
-        Configuration(standard: PrismaStandard()) { }
-    }
-    
-    public required init() {}
-    
-    @StandardActor var standard: PrismaStandard
-    let prismaDelegate = PrismaDelegate()
-    
-    // how to access healthKit samples from Prisma Delegate if private
-    public func createTogglesMapping() -> [String: Bool] {
-        var togglesMapping: [String: Bool] = [:]
-        let samples = prismaDelegate.healthKit
-        for sample in samples {
-            let identifier = standard.getSampleIdentifier(sample)
-            togglesMapping[identifier] = true
-        }
-        return togglesMapping
-    }
-    
+//public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible {
+//    var configuration: Configuration {
+//        Configuration(standard: PrismaStandard()) { }
+//    }
+//    
+//    public required init() {}
+//    
+//    @StandardActor var standard: PrismaStandard
+//    let prismaDelegate = PrismaDelegate()
+//    
+//    // how to access healthKit samples from Prisma Delegate if private
+//    public func createTogglesMapping() -> [String: Bool] {
+//        var togglesMapping: [String: Bool] = [:]
+//        let samples = prismaDelegate.getHealthKit()
+//        for sample in samples {
+//            let identifier = standard.getSampleIdentifier(sample)
+//            togglesMapping[identifier] = true
+//        }
+//        return togglesMapping
+//    }
+//    
+
 //    var sampleToToggleNameMapping: [String: Bool] = [
 //        getSampleIdentifier(HKSample): true,
 //        HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
