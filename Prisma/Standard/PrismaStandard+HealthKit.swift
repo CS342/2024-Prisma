@@ -58,7 +58,7 @@ extension PrismaStandard {
             print("Unknown sample type")
             return
         }
-
+        
 //        var sampleToToggleNameMapping: [HKQuantityType?: String] = [
 //            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned): "includeActiveEnergyBurned",
 //            HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",

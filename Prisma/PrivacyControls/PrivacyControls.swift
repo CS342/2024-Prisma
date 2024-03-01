@@ -22,18 +22,45 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
     
     public required init() {}
     
-    @StandardActor var standard: PrismaStandard
-    let prismaDelegate = PrismaDelegate()
+//    @StandardActor var standard: PrismaStandard
+//    let prismaDelegate = PrismaDelegate()
     
-    // how to access healthKit samples from Prisma Delegate if private
-    public func createTogglesMapping() -> [String: Bool] {
-        var togglesMapping: [String: Bool] = [:]
-        let samples = prismaDelegate.healthKit
+    // create the two dictionaries that would help us create:
+        // the Manage Data screen: a list of data categories
+        // the DeleteDataView specific to each category (would use the bool and the identifier to call getPath())
+
+    public var iconsMapping: [String: String] = 
+    [
+        "activeenergyburned" : "flame",
+        "distancewalkingrunning" : "figure.walk",
+        "heartrate" : "waveform.path.ecg.rectangle.fill",
+        "oxygensaturation": "drop.fill",
+        "respiratoryrate" : "lungs.fill",
+        "restingheartrate" : "arrow.down.heart.fill",
+        "stepcount" : "shoeprints.fill",
+        "vo2max" : "wind",
+        "walkingheartrateaverage" : "figure.step.training"
+    ]
+    
+    public var togglesMap: [String: Bool] = [:]
+    public func setTogglesMapToTrue() {
+        let samples =
+        [
+            "activeenergyburned",
+            "distancewalkingrunning",
+            "heartrate",
+            "oxygensaturation",
+            "respiratoryrate",
+            "restingheartrate",
+            "stepcount",
+            "vo2max",
+            "walkingheartrateaverage"
+        ]
+        
         for sample in samples {
-            let identifier = standard.getSampleIdentifier(sample)
-            togglesMapping[identifier] = true
+//            let identifier = standard.getSampleIdentifier(sample)
+            togglesMap[sample] = true
         }
-        return togglesMapping
     }
     
 //    var sampleToToggleNameMapping: [String: Bool] = [
