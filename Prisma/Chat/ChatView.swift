@@ -8,12 +8,15 @@
 
 import Firebase
 import Foundation
+import SpeziAccount
 import SwiftUI
 import WebKit
 
 struct ChatView: View {
     @Binding var presentingAccount: Bool
     @State private var token: String?
+    
+    @Environment(Account.self) private var account
 
     var body: some View {
         NavigationStack {
@@ -36,14 +39,20 @@ struct ChatView: View {
                     ProgressView()
                 }
             }
-            .task {
-                guard await ((try? self.signInWithFirebase()) != nil) else {
-                    print("Firebase Auth failed")
+            .onChange(of: account.signedIn) {
+                guard account.signedIn else {
                     return
                 }
                 
-                self.generateJWT { token in
-                    self.token = token
+                Task {
+                    try await self.signInWithFirebase()
+                }
+            }
+            .task {
+                do {
+                    try await self.signInWithFirebase()
+                } catch {
+                    print("Firebase Auth failed \(error)")
                 }
             }
         }
@@ -56,7 +65,7 @@ struct ChatView: View {
 
 extension ChatView {
     func signInWithFirebase() async throws {
-        try await Auth.auth().signIn(withCustomToken: token ?? "")
+        token = try await Auth.auth().currentUser?.getIDToken()
     }
     
     func generateJWT(completion: @escaping (String?) -> Void ) {
