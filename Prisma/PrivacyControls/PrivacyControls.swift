@@ -14,23 +14,8 @@ import Spezi
 import SwiftUI
 
 
-@Observable
 public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible {
-    var configuration: Configuration {
-        Configuration(standard: PrismaStandard()) { }
-    }
-    
-    public required init() {}
-    
-//    @StandardActor var standard: PrismaStandard
-//    let prismaDelegate = PrismaDelegate()
-    
-    // create the two dictionaries that would help us create:
-        // the Manage Data screen: a list of data categories
-        // the DeleteDataView specific to each category (would use the bool and the identifier to call getPath())
-
-    public var iconsMapping: [String: String] = 
-    [
+    public var iconsMapping: [String: String] = [
         "activeenergyburned": "flame",
         "distancewalkingrunning": "figure.walk",
         "heartrate": "waveform.path.ecg.rectangle.fill",
@@ -42,75 +27,94 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
         "walkingheartrateaverage": "figure.step.training"
     ]
     
-    public var togglesMap: [String: Bool] = [:]
-    public func setTogglesMapToTrue() {
-        let samples =
-        [
-            "activeenergyburned",
-            "distancewalkingrunning",
-            "heartrate",
-            "oxygensaturation",
-            "respiratoryrate",
-            "restingheartrate",
-            "stepcount",
-            "vo2max",
-            "walkingheartrateaverage"
-        ]
-        
-        for sample in samples {
-//            let identifier = standard.getSampleIdentifier(sample)
-            togglesMap[sample] = true
-        }
-    }
-//    var sampleToToggleNameMapping: [String: Bool] = [
-//        getSampleIdentifier(HKSample): true,
-//        HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
-//        HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
-//        HKQuantityType.quantityType(forIdentifier: .vo2Max): "includeVo2Max",
-//        HKQuantityType.quantityType(forIdentifier: .heartRate): "includeHeartRate",
-//        HKQuantityType.quantityType(forIdentifier: .restingHeartRate): "includeRestingHeartRate",
-//        HKQuantityType.quantityType(forIdentifier: .oxygenSaturation): "includeOxygenSaturation",
-//        HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
-//        HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
-//    ]
-        
+    public var togglesMap: [String: Bool] = [
+        "activeenergyburned": true,
+        "distancewalkingrunning": true,
+        "heartrate": true,
+        "oxygensaturation": true,
+        "respiratoryrate": true,
+        "restingheartrate": true,
+        "stepcount": true,
+        "vo2max": true,
+        "walkingheartrateaverage": true
+    ]
     
-//    public func getCurrentToggles() -> [String: Bool] {
-//        [
-//            "includeStepCountUpload": includeStepCountUpload,
-//            "includeActiveEnergyBurned": includeActiveEnergyBurned,
-//            "includeDistanceWalkingRunning": includeDistanceWalkingRunning,
-//            "includeVo2Max": includeVo2Max,
-//            "includeHeartRate": includeHeartRate,
-//            "includeRestingHeartRate": includeRestingHeartRate,
-//            "includeOxygenSaturation": includeOxygenSaturation,
-//            "includeRespiratoryRate": includeRespiratoryRate,
-//            "includeWalkingHRAverage": includeWalkingHRAverage
-//        ]
-//}
-//    public func getLastTimestamps(quantityType: String) async -> [String] {
-//        var path: String = ""
-//
-//        do {
-//            path = try await standard.getPath(module: .health(quantityType)) + "raw/"
-//        } catch {
-//            print("Error retrieving user document: \(error)")
-//        }
-//        
-//        var lastTimestampsArr: [String] = []
-//        
-//        do {
-//            let querySnapshot = try await Firestore.firestore().collection(path).getDocuments()
-//            for document in querySnapshot.documents {
-//                lastTimestampsArr.append(document.documentID)
-////                print("\(document.documentID) => \(document.data())")
-//            }
-//        } catch {
-//            print("Error getting documents: \(error)")
-//        }
-//        
-//        return lastTimestampsArr
-//    }
+    public struct DataCategoryItem {
+        var name: String
+        var iconName: String
+        var enabledStatus: String
+    }
+    var dataCategoryItems: [DataCategoryItem] = []
+    
+    public required init() {
+        dataCategoryItems = self.getDataCategoryItems()
+    }
+    
+    var configuration: Configuration {
+        Configuration(standard: PrismaStandard()) { }
+    }
+
+    public func getDataCategoryItems() -> [DataCategoryItem] {
+        var dataCategoryItems: [DataCategoryItem] = []
+        // loop through keys in dict and create a list of dataCategoryItem elements
+        for key in iconsMapping.keys {
+            dataCategoryItems.append(DataCategoryItem(name: key,
+                                                      iconName: (iconsMapping[key] ?? "unable to get icon string"), 
+                                                      enabledStatus: (togglesMap[key] ?? true) ? "Enabled" : "Disabled"))
+        }
+        return dataCategoryItems
+    }
+    
+    
+    //    var sampleToToggleNameMapping: [String: Bool] = [
+    //        getSampleIdentifier(HKSample): true,
+    //        HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
+    //        HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
+    //        HKQuantityType.quantityType(forIdentifier: .vo2Max): "includeVo2Max",
+    //        HKQuantityType.quantityType(forIdentifier: .heartRate): "includeHeartRate",
+    //        HKQuantityType.quantityType(forIdentifier: .restingHeartRate): "includeRestingHeartRate",
+    //        HKQuantityType.quantityType(forIdentifier: .oxygenSaturation): "includeOxygenSaturation",
+    //        HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
+    //        HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
+    //    ]
+    
+    
+    //    public func getCurrentToggles() -> [String: Bool] {
+    //        [
+    //            "includeStepCountUpload": includeStepCountUpload,
+    //            "includeActiveEnergyBurned": includeActiveEnergyBurned,
+    //            "includeDistanceWalkingRunning": includeDistanceWalkingRunning,
+    //            "includeVo2Max": includeVo2Max,
+    //            "includeHeartRate": includeHeartRate,
+    //            "includeRestingHeartRate": includeRestingHeartRate,
+    //            "includeOxygenSaturation": includeOxygenSaturation,
+    //            "includeRespiratoryRate": includeRespiratoryRate,
+    //            "includeWalkingHRAverage": includeWalkingHRAverage
+    //        ]
+    //}
+    //    public func getLastTimestamps(quantityType: String) async -> [String] {
+    //        var path: String = ""
+    //
+    //        do {
+    //            path = try await standard.getPath(module: .health(quantityType)) + "raw/"
+    //        } catch {
+    //            print("Error retrieving user document: \(error)")
+    //        }
+    //
+    //        var lastTimestampsArr: [String] = []
+    //
+    //        do {
+    //            let querySnapshot = try await Firestore.firestore().collection(path).getDocuments()
+    //            for document in querySnapshot.documents {
+    //                lastTimestampsArr.append(document.documentID)
+    ////                print("\(document.documentID) => \(document.data())")
+    //            }
+    //        } catch {
+    //            print("Error getting documents: \(error)")
+    //        }
+    //
+    //        return lastTimestampsArr
+    //    }
     
     
 }

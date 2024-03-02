@@ -46,7 +46,7 @@ struct HomeView: View {
                 .tabItem {
                     Label("CONTACTS_TAB_TITLE", systemImage: "person.fill")
                 }
-            DeleteDataView()
+            ManageDataView()
                 .tag(Tabs.privacy)
                 .tabItem {
                     Label("PRIVACY_CONTROLS_TITLE", systemImage: "gear")
