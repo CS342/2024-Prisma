@@ -19,7 +19,30 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
-class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDelegate, UNUserNotificationCenterDelegate, EnvironmentAccessible {
+class PrismaPushNotifications: NSObject, Module, NotificationHandler, MessagingDelegate, UNUserNotificationCenterDelegate, EnvironmentAccessible {
+    func handleNotificationAction(_ response: UNNotificationResponse) async {
+        <#code#>
+    }
+    
+    func receiveIncomingNotification(_ notification: UNNotification) async -> UNNotificationPresentationOptions? {
+        <#code#>
+    }
+    
+    /// Handle remote notification when the app is running in background. For now upload a timestamp of when received to firestore.
+    func receiveRemoteNotification(_ remoteNotification: [AnyHashable : Any]) async -> BackgroundFetchResult {
+        print(remoteNotification)
+        // get current time
+        let currentTime = Date().localISOFormat()
+        Task {
+            await standard.addNotificationReceivedTimestamp(timestamp: currentTime)
+        }
+        
+        // In the future, if different actions desired to be completed in the background based on notification data received,
+        // handle that functionality and return any of .newData, .noData, .failed. For now, no new data retrieved
+        // from the background fetch.
+        return BackgroundFetchResult.noData
+    }
+    
     @StandardActor var standard: PrismaStandard
     
     @Dependency private var configureFirebaseApp: ConfigureFirebaseApp
@@ -84,18 +107,18 @@ class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDele
     /// The system calls this method when Prisma is running either in the foreground or background. When a
     /// remote notification is received, we write a timestamp to the notification document in Firestore indicating that
     /// the notification was received.
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
-        print(userInfo)
-        // get current time
-        let currentTime = Date().localISOFormat()
-        Task {
-            await standard.addNotificationReceivedTimestamp(timestamp: currentTime)
-        }
-        
-        // In the future, if different actions desired to be completed in the background based on notification data received,
-        // handle that functionality and return any of .newData, .noData, .failed. For now, no new data retrieved
-        // from the background fetch.
-        return .noData
-    }
-
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
+//        print(userInfo)
+//        // get current time
+//        let currentTime = Date().localISOFormat()
+//        Task {
+//            await standard.addNotificationReceivedTimestamp(timestamp: currentTime)
+//        }
+//        
+//        // In the future, if different actions desired to be completed in the background based on notification data received,
+//        // handle that functionality and return any of .newData, .noData, .failed. For now, no new data retrieved
+//        // from the background fetch.
+//        return .noData
+//    }
+    
 }
