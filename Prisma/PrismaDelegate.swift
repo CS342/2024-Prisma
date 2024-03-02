@@ -53,6 +53,7 @@ class PrismaDelegate: SpeziAppDelegate {
             PrismaScheduler()
             OnboardingDataSource()
             PrismaPushNotifications()
+            PrivacyModule()
         }
     }
     
