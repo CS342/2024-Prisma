@@ -31,15 +31,15 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
 
     public var iconsMapping: [String: String] = 
     [
-        "activeenergyburned" : "flame",
-        "distancewalkingrunning" : "figure.walk",
-        "heartrate" : "waveform.path.ecg.rectangle.fill",
+        "activeenergyburned": "flame",
+        "distancewalkingrunning": "figure.walk",
+        "heartrate": "waveform.path.ecg.rectangle.fill",
         "oxygensaturation": "drop.fill",
-        "respiratoryrate" : "lungs.fill",
-        "restingheartrate" : "arrow.down.heart.fill",
-        "stepcount" : "shoeprints.fill",
-        "vo2max" : "wind",
-        "walkingheartrateaverage" : "figure.step.training"
+        "respiratoryrate": "lungs.fill",
+        "restingheartrate": "arrow.down.heart.fill",
+        "stepcount": "shoeprints.fill",
+        "vo2max": "wind",
+        "walkingheartrateaverage": "figure.step.training"
     ]
     
     public var togglesMap: [String: Bool] = [:]
