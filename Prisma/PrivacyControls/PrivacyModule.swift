@@ -39,7 +39,7 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
         "walkingheartrateaverage": true
     ]
     
-    public var identifierUIString: [String:String] = [
+    public var identifierUIString: [String: String] = [
         "activeenergyburned": "Active Energy Burned",
         "distancewalkingrunning": "Distance Walking Running",
         "heartrate": "Heart Rate",
@@ -70,9 +70,13 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
         var dataCategoryItems: [DataCategoryItem] = []
         // loop through keys in dict and create a list of dataCategoryItem elements
         for key in iconsMapping.keys {
-            dataCategoryItems.append(DataCategoryItem(name: key,
-                                                      iconName: (iconsMapping[key] ?? "unable to get icon string"), 
-                                                      enabledStatus: (togglesMap[key] ?? true) ? "Enabled" : "Disabled"))
+            dataCategoryItems.append(
+                DataCategoryItem(
+                    name: key,
+                    iconName: (iconsMapping[key] ?? "unable to get icon string"),
+                    enabledStatus: (togglesMap[key] ?? true) ? "Enabled" : "Disabled"
+                )
+            )
         }
         return dataCategoryItems
     }
@@ -103,7 +107,7 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
     //            "includeRespiratoryRate": includeRespiratoryRate,
     //            "includeWalkingHRAverage": includeWalkingHRAverage
     //        ]
-    //}
+    // }
     //    public func getLastTimestamps(quantityType: String) async -> [String] {
     //        var path: String = ""
     //

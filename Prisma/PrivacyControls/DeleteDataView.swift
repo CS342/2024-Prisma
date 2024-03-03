@@ -7,9 +7,10 @@
 
 import FirebaseFirestore
 import Foundation
-import SpeziHealthKit
 import Spezi
+import SpeziHealthKit
 import SwiftUI
+
 
 struct DeleteDataView: View {
     @Environment(PrivacyModule.self) private var privacyModule
@@ -24,6 +25,23 @@ struct DeleteDataView: View {
     var body: some View {
         // create a list of all the time stamps for this category
         NavigationView {
+            // Toggle corresponding to the proper data to exclude all data of this type
+            Form {
+                Section(header: Text("Allow to Read")) {
+                    Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
+                        get: {
+                            // Return the current value or a default value if the key does not exist
+                            self.privacyModule.togglesMap[self.categoryIdentifier] ?? false
+                        },
+                        set: { newValue in
+                            // Update the dictionary with the new value
+                            self.privacyModule.togglesMap[self.categoryIdentifier] = newValue
+                        }
+                    ))
+                }
+            }
+
+            
             List {
                 ForEach(timeArrayStatic, id: \.self) { timestamp in
                     Text(timestamp)
@@ -42,15 +60,14 @@ struct DeleteDataView: View {
         // loop through all the indices of items deleted
             // get correspoding timestamp from timestamp array with index
             // set the flag at that corresponding timestamp
-        for index in timestampIndices {
-            if timeArrayStatic.indices.contains(index) {
+        for index in timestampIndices where timeArrayStatic.indices.contains(index) {
                 Task {
                     await standard.addDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timeArrayStatic[index])
                 }
             }
         }
     }
-}
+
 
 #Preview {
     DeleteDataView(categoryIdentifier: "Example Preview: DeleteDataView")

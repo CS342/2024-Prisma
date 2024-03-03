@@ -75,7 +75,7 @@ class PrismaDelegate: SpeziAppDelegate {
     private var healthKit: HealthKit {
         HealthKit {
             CollectSamples(
-            /// https://developer.apple.com/documentation/healthkit/data_types#2939032
+            // https://developer.apple.com/documentation/healthkit/data_types#2939032
                 [
                     // Activity
                     HKQuantityType(.stepCount),
