@@ -12,28 +12,24 @@ struct ManageDataView: View {
     var body: some View {
         NavigationView {
             List(privacyModule.dataCategoryItems, id: \.name) { item in
-                Text(item.name)
-                // DeleteDataView(item: item.name)
-//                NavigationLink(destination: DeleteDataView()) {
-//                    HStack {
-//                        Image(systemName: item.iconName.wrappedValue)
-//                            .resizable()
-//                            .frame(width: 40, height: 40)
-//                            .padding(.trailing, 8)
-//                            .accessibility(label: Text("accessibility text temp"))
-//                        
-//                        VStack(alignment: .leading) {
-//                            Text(item.iconName.wrappedValue)
-//                                .font(.headline)
-//                            Text(item.enabledStatus.wrappedValue)
-//                                .font(.subheadline)
-//                                .foregroundColor(.gray)
-//                        }
-//                    }
-//                    .padding(.vertical, 4)
-//                }
+                NavigationLink(destination: DeleteDataView(categoryIdentifier: item.name)) {
+                    HStack(alignment: .center, spacing: 10) {
+                        Image(systemName: item.iconName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 35, height: 35)
+                            .accessibility(label: Text("accessibility text temp"))
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(privacyModule.identifierUIString[item.name] ?? "Identifier UI String Not Found")
+                                .font(.headline)
+                            Text(item.enabledStatus)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
             }
-            .navigationTitle("Manage All Data")
+            .navigationTitle("Manage Data")
         }
     }
 }

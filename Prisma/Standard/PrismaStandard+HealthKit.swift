@@ -120,17 +120,12 @@ extension PrismaStandard {
     
     func remove(sample: HKDeletedObject) async { }
     
-    func addDeleteFlag(selectedQuantityType: HKQuantityType, timestamp: String) async {
+    func addDeleteFlag(selectedTypeIdentifier: String, timestamp: String) async {
         let path: String
         
         do {
-            // protect against nil values for the quantityType identifier
-            guard let identifier = HKQuantityType.quantityType(forIdentifier: .stepCount)?.identifier else {
-                print("Error: Quantity type identifier is nil.")
-                return
-            }
             // call getPath to get the path for this user, up until this specific quantityType
-            path = try await getPath(module: .health(identifier)) + "/raw/\(timestamp)"
+            path = try await getPath(module: .health(selectedTypeIdentifier)) + "/raw/\(timestamp)"
 
             print("PATH FROM GET PATH: " + path)
         } catch {

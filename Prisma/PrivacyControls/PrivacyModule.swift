@@ -18,7 +18,7 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
     public var iconsMapping: [String: String] = [
         "activeenergyburned": "flame",
         "distancewalkingrunning": "figure.walk",
-        "heartrate": "waveform.path.ecg.rectangle.fill",
+        "heartrate": "waveform.path.ecg",
         "oxygensaturation": "drop.fill",
         "respiratoryrate": "lungs.fill",
         "restingheartrate": "arrow.down.heart.fill",
@@ -37,6 +37,18 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
         "stepcount": true,
         "vo2max": true,
         "walkingheartrateaverage": true
+    ]
+    
+    public var identifierUIString: [String:String] = [
+        "activeenergyburned": "Active Energy Burned",
+        "distancewalkingrunning": "Distance Walking Running",
+        "heartrate": "Heart Rate",
+        "oxygensaturation": "Oxygen Saturation",
+        "respiratoryrate": "Respiratory Rate",
+        "restingheartrate": "Resting Heart Rate",
+        "stepcount": "Step Count",
+        "vo2max": "VO2 Max",
+        "walkingheartrateaverage": "Walking Heart Rate Average"
     ]
     
     public struct DataCategoryItem {

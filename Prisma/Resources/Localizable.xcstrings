@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "accessibility text temp" : {
+
+    },
     "ACCOUNT_NEXT" : {
       "localizations" : {
         "en" : {
@@ -75,9 +78,6 @@
           }
         }
       }
-    },
-    "All Recorded Data" : {
-
     },
     "Chat" : {
 
@@ -337,7 +337,7 @@
         }
       }
     },
-    "Manage All Data" : {
+    "Manage Data" : {
 
     },
     "MATTHEW_JOERKE_BIO" : {
