@@ -125,8 +125,8 @@ extension PrismaStandard {
         
         do {
             // call getPath to get the path for this user, up until this specific quantityType
-            path = try await getPath(module: .health(selectedTypeIdentifier)) + "/raw/\(timestamp)"
-
+            path = try await getPath(module: .health(selectedTypeIdentifier)) + "raw/\(timestamp)"
+            print("selectedindentifier:" + selectedTypeIdentifier)
             print("PATH FROM GET PATH: " + path)
         } catch {
             print("Failed to define path: \(error.localizedDescription)")

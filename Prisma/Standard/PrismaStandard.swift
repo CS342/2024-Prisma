@@ -93,7 +93,7 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
             // HealthKit observations
             moduleText = "\(module.description)/\(type.healthKitDescription)"
         }
-        
+        print("moduleText:" + moduleText)
         // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
         return "studies/\(PrismaStandard.STUDYID)/users/\(accountId)/\(moduleText)/"
     }

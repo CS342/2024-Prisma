@@ -24,8 +24,8 @@ struct DeleteDataView: View {
     
     var body: some View {
         // create a list of all the time stamps for this category
-        NavigationView {
-            // Toggle corresponding to the proper data to exclude all data of this type
+        // get rid of spacing once we insert custom time range
+        VStack(spacing: -400) {
             Form {
                 Section(header: Text("Allow to Read")) {
                     Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
@@ -40,21 +40,26 @@ struct DeleteDataView: View {
                     ))
                 }
             }
-
-            
-            List {
-                ForEach(timeArrayStatic, id: \.self) { timestamp in
-                    Text(timestamp)
+            NavigationView {
+                // Toggle corresponding to the proper data to exclude all data of this type
+                List {
+                    Section(header: Text("Delete by time")) {
+                        ForEach(timeArrayStatic, id: \.self) { timestamp in
+                            Text(timestamp)
+                        }
+                        // on delete, remove it on the UI and set flag in firebase
+                        .onDelete { indices in
+                            timeArrayStatic.remove(atOffsets: indices)
+                            deleteInBackend(identifier: categoryIdentifier, timestampIndices: indices)
+                        }
+                    }
                 }
-                // on delete, remove it on the UI and set flag in firebase
-                .onDelete { indices in
-                    timeArrayStatic.remove(atOffsets: indices)
-                    deleteInBackend(identifier: categoryIdentifier, timestampIndices: indices)
-                }
+                .padding(.top, -40)
+                .navigationBarItems(trailing: EditButton())
             }
-            .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
-            .navigationBarItems(trailing: EditButton())
         }
+        .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
+        
     }
     func deleteInBackend(identifier: String, timestampIndices: IndexSet) {
         // loop through all the indices of items deleted
