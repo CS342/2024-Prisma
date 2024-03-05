@@ -98,21 +98,6 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
         return "studies/\(PrismaStandard.STUDYID)/users/\(accountId)/\(moduleText)/"
     }
     
-    // getPath for specific user up until the specific module
-    func userCustomGetPath(moduleText: String) async throws -> String {
-        let accountId: String
-        if mockWebService != nil {
-            accountId = "USER_ID"
-        } else {
-            guard let details = await account.details else {
-                throw PrismaStandardError.userNotAuthenticatedYet
-            }
-            accountId = details.accountId
-        }
-        // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
-        return "studies/\(PrismaStandard.STUDYID)/users/\(accountId)/\(moduleText)"
-    }
-    
     func deletedAccount() async throws {
         // delete all user associated data
         do {
