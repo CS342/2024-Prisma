@@ -13,7 +13,7 @@ import SwiftUI
 
 
 struct ToggleTestView: View {
-   @Bindable var privacyModule = PrivacyModule()
+ //  @Bindable var privacyModule = PrivacyModule()
 
     
     var body: some View {

@@ -10,12 +10,14 @@
 //  SPDX-License-Identifier: MIT
 
 import Foundation
+import HealthKit
 import Spezi
 import SwiftUI
 
 
-public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible {
-    public var iconsMapping: [String: String] = [
+public class PrivacyModule: Module, EnvironmentAccessible {
+    public var iconsMapping: [String: String] = 
+    [
         "activeenergyburned": "flame",
         "distancewalkingrunning": "figure.walk",
         "heartrate": "waveform.path.ecg",
@@ -56,9 +58,14 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
         var iconName: String
         var enabledStatus: String
     }
-    var dataCategoryItems: [DataCategoryItem] = []
+    var dataCategoryItems: [DataCategoryItem] = [];
     
-    public required init() {
+    var sampleTypeList: [HKSampleType]
+    
+    @StandardActor var standard: PrismaStandard
+    
+    public required init(sampleTypeList: [HKSampleType]) {
+        self.sampleTypeList = sampleTypeList
         dataCategoryItems = self.getDataCategoryItems()
     }
     
@@ -79,6 +86,16 @@ public class PrivacyModule: Module, DefaultInitializable, EnvironmentAccessible 
             )
         }
         return dataCategoryItems
+    }
+    
+    public func getHKSampleTypeMappings() async{
+        var toggleMapUpdated: [String: Bool] = [:]
+
+        for sampleType in sampleTypeList {
+            let identifier = await standard.getSampleIdentifierFromHKSampleType(sampleType: sampleType)
+            toggleMapUpdated[identifier ?? "Unidentified Sample Type"] = true
+        }
+
     }
     
     

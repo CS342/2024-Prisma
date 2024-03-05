@@ -47,6 +47,22 @@ extension PrismaStandard {
         }
     }
     
+    public func getSampleIdentifierFromHKSampleType(sampleType: HKSampleType) -> String? {
+        if let quantityType = sampleType as? HKQuantityType {
+            return quantityType.identifier
+        }
+        else if let categoryType = sampleType as? HKCategoryType {
+            return categoryType.identifier
+        }
+        else if sampleType is HKWorkoutType {
+            return "workout"
+        }
+        // Default case for other HKSampleTypes
+        else {
+            return "Unknown Sample Type"
+        }
+    }
+    
     /// Adds a new `HKSample` to the Firestore.
     /// - Parameter response: The `HKSample` that should be added.
     func add(sample: HKSample) async {
