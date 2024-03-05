@@ -47,14 +47,17 @@ extension PrismaStandard {
         }
     }
     
+    /// Takes in HKSampleType and returns the corresponding identifier string
+    ///
+    /// - Parameters:
+    ///   - sampleType: HKSampleType to find identifier for
+    /// - Returns: A string for the sample type identifier.
     public func getSampleIdentifierFromHKSampleType(sampleType: HKSampleType) -> String? {
         if let quantityType = sampleType as? HKQuantityType {
             return quantityType.identifier
-        }
-        else if let categoryType = sampleType as? HKCategoryType {
+        } else if let categoryType = sampleType as? HKCategoryType {
             return categoryType.identifier
-        }
-        else if sampleType is HKWorkoutType {
+        } else if sampleType is HKWorkoutType {
             return "workout"
         }
         // Default case for other HKSampleTypes

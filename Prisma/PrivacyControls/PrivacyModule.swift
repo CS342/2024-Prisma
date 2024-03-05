@@ -1,4 +1,12 @@
 //
+// This source file is part of the Stanford Prisma Application based on the Stanford Spezi Template Application project
+//
+// SPDX-FileCopyrightText: 2023 Stanford University
+//
+// SPDX-License-Identifier: MIT
+//
+
+
 //  PrivacyControls.swift
 //  Prisma
 //
@@ -16,8 +24,13 @@ import SwiftUI
 
 
 public class PrivacyModule: Module, EnvironmentAccessible {
-    public var iconsMapping: [String: String] = 
-    [
+    public struct DataCategoryItem {
+        var name: String
+        var iconName: String
+        var enabledStatus: String
+    }
+    
+    public var iconsMapping: [String: String] = [
         "activeenergyburned": "flame",
         "distancewalkingrunning": "figure.walk",
         "heartrate": "waveform.path.ecg",
@@ -52,21 +65,15 @@ public class PrivacyModule: Module, EnvironmentAccessible {
         "vo2max": "VO2 Max",
         "walkingheartrateaverage": "Walking Heart Rate Average"
     ]
-    
-    public struct DataCategoryItem {
-        var name: String
-        var iconName: String
-        var enabledStatus: String
-    }
-    var dataCategoryItems: [DataCategoryItem] = [];
-    
+
+    var dataCategoryItems: [DataCategoryItem] = []
     var sampleTypeList: [HKSampleType]
     
     @StandardActor var standard: PrismaStandard
     
     public required init(sampleTypeList: [HKSampleType]) {
         self.sampleTypeList = sampleTypeList
-        dataCategoryItems = self.getDataCategoryItems()
+        self.dataCategoryItems = self.getDataCategoryItems()
     }
     
     var configuration: Configuration {
@@ -74,7 +81,6 @@ public class PrivacyModule: Module, EnvironmentAccessible {
     }
 
     public func getDataCategoryItems() -> [DataCategoryItem] {
-        var dataCategoryItems: [DataCategoryItem] = []
         // make dictionary into alphabetically sorted array of key-value tuples
         let sortedDataCategoryItems = identifierUIString.sorted { $0.key < $1.key }
         for dataCategoryPair in sortedDataCategoryItems {
@@ -89,66 +95,13 @@ public class PrivacyModule: Module, EnvironmentAccessible {
         return dataCategoryItems
     }
     
-    public func getHKSampleTypeMappings() async{
+    public func getHKSampleTypeMappings() async {
         var toggleMapUpdated: [String: Bool] = [:]
 
         for sampleType in sampleTypeList {
             let identifier = await standard.getSampleIdentifierFromHKSampleType(sampleType: sampleType)
             toggleMapUpdated[identifier ?? "Unidentified Sample Type"] = true
         }
-
     }
-    
-    
-    //    var sampleToToggleNameMapping: [String: Bool] = [
-    //        getSampleIdentifier(HKSample): true,
-    //        HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
-    //        HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
-    //        HKQuantityType.quantityType(forIdentifier: .vo2Max): "includeVo2Max",
-    //        HKQuantityType.quantityType(forIdentifier: .heartRate): "includeHeartRate",
-    //        HKQuantityType.quantityType(forIdentifier: .restingHeartRate): "includeRestingHeartRate",
-    //        HKQuantityType.quantityType(forIdentifier: .oxygenSaturation): "includeOxygenSaturation",
-    //        HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
-    //        HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
-    //    ]
-    
-    
-    //    public func getCurrentToggles() -> [String: Bool] {
-    //        [
-    //            "includeStepCountUpload": includeStepCountUpload,
-    //            "includeActiveEnergyBurned": includeActiveEnergyBurned,
-    //            "includeDistanceWalkingRunning": includeDistanceWalkingRunning,
-    //            "includeVo2Max": includeVo2Max,
-    //            "includeHeartRate": includeHeartRate,
-    //            "includeRestingHeartRate": includeRestingHeartRate,
-    //            "includeOxygenSaturation": includeOxygenSaturation,
-    //            "includeRespiratoryRate": includeRespiratoryRate,
-    //            "includeWalkingHRAverage": includeWalkingHRAverage
-    //        ]
-    // }
-    //    public func getLastTimestamps(quantityType: String) async -> [String] {
-    //        var path: String = ""
-    //
-    //        do {
-    //            path = try await standard.getPath(module: .health(quantityType)) + "raw/"
-    //        } catch {
-    //            print("Error retrieving user document: \(error)")
-    //        }
-    //
-    //        var lastTimestampsArr: [String] = []
-    //
-    //        do {
-    //            let querySnapshot = try await Firestore.firestore().collection(path).getDocuments()
-    //            for document in querySnapshot.documents {
-    //                lastTimestampsArr.append(document.documentID)
-    ////                print("\(document.documentID) => \(document.data())")
-    //            }
-    //        } catch {
-    //            print("Error getting documents: \(error)")
-    //        }
-    //
-    //        return lastTimestampsArr
-    //    }
-    
     
 }
