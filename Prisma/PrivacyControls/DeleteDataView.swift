@@ -49,8 +49,9 @@ struct DeleteDataView: View {
                         }
                         // on delete, remove it on the UI and set flag in firebase
                         .onDelete { indices in
+                            let timestampsToDelete = indices.map { timeArrayStatic[$0] }
+                            deleteInBackend(identifier: categoryIdentifier, timestamps: timestampsToDelete)
                             timeArrayStatic.remove(atOffsets: indices)
-                            deleteInBackend(identifier: categoryIdentifier, timestampIndices: indices)
                         }
                     }
                 }
@@ -59,19 +60,16 @@ struct DeleteDataView: View {
             }
         }
         .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
-        
     }
-    func deleteInBackend(identifier: String, timestampIndices: IndexSet) {
-        // loop through all the indices of items deleted
-            // get correspoding timestamp from timestamp array with index
-            // set the flag at that corresponding timestamp
-        for index in timestampIndices where timeArrayStatic.indices.contains(index) {
-                Task {
-                    await standard.addDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timeArrayStatic[index])
-                }
+    
+    func deleteInBackend(identifier: String, timestamps: [String]) {
+        for timestamp in timestamps {
+            Task {
+                await standard.addDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
             }
         }
     }
+}
 
 
 #Preview {

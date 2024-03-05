@@ -21,7 +21,8 @@ extension String {
         for prefix in prefixes where self.hasPrefix(prefix) {
             return self.dropFirst(prefix.count).lowercased()
         }
-        return "unknown"
+        // return "unknown"
+        return self
     }
 }
 
