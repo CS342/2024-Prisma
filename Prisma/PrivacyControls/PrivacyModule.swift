@@ -75,13 +75,14 @@ public class PrivacyModule: Module, EnvironmentAccessible {
 
     public func getDataCategoryItems() -> [DataCategoryItem] {
         var dataCategoryItems: [DataCategoryItem] = []
-        // loop through keys in dict and create a list of dataCategoryItem elements
-        for key in iconsMapping.keys {
+        // make dictionary into alphabetically sorted array of key-value tuples
+        let sortedDataCategoryItems = identifierUIString.sorted { $0.key < $1.key }
+        for dataCategoryPair in sortedDataCategoryItems {
             dataCategoryItems.append(
                 DataCategoryItem(
-                    name: key,
-                    iconName: (iconsMapping[key] ?? "unable to get icon string"),
-                    enabledStatus: (togglesMap[key] ?? true) ? "Enabled" : "Disabled"
+                    name: dataCategoryPair.0,
+                    iconName: (iconsMapping[dataCategoryPair.0] ?? "unable to get icon string"),
+                    enabledStatus: (togglesMap[dataCategoryPair.0] ?? true) ? "Enabled" : "Disabled"
                 )
             )
         }
