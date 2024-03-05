@@ -68,18 +68,26 @@ public class PrivacyModule: Module, EnvironmentAccessible {
 
     var dataCategoryItems: [DataCategoryItem] = []
     var sampleTypeList: [HKSampleType]
+    var toggleMapUpdated: [String: Bool] = [:]
     
     @StandardActor var standard: PrismaStandard
     
-    public required init(sampleTypeList: [HKSampleType]) {
-        self.sampleTypeList = sampleTypeList
-        self.dataCategoryItems = self.getDataCategoryItems()
-    }
     
     var configuration: Configuration {
         Configuration(standard: PrismaStandard()) { }
     }
 
+    public required init(sampleTypeList: [HKSampleType]) {
+        self.sampleTypeList = sampleTypeList
+        self.dataCategoryItems = self.getDataCategoryItems()
+    }
+    
+    public func configure() {
+        Task {
+            toggleMapUpdated = await getHKSampleTypeMappings()
+        }
+    }
+    
     public func getDataCategoryItems() -> [DataCategoryItem] {
         // make dictionary into alphabetically sorted array of key-value tuples
         let sortedDataCategoryItems = identifierUIString.sorted { $0.key < $1.key }
@@ -95,13 +103,13 @@ public class PrivacyModule: Module, EnvironmentAccessible {
         return dataCategoryItems
     }
     
-    public func getHKSampleTypeMappings() async {
+    public func getHKSampleTypeMappings() async -> [String: Bool] {
         var toggleMapUpdated: [String: Bool] = [:]
 
         for sampleType in sampleTypeList {
             let identifier = await standard.getSampleIdentifierFromHKSampleType(sampleType: sampleType)
             toggleMapUpdated[identifier ?? "Unidentified Sample Type"] = true
         }
+        return toggleMapUpdated
     }
-    
 }

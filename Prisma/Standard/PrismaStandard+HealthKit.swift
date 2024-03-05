@@ -38,8 +38,8 @@ extension PrismaStandard {
             return quantitySample.quantityType.identifier
         case let categorySample as HKCategorySample:
             return categorySample.categoryType.identifier
-        case let workout as HKWorkout:
-            //  return "\(workout.workoutActivityType)"
+        case is HKWorkout:
+            //  return "\lcal(workout.workoutActivityType)"
             return "workout"
         // Add more cases for other HKSample subclasses if needed
         default:
