@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "accessibility text temp" : {
+
+    },
     "ACCOUNT_NEXT" : {
       "localizations" : {
         "en" : {
@@ -76,7 +79,7 @@
         }
       }
     },
-    "chat" : {
+    "Allow to Read" : {
 
     },
     "Chat" : {
@@ -151,6 +154,9 @@
       }
     },
     "Currently there are no surveys available, you will be notified about upcoming surveys." : {
+
+    },
+    "Delete by time" : {
 
     },
     "EMMA_BRUNSKILL_BIO" : {
@@ -314,32 +320,7 @@
         }
       }
     },
-    "Invalid URL" : {},
-    "Include Active Energy Burned" : {
-
-    },
-    "Include Distance Walking Running" : {
-
-    },
-    "Include Heart Rate" : {
-
-    },
-    "Include Oxygen Saturation" : {
-
-    },
-    "Include Respiratory Rate" : {
-
-    },
-    "Include Resting Heart Rate" : {
-
-    },
-    "Include Step Count Upload" : {
-
-    },
-    "Include Vo2 Max" : {
-
-    },
-    "Include Walking Heart Rate Average" : {
+    "Invalid URL" : {
 
     },
     "JAMES_LANDAY_BIO" : {
@@ -361,6 +342,9 @@
           }
         }
       }
+    },
+    "Manage Data" : {
+
     },
     "MATTHEW_JOERKE_BIO" : {
 
@@ -468,8 +452,17 @@
         }
       }
     },
-    "Privacy Settings" : {
-
+    "PRIVACY_CONTROLS_TITLE" : {
+      "comment" : "MARK: - Privacy Controls",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Controls"
+          }
+        }
+      }
     },
     "PROJECT_LICENSE_DESCRIPTION" : {
       "localizations" : {
