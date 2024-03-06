@@ -96,11 +96,11 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
                 // notifications for user
                 moduleText = "\(module.description)/\(timestamp)"
         }
-        
+        print("moduleText:" + moduleText)
         // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
         return "studies/\(PrismaStandard.STUDYID)/users/\(accountId)/\(moduleText)/"
     }
-
+    
     func deletedAccount() async throws {
         // delete all user associated data
         do {
