@@ -18,8 +18,6 @@ struct NotificationPermissions: View {
     
     @State private var notificationProcessing = false
     
-    @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
-    
     
     var body: some View {
         OnboardingView(

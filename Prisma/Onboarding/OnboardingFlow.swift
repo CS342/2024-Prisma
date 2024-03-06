@@ -19,7 +19,6 @@ struct OnboardingFlow: View {
     @Environment(PrismaScheduler.self) private var scheduler
 
     @AppStorage(StorageKeys.onboardingFlowComplete) private var completedOnboardingFlow = false
-    @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
     
     
     private var healthKitAuthorization: Bool {
@@ -44,9 +43,7 @@ struct OnboardingFlow: View {
             if HKHealthStore.isHealthDataAvailable() && !healthKitAuthorization {
                 HealthKitPermissions()
             }
-            if !pushNotificationsAllowed {
-                NotificationPermissions()
-            }
+            NotificationPermissions()
         }
             .interactiveDismissDisabled(!completedOnboardingFlow)
     }
