@@ -17,7 +17,7 @@ extension PrismaStandard {
     ///
     /// - Parameter timestamp: The time which the notification was received by the device
     func addNotificationReceivedTimestamp(timestamp: String) async {
-        // path = user_id/notifications/YYYY-MM-DDThh:mm:ss.mss
+        // path = user_id/notifications/data/logs/YYYY-MM-DDThh:mm:ss.mss
         let path: String
         do {
             path = try await getPath(module: .notifications(timestamp))

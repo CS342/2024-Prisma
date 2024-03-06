@@ -105,10 +105,10 @@ class PrismaDelegate: SpeziAppDelegate {
     /// We assign the APNs token received from Apple to the apnsToken property of the
     /// Messaging class provided by the Firebase SDK. Firebase uses this token to communicate with
     /// APNs and send notifications to the device.
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-        Messaging.messaging().apnsToken = deviceToken
-    }
+//    override func application(
+//        _ application: UIApplication,
+//        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+//    ) {
+//        Messaging.messaging().apnsToken = deviceToken
+//    }
 }

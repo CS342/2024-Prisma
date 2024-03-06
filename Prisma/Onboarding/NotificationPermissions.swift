@@ -49,7 +49,7 @@ struct NotificationPermissions: View {
                             if ProcessInfo.processInfo.isPreviewSimulator {
                                 try await _Concurrency.Task.sleep(for: .seconds(5))
                             } else {
-                                try await pushNotifications.requestNotificationAuthorization()
+                                try await pushNotifications.handleNotificationsAllowed()
                             }
                         } catch {
                             print("Could not request notification permissions.")

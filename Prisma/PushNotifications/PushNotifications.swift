@@ -19,36 +19,16 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
-class PrismaPushNotifications: NSObject, Module, NotificationHandler, MessagingDelegate, UNUserNotificationCenterDelegate, EnvironmentAccessible {
-    func handleNotificationAction(_ response: UNNotificationResponse) async {
-        <#code#>
-    }
-    
-    func receiveIncomingNotification(_ notification: UNNotification) async -> UNNotificationPresentationOptions? {
-        <#code#>
-    }
-    
-    /// Handle remote notification when the app is running in background. For now upload a timestamp of when received to firestore.
-    func receiveRemoteNotification(_ remoteNotification: [AnyHashable : Any]) async -> BackgroundFetchResult {
-        print(remoteNotification)
-        // get current time
-        let currentTime = Date().localISOFormat()
-        Task {
-            await standard.addNotificationReceivedTimestamp(timestamp: currentTime)
-        }
-        
-        // In the future, if different actions desired to be completed in the background based on notification data received,
-        // handle that functionality and return any of .newData, .noData, .failed. For now, no new data retrieved
-        // from the background fetch.
-        return BackgroundFetchResult.noData
-    }
-    
+class PrismaPushNotifications: NSObject, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
+                               UNUserNotificationCenterDelegate, EnvironmentAccessible {
+    @Application(\.registerRemoteNotifications)
+    var registerRemoteNotifications
+
     @StandardActor var standard: PrismaStandard
     
     @Dependency private var configureFirebaseApp: ConfigureFirebaseApp
     
     @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
-    
     
     override init() {}
     
@@ -57,19 +37,67 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, MessagingD
         Messaging.messaging().delegate = self
     }
     
-    
-    /// Prompts the user to allow notifications on their device, storing that result on disk to reference on app startup.
-    func requestNotificationAuthorization() async throws {
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        // prompt the user to allow notifications
-        if try await UNUserNotificationCenter.current().requestAuthorization(options: authOptions) {
-            self.pushNotificationsAllowed = true
-            // Generate apns token, triggers didRegisterForRemoteNotificationsWithDeviceToken()
-            await UIApplication.shared.registerForRemoteNotifications()
-        } else {
-            self.pushNotificationsAllowed = false
-        }
+    ///
+    func handleNotificationsAllowed() async throws {
+        let deviceToken = try await registerRemoteNotifications()
+        print("APNS registration token: \(String(describing: deviceToken))")
+//
+//        let tokenDict: [String: Data] = ["apns_token": deviceToken ?? ""]
+//        NotificationCenter.default.post(
+//            name: Notification.Name("FCMToken"),
+//            object: nil,
+//            userInfo: tokenDict
+//        )
+        
+//        await standard.storeToken(token: deviceToken)
+        
     }
+    
+    func receiveUpdatedDeviceToken(_ deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    
+    func receiveRemoteNotification(_ remoteNotification: [AnyHashable : Any]) async -> BackgroundFetchResult {
+        .noData
+    }
+    
+    func receiveIncomingNotification(_ notification: UNNotification) async -> UNNotificationPresentationOptions? {
+        nil
+    }
+    
+    func handleNotificationAction(_ response: UNNotificationResponse) async {
+        print("...")
+    }
+    
+    
+//    /// Handle remote notification when the app is running in background. For now uploads a timestamp of when notification received to firestore.
+//    func receiveRemoteNotification(_ remoteNotification: [AnyHashable : Any]) async -> BackgroundFetchResult {
+//        print(remoteNotification)
+//        // get current time and upload to firestore
+//        //        let currentTime = Date().toISOFormat()
+//        //        Task {
+//        //            await standard.addNotificationReceivedTimestamp(timestamp: currentTime)
+//        //        }
+//        //
+//        //        // In the future, if different actions desired to be completed in the background based on notification data received,
+//        //        // handle that functionality and return any of .newData, .noData, .failed. For now, no new data retrieved
+//        //        // from the background fetch.
+//        return BackgroundFetchResult.noData
+//    }
+    
+//    func handleNotificationAction(_ response: UNNotificationResponse) async {
+//        print("handleNotifAction")
+//    }
+//    
+//    
+//    func receiveIncomingNotification(_ notification: UNNotification) async -> UNNotificationPresentationOptions? {
+//        return [.badge, .banner, .sound, .list]
+//    }
+    
+    
+    
+    
     
     
     /// This function listens for token refreshes and updates the specific user token to Firestore.
@@ -80,26 +108,25 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, MessagingD
     /// - the user uninstalls/reinstall the app
     /// - the user clears app data.
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        if pushNotificationsAllowed {
-            print("Firebase registration token: \(String(describing: fcmToken))")
-            
-            let tokenDict: [String: String] = ["apns_token": fcmToken ?? ""]
-            NotificationCenter.default.post(
-                name: Notification.Name("FCMToken"),
-                object: nil,
-                userInfo: tokenDict
-            )
-            
-            // Update the token in Firestore:
-            
-            // The standard is an actor, which protects against data races and conforms to
-            // immutable data practice
-            
-            // get into new asynchronous context and execute
-            Task {
-                await standard.storeToken(token: fcmToken)
-            }
+        
+        print("Firebase registration token: \(String(describing: fcmToken))")
+        let tokenDict: [String: String] = ["apns_token": fcmToken ?? ""]
+        NotificationCenter.default.post(
+            name: Notification.Name("FCMToken"),
+            object: nil,
+            userInfo: tokenDict
+        )
+        
+        // Update the token in Firestore:
+        
+        // The standard is an actor, which protects against data races and conforms to
+        // immutable data practice
+        
+        // get into new asynchronous context and execute
+        Task {
+            await standard.storeToken(token: fcmToken)
         }
+        
     }
     
     
