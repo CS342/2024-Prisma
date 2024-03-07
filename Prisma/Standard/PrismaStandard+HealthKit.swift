@@ -182,15 +182,15 @@ extension PrismaStandard {
             print("Path from getPath: " + path)
             
             let querySnapshot = try await firestore.collection(path)
-                .order(by: "effectiveDateTime", descending: false)
+                .order(by: FieldPath.documentID(), descending: false)
                 .limit(to: 10)
                 .getDocuments()
 
             for document in querySnapshot.documents {
-                if let timestamp = document.get("effectiveDateTime") as? String {
-                    timestampsArr.append(timestamp)
-                }
+                timestampsArr.append(document.documentID)
             }
+            // timestampsArr = querySnapshot.documents.map { $0.documentID }
+            
             return timestampsArr
         } catch {
             print("Failed to fetch documents or define path: \(error.localizedDescription)")
