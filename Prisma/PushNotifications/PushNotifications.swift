@@ -19,12 +19,11 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
-class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDelegate, UNUserNotificationCenterDelegate, EnvironmentAccessible {
+class PrismaPushNotifications: NSObject, Module, NotificationTokenHandler, MessagingDelegate,
+                               UNUserNotificationCenterDelegate, EnvironmentAccessible {
+    @Application(\.registerRemoteNotifications) var registerRemoteNotifications
     @StandardActor var standard: PrismaStandard
-    
     @Dependency private var configureFirebaseApp: ConfigureFirebaseApp
-    
-    @AppStorage(StorageKeys.pushNotificationsAllowed) var pushNotificationsAllowed = false
     
     
     override init() {}
@@ -34,20 +33,17 @@ class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDele
         Messaging.messaging().delegate = self
     }
     
-    
-    /// Prompts the user to allow notifications on their device, storing that result on disk to reference on app startup.
-    func requestNotificationAuthorization() async throws {
+    func handleNotificationsAllowed() async throws {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         // prompt the user to allow notifications
         if try await UNUserNotificationCenter.current().requestAuthorization(options: authOptions) {
-            self.pushNotificationsAllowed = true
-            // Generate apns token, triggers didRegisterForRemoteNotificationsWithDeviceToken()
-            await UIApplication.shared.registerForRemoteNotifications()
-        } else {
-            self.pushNotificationsAllowed = false
+            try await registerRemoteNotifications()
         }
     }
     
+    func receiveUpdatedDeviceToken(_ deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
     
     /// This function listens for token refreshes and updates the specific user token to Firestore.
     /// This callback is fired at each app startup and whenever a new token is generated.
@@ -57,25 +53,11 @@ class PrismaPushNotifications: NSObject, Module, LifecycleHandler, MessagingDele
     /// - the user uninstalls/reinstall the app
     /// - the user clears app data.
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        if pushNotificationsAllowed {
-            print("Firebase registration token: \(String(describing: fcmToken))")
-            
-            let tokenDict: [String: String] = ["apns_token": fcmToken ?? ""]
-            NotificationCenter.default.post(
-                name: Notification.Name("FCMToken"),
-                object: nil,
-                userInfo: tokenDict
-            )
-            
-            // Update the token in Firestore:
-            
-            // The standard is an actor, which protects against data races and conforms to
-            // immutable data practice
-            
-            // get into new asynchronous context and execute
-            Task {
-                await standard.storeToken(token: fcmToken)
-            }
+        // Update the token in Firestore:
+        // The standard is an actor, which protects against data races and conforms to
+        // immutable data practice get into new asynchronous context and execute
+        Task {
+            await standard.storeToken(token: fcmToken)
         }
     }
 }
