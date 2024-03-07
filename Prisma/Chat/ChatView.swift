@@ -65,8 +65,7 @@ struct ChatView: View {
 extension ChatView {
     func getFirebaseIDToken() async throws {
         token = try await Auth.auth().currentUser?.getIDToken()
-        
-        1+1
+        print(token)
     }
 }
 
