@@ -166,7 +166,6 @@ extension PrismaStandard {
                 try await document.setData(["deleteFlag": true], merge: true)
                 print("deleteFlag was missing; set to true.")
             }
-            
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }

@@ -30,7 +30,6 @@ struct DeleteDataView: View {
     @State private var timeArrayStatic = ["2023-11-14T20:39:44.467", "2023-11-14T20:41:00.000", "2023-11-14T20:42:00.000"]
     //    var timeArray = getLastTimestamps(quantityType: "stepcount")
     @State private var crossedOutTimestamps: [String: Bool] = [:]
-    @State private var isEditing: Bool = false
     
     var body: some View {
         // create a list of all the time stamps for this category
@@ -66,23 +65,18 @@ struct DeleteDataView: View {
                     timeStampsDisplay
                 }
             }
-            .padding(.top, -40)
-            .navigationBarItems(trailing: Button(isEditing ? "Done" : "Edit") {
-                isEditing.toggle()
-            })
         }
     }
     
     var timeStampsDisplay: some View {
         ForEach(timeArrayStatic, id: \.self) { timestamp in
             HStack {
-                if isEditing {
-                    Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
-                        .onTapGesture {
-                            crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
-                            switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp])
-                        }
-                }
+                Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
+                    .onTapGesture {
+                        crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
+                        switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp])
+                    }
+                
                 Text(timestamp)
             }
             .foregroundColor(crossedOutTimestamps[timestamp, default: false] ? .gray : .black)
