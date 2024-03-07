@@ -40,7 +40,7 @@ struct DeleteDataView: View {
             hideByCustomRangeSection
             hideByTimeSection
         }
-        .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
+        .navigationTitle(privacyModule.identifierInfo[categoryIdentifier].uiString ?? "Identifier Title Not Found")
         .onAppear {
             Task {
                 timeArrayStatic = await standard.fetchTop10RecentTimeStamps(selectedTypeIdentifier: categoryIdentifier)
@@ -56,14 +56,15 @@ struct DeleteDataView: View {
     
     var toggleSection: some View {
         Section(header: Text("Allow to Read")) {
-            Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
+            Toggle(privacyModule.identifierInfo[categoryIdentifier]?.uiString ?? "Missing UI Type String ", isOn: Binding<Bool>(
                 get: {
-                    // Return the current value or a default value if the key does not exist
-                    self.privacyModule.togglesMap[self.categoryIdentifier] ?? false
+                    // get the current enable status for the toggle
+                    // default to a disabled toggle if the value is missing
+                    privacyModule.identifierInfo[categoryIdentifier]?.enabledBool ?? false
                 },
                 set: { newValue in
                     // Update the dictionary with the new value
-                    self.privacyModule.togglesMap[self.categoryIdentifier] = newValue
+                    privacyModule.identifierInfo[categoryIdentifier]?.enabledBool = newValue
                 }
             ))
         }
