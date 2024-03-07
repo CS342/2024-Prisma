@@ -156,7 +156,10 @@
     "Currently there are no surveys available, you will be notified about upcoming surveys." : {
 
     },
-    "Delete by time" : {
+    "Done" : {
+
+    },
+    "Edit" : {
 
     },
     "EMMA_BRUNSKILL_BIO" : {
@@ -319,6 +322,9 @@
           }
         }
       }
+    },
+    "Hide by time" : {
+
     },
     "Invalid URL" : {
 

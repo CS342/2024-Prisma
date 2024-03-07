@@ -29,11 +29,20 @@ struct DeleteDataView: View {
     // NEXT STEPS: timeArrayStatic will be replaced by timestampsArray which is read in from firestore using the categoryIdentifier and getPath
     @State private var timeArrayStatic = ["2023-11-14T20:39:44.467", "2023-11-14T20:41:00.000", "2023-11-14T20:42:00.000"]
     //    var timeArray = getLastTimestamps(quantityType: "stepcount")
+    @State private var crossedOutTimestamps: [String: Bool] = [:]
+    @State private var isEditing: Bool = false
     
     var body: some View {
         // create a list of all the time stamps for this category
         // get rid of spacing once we insert custom time range
         VStack(spacing: -400) {
+            toggleSection
+            deleteByTimeSection
+        }
+        .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
+    }
+        
+        var toggleSection: some View {
             Form {
                 Section(header: Text("Allow to Read")) {
                     Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
@@ -48,38 +57,50 @@ struct DeleteDataView: View {
                     ))
                 }
             }
-            NavigationView {
-                // Toggle corresponding to the proper data to exclude all data of this type
-                List {
-                    Section(header: Text("Delete by time")) {
-                        ForEach(timeArrayStatic, id: \.self) { timestamp in
-                            Text(timestamp)
-                        }
-                        // on delete, remove it on the UI and set flag in firebase
-                        .onDelete { indices in
-                            let timestampsToDelete = indices.map { timeArrayStatic[$0] }
-                            deleteInBackend(identifier: categoryIdentifier, timestamps: timestampsToDelete)
-                            timeArrayStatic.remove(atOffsets: indices)
-                        }
-                    }
-                }
-                .padding(.top, -40)
-                .navigationBarItems(trailing: EditButton())
-            }
         }
-        .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
+    
+    var deleteByTimeSection: some View {
+        NavigationView {
+            List {
+                Section(header: Text("Hide by time")) {
+                    timeStampsDisplay
+                }
+            }
+            .padding(.top, -40)
+            .navigationBarItems(trailing: Button(isEditing ? "Done" : "Edit") {
+                isEditing.toggle()
+            })
+        }
     }
     
-    func deleteInBackend(identifier: String, timestamps: [String]) {
+    var timeStampsDisplay: some View {
+        ForEach(timeArrayStatic, id: \.self) { timestamp in
+            HStack {
+                if isEditing {
+                    Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
+                        .onTapGesture {
+                            crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
+                            switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp])
+                        }
+                }
+                Text(timestamp)
+            }
+            .foregroundColor(crossedOutTimestamps[timestamp, default: false] ? .gray : .black)
+            .opacity(crossedOutTimestamps[timestamp, default: false] ? 0.5 : 1.0)
+        }
+    }
+    
+    func switchHiddenInBackend(identifier: String, timestamps: [String]) {
         for timestamp in timestamps {
             Task {
-                await standard.addDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
+                await standard.switchDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
             }
         }
     }
 }
 
-
-#Preview {
-    DeleteDataView(categoryIdentifier: "Example Preview: DeleteDataView")
+struct DeleteDataView_Previews: PreviewProvider {
+    static var previews: some View {
+        DeleteDataView(categoryIdentifier: "Example Preview: DeleteDataView")
+    }
 }
