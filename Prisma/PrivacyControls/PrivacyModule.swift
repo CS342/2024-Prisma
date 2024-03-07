@@ -21,9 +21,30 @@ import Foundation
 import HealthKit
 import Spezi
 import SwiftUI
+import Combine
 
 
 public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
+    
+    // when there are changes to the identifierInfo dictionary
+    // (e.g. the user changes the enable/disabled toggle for the category type in DeleteDataView),
+    // we want to signal the ManageDataView that listens for this signal and refreshes its view with new info
+    
+    // create a Combine publisher that sends signal to subscribers each time identifierInfo is changed
+    private var identifierInfoSubject = PassthroughSubject<Void, Never>()
+    
+    // expose the publisher so other views can subscribe to changes in identifierInfo dict
+    public var identifierInfoPublisher: AnyPublisher<Void, Never> {
+        // expose the publisher without revealing its exact type
+        // outside code only knows that its dealing with AnyPublisher
+        return identifierInfoSubject.eraseToAnyPublisher()
+    }
+    
+    // this function is called by DeleteDataView to signal a change each time it changes a bool value
+    public func sendSignalOnChange() {
+        identifierInfoSubject.send()
+    }
+    
     public struct DataCategoryItem {
         var uiString: String
         var iconName: String
@@ -32,7 +53,7 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         var identifier: String
     }
     
-    public var identifierInfo: [String: DataCategoryItem] = [
+    @Published public var identifierInfo: [String: DataCategoryItem] = [
         "stepcount": DataCategoryItem(
             uiString: "Step Count",
             iconName: "shoeprints.fill",

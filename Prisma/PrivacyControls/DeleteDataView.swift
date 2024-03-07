@@ -32,6 +32,9 @@ struct DeleteDataView: View {
     @State private var crossedOutTimestamps: [String: Bool] = [:]
     @State private var customHideStartDate = Date()
     @State private var customHideEndDate = Date()
+    
+    // state variable for the category toggle
+    @State private var isCategoryToggleOn = false;
 
     var body: some View {
         Form {
@@ -65,6 +68,7 @@ struct DeleteDataView: View {
                 set: { newValue in
                     // Update the dictionary with the new value
                     privacyModule.identifierInfo[categoryIdentifier]?.enabledBool = newValue
+                    privacyModule.sendSignalOnChange()
                 }
             ))
         }

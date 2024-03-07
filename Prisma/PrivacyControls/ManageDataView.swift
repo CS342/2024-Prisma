@@ -48,6 +48,9 @@ struct ManageDataView: View {
             }
             .navigationTitle("Manage Data")
         }
+        .onReceive(privacyModule.identifierInfoPublisher) { _ in
+            self.privacyModule.objectWillChange.send()
+        }
     }
 }
 

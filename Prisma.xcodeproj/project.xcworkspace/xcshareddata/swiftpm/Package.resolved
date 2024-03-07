@@ -149,8 +149,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/StanfordSpezi/Spezi",
       "state" : {
-        "revision" : "c4bf0e99de40acfdd2baf0fa02769f06a4c3f0eb",
-        "version" : "1.1.0"
+        "revision" : "0ced3efbc2af9513c07ac913ad762c773a00a6c8",
+        "version" : "1.2.1"
       }
     },
     {
@@ -185,8 +185,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/StanfordSpezi/SpeziFoundation.git",
       "state" : {
-        "revision" : "683c66f922a4cfe0882c4a86a43854f613b48541",
-        "version" : "1.0.0"
+        "revision" : "01af5b91a54f30ddd121258e81aff2ddc2a99ff9",
+        "version" : "1.0.4"
       }
     },
     {
@@ -311,8 +311,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/StanfordBDHG/XCTRuntimeAssertions",
       "state" : {
-        "revision" : "bb2a287c2544aa846e53670d1ece35e5949567be",
-        "version" : "1.0.0"
+        "revision" : "51da3403f128b120705571ce61e0fe190f8889e6",
+        "version" : "1.0.1"
       }
     }
   ],
