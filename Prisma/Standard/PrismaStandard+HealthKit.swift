@@ -170,4 +170,31 @@ extension PrismaStandard {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
     }
+    
+    func fetchTop10RecentTimeStamps(selectedTypeIdentifier: String) async -> [String] {
+        let firestore = Firestore.firestore()
+        let path: String
+        var timestampsArr: [String] = []
+
+        do {
+            path = try await getPath(module: .health(selectedTypeIdentifier)) + "raw/"
+            print("Selected identifier: " + selectedTypeIdentifier)
+            print("Path from getPath: " + path)
+            
+            let querySnapshot = try await firestore.collection(path)
+                .order(by: "effectiveDateTime", descending: false)
+                .limit(to: 10)
+                .getDocuments()
+
+            for document in querySnapshot.documents {
+                if let timestamp = document.get("effectiveDateTime") as? String {
+                    timestampsArr.append(timestamp)
+                }
+            }
+            return timestampsArr
+        } catch {
+            print("Failed to fetch documents or define path: \(error.localizedDescription)")
+            return []
+        }
+    }
 }

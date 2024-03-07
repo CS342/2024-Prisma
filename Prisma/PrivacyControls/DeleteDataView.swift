@@ -27,7 +27,7 @@ struct DeleteDataView: View {
     var categoryIdentifier: String
     
     // NEXT STEPS: timeArrayStatic will be replaced by timestampsArray which is read in from firestore using the categoryIdentifier and getPath
-    @State private var timeArrayStatic = ["2023-11-14T20:39:44.467", "2023-11-14T20:41:00.000", "2023-11-14T20:42:00.000"]
+    @State private var timeArrayStatic: [String] = []
     //    var timeArray = getLastTimestamps(quantityType: "stepcount")
     @State private var crossedOutTimestamps: [String: Bool] = [:]
     @State private var customHideStartDate = Date()
@@ -41,6 +41,11 @@ struct DeleteDataView: View {
             hideByTimeSection
         }
         .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
+        .onAppear {
+            Task {
+                timeArrayStatic = await standard.fetchTop10RecentTimeStamps(selectedTypeIdentifier: categoryIdentifier)
+            }
+        }
     }
     
     var descriptionSection: some View {
