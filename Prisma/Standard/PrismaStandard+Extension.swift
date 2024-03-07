@@ -27,11 +27,16 @@ extension String {
 }
 
 extension Date {
-    /// converts Date obejct to local time.
-    func localISOFormat() -> String {
+    /// converts Date object to ISO Format string. Can optionally pass in a time zone to convert it to.
+    /// If no timezone is passed, it converts the Date object using the local time zone.
+    func toISOFormat(timezone: TimeZone? = nil) -> String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withFullDate, .withTime, .withColonSeparatorInTime, .withFractionalSeconds]
-        formatter.timeZone = TimeZone.current
+        if let timezone = timezone {
+            formatter.timeZone = timezone
+        } else {
+            formatter.timeZone = TimeZone.current
+        }
         return formatter.string(from: self)
     }
     
