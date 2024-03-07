@@ -15,9 +15,8 @@ import WebKit
 struct ChatView: View {
     @Binding var presentingAccount: Bool
     @State private var token: String?
-    
-    @Environment(Account.self) private var account
 
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -37,37 +36,37 @@ struct ChatView: View {
                     ProgressView()
                 }
             }
-            .onChange(of: account.signedIn) {
-                guard account.signedIn else {
-                    return
-                }
-                
-                Task {
-                    try await self.signInWithFirebase()
-                }
-            }
+            /*
+             .onChange(of: account.signedIn) {
+             guard account.signedIn else {
+             return
+             }
+             
+             Task {
+             try await self.signInWithFirebase()
+             }
+             }
+             */
             .task {
                 do {
-                    try await self.signInWithFirebase()
+                    try await self.getFirebaseIDToken()
                 } catch {
                     print("Firebase Auth failed \(error)")
-                }
-                guard await ((try? self.signInWithFirebase()) != nil) else {
-                    print("Firebase Auth failed")
-                    return
                 }
             }
         }
     }
-
+    
     init(presentingAccount: Binding<Bool>) {
         self._presentingAccount = presentingAccount
     }
 }
 
 extension ChatView {
-    func signInWithFirebase() async throws {
+    func getFirebaseIDToken() async throws {
         token = try await Auth.auth().currentUser?.getIDToken()
+        
+        1+1
     }
 }
 

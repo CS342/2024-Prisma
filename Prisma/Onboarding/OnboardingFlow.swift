@@ -43,7 +43,10 @@ struct OnboardingFlow: View {
             if HKHealthStore.isHealthDataAvailable() && !healthKitAuthorization {
                 HealthKitPermissions()
             }
+            
+            #if !targetEnvironment(simulator)
             NotificationPermissions()
+            #endif
         }
             .interactiveDismissDisabled(!completedOnboardingFlow)
     }
