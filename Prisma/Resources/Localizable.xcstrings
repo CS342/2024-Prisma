@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "About" : {
+
+    },
     "accessibility text temp" : {
 
     },
@@ -156,7 +159,13 @@
     "Currently there are no surveys available, you will be notified about upcoming surveys." : {
 
     },
+    "Description here" : {
+
+    },
     "EMMA_BRUNSKILL_BIO" : {
+
+    },
+    "End date" : {
 
     },
     "END_OF_THE_DAY_SURVEY_DESCRIPTION" : {
@@ -317,7 +326,13 @@
         }
       }
     },
+    "Hide by custom range" : {
+
+    },
     "Hide by time" : {
+
+    },
+    "Hide Timestamp" : {
 
     },
     "Invalid URL" : {
@@ -517,6 +532,12 @@
           }
         }
       }
+    },
+    "Show Timestamp" : {
+
+    },
+    "Start date" : {
+
     },
     "TASK_CONTEXT_ACTION_QUESTIONNAIRE" : {
       "localizations" : {

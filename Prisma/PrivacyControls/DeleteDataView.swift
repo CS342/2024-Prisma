@@ -30,41 +30,51 @@ struct DeleteDataView: View {
     @State private var timeArrayStatic = ["2023-11-14T20:39:44.467", "2023-11-14T20:41:00.000", "2023-11-14T20:42:00.000"]
     //    var timeArray = getLastTimestamps(quantityType: "stepcount")
     @State private var crossedOutTimestamps: [String: Bool] = [:]
+    @State private var customHideStartDate = Date()
+    @State private var customHideEndDate = Date()
+    @State private var showingDatePicker = false
     
     var body: some View {
-        // create a list of all the time stamps for this category
-        // get rid of spacing once we insert custom time range
-        VStack(spacing: -400) {
+        Form {
+            descriptionSection
             toggleSection
-            deleteByTimeSection
+            hideByCustomRangeSection
+            hideByTimeSection
         }
         .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
     }
-        
-        var toggleSection: some View {
-            Form {
-                Section(header: Text("Allow to Read")) {
-                    Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
-                        get: {
-                            // Return the current value or a default value if the key does not exist
-                            self.privacyModule.togglesMap[self.categoryIdentifier] ?? false
-                        },
-                        set: { newValue in
-                            // Update the dictionary with the new value
-                            self.privacyModule.togglesMap[self.categoryIdentifier] = newValue
-                        }
-                    ))
-                }
-            }
-        }
     
-    var deleteByTimeSection: some View {
-        NavigationView {
-            List {
-                Section(header: Text("Hide by time")) {
-                    timeStampsDisplay
+    var descriptionSection: some View {
+        Section(header: Text("About")) {
+            Text("Description here")
+        }
+    }
+    
+    var toggleSection: some View {
+        Section(header: Text("Allow to Read")) {
+            Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
+                get: {
+                    // Return the current value or a default value if the key does not exist
+                    self.privacyModule.togglesMap[self.categoryIdentifier] ?? false
+                },
+                set: { newValue in
+                    // Update the dictionary with the new value
+                    self.privacyModule.togglesMap[self.categoryIdentifier] = newValue
                 }
-            }
+            ))
+        }
+    }
+    
+    var hideByCustomRangeSection: some View {
+        Section(header: Text("Hide by custom range")) {
+            DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
+            DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
+        }
+    }
+    
+    var hideByTimeSection: some View {
+        Section(header: Text("Hide by time")) {
+            timeStampsDisplay
         }
     }
     
@@ -72,6 +82,7 @@ struct DeleteDataView: View {
         ForEach(timeArrayStatic, id: \.self) { timestamp in
             HStack {
                 Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
+                    .accessibilityLabel(crossedOutTimestamps[timestamp, default: false] ? "Hide Timestamp" : "Show Timestamp")
                     .onTapGesture {
                         crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
                         switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp])
