@@ -139,7 +139,7 @@ extension PrismaStandard {
     
     func remove(sample: HKDeletedObject) async { }
     
-    func switchDeleteFlag(selectedTypeIdentifier: String, timestamp: String) async {
+    func switchHideFlag(selectedTypeIdentifier: String, timestamp: String) async {
         let firestore = Firestore.firestore()
         let path: String
         
@@ -157,14 +157,14 @@ extension PrismaStandard {
             let document = firestore.document(path)
             let docSnapshot = try await document.getDocument()
             
-            if let deleteFlagExists = docSnapshot.data()?["deleteFlag"] as? Bool {
-                // If deleteFlag exists, toggle its value
-                try await document.setData(["deleteFlag": !deleteFlagExists], merge: true)
-                print("Successfully toggled deleteFlag to \(!deleteFlagExists).")
+            if let hideFlagExists = docSnapshot.data()?["hideFlag"] as? Bool {
+                // If hideFlag exists, toggle its value
+                try await document.setData(["hideFlag": !hideFlagExists], merge: true)
+                print("Successfully toggled hideFlag to \(!hideFlagExists).")
             } else {
-                // If deleteFlag does not exist, create it and set to true
-                try await document.setData(["deleteFlag": true], merge: true)
-                print("deleteFlag was missing; set to true.")
+                // If hideFlag does not exist, create it and set to true
+                try await document.setData(["hideFlag": true], merge: true)
+                print("hideFlag was missing; set to true.")
             }
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")

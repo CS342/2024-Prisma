@@ -32,8 +32,7 @@ struct DeleteDataView: View {
     @State private var crossedOutTimestamps: [String: Bool] = [:]
     @State private var customHideStartDate = Date()
     @State private var customHideEndDate = Date()
-    @State private var showingDatePicker = false
-    
+
     var body: some View {
         Form {
             descriptionSection
@@ -84,10 +83,9 @@ struct DeleteDataView: View {
                 Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
                     .accessibilityLabel(crossedOutTimestamps[timestamp, default: false] ? "Hide Timestamp" : "Show Timestamp")
                     .onTapGesture {
-                        crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
                         switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp])
+                        crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
                     }
-                
                 Text(timestamp)
             }
             .foregroundColor(crossedOutTimestamps[timestamp, default: false] ? .gray : .black)
@@ -98,7 +96,7 @@ struct DeleteDataView: View {
     func switchHiddenInBackend(identifier: String, timestamps: [String]) {
         for timestamp in timestamps {
             Task {
-                await standard.switchDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
+                await standard.switchHideFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
             }
         }
     }
