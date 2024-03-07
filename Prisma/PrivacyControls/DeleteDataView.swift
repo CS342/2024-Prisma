@@ -40,7 +40,7 @@ struct DeleteDataView: View {
             hideByCustomRangeSection
             hideByTimeSection
         }
-        .navigationTitle(privacyModule.identifierInfo[categoryIdentifier].uiString ?? "Identifier Title Not Found")
+        .navigationTitle(privacyModule.identifierInfo[categoryIdentifier]?.uiString ?? "Identifier Title Not Found")
         .onAppear {
             Task {
                 timeArrayStatic = await standard.fetchTop10RecentTimeStamps(selectedTypeIdentifier: categoryIdentifier)
