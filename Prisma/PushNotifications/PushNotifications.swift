@@ -12,6 +12,7 @@
 // Created by Bryant Jimenez on 2/1/24.
 //
 
+import Firebase
 import FirebaseCore
 import FirebaseMessaging
 import Spezi
@@ -19,7 +20,7 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
-class PrismaPushNotifications: NSObject, Module, NotificationTokenHandler, MessagingDelegate,
+class PrismaPushNotifications: NSObject, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
                                UNUserNotificationCenterDelegate, EnvironmentAccessible {
     @Application(\.registerRemoteNotifications) var registerRemoteNotifications
     @StandardActor var standard: PrismaStandard
@@ -45,6 +46,35 @@ class PrismaPushNotifications: NSObject, Module, NotificationTokenHandler, Messa
         Messaging.messaging().apnsToken = deviceToken
     }
     
+    func handleNotificationAction(_ response: UNNotificationResponse) async {
+        // right now the default action is when a user taps on the notification. functionality can be expanded in the future.
+        let actionIdentifier = response.actionIdentifier
+        if let sentTimestamp = response.notification.request.content.userInfo["sent_timestamp"] as? String {
+            let openedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
+            await standard.addNotificationOpenedTimestamp(timeSent: sentTimestamp, timeOpened: openedTimestamp)
+        } else {
+            print("Sent timestamp is not a string or is nil")
+        }
+    }
+    
+    func receiveIncomingNotification(_ notification: UNNotification) async -> UNNotificationPresentationOptions? {
+        let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
+        if let sentTimestamp = notification.request.content.userInfo["sent_timestamp"] as? String {
+            Task {
+                await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
+            }
+        } else {
+            print("Sent timestamp is not a string or is nil")
+        }
+        
+        return [.badge, .banner, .list, .sound]
+    }
+    
+    func receiveRemoteNotification(_ remoteNotification: [AnyHashable: Any]) async -> BackgroundFetchResult {
+        print("bg")
+        return .noData
+    }
+
     /// This function listens for token refreshes and updates the specific user token to Firestore.
     /// This callback is fired at each app startup and whenever a new token is generated.
     ///
@@ -55,7 +85,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationTokenHandler, Messa
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // Update the token in Firestore:
         // The standard is an actor, which protects against data races and conforms to
-        // immutable data practice get into new asynchronous context and execute
+        // immutable data practice. Therefore we get into new asynchronous context and execute
         Task {
             await standard.storeToken(token: fcmToken)
         }

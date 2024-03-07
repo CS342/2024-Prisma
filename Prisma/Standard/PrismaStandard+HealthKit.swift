@@ -104,8 +104,8 @@ extension PrismaStandard {
         
         // convert the startDate of the HKSample to local time
         let startDatetime = sample.startDate
-        let effectiveTimestamp = startDatetime.localISOFormat()
-        let endDatetime = sample.endDate.localISOFormat()
+        let effectiveTimestamp = startDatetime.toISOFormat()
+//        let endDatetime = sample.endDate.toISOFormat()
         
         let path: String
         // path = HEALTH_KIT_PATH/raw/YYYY-MM-DDThh:mm:ss.mss
