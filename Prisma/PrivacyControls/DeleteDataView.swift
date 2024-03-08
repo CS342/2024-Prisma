@@ -34,7 +34,7 @@ struct DeleteDataView: View {
     @State private var customHideEndDate = Date()
     
     // state variable for the category toggle
-    @State private var isCategoryToggleOn = false;
+    @State private var isCategoryToggleOn = false
 
     var body: some View {
         Form {

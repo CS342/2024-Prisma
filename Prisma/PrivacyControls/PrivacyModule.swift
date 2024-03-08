@@ -17,34 +17,17 @@
 //
 //  SPDX-License-Identifier: MIT
 
+import Combine
 import Foundation
 import HealthKit
 import Spezi
 import SwiftUI
-import Combine
 
 
 public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
-    
     // when there are changes to the identifierInfo dictionary
     // (e.g. the user changes the enable/disabled toggle for the category type in DeleteDataView),
     // we want to signal the ManageDataView that listens for this signal and refreshes its view with new info
-    
-    // create a Combine publisher that sends signal to subscribers each time identifierInfo is changed
-    private var identifierInfoSubject = PassthroughSubject<Void, Never>()
-    
-    // expose the publisher so other views can subscribe to changes in identifierInfo dict
-    public var identifierInfoPublisher: AnyPublisher<Void, Never> {
-        // expose the publisher without revealing its exact type
-        // outside code only knows that its dealing with AnyPublisher
-        return identifierInfoSubject.eraseToAnyPublisher()
-    }
-    
-    // this function is called by DeleteDataView to signal a change each time it changes a bool value
-    public func sendSignalOnChange() {
-        identifierInfoSubject.send()
-    }
-    
     public struct DataCategoryItem {
         var uiString: String
         var iconName: String
@@ -53,6 +36,30 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         var identifier: String
     }
     
+    @StandardActor var standard: PrismaStandard
+    
+    // INITIALIZERS: ----------------------------------------------------
+    
+    
+    // PROPERTIES: ----------------------------------------------------
+    
+    var sortedSampleIdentifiers: [String]
+    var sampleTypeList: [HKSampleType]
+    var toggleMapUpdated: [String: Bool] = [:]
+    
+    // expose the publisher so other views can subscribe to changes in identifierInfo dict
+    public var identifierInfoPublisher: AnyPublisher<Void, Never> {
+        // expose the publisher without revealing its exact type
+        // outside code only knows that its dealing with AnyPublisher
+        identifierInfoSubject.eraseToAnyPublisher() as AnyPublisher<Void, Never>
+    }
+    
+    
+    // create a Combine publisher that sends signal to subscribers each time identifierInfo is changed
+    private var identifierInfoSubject = PassthroughSubject<Void, Never>()
+    
+    // Dictionary mapping string identifier to all UI necessary information
+    // If the enabledBool is ever changed for any items in this dict, subscribing views should refresh
     @Published public var identifierInfo: [String: DataCategoryItem] = [
         "stepcount": DataCategoryItem(
             uiString: "Step Count",
@@ -175,28 +182,12 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         )
     ]
     
-//    var sortedDataCategoryItems: [HKSampleType]
-    var sortedSampleIdentifiers: [String]
-    var sampleTypeList: [HKSampleType]
-    var toggleMapUpdated: [String: Bool] = [:]
-    
-    @StandardActor var standard: PrismaStandard
-    
-    
     var configuration: Configuration {
         Configuration(standard: PrismaStandard()) { }
     }
-
+    
     public required init(sampleTypeList: [HKSampleType]) {
         self.sampleTypeList = sampleTypeList
-//        var dataCategoryItems: [DataCategoryItem] = []
-//        for sampleType in sampleTypeList {
-            // if the value in the dict is not nil then append
-//            if let dataCategoryItem = identifierInfo[sampleType.identifier] {
-//                dataCategoryItems.append(dataCategoryItem)
-//            }
-//        }
-        // save sorted list (alphabetically by uiString value)
         var sampleTypeIdentifiers: [String] = []
         for sampleType in sampleTypeList {
             if sampleType == HKWorkoutType.workoutType() {
@@ -209,6 +200,12 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         print(sortedSampleIdentifiers)
     }
     
+    // PUBLIC METHODS: ----------------------------------------------------
+    // this function is called by DeleteDataView to signal a change each time it changes a bool value
+    public func sendSignalOnChange() {
+        identifierInfoSubject.send()
+    }
+
     public func configure() {
         Task {
             toggleMapUpdated = await getHKSampleTypeMappings()
