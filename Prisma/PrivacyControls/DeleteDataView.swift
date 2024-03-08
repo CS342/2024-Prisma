@@ -53,12 +53,12 @@ struct DeleteDataView: View {
     
     var descriptionSection: some View {
         Section(header: Text("About")) {
-            Text("Description here")
+            Text(privacyModule.identifierInfo[categoryIdentifier]?.description ?? "Missing Description.")
         }
     }
     
     var toggleSection: some View {
-        Section(header: Text("Allow to Read")) {
+        Section(header: Text("Allow Data Upload")) {
             Toggle(privacyModule.identifierInfo[categoryIdentifier]?.uiString ?? "Missing UI Type String ", isOn: Binding<Bool>(
                 get: {
                     // get the current enable status for the toggle
@@ -66,23 +66,22 @@ struct DeleteDataView: View {
                     privacyModule.identifierInfo[categoryIdentifier]?.enabledBool ?? false
                 },
                 set: { newValue in
-                    // Update the dictionary with the new value
-                    privacyModule.identifierInfo[categoryIdentifier]?.enabledBool = newValue
-                    privacyModule.sendSignalOnChange()
+                    // Update dict with new toggle status, signal to other views about dict change
+                    privacyModule.updateAndSignalOnChange(identifierString: categoryIdentifier, newToggleVal: newValue)
                 }
             ))
         }
     }
     
     var hideByCustomRangeSection: some View {
-        Section(header: Text("Hide by custom range")) {
+        Section(header: Text("Hide Data by Custom Range")) {
             DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
             DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
         }
     }
     
     var hideByTimeSection: some View {
-        Section(header: Text("Hide by time")) {
+        Section(header: Text("Hide by Timestamps")) {
             timeStampsDisplay
         }
     }

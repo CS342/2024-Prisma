@@ -16,7 +16,6 @@
 import SwiftUI
 
 struct ManageDataView: View {
-//    @Environment(PrivacyModule.self) private var privacyModule
     @EnvironmentObject var privacyModule: PrivacyModule
 
     var body: some View {
@@ -57,24 +56,3 @@ struct ManageDataView: View {
 #Preview {
     ManageDataView()
 }
-
-//
-//
-// List(privacyModule.sortedSampleTypesList) { item in
-//    NavigationLink(destination: DeleteDataView(categoryIdentifier: item.identifier)) {
-//        HStack(alignment: .center, spacing: 10) {
-//            Image(systemName: item.iconName)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 35, height: 35)
-//                .accessibility(label: Text("accessibility text temp"))
-//            VStack(alignment: .leading, spacing: 4) {
-//                Text(privacyModule.identifierUIString[item.name] ?? "Identifier UI String Not Found")
-//                    .font(.headline)
-//                Text(item.enabledStatus)
-//                    .font(.subheadline)
-//                    .foregroundColor(.gray)
-//            }
-//        }
-//    }
-// }

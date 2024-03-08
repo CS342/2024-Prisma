@@ -32,16 +32,11 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         var uiString: String
         var iconName: String
         var enabledBool: Bool
-        var description: String
+        var description: LocalizedStringKey
         var identifier: String
     }
     
     @StandardActor var standard: PrismaStandard
-    
-    // INITIALIZERS: ----------------------------------------------------
-    
-    
-    // PROPERTIES: ----------------------------------------------------
     
     var sortedSampleIdentifiers: [String]
     var sampleTypeList: [HKSampleType]
@@ -65,7 +60,7 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
             uiString: "Step Count",
             iconName: "shoeprints.fill",
             enabledBool: true,
-            description: "stepcount description",
+            description: "STEP_COUNT_DESCRIPTION",
             identifier: "stepcount"
         ),
         "distancewalkingrunning": DataCategoryItem(
@@ -76,101 +71,101 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
             identifier: "distancewalkingrunning"
         ),
         "basalenergyburned": DataCategoryItem(
-            uiString: "Basal Energy Burned",
+            uiString: "Resting Energy Burned",
             iconName: "fork.knife.circle",
             enabledBool: true,
-            description: "basal energy burned description",
+            description: "BASAL_ENERGY_BURNED_DESCRIPTION",
             identifier: "basalenergyburned"
         ),
         "activeenergyburned": DataCategoryItem(
             uiString: "Active Energy Burned",
             iconName: "flame",
             enabledBool: true,
-            description: "active energy burned description",
+            description: "ACTIVE_ENERGY_BURNED_DESCRIPTION",
             identifier: "activeenergyburned"
         ),
         "flightsclimbed": DataCategoryItem(
             uiString: "Flights Climbed",
             iconName: "figure.stairs",
             enabledBool: true,
-            description: "flights climbed description",
+            description: "FLIGHTS_CLIMBED_DESCRIPTION",
             identifier: "flightsclimbed"
         ),
         "appleexercisetime": DataCategoryItem(
-            uiString: "Apple Exercise Time",
+            uiString: "Exercise Time",
             iconName: "figure.run.square.stack",
             enabledBool: true,
-            description: "apple exercise time",
+            description: "APPLE_EXERCISE_TIME_DESCRIPTION",
             identifier: "appleexercisetime"
         ),
         "applemovetime": DataCategoryItem(
-            uiString: "Apple Move Time",
+            uiString: "Move Time",
             iconName: "figure.cooldown",
             enabledBool: true,
-            description: "apple movie time description",
+            description: "APPLE_MOVE_TIME_DESCRIPTION",
             identifier: "applemovetime"
         ),
         "applestandtime": DataCategoryItem(
-            uiString: "Apple Stand Time",
+            uiString: "Stand Time",
             iconName: "figure.stand",
             enabledBool: true,
-            description: "apple stand time description",
+            description: "APPLE_STAND_TIME_DESCRIPTION",
             identifier: "applestandtime"
         ),
         "heartrate": DataCategoryItem(
             uiString: "Heart Rate",
             iconName: "waveform.path.ecg",
             enabledBool: true,
-            description: "heart rate description",
+            description: "HEART_RATE_DESCRIPTION",
             identifier: "heartrate"
         ),
         "restingheartrate": DataCategoryItem(
             uiString: "Resting Heart Rate",
             iconName: "arrow.down.heart",
             enabledBool: true,
-            description: "resting heart rate description",
+            description: "RESTING_HEART_RATE_DESCRIPTION",
             identifier: "restingheartrate"
         ),
         "heartratevariabilitysdnn": DataCategoryItem(
-            uiString: "Heart Rate Variability SDNN",
+            uiString: "Heart Rate Variability",
             iconName: "chart.line.uptrend.xyaxis",
             enabledBool: true,
-            description: "heart rate variability SDNN description",
+            description: "HEART_RATE_VARIABILITY_SDNN_DESCRIPTION",
             identifier: "heartratevariabilitysdnn"
         ),
         "walkingheartrateaverage": DataCategoryItem(
             uiString: "WalkingHeartRateAverage",
             iconName: "figure.walk.motion",
             enabledBool: true,
-            description: "walking heart rate average description",
+            description: "WALKING_HEART_RATE_DESCRIPTION",
             identifier: "walkingheartrateaverage"
         ),
         "oxygensaturation": DataCategoryItem(
             uiString: "Oxygen Saturation",
             iconName: "drop.degreesign",
             enabledBool: true,
-            description: "oxygen saturation description",
+            description: "OXYGEN_SATURATION_DESCRIPTION",
             identifier: "oxygensaturation"
         ),
         "respiratoryrate": DataCategoryItem(
             uiString: "Respiratory Rate",
             iconName: "lungs.fill",
             enabledBool: true,
-            description: "respiratory rate description",
+            description: "RESPIRATORY_RATE_DESCRIPTION",
             identifier: "respiratoryrate"
         ),
         "bodytemperature": DataCategoryItem(
-            uiString: "Body Tempature",
+            uiString: "Body Temperature",
             iconName: "medical.thermometer",
             enabledBool: true,
-            description: "body temperature description",
+            description: "BODY_TEMPERATURE_DESCRIPTION",
             identifier: "bodytemperature"
         ),
         "sleepanalysis": DataCategoryItem(
             uiString: "Sleep Analysis",
             iconName: "bed.double.fill",
             enabledBool: true,
-            description: "sleep analysis description",
+            description: "SLEEP_ANALYSIS_DESCRIPTION",
             identifier: "sleepanalysis"
         ),
         "workout": DataCategoryItem(
@@ -200,10 +195,12 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         print(sortedSampleIdentifiers)
     }
     
-    // PUBLIC METHODS: ----------------------------------------------------
     // this function is called by DeleteDataView to signal a change each time it changes a bool value
-    public func sendSignalOnChange() {
+    public func updateAndSignalOnChange(identifierString: String, newToggleVal: Bool) {
+        identifierInfo[identifierString]?.enabledBool = newToggleVal
+        print("Updated toggle status for \(identifierString) to: \(String(describing: identifierInfo[identifierString]?.enabledBool))")
         identifierInfoSubject.send()
+        print("Change detected in identifierInfo dictionary, signal sent to all subscriber views.")
     }
 
     public func configure() {
