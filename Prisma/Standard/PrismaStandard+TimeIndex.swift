@@ -31,10 +31,6 @@ func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
         addTimeIndexRangeComponents(&timeIndex, startComponents: startComponents, endComponents: endComponents)
     }
     
-    print("Start: ", startDate.localISOFormat())
-    print("End: ", endDate.localISOFormat())
-    print(timeIndex)
-    
     return timeIndex
 }
 

@@ -33,10 +33,10 @@ extension PrismaStandard {
     func add(sample: HKSample) async {
         let identifier: String
         if let id = getSampleIdentifier(sample: sample) {
-            print("Sample identifier: \(id)")
+            // print("Sample identifier: \(id)")
             identifier = id
         } else {
-            print("Unknown sample type")
+            print("Failed to upload HealtHkit sample. Unknown sample type: \(sample)")
             return
         }
 
