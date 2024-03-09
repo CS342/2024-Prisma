@@ -134,10 +134,10 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
             identifier: "heartratevariabilitysdnn"
         ),
         "walkingheartrateaverage": DataCategoryItem(
-            uiString: "WalkingHeartRateAverage",
+            uiString: "Walking Heart Rate Average",
             iconName: "figure.walk.motion",
             enabledBool: true,
-            description: "WALKING_HEART_RATE_DESCRIPTION",
+            description: "WALKING_HEART_RATE_AVERAGE_DESCRIPTION",
             identifier: "walkingheartrateaverage"
         ),
         "oxygensaturation": DataCategoryItem(

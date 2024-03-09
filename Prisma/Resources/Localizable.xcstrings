@@ -465,6 +465,9 @@
         }
       }
     },
+    "Loading..." : {
+
+    },
     "Manage Data" : {
 
     },
@@ -762,9 +765,6 @@
           }
         }
       }
-    },
-    "WALKING_HEART_RATE_DESCRIPTION" : {
-
     },
     "WELCOME_BUTTON" : {
       "localizations" : {
