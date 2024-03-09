@@ -78,6 +78,7 @@
 		D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8027E902B90655700BB9466 /* ManageDataView.swift */; };
 		D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
+    F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */; };
 		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
 		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
 		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
@@ -161,6 +162,7 @@
 		D8027E902B90655700BB9466 /* ManageDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataView.swift; sourceTree = "<group>"; };
 		D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataView.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+    F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+TimeIndex.swift"; sourceTree = "<group>"; };
 		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
 		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */,
 				F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */,
 				F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */,
+				F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */,
 				F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */,
 			);
 			path = Standard;
@@ -689,6 +692,7 @@
 				2FE5DC5029EDD7FA004B9AB4 /* EventContextView.swift in Sources */,
 				F8AF6FB62B5F71460011C32D /* PrismaStandard+Extension.swift in Sources */,
 				2F4E23832989D51F0013F3D9 /* PrismaTestingSetup.swift in Sources */,
+				F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */,
 				2FE5DC5329EDD7FA004B9AB4 /* Bundle+Questionnaire.swift in Sources */,
 				2FE5DC5129EDD7FA004B9AB4 /* PrismaTaskContext.swift in Sources */,
 				F8AF6FBC2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift in Sources */,

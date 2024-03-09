@@ -1,5 +1,3 @@
-import FirebaseFirestore
-import HealthKitOnFHIR
 //
 // This source file is part of the Stanford Prisma Application based on the Stanford Spezi Template Application project
 //
@@ -8,28 +6,11 @@ import HealthKitOnFHIR
 // SPDX-License-Identifier: MIT
 //
 
+import FirebaseFirestore
+import HealthKitOnFHIR
 import ModelsR4
 import SpeziFirestore
 import SpeziHealthKit
-
-/*
- 
- HKQuantityType(.vo2Max),
- HKQuantityType(.heartRate),
- HKQuantityType(.restingHeartRate),
- HKQuantityType(.oxygenSaturation),
- HKQuantityType(.respiratoryRate),
- HKQuantityType(.walkingHeartRateAverage)
- 
-
- var includeVo2Max = true
- var includeHeartRate = true
- var includeRestingHeartRate = true
- var includeOxygenSaturation = true
- var includeRespiratoryRate = true
- var includeWalkingHRAverage = true
- */
-
 
 extension PrismaStandard {
     func getSampleIdentifier(sample: HKSample) -> String? {
@@ -46,7 +27,7 @@ extension PrismaStandard {
             return nil
         }
     }
-    
+
     /// Takes in HKSampleType and returns the corresponding identifier string
     ///
     /// - Parameters:
@@ -71,41 +52,15 @@ extension PrismaStandard {
     func add(sample: HKSample) async {
         let identifier: String
         if let id = getSampleIdentifier(sample: sample) {
-            print("Sample identifier: \(id)")
             identifier = id
         } else {
-            print("Unknown sample type")
+            print("Failed to upload HealtHkit sample. Unknown sample type: \(sample)")
             return
         }
         
-//        var sampleToToggleNameMapping: [HKQuantityType?: String] = [
-//            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned): "includeActiveEnergyBurned",
-//            HKQuantityType.quantityType(forIdentifier: .stepCount): "includeStepCountUpload",
-//            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning): "includeDistanceWalkingRunning",
-//            HKQuantityType.quantityType(forIdentifier: .vo2Max): "includeVo2Max",
-//            HKQuantityType.quantityType(forIdentifier: .heartRate): "includeHeartRate",
-//            HKQuantityType.quantityType(forIdentifier: .restingHeartRate): "includeRestingHeartRate",
-//            HKQuantityType.quantityType(forIdentifier: .oxygenSaturation): "includeOxygenSaturation",
-//            HKQuantityType.quantityType(forIdentifier: .respiratoryRate): "includeRespiratoryRate",
-//            HKQuantityType.quantityType(forIdentifier: .walkingHeartRateAverage): "includeWalkingHeartRateAverage"
-//        ]
-//        var toggleNameToBoolMapping: [String: Bool] = PrivacyModule().getCurrentToggles()
-//        
-//        if let variableName = sampleToToggleNameMapping[quantityType] {
-//            let response: Bool = toggleNameToBoolMapping[variableName] ?? false
-//            
-//            if !response {
-//                return
-//            }
-//        } else {
-//            return
-//        }
-        
-        
         // convert the startDate of the HKSample to local time
-        let startDatetime = sample.startDate
-        let effectiveTimestamp = startDatetime.toISOFormat()
-//        let endDatetime = sample.endDate.toISOFormat()
+        let timeIndex = constructTimeIndex(startDate: sample.startDate, endDate: sample.endDate)
+        let effectiveTimestamp = sample.startDate.toISOFormat()
         
         let path: String
         // path = HEALTH_KIT_PATH/raw/YYYY-MM-DDThh:mm:ss.mss
@@ -131,6 +86,7 @@ extension PrismaStandard {
             let encoder = FirebaseFirestore.Firestore.Encoder()
             var firestoreResource = try encoder.encode(resource)
             firestoreResource["device"] = deviceName
+            firestoreResource["time"] = timeIndex
             try await Firestore.firestore().document(path).setData(firestoreResource)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
