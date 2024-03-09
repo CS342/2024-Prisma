@@ -19,8 +19,8 @@ func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
     var timeIndex: [String: Any?] = [
         "range": isRange,
         "timezone": startComponents.timeZone,
-        "datetime.start": startDate.localISOFormat(),
-        "datetime.end": endDate.localISOFormat()
+        "datetime.start": startDate.toISOFormat(),
+        "datetime.end": endDate.toISOFormat()
     ]
     
     addTimeIndexComponents(&timeIndex, dateComponents: startComponents, suffix: ".start")
