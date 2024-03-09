@@ -24,7 +24,7 @@ extension PrismaStandard {
 
         // extracts the first item as that is the id.
         let rootTag = String("\(tag)".split(separator: "/")[0])
-        let effectiveTimestamp = Date().localISOFormat()
+        let effectiveTimestamp = Date().toISOFormat()
         
         let path: String
         do {
