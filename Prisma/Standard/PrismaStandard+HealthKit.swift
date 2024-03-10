@@ -47,17 +47,7 @@ extension PrismaStandard {
         }
     }
     
-    /// Adds a new `HKSample` to the Firestore.
-    /// - Parameter response: The `HKSample` that should be added.
-    func add(sample: HKSample) async {
-        let identifier: String
-        if let id = getSampleIdentifier(sample: sample) {
-            identifier = id
-        } else {
-            print("Failed to upload HealtHkit sample. Unknown sample type: \(sample)")
-            return
-        }
-        
+    func writeToFirestore(sample: HKSample, identifier: String) async {
         // convert the startDate of the HKSample to local time
         let timeIndex = constructTimeIndex(startDate: sample.startDate, endDate: sample.endDate)
         let effectiveTimestamp = sample.startDate.toISOFormat()
@@ -94,6 +84,49 @@ extension PrismaStandard {
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
+    }
+    
+    /// Adds a new `HKSample` to the Firestore.
+    /// - Parameter response: The `HKSample` that should be added.
+    func add(sample: HKSample) async {
+        let sampleList = [
+            // Activity
+            HKQuantityType(.stepCount),
+            HKQuantityType(.distanceWalkingRunning),
+            HKQuantityType(.basalEnergyBurned),
+            HKQuantityType(.activeEnergyBurned),
+            HKQuantityType(.flightsClimbed),
+            HKQuantityType(.appleExerciseTime),
+            HKQuantityType(.appleMoveTime),
+            HKQuantityType(.appleStandTime),
+            
+            // Vital Signs
+            HKQuantityType(.heartRate),
+            HKQuantityType(.restingHeartRate),
+            HKQuantityType(.heartRateVariabilitySDNN),
+            HKQuantityType(.walkingHeartRateAverage),
+            HKQuantityType(.oxygenSaturation),
+            HKQuantityType(.respiratoryRate),
+            HKQuantityType(.bodyTemperature),
+            
+            // Other events
+            HKCategoryType(.sleepAnalysis),
+            HKWorkoutType.workoutType()
+        ]
+        let privacyModule = PrivacyModule(sampleTypeList: sampleList)
+        let toggleMap = await privacyModule.getHKSampleTypeMappings()
+        
+        let identifier: String
+        if let id = getSampleIdentifier(sample: sample) {
+            identifier = id
+        } else {
+            print("Failed to upload HealtHkit sample. Unknown sample type: \(sample)")
+            return
+        }
+        if !(toggleMap[identifier] ?? false) {
+            return
+        }
+        await writeToFirestore(sample: sample, identifier: identifier)
     }
     
     func remove(sample: HKDeletedObject) async { }
