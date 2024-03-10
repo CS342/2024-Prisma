@@ -84,8 +84,11 @@ extension PrismaStandard {
             let deviceName = sample.sourceRevision.source.name
             let resource = try sample.resource
             let encoder = FirebaseFirestore.Firestore.Encoder()
+            // encoder is used to convert swift types to a format that can be stored in firestore
             var firestoreResource = try encoder.encode(resource)
             firestoreResource["device"] = deviceName
+            // timeIndex is a dictionary with time-related info (range, timezone, datetime.start, datetime.end)
+            // timeIndex is added a field for this specific HK datapoint so we can just access this part to fetch/sort by time
             firestoreResource["time"] = timeIndex
             try await Firestore.firestore().document(path).setData(firestoreResource)
         } catch {
@@ -138,14 +141,13 @@ extension PrismaStandard {
             print("Path from getPath: " + path)
             
             let querySnapshot = try await firestore.collection(path)
-                .order(by: FieldPath.documentID(), descending: false)
+                .order(by: "time.datetime.start", descending: true)
                 .limit(to: 10)
                 .getDocuments()
 
             for document in querySnapshot.documents {
                 timestampsArr.append(document.documentID)
             }
-            // timestampsArr = querySnapshot.documents.map { $0.documentID }
             
             return timestampsArr
         } catch {
