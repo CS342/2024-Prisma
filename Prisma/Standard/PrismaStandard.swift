@@ -96,7 +96,6 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
             // notifications for user, type either "logs" or "schedule"
             moduleText = "\(module.description)/data/\(type)"
         }
-        print("moduleText:" + moduleText)
         // studies/STUDY_ID/users/USER_ID/MODULE_NAME/SUB_TYPE/...
         return "studies/\(PrismaStandard.STUDYID)/users/\(accountId)/\(moduleText)/"
     }

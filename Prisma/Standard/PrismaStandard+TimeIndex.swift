@@ -18,18 +18,14 @@ func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
     
     var timeIndex: [String: Any?] = [
         "range": isRange,
-        "timezone": startComponents.timeZone,
+        "timezone": startComponents.timeZone?.identifier,
         "datetime.start": startDate.toISOFormat(),
         "datetime.end": endDate.toISOFormat()
     ]
     
     addTimeIndexComponents(&timeIndex, dateComponents: startComponents, suffix: ".start")
-    
-    if isRange {
-        // only write end date and range if the sample is a range type
-        addTimeIndexComponents(&timeIndex, dateComponents: endComponents, suffix: ".end")
-        addTimeIndexRangeComponents(&timeIndex, startComponents: startComponents, endComponents: endComponents)
-    }
+    addTimeIndexComponents(&timeIndex, dateComponents: endComponents, suffix: ".end")
+    addTimeIndexRangeComponents(&timeIndex, startComponents: startComponents, endComponents: endComponents)
     
     return timeIndex
 }
@@ -42,7 +38,7 @@ func addTimeIndexComponents(_ timeIndex: inout [String: Any?], dateComponents: D
     timeIndex["minute" + suffix] = dateComponents.minute
     timeIndex["second" + suffix] = dateComponents.second
     timeIndex["dayMinute" + suffix] = calculateDayMinute(hour: dateComponents.hour, minute: dateComponents.minute)
-    timeIndex["15minBucket" + suffix] = calculate15MinBucket(hour: dateComponents.hour, minute: dateComponents.minute)
+    timeIndex["fifteenMinBucket" + suffix] = calculate15MinBucket(hour: dateComponents.hour, minute: dateComponents.minute)
 }
 
 func addTimeIndexRangeComponents(_ timeIndex: inout [String: Any?], startComponents: DateComponents, endComponents: DateComponents) {
@@ -73,7 +69,7 @@ func addTimeIndexRangeComponents(_ timeIndex: inout [String: Any?], startCompone
         end: calculateDayMinute(hour: endComponents.hour, minute: endComponents.minute),
         maxValue: 1439
     )
-    timeIndex["15minBucket.range"] = getRange(
+    timeIndex["fifteenMinBucket.range"] = getRange(
         start: calculate15MinBucket(hour: startComponents.hour, minute: startComponents.minute),
         end: calculate15MinBucket(hour: endComponents.hour, minute: endComponents.minute),
         maxValue: 95
