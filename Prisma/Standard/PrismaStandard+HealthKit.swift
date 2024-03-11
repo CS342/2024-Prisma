@@ -174,7 +174,7 @@ extension PrismaStandard {
             print("Path from getPath: " + path)
             
             let querySnapshot = try await firestore.collection(path)
-                .order(by: "time.datetime.start", descending: true)
+                .order(by: "issued", descending: true)
                 .limit(to: 10)
                 .getDocuments()
 
