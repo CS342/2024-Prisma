@@ -13,12 +13,16 @@ extension String {
     /// converts a HKSample Type string representation to a lower cased id.
     /// e.g. "HKQuantityTypeIdentifierStepCount" => "stepcount".
     var healthKitDescription: String {
-        let description = self
-        if description.hasPrefix("HKQuantityTypeIdentifier") {
-            // removes the HKQuantityTypeIdentifier prefix.
-            return description.dropFirst(24).lowercased()
+        if self == "workout" {
+            return "workout"
         }
-        return "unknown"
+        
+        let prefixes = ["HKQuantityTypeIdentifier", "HKCategoryTypeIdentifier", "HKCorrelationTypeIdentifier", "HKWorkoutTypeIdentifier"]
+        for prefix in prefixes where self.hasPrefix(prefix) {
+            return self.dropFirst(prefix.count).lowercased()
+        }
+        // return "unknown"
+        return self
     }
 }
 

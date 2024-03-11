@@ -72,10 +72,12 @@
 		A9D83F962B083794000D0C78 /* SpeziFirebaseAccountStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A9D83F952B083794000D0C78 /* SpeziFirebaseAccountStorage */; };
 		A9DFE8A92ABE551400428242 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFE8A82ABE551400428242 /* AccountButton.swift */; };
 		A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */; };
-		AC69903E2B6C5A2F00D92970 /* PrivacyControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903D2B6C5A2F00D92970 /* PrivacyControls.swift */; };
+		AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */; };
 		AC6990402B6C627100D92970 /* ToggleTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903F2B6C627100D92970 /* ToggleTestView.swift */; };
-		E4A114EB2B994F1000B6B5C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4A114EA2B994F1000B6B5C4 /* GoogleService-Info.plist */; };
+		D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8027E902B90655700BB9466 /* ManageDataView.swift */; };
+		D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
+    F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */; };
 		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
 		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
 		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
@@ -153,10 +155,12 @@
 		A9720E422ABB68CC00872D23 /* AccountSetupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSetupHeader.swift; sourceTree = "<group>"; };
 		A9DFE8A82ABE551400428242 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 		A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
-		AC69903D2B6C5A2F00D92970 /* PrivacyControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyControls.swift; sourceTree = "<group>"; };
+		AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModule.swift; sourceTree = "<group>"; };
 		AC69903F2B6C627100D92970 /* ToggleTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTestView.swift; sourceTree = "<group>"; };
-		E4A114EA2B994F1000B6B5C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D8027E902B90655700BB9466 /* ManageDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataView.swift; sourceTree = "<group>"; };
+		D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataView.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+    F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+TimeIndex.swift"; sourceTree = "<group>"; };
 		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
 		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
@@ -411,8 +415,10 @@
 		AC4A1ED12B69D91D0095D1AE /* PrivacyControls */ = {
 			isa = PBXGroup;
 			children = (
-				AC69903D2B6C5A2F00D92970 /* PrivacyControls.swift */,
+				AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */,
 				AC69903F2B6C627100D92970 /* ToggleTestView.swift */,
+				D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */,
+				D8027E902B90655700BB9466 /* ManageDataView.swift */,
 			);
 			path = PrivacyControls;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */,
 				F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */,
 				F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */,
+				F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */,
 				F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */,
 			);
 			path = Standard;
@@ -677,11 +684,13 @@
 				2FE5DC4029EDD7EE004B9AB4 /* FeatureFlags.swift in Sources */,
 				F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */,
 				2FE5DC4629EDD7F2004B9AB4 /* Bundle+Image.swift in Sources */,
+				D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */,
 				F8AF6FB92B5F72650011C32D /* PrismaStandard+HealthKit.swift in Sources */,
 				2FE5DC4F29EDD7FA004B9AB4 /* EventContext.swift in Sources */,
 				2FE5DC5029EDD7FA004B9AB4 /* EventContextView.swift in Sources */,
 				F8AF6FB62B5F71460011C32D /* PrismaStandard+Extension.swift in Sources */,
 				2F4E23832989D51F0013F3D9 /* PrismaTestingSetup.swift in Sources */,
+				F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */,
 				2FE5DC5329EDD7FA004B9AB4 /* Bundle+Questionnaire.swift in Sources */,
 				2FE5DC5129EDD7FA004B9AB4 /* PrismaTaskContext.swift in Sources */,
 				F8AF6FBC2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift in Sources */,
@@ -693,9 +702,10 @@
 				2F5E32BD297E05EA003432F8 /* PrismaDelegate.swift in Sources */,
 				2FE5DC5229EDD7FA004B9AB4 /* PrismaScheduler.swift in Sources */,
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
+				D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */,
 				F8AF6FB42B5F6EDC0011C32D /* PrismaModule.swift in Sources */,
 				AC6990402B6C627100D92970 /* ToggleTestView.swift in Sources */,
-				AC69903E2B6C5A2F00D92970 /* PrivacyControls.swift in Sources */,
+				AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */,
 				653A2551283387FE005D4D48 /* Prisma.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
 				5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */,
