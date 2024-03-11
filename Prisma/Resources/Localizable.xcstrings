@@ -433,6 +433,9 @@
         }
       }
     },
+    "Hide" : {
+
+    },
     "Hide by Timestamps" : {
 
     },
@@ -695,9 +698,6 @@
           }
         }
       }
-    },
-    "Submit" : {
-
     },
     "TASK_CONTEXT_ACTION_QUESTIONNAIRE" : {
       "localizations" : {

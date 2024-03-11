@@ -151,7 +151,7 @@ extension PrismaStandard {
             
             // If hideFlag exists, update its value
             if let hideFlagExists = docSnapshot.data()?["hideFlag"] as? Bool {
-                if (alwaysHide) {
+                if alwaysHide {
                     // If alwaysHide is true, always set hideFlag to true regardless of original value
                     try await document.setData(["hideFlag": true], merge: true)
                     print("AlwaysHide is enabled; set hideFlag to true.")
@@ -214,13 +214,17 @@ extension PrismaStandard {
                 let documentDate = String(documentID.prefix(10))
                 
                 // check if documentID date is within the start and end date range
-                if (documentDate >= startDate && documentDate <= endDate) {
+                if documentDate >= startDate && documentDate <= endDate {
                     timestampsArr.append(documentID)
                 }
             }
             return timestampsArr
-        } catch let error {
-            print("Error fetching documents: \(error.localizedDescription)")
+        } catch {
+            if let firestoreError = error as? FirestoreError {
+                print("Error fetching documents: \(firestoreError.localizedDescription)")
+            } else {
+                print("Unexpected error: \(error.localizedDescription)")
+            }
             return []
         }
     }

@@ -76,19 +76,25 @@ struct DeleteDataView: View {
     
     var hideByCustomRangeSection: some View {
         Section(header: Text("Hide Data by Custom Range")) {
-            DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
-            DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
-            Button("Hide") {
-                let startDateString = formatDate(customHideStartDate)
-                let endDateString = formatDate(customHideEndDate)
-                Task {
-                    customRangeTimestamps = await standard.fetchCustomRangeTimeStamps(
-                        selectedTypeIdentifier: categoryIdentifier,
-                        startDate: startDateString,
-                        endDate: endDateString
-                    )
+            VStack {
+                DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
+                DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
+                
+                Divider()
+
+                Button("Hide") {
+                    let startDateString = formatDate(customHideStartDate)
+                    let endDateString = formatDate(customHideEndDate)
+                    Task {
+                        customRangeTimestamps = await standard.fetchCustomRangeTimeStamps(
+                            selectedTypeIdentifier: categoryIdentifier,
+                            startDate: startDateString,
+                            endDate: endDateString
+                        )
+                    }
+                    switchHiddenInBackend(identifier: categoryIdentifier, timestamps: customRangeTimestamps, alwaysHide: true)
                 }
-                switchHiddenInBackend(identifier: categoryIdentifier, timestamps: customRangeTimestamps, alwaysHide: true)
+//                .frame(maxWidth: .infinity) // Make the button take full width
             }
         }
     }
