@@ -74,7 +74,6 @@
 		A9DFE8A92ABE551400428242 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DFE8A82ABE551400428242 /* AccountButton.swift */; };
 		A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */; };
 		AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */; };
-		AC6990402B6C627100D92970 /* ToggleTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903F2B6C627100D92970 /* ToggleTestView.swift */; };
 		D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8027E902B90655700BB9466 /* ManageDataView.swift */; };
 		D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
@@ -158,7 +157,6 @@
 		A9DFE8A82ABE551400428242 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 		A9FE7ACF2AA39BAB0077B045 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
 		AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModule.swift; sourceTree = "<group>"; };
-		AC69903F2B6C627100D92970 /* ToggleTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleTestView.swift; sourceTree = "<group>"; };
 		D8027E902B90655700BB9466 /* ManageDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataView.swift; sourceTree = "<group>"; };
 		D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataView.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */,
-				AC69903F2B6C627100D92970 /* ToggleTestView.swift */,
 				D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */,
 				D8027E902B90655700BB9466 /* ManageDataView.swift */,
 			);
@@ -706,7 +703,6 @@
 				A9FE7AD02AA39BAB0077B045 /* AccountSheet.swift in Sources */,
 				D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */,
 				F8AF6FB42B5F6EDC0011C32D /* PrismaModule.swift in Sources */,
-				AC6990402B6C627100D92970 /* ToggleTestView.swift in Sources */,
 				AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */,
 				653A2551283387FE005D4D48 /* Prisma.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
