@@ -95,7 +95,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--useFirebaseEmulator"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
