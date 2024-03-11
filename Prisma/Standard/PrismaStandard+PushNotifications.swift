@@ -28,7 +28,7 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(["received": timeReceived])
+            try await Firestore.firestore().document(path).setData(["received": timeReceived], merge: true)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
@@ -49,7 +49,7 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(["opened": timeOpened])
+            try await Firestore.firestore().document(path).setData(["opened": timeOpened], merge: true)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }

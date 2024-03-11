@@ -20,12 +20,11 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
-class PrismaPushNotifications: NSObject, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
+class PrismaPushNotifications: UNNotificationServiceExtension, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
                                UNUserNotificationCenterDelegate, EnvironmentAccessible {
     @Application(\.registerRemoteNotifications) var registerRemoteNotifications
     @StandardActor var standard: PrismaStandard
     @Dependency private var configureFirebaseApp: ConfigureFirebaseApp
-    
     
     override init() {}
     
@@ -48,7 +47,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     
     func handleNotificationAction(_ response: UNNotificationResponse) async {
         // right now the default action is when a user taps on the notification. functionality can be expanded in the future.
-        let actionIdentifier = response.actionIdentifier
+//        let actionIdentifier = response.actionIdentifier
         if let sentTimestamp = response.notification.request.content.userInfo["sent_timestamp"] as? String {
             let openedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
             await standard.addNotificationOpenedTimestamp(timeSent: sentTimestamp, timeOpened: openedTimestamp)
@@ -72,6 +71,14 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     
     func receiveRemoteNotification(_ remoteNotification: [AnyHashable: Any]) async -> BackgroundFetchResult {
         print("bg")
+        let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
+        if let sentTimestamp = remoteNotification["sent_timestamp"] as? String {
+            Task {
+                await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
+            }
+        } else {
+            print("Sent timestamp is not a string or is nil")
+        }
         return .noData
     }
 

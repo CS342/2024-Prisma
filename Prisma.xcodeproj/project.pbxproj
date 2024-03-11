@@ -60,6 +60,9 @@
 		5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5661552D2AB854C000209B80 /* PackageHelper.swift */; };
 		5680DD392AB8983D004E6D4A /* PackageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5680DD382AB8983D004E6D4A /* PackageCell.swift */; };
 		56F6F2A02AB441930022FE5A /* ContributionsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F6F29F2AB441930022FE5A /* ContributionsList.swift */; };
+		5F5ECC492B9F3B5C00B666BC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5ECC482B9F3B5C00B666BC /* NotificationService.swift */; };
+		5F5ECC582B9F3EE900B666BC /* PrismaPushNotificationsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5F5ECC462B9F3B5C00B666BC /* PrismaPushNotificationsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5F5ECC5E2B9F3F9000B666BC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5F5ECC5D2B9F3F9000B666BC /* FirebaseFirestore */; };
 		5FBBD2B62B875DB800B75E9F /* PrismaStandard+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */; };
 		5FECE9562B6C9A5F00C06B13 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE9552B6C9A5F00C06B13 /* PushNotifications.swift */; };
 		5FECE9592B6CCF0B00C06B13 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5FECE9582B6CCF0B00C06B13 /* FirebaseMessaging */; };
@@ -78,7 +81,7 @@
 		D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8027E902B90655700BB9466 /* ManageDataView.swift */; };
 		D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
-    F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */; };
+		F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */; };
 		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
 		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
 		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
@@ -94,6 +97,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5F5ECC592B9F3EE900B666BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653A2545283387FE005D4D48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F5ECC452B9F3B5C00B666BC;
+			remoteInfo = PrismaPushNotificationsExtension;
+		};
 		653A255E28338800005D4D48 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 653A2545283387FE005D4D48 /* Project object */;
@@ -109,6 +119,20 @@
 			remoteInfo = Prisma;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F5ECC5B2B9F3EE900B666BC /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5F5ECC582B9F3EE900B666BC /* PrismaPushNotificationsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		27FA298F2A388E9B009CAC45 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
@@ -145,6 +169,9 @@
 		5661552D2AB854C000209B80 /* PackageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageHelper.swift; sourceTree = "<group>"; };
 		5680DD382AB8983D004E6D4A /* PackageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageCell.swift; sourceTree = "<group>"; };
 		56F6F29F2AB441930022FE5A /* ContributionsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionsList.swift; sourceTree = "<group>"; };
+		5F5ECC462B9F3B5C00B666BC /* PrismaPushNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrismaPushNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F5ECC482B9F3B5C00B666BC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		5F5ECC4A2B9F3B5C00B666BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+PushNotifications.swift"; sourceTree = "<group>"; };
 		5FECE9552B6C9A5F00C06B13 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		653A254D283387FE005D4D48 /* Prisma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prisma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,7 +189,7 @@
 		D8027E902B90655700BB9466 /* ManageDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataView.swift; sourceTree = "<group>"; };
 		D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataView.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-    F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+TimeIndex.swift"; sourceTree = "<group>"; };
+		F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+TimeIndex.swift"; sourceTree = "<group>"; };
 		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
 		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
@@ -178,6 +205,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5F5ECC432B9F3B5C00B666BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5ECC5E2B9F3F9000B666BC /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		653A254A283387FE005D4D48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +361,15 @@
 			path = Contributions;
 			sourceTree = "<group>";
 		};
+		5F5ECC472B9F3B5C00B666BC /* PrismaPushNotificationsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5F5ECC482B9F3B5C00B666BC /* NotificationService.swift */,
+				5F5ECC4A2B9F3B5C00B666BC /* Info.plist */,
+			);
+			path = PrismaPushNotificationsExtension;
+			sourceTree = "<group>";
+		};
 		5FECE9542B6C9A3E00C06B13 /* PushNotifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +385,7 @@
 				653A254F283387FE005D4D48 /* Prisma */,
 				653A256028338800005D4D48 /* PrismaTests */,
 				653A256A28338800005D4D48 /* PrismaUITests */,
+				5F5ECC472B9F3B5C00B666BC /* PrismaPushNotificationsExtension */,
 				653A254E283387FE005D4D48 /* Products */,
 				653A258B283395A7005D4D48 /* Frameworks */,
 			);
@@ -352,6 +397,7 @@
 				653A254D283387FE005D4D48 /* Prisma.app */,
 				653A255D28338800005D4D48 /* PrismaTests.xctest */,
 				653A256728338800005D4D48 /* PrismaUITests.xctest */,
+				5F5ECC462B9F3B5C00B666BC /* PrismaPushNotificationsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -461,6 +507,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5F5ECC452B9F3B5C00B666BC /* PrismaPushNotificationsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F5ECC522B9F3B5C00B666BC /* Build configuration list for PBXNativeTarget "PrismaPushNotificationsExtension" */;
+			buildPhases = (
+				5F5ECC422B9F3B5C00B666BC /* Sources */,
+				5F5ECC432B9F3B5C00B666BC /* Frameworks */,
+				5F5ECC442B9F3B5C00B666BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PrismaPushNotificationsExtension;
+			packageProductDependencies = (
+				5F5ECC5D2B9F3F9000B666BC /* FirebaseFirestore */,
+			);
+			productName = PrismaPushNotificationsExtension;
+			productReference = 5F5ECC462B9F3B5C00B666BC /* PrismaPushNotificationsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		653A254C283387FE005D4D48 /* Prisma */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 653A257128338800005D4D48 /* Build configuration list for PBXNativeTarget "Prisma" */;
@@ -469,11 +535,13 @@
 				653A254A283387FE005D4D48 /* Frameworks */,
 				653A254B283387FE005D4D48 /* Resources */,
 				2F5B528D29BD237B002020B7 /* ShellScript */,
+				5F5ECC5B2B9F3EE900B666BC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				566155222AB83CF200209B80 /* PBXTargetDependency */,
+				5F5ECC5A2B9F3EE900B666BC /* PBXTargetDependency */,
 			);
 			name = Prisma;
 			packageProductDependencies = (
@@ -553,9 +621,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					5F5ECC452B9F3B5C00B666BC = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					653A254C283387FE005D4D48 = {
 						CreatedOnToolsVersion = 13.4;
 					};
@@ -603,11 +674,19 @@
 				653A254C283387FE005D4D48 /* Prisma */,
 				653A255C28338800005D4D48 /* PrismaTests */,
 				653A256628338800005D4D48 /* PrismaUITests */,
+				5F5ECC452B9F3B5C00B666BC /* PrismaPushNotificationsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5F5ECC442B9F3B5C00B666BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		653A254B283387FE005D4D48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -662,6 +741,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5F5ECC422B9F3B5C00B666BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F5ECC492B9F3B5C00B666BC /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		653A2549283387FE005D4D48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -738,6 +825,11 @@
 		566155222AB83CF200209B80 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 566155212AB83CF200209B80 /* SwiftPackageListJSONPlugin */;
+		};
+		5F5ECC5A2B9F3EE900B666BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F5ECC452B9F3B5C00B666BC /* PrismaPushNotificationsExtension */;
+			targetProxy = 5F5ECC592B9F3EE900B666BC /* PBXContainerItemProxy */;
 		};
 		653A255F28338800005D4D48 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -901,6 +993,98 @@
 			};
 			name = Test;
 		};
+		5F5ECC4F2B9F3B5C00B666BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PrismaPushNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PrismaPushNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.PrismaPushNotificationsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F5ECC502B9F3B5C00B666BC /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PrismaPushNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PrismaPushNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.PrismaPushNotificationsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Test;
+		};
+		5F5ECC512B9F3B5C00B666BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PrismaPushNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PrismaPushNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.PrismaPushNotificationsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		653A256F28338800005D4D48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1031,7 +1215,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 637867499T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Prisma/Supporting Files/Info.plist";
@@ -1199,6 +1383,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5F5ECC522B9F3B5C00B666BC /* Build configuration list for PBXNativeTarget "PrismaPushNotificationsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F5ECC4F2B9F3B5C00B666BC /* Debug */,
+				5F5ECC502B9F3B5C00B666BC /* Test */,
+				5F5ECC512B9F3B5C00B666BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		653A2548283387FE005D4D48 /* Build configuration list for PBXProject "Prisma" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1486,6 +1680,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5661551B2AB8384200209B80 /* XCRemoteSwiftPackageReference "swift-package-list" */;
 			productName = "plugin:SwiftPackageListJSONPlugin";
+		};
+		5F5ECC5D2B9F3F9000B666BC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FE5DC9029EDD9C3004B9AB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		5FECE9582B6CCF0B00C06B13 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
