@@ -11,7 +11,9 @@
 // Created by Bryant Jimenez on 2/1/24.
 //
 
+import Firebase
 import FirebaseFirestore
+//import Prisma
 import UserNotifications
 
 class NotificationService: UNNotificationServiceExtension {
@@ -25,6 +27,12 @@ class NotificationService: UNNotificationServiceExtension {
         if let bestAttemptContent = bestAttemptContent {
             // Modify the notification content here...
             bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
+            let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
+            if let path = request.content.userInfo["logs_path"] as? String {
+                Firestore.firestore().document(path).setData(["received": receivedTimestamp], merge: true)
+            } else {
+                print("Sent timestamp is not a string or is nil")
+            }
 //            let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
 //            if let sentTimestamp = request.content.userInfo["sent_timestamp"] as? String {
 //                Task {
@@ -44,5 +52,20 @@ class NotificationService: UNNotificationServiceExtension {
         if let contentHandler = contentHandler, let bestAttemptContent = bestAttemptContent {
             contentHandler(bestAttemptContent)
         }
+    }
+}
+
+extension Date {
+    /// converts Date object to ISO Format string. Can optionally pass in a time zone to convert it to.
+    /// If no timezone is passed, it converts the Date object using the local time zone.
+    func toISOFormat(timezone: TimeZone? = nil) -> String {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withFullDate, .withTime, .withColonSeparatorInTime, .withFractionalSeconds]
+        if let timezone = timezone {
+            formatter.timeZone = timezone
+        } else {
+            formatter.timeZone = TimeZone.current
+        }
+        return formatter.string(from: self)
     }
 }
