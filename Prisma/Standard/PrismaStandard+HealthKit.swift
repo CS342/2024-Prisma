@@ -131,7 +131,7 @@ extension PrismaStandard {
     
     func remove(sample: HKDeletedObject) async { }
     
-    func switchHideFlag(selectedTypeIdentifier: String, timestamp: String) async {
+    func switchHideFlag(selectedTypeIdentifier: String, timestamp: String, alwaysHide: Bool) async {
         let firestore = Firestore.firestore()
         let path: String
         
@@ -149,10 +149,17 @@ extension PrismaStandard {
             let document = firestore.document(path)
             let docSnapshot = try await document.getDocument()
             
+            // If hideFlag exists, update its value
             if let hideFlagExists = docSnapshot.data()?["hideFlag"] as? Bool {
-                // If hideFlag exists, toggle its value
-                try await document.setData(["hideFlag": !hideFlagExists], merge: true)
-                print("Successfully toggled hideFlag to \(!hideFlagExists).")
+                if (alwaysHide) {
+                    // If alwaysHide is true, always set hideFlag to true regardless of original value
+                    try await document.setData(["hideFlag": true], merge: true)
+                    print("AlwaysHide is enabled; set hideFlag to true.")
+                } else {
+                    // Toggle hideFlag if alwaysHide is not true
+                    try await document.setData(["hideFlag": !hideFlagExists], merge: true)
+                    print("Toggled hideFlag to \(!hideFlagExists).")
+                }
             } else {
                 // If hideFlag does not exist, create it and set to true
                 try await document.setData(["hideFlag": true], merge: true)
@@ -162,7 +169,7 @@ extension PrismaStandard {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
     }
-    
+
     func fetchTop10RecentTimeStamps(selectedTypeIdentifier: String) async -> [String] {
         let firestore = Firestore.firestore()
         let path: String
@@ -185,6 +192,35 @@ extension PrismaStandard {
             return timestampsArr
         } catch {
             print("Failed to fetch documents or define path: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    // Fetches timestamp based on documentID date
+    func fetchCustomRangeTimeStamps(selectedTypeIdentifier: String, startDate: String, endDate: String) async -> [String] {
+        let firestore = Firestore.firestore()
+        let path: String
+        var timestampsArr: [String] = []
+        
+        do {
+            path = try await getPath(module: .health(selectedTypeIdentifier)) + "raw/"
+            print("Selected identifier: " + selectedTypeIdentifier)
+            print("Path from getPath: " + path)
+            
+            let querySnapshot = try await firestore.collection(path).getDocuments()
+            
+            for document in querySnapshot.documents {
+                let documentID = document.documentID
+                let documentDate = String(documentID.prefix(10))
+                
+                // check if documentID date is within the start and end date range
+                if (documentDate >= startDate && documentDate <= endDate) {
+                    timestampsArr.append(documentID)
+                }
+            }
+            return timestampsArr
+        } catch let error {
+            print("Error fetching documents: \(error.localizedDescription)")
             return []
         }
     }

@@ -32,10 +32,11 @@ struct DeleteDataView: View {
     @State private var crossedOutTimestamps: [String: Bool] = [:]
     @State private var customHideStartDate = Date()
     @State private var customHideEndDate = Date()
+    @State private var customRangeTimestamps: [String] = []
     
     // state variable for the category toggle
     @State private var isCategoryToggleOn = false
-
+    
     var body: some View {
         Form {
             descriptionSection
@@ -77,6 +78,18 @@ struct DeleteDataView: View {
         Section(header: Text("Hide Data by Custom Range")) {
             DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
             DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
+            Button("Hide") {
+                let startDateString = formatDate(customHideStartDate)
+                let endDateString = formatDate(customHideEndDate)
+                Task {
+                    customRangeTimestamps = await standard.fetchCustomRangeTimeStamps(
+                        selectedTypeIdentifier: categoryIdentifier,
+                        startDate: startDateString,
+                        endDate: endDateString
+                    )
+                }
+                switchHiddenInBackend(identifier: categoryIdentifier, timestamps: customRangeTimestamps, alwaysHide: true)
+            }
         }
     }
     
@@ -92,7 +105,7 @@ struct DeleteDataView: View {
                 Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
                     .accessibilityLabel(crossedOutTimestamps[timestamp, default: false] ? "Hide Timestamp" : "Show Timestamp")
                     .onTapGesture {
-                        switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp])
+                        switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp], alwaysHide: false)
                         crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
                     }
                 Text(timestamp)
@@ -102,10 +115,16 @@ struct DeleteDataView: View {
         }
     }
     
-    func switchHiddenInBackend(identifier: String, timestamps: [String]) {
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    func switchHiddenInBackend(identifier: String, timestamps: [String], alwaysHide: Bool) {
         for timestamp in timestamps {
             Task {
-                await standard.switchHideFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
+                await standard.switchHideFlag(selectedTypeIdentifier: identifier, timestamp: timestamp, alwaysHide: alwaysHide)
             }
         }
     }

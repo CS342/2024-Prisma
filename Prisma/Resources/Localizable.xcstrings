@@ -696,6 +696,9 @@
         }
       }
     },
+    "Submit" : {
+
+    },
     "TASK_CONTEXT_ACTION_QUESTIONNAIRE" : {
       "localizations" : {
         "en" : {
