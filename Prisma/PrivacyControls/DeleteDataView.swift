@@ -27,59 +27,117 @@ struct DeleteDataView: View {
     var categoryIdentifier: String
     
     // NEXT STEPS: timeArrayStatic will be replaced by timestampsArray which is read in from firestore using the categoryIdentifier and getPath
-    @State private var timeArrayStatic = ["2023-11-14T20:39:44.467", "2023-11-14T20:41:00.000", "2023-11-14T20:42:00.000"]
+    @State private var timeArrayStatic: [String] = []
     //    var timeArray = getLastTimestamps(quantityType: "stepcount")
+    @State private var crossedOutTimestamps: [String: Bool] = [:]
+    @State private var customHideStartDate = Date()
+    @State private var customHideEndDate = Date()
+    @State private var customRangeTimestamps: [String] = []
+    
+    // state variable for the category toggle
+    @State private var isCategoryToggleOn = false
     
     var body: some View {
-        // create a list of all the time stamps for this category
-        // get rid of spacing once we insert custom time range
-        VStack(spacing: -400) {
-            Form {
-                Section(header: Text("Allow to Read")) {
-                    Toggle(self.privacyModule.identifierUIString[self.categoryIdentifier] ?? "Cannot Find Data Type", isOn: Binding<Bool>(
-                        get: {
-                            // Return the current value or a default value if the key does not exist
-                            self.privacyModule.togglesMap[self.categoryIdentifier] ?? false
-                        },
-                        set: { newValue in
-                            // Update the dictionary with the new value
-                            self.privacyModule.togglesMap[self.categoryIdentifier] = newValue
-                        }
-                    ))
-                }
-            }
-            NavigationView {
-                // Toggle corresponding to the proper data to exclude all data of this type
-                List {
-                    Section(header: Text("Delete by time")) {
-                        ForEach(timeArrayStatic, id: \.self) { timestamp in
-                            Text(timestamp)
-                        }
-                        // on delete, remove it on the UI and set flag in firebase
-                        .onDelete { indices in
-                            let timestampsToDelete = indices.map { timeArrayStatic[$0] }
-                            deleteInBackend(identifier: categoryIdentifier, timestamps: timestampsToDelete)
-                            timeArrayStatic.remove(atOffsets: indices)
-                        }
-                    }
-                }
-                .padding(.top, -40)
-                .navigationBarItems(trailing: EditButton())
+        Form {
+            descriptionSection
+            toggleSection
+            hideByCustomRangeSection
+            hideByTimeSection
+        }
+        .navigationTitle(privacyModule.identifierInfo[categoryIdentifier]?.uiString ?? "Identifier Title Not Found")
+        .onAppear {
+            Task {
+                timeArrayStatic = await standard.fetchTop10RecentTimeStamps(selectedTypeIdentifier: categoryIdentifier)
             }
         }
-        .navigationTitle(privacyModule.identifierUIString[categoryIdentifier] ?? "Identifier Title Not Found")
     }
     
-    func deleteInBackend(identifier: String, timestamps: [String]) {
+    var descriptionSection: some View {
+        Section(header: Text("About")) {
+            Text(privacyModule.identifierInfo[categoryIdentifier]?.description ?? "Missing Description.")
+        }
+    }
+    
+    var toggleSection: some View {
+        Section(header: Text("Allow Data Upload")) {
+            Toggle(privacyModule.identifierInfo[categoryIdentifier]?.uiString ?? "Missing UI Type String ", isOn: Binding<Bool>(
+                get: {
+                    // get the current enable status for the toggle
+                    // default to a disabled toggle if the value is missing
+                    privacyModule.identifierInfo[categoryIdentifier]?.enabledBool ?? false
+                },
+                set: { newValue in
+                    // Update dict with new toggle status, signal to other views about dict change
+                    privacyModule.updateAndSignalOnChange(identifierString: categoryIdentifier, newToggleVal: newValue)
+                }
+            ))
+        }
+    }
+    
+    var hideByCustomRangeSection: some View {
+        Section(header: Text("Hide Data by Custom Range")) {
+            VStack {
+                DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
+                DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
+                
+                Divider()
+
+                Button("Hide") {
+                    let startDateString = formatDate(customHideStartDate)
+                    let endDateString = formatDate(customHideEndDate)
+                    Task {
+                        customRangeTimestamps = await standard.fetchCustomRangeTimeStamps(
+                            selectedTypeIdentifier: categoryIdentifier,
+                            startDate: startDateString,
+                            endDate: endDateString
+                        )
+                    }
+                    switchHiddenInBackend(identifier: categoryIdentifier, timestamps: customRangeTimestamps, alwaysHide: true)
+                }
+//                .frame(maxWidth: .infinity) // Make the button take full width
+            }
+        }
+    }
+    
+    var hideByTimeSection: some View {
+        Section(header: Text("Hide by Timestamps")) {
+            timeStampsDisplay
+        }
+    }
+    
+    var timeStampsDisplay: some View {
+        ForEach(timeArrayStatic, id: \.self) { timestamp in
+            HStack {
+                Image(systemName: crossedOutTimestamps[timestamp, default: false] ? "eye.slash" : "eye")
+                    .accessibilityLabel(crossedOutTimestamps[timestamp, default: false] ? "Hide Timestamp" : "Show Timestamp")
+                    .onTapGesture {
+                        switchHiddenInBackend(identifier: categoryIdentifier, timestamps: [timestamp], alwaysHide: false)
+                        crossedOutTimestamps[timestamp]?.toggle() ?? (crossedOutTimestamps[timestamp] = true)
+                    }
+                Text(timestamp)
+            }
+            .foregroundColor(crossedOutTimestamps[timestamp, default: false] ? .gray : .black)
+            .opacity(crossedOutTimestamps[timestamp, default: false] ? 0.5 : 1.0)
+        }
+    }
+    
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    func switchHiddenInBackend(identifier: String, timestamps: [String], alwaysHide: Bool) {
         for timestamp in timestamps {
             Task {
-                await standard.addDeleteFlag(selectedTypeIdentifier: identifier, timestamp: timestamp)
+                await standard.switchHideFlag(selectedTypeIdentifier: identifier, timestamp: timestamp, alwaysHide: alwaysHide)
             }
         }
     }
 }
 
-
-#Preview {
-    DeleteDataView(categoryIdentifier: "Example Preview: DeleteDataView")
+struct DeleteDataView_Previews: PreviewProvider {
+    static var previews: some View {
+        DeleteDataView(categoryIdentifier: "Example Preview: DeleteDataView")
+    }
 }

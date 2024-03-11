@@ -12,10 +12,12 @@ import Foundation
 
 func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
     let calendar = Calendar.current
+    // extract the calendar components from the startDate and the endDate
     let startComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .timeZone], from: startDate)
     let endComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .timeZone], from: endDate)
     let isRange = startDate != endDate
     
+    // initialize a dictionary for timeIndex and populate with info extracted above
     var timeIndex: [String: Any?] = [
         "range": isRange,
         "timezone": startComponents.timeZone?.identifier,
@@ -23,6 +25,7 @@ func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
         "datetime.end": endDate.toISOFormat()
     ]
     
+    // passing the timeIndex dictionary by reference so the changes persist
     addTimeIndexComponents(&timeIndex, dateComponents: startComponents, suffix: ".start")
     addTimeIndexComponents(&timeIndex, dateComponents: endComponents, suffix: ".end")
     addTimeIndexRangeComponents(&timeIndex, startComponents: startComponents, endComponents: endComponents)
@@ -30,6 +33,8 @@ func constructTimeIndex(startDate: Date, endDate: Date) -> [String: Any?] {
     return timeIndex
 }
 
+// populate timeIndex dict with individual components from DateComponents (startComponents for this case)
+// "inout" parameter means the argument is passed by reference (dict is modified inside the funct and changes persist)
 func addTimeIndexComponents(_ timeIndex: inout [String: Any?], dateComponents: DateComponents, suffix: String) {
     timeIndex["year" + suffix] = dateComponents.year
     timeIndex["month" + suffix] = dateComponents.month
@@ -41,6 +46,8 @@ func addTimeIndexComponents(_ timeIndex: inout [String: Any?], dateComponents: D
     timeIndex["fifteenMinBucket" + suffix] = calculate15MinBucket(hour: dateComponents.hour, minute: dateComponents.minute)
 }
 
+// if the start/end time shows that we have a time RANGE and not a time STAMP
+// then add the range-related components to the timeIndex
 func addTimeIndexRangeComponents(_ timeIndex: inout [String: Any?], startComponents: DateComponents, endComponents: DateComponents) {
     timeIndex["year.range"] = getRange(
         start: startComponents.year,
@@ -80,6 +87,7 @@ func addTimeIndexRangeComponents(_ timeIndex: inout [String: Any?], startCompone
 }
 
 // swiftlint:disable discouraged_optional_collection
+// passed the start and end bounds, returns the range in whichever unit passed in
 func getRange(start: Int?, end: Int?, maxValue: Int?, startValue: Int = 0) -> [Int]? {
     guard let startInt = start, let endInt = end, let maxValueInt = maxValue else {
         return nil
