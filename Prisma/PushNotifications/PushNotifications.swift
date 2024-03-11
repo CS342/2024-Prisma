@@ -48,7 +48,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     
     func handleNotificationAction(_ response: UNNotificationResponse) async {
         // right now the default action is when a user taps on the notification. functionality can be expanded in the future.
-        let actionIdentifier = response.actionIdentifier
+        _ = response.actionIdentifier
         if let sentTimestamp = response.notification.request.content.userInfo["sent_timestamp"] as? String {
             let openedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
             await standard.addNotificationOpenedTimestamp(timeSent: sentTimestamp, timeOpened: openedTimestamp)
