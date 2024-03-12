@@ -113,7 +113,9 @@ extension PrismaStandard {
             HKCategoryType(.sleepAnalysis),
             HKWorkoutType.workoutType()
         ]
-        let privacyModule = PrivacyModule(sampleTypeList: sampleList)
+//        let privacyModule = PrivacyModule(sampleTypeList: sampleList)
+
+        @Dependency var privacyModule = PrivacyModule(sampleTypeList: sampleList)
         let toggleMap = await privacyModule.getHKSampleTypeMappings()
         
         let identifier: String

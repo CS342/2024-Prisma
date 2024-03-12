@@ -22,7 +22,6 @@ import SpeziOnboarding
 import SpeziQuestionnaire
 import SwiftUI
 
-
 actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, OnboardingConstraint, AccountStorageConstraint {
     enum PrismaStandardError: Error {
         case userNotAuthenticatedYet
