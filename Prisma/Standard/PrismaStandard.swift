@@ -233,7 +233,6 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
     ///   - accessGroup: The identifier of the access group to authorize.
     ///
     /// - Throws: An error if an issue occurs during the authorization process.
-    @available(iOS 15.0, *)
     func authorizeAccessGroupForCurrentUser() async {
         guard let user = Auth.auth().currentUser else {
             print("No signed in user.")
