@@ -77,14 +77,14 @@ struct DeleteDataView: View {
     var hideByCustomRangeSection: some View {
         Section(header: Text("Hide Data by Custom Range")) {
             VStack {
-                DatePicker("Start date", selection: $customHideStartDate, displayedComponents: .date)
-                DatePicker("End date", selection: $customHideEndDate, displayedComponents: .date)
+                DatePicker("Start date", selection: $customHideStartDate, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("End date", selection: $customHideEndDate, displayedComponents: [.date, .hourAndMinute])
                 
                 Divider()
 
                 Button("Hide") {
-                    let startDateString = formatDate(customHideStartDate)
-                    let endDateString = formatDate(customHideEndDate)
+                    let startDateString = customHideStartDate.toISOFormat()
+                    let endDateString = customHideEndDate.toISOFormat()
                     Task {
                         customRangeTimestamps = await standard.fetchCustomRangeTimeStamps(
                             selectedTypeIdentifier: categoryIdentifier,
@@ -119,12 +119,6 @@ struct DeleteDataView: View {
             .foregroundColor(crossedOutTimestamps[timestamp, default: false] ? .gray : .black)
             .opacity(crossedOutTimestamps[timestamp, default: false] ? 0.5 : 1.0)
         }
-    }
-    
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: date)
     }
     
     func switchHiddenInBackend(identifier: String, timestamps: [String], alwaysHide: Bool) {

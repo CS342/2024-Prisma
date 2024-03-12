@@ -207,16 +207,13 @@ extension PrismaStandard {
             print("Selected identifier: " + selectedTypeIdentifier)
             print("Path from getPath: " + path)
             
-            let querySnapshot = try await firestore.collection(path).getDocuments()
+            let querySnapshot = try await firestore.collection(path)
+                .whereField("issued", isGreaterThanOrEqualTo: startDate)
+                .whereField("issued", isLessThanOrEqualTo: endDate)
+                .getDocuments()
             
             for document in querySnapshot.documents {
-                let documentID = document.documentID
-                let documentDate = String(documentID.prefix(10))
-                
-                // check if documentID date is within the start and end date range
-                if documentDate >= startDate && documentDate <= endDate {
-                    timestampsArr.append(documentID)
-                }
+                timestampsArr.append(document.documentID)
             }
             return timestampsArr
         } catch {
