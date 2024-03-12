@@ -80,6 +80,7 @@ extension PrismaStandard {
             // timeIndex is a dictionary with time-related info (range, timezone, datetime.start, datetime.end)
             // timeIndex is added a field for this specific HK datapoint so we can just access this part to fetch/sort by time
             firestoreResource["time"] = timeIndex
+            firestoreResource["datetimeStart"] = timeIndex
             try await Firestore.firestore().document(path).setData(firestoreResource)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
@@ -181,7 +182,7 @@ extension PrismaStandard {
             print("Path from getPath: " + path)
             
             let querySnapshot = try await firestore.collection(path)
-                .order(by: "issued", descending: true)
+                .order(by: "datetimeStart", descending: false)
                 .limit(to: 10)
                 .getDocuments()
 
@@ -208,8 +209,8 @@ extension PrismaStandard {
             print("Path from getPath: " + path)
             
             let querySnapshot = try await firestore.collection(path)
-                .whereField("issued", isGreaterThanOrEqualTo: startDate)
-                .whereField("issued", isLessThanOrEqualTo: endDate)
+                .whereField("datetimeStart", isGreaterThanOrEqualTo: startDate)
+                .whereField("datetimeStart", isLessThanOrEqualTo: endDate)
                 .getDocuments()
             
             for document in querySnapshot.documents {

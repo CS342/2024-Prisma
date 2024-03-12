@@ -100,7 +100,7 @@ struct DeleteDataView: View {
     }
     
     var hideByTimeSection: some View {
-        Section(header: Text("Hide by Timestamps")) {
+        Section(header: Text("Hide Data by Recent Timestamps")) {
             timeStampsDisplay
         }
     }
