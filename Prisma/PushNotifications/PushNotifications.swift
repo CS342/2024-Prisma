@@ -20,7 +20,7 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
-class PrismaPushNotifications: UNNotificationServiceExtension, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
+class PrismaPushNotifications: NSObject, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
                                UNUserNotificationCenterDelegate, EnvironmentAccessible {
     @Application(\.registerRemoteNotifications) var registerRemoteNotifications
     @StandardActor var standard: PrismaStandard
