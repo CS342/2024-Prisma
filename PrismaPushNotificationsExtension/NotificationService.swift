@@ -12,8 +12,9 @@
 //
 
 import Firebase
+import FirebaseAuth
+import FirebaseCore
 import FirebaseFirestore
-//import Prisma
 import UserNotifications
 
 class NotificationService: UNNotificationServiceExtension {
@@ -21,27 +22,21 @@ class NotificationService: UNNotificationServiceExtension {
     var bestAttemptContent: UNMutableNotificationContent?
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+        FirebaseApp.configure()
+        
+        let accessGroup = "637867499T.edu.stanford.cs342.2024.behavior"
+        do {
+          try Auth.auth().useUserAccessGroup(accessGroup)
+        } catch let error as NSError {
+          print("Error changing user access group: %@", error)
+        }
+        
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        
         if let bestAttemptContent = bestAttemptContent {
-            // Modify the notification content here...
-            bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
+            let path = request.content.userInfo["logs_path"] as? String ?? ""
             let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
-            if let path = request.content.userInfo["logs_path"] as? String {
-                Firestore.firestore().document(path).setData(["received": receivedTimestamp], merge: true)
-            } else {
-                print("Sent timestamp is not a string or is nil")
-            }
-//            let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
-//            if let sentTimestamp = request.content.userInfo["sent_timestamp"] as? String {
-//                Task {
-//                    await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
-//                }
-//            } else {
-//                print("Sent timestamp is not a string or is nil")
-//            }
-            
+            Firestore.firestore().document(path).setData(["received": receivedTimestamp], merge: true)
             contentHandler(bestAttemptContent)
         }
     }

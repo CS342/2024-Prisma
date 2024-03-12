@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseMessaging
 import FirebaseStorage
@@ -220,5 +221,38 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
             preconditionFailure("Account Storage was requested although not enabled in current configuration.")
         }
         try await accountStorage.delete(identifier)
+    }
+    
+    /// Authorizes access to the Prisma keychain access group for the currently signed-in user.
+    ///
+    /// If the current user is signed in, this function authorizes their access to the Prisma notifications keychain access group identifier.
+    /// If the user is not signed in, or if an error occurs during the authorization process, appropriate error handling is performed, and the user may be logged out.
+    ///
+    /// - Parameters:
+    ///   - user: The current user object.
+    ///   - accessGroup: The identifier of the access group to authorize.
+    ///
+    /// - Throws: An error if an issue occurs during the authorization process.
+    @available(iOS 15.0, *)
+    func authorizeAccessGroupForCurrentUser() async {
+        guard let user = Auth.auth().currentUser else {
+            print("No signed in user.")
+            return
+        }
+        let accessGroup = "637867499T.edu.stanford.cs342.2024.behavior"
+        
+        guard (try? Auth.auth().getStoredUser(forAccessGroup: accessGroup)) == nil else {
+            print("Access group already shared ...")
+            return
+        }
+        
+        do {
+            try Auth.auth().useUserAccessGroup(accessGroup)
+            try await Auth.auth().updateCurrentUser(user)
+        } catch let error as NSError {
+            print("Error changing user access group: %@", error)
+            // log out the user if fails
+            try? Auth.auth().signOut()
+        }
     }
 }

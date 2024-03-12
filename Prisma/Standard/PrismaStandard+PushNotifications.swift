@@ -36,7 +36,10 @@ extension PrismaStandard {
     
     
     /// Stores the timestamp when a notification was opened by
-    /// the user to the specific notification document.
+    /// the user's device to the specific notification document.
+    ///
+    /// - Parameter timeSent: The time which the notification was sent, used for the path in Firestore.
+    /// - Parameter timeOpened: The time which the notification was opened, generated when the user opens the notification.
     func addNotificationOpenedTimestamp(timeSent: String, timeOpened: String) async {
         // path = user_id/notifications/data/logs/YYYY-MM-DDThh:mm:ss.mss
         let path: String

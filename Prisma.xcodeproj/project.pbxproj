@@ -85,6 +85,7 @@
 		5F5ECC892B9F548300B666BC /* SpeziMockWebService in Frameworks */ = {isa = PBXBuildFile; productRef = 5F5ECC882B9F548300B666BC /* SpeziMockWebService */; };
 		5F5ECC8B2B9F548300B666BC /* HealthKitOnFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 5F5ECC8A2B9F548300B666BC /* HealthKitOnFHIR */; };
 		5F5ECC8D2B9F548300B666BC /* SwiftPackageList in Frameworks */ = {isa = PBXBuildFile; productRef = 5F5ECC8C2B9F548300B666BC /* SwiftPackageList */; };
+		5FA07FE52B9FF33000A3D38D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F6025CA29BBE70F0045459E /* GoogleService-Info.plist */; };
 		5FBBD2B62B875DB800B75E9F /* PrismaStandard+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */; };
 		5FECE9562B6C9A5F00C06B13 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE9552B6C9A5F00C06B13 /* PushNotifications.swift */; };
 		5FECE9592B6CCF0B00C06B13 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5FECE9582B6CCF0B00C06B13 /* FirebaseMessaging */; };
@@ -194,6 +195,7 @@
 		5F5ECC462B9F3B5C00B666BC /* PrismaPushNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrismaPushNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5ECC482B9F3B5C00B666BC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		5F5ECC4A2B9F3B5C00B666BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FA07FE72BA0BABF00A3D38D /* PrismaPushNotificationsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrismaPushNotificationsExtension.entitlements; sourceTree = "<group>"; };
 		5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+PushNotifications.swift"; sourceTree = "<group>"; };
 		5FECE9552B6C9A5F00C06B13 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		653A254D283387FE005D4D48 /* Prisma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prisma.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,6 +410,7 @@
 		5F5ECC472B9F3B5C00B666BC /* PrismaPushNotificationsExtension */ = {
 			isa = PBXGroup;
 			children = (
+				5FA07FE72BA0BABF00A3D38D /* PrismaPushNotificationsExtension.entitlements */,
 				5F5ECC482B9F3B5C00B666BC /* NotificationService.swift */,
 				5F5ECC4A2B9F3B5C00B666BC /* Info.plist */,
 			);
@@ -750,6 +753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA07FE52B9FF33000A3D38D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,6 +1067,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = PrismaPushNotificationsExtension/PrismaPushNotificationsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1094,6 +1099,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = PrismaPushNotificationsExtension/PrismaPushNotificationsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1124,6 +1130,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = PrismaPushNotificationsExtension/PrismaPushNotificationsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
