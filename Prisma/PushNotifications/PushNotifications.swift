@@ -92,6 +92,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // Update the token in Firestore:
         // The standard is an actor, which protects against data races and conforms to
+
         // immutable data practice. Therefore we get into new asynchronous context and execute
         Task {
             await standard.storeToken(token: fcmToken)
