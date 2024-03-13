@@ -36,6 +36,7 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
 
     @Dependency var mockWebService: MockWebService?
     @Dependency var accountStorage: FirestoreAccountStorage?
+    @Dependency var privacyModule: PrivacyModule?
 
     @AccountReference var account: Account
 

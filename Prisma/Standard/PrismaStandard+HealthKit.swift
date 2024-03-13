@@ -89,33 +89,9 @@ extension PrismaStandard {
     /// Adds a new `HKSample` to the Firestore.
     /// - Parameter response: The `HKSample` that should be added.
     func add(sample: HKSample) async {
-        let sampleList = [
-            // Activity
-            HKQuantityType(.stepCount),
-            HKQuantityType(.distanceWalkingRunning),
-            HKQuantityType(.basalEnergyBurned),
-            HKQuantityType(.activeEnergyBurned),
-            HKQuantityType(.flightsClimbed),
-            HKQuantityType(.appleExerciseTime),
-            HKQuantityType(.appleMoveTime),
-            HKQuantityType(.appleStandTime),
-            
-            // Vital Signs
-            HKQuantityType(.heartRate),
-            HKQuantityType(.restingHeartRate),
-            HKQuantityType(.heartRateVariabilitySDNN),
-            HKQuantityType(.walkingHeartRateAverage),
-            HKQuantityType(.oxygenSaturation),
-            HKQuantityType(.respiratoryRate),
-            HKQuantityType(.bodyTemperature),
-            
-            // Other events
-            HKCategoryType(.sleepAnalysis),
-            HKWorkoutType.workoutType()
-        ]
-//        let privacyModule = PrivacyModule(sampleTypeList: sampleList)
-
-        @Dependency var privacyModule = PrivacyModule(sampleTypeList: sampleList)
+        guard let privacyModule = privacyModule else {
+            return
+        }
         let toggleMap = await privacyModule.getHKSampleTypeMappings()
         
         let identifier: String

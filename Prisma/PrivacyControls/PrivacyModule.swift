@@ -177,13 +177,9 @@ public class PrivacyModule: Module, EnvironmentAccessible, ObservableObject {
         )
     ]
     
-    var configuration: Configuration {
-        Configuration(standard: PrismaStandard()) { }
-    }
-    
     public required init(sampleTypeList: [HKSampleType]) {
         self.sampleTypeList = sampleTypeList
-        @Dependency var privacyModuleDependecy = PrivacyModule(sampleTypeList: sampleTypeList)
+        
         var sampleTypeIdentifiers: [String] = []
         for sampleType in sampleTypeList {
             if sampleType == HKWorkoutType.workoutType() {
