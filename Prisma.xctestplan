@@ -9,6 +9,20 @@
     }
   ],
   "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Prisma.xcodeproj",
+          "identifier" : "653A254C283387FE005D4D48",
+          "name" : "Prisma"
+        },
+        {
+          "containerPath" : "container:Prisma.xcodeproj",
+          "identifier" : "5F5ECC452B9F3B5C00B666BC",
+          "name" : "PrismaPushNotificationsExtension"
+        }
+      ]
+    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:Prisma.xcodeproj",
       "identifier" : "653A254C283387FE005D4D48",
