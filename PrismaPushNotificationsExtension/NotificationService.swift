@@ -12,15 +12,15 @@
 //
 
 import Firebase
-import FirebaseAuth
-import FirebaseCore
 import FirebaseFirestore
 import UserNotifications
+
 
 class NotificationService: UNNotificationServiceExtension {
     var contentHandler: ((UNNotificationContent) -> Void)?
     var bestAttemptContent: UNMutableNotificationContent?
-
+    
+    
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         FirebaseApp.configure()
         
@@ -33,6 +33,7 @@ class NotificationService: UNNotificationServiceExtension {
         
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+        
         if let bestAttemptContent = bestAttemptContent {
             let path = request.content.userInfo["logs_path"] as? String ?? ""
             let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
@@ -49,6 +50,7 @@ class NotificationService: UNNotificationServiceExtension {
         }
     }
 }
+
 
 extension Date {
     /// converts Date object to ISO Format string. Can optionally pass in a time zone to convert it to.

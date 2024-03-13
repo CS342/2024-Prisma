@@ -107,7 +107,7 @@ class PrismaDelegate: SpeziAppDelegate {
                     end: nil,
                     options: .strictEndDate
                 ),
-                deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
+                deliverySetting: .anchorQuery(.automatic)
             )
         }
     }
