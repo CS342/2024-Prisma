@@ -80,6 +80,7 @@ extension PrismaStandard {
             // timeIndex is a dictionary with time-related info (range, timezone, datetime.start, datetime.end)
             // timeIndex is added a field for this specific HK datapoint so we can just access this part to fetch/sort by time
             firestoreResource["time"] = timeIndex
+            firestoreResource["datetimeStart"] = effectiveTimestamp
             try await Firestore.firestore().document(path).setData(firestoreResource)
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
@@ -181,7 +182,7 @@ extension PrismaStandard {
             print("Path from getPath: " + path)
             
             let querySnapshot = try await firestore.collection(path)
-                .order(by: "issued", descending: true)
+                .order(by: "datetimeStart", descending: true)
                 .limit(to: 10)
                 .getDocuments()
 
@@ -207,16 +208,13 @@ extension PrismaStandard {
             print("Selected identifier: " + selectedTypeIdentifier)
             print("Path from getPath: " + path)
             
-            let querySnapshot = try await firestore.collection(path).getDocuments()
+            let querySnapshot = try await firestore.collection(path)
+                .whereField("datetimeStart", isGreaterThanOrEqualTo: startDate)
+                .whereField("datetimeStart", isLessThanOrEqualTo: endDate)
+                .getDocuments()
             
             for document in querySnapshot.documents {
-                let documentID = document.documentID
-                let documentDate = String(documentID.prefix(10))
-                
-                // check if documentID date is within the start and end date range
-                if documentDate >= startDate && documentDate <= endDate {
-                    timestampsArr.append(documentID)
-                }
+                timestampsArr.append(document.documentID)
             }
             return timestampsArr
         } catch {
