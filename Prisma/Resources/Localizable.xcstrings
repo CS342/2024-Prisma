@@ -436,16 +436,13 @@
     "Hide" : {
 
     },
-    "Hide by Timestamps" : {
-
-    },
     "Hide Data by Custom Range" : {
 
     },
-    "Hide Timestamp" : {
+    "Hide Data by Recent Timestamps" : {
 
     },
-    "Invalid URL" : {
+    "Hide Timestamp" : {
 
     },
     "Invalid URL" : {
