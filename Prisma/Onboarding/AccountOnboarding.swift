@@ -6,7 +6,6 @@
 // SPDX-License-Identifier: MIT
 //
 
-import FirebaseAuth
 import SpeziAccount
 import SpeziOnboarding
 import SwiftUI
@@ -21,7 +20,6 @@ struct AccountOnboarding: View {
     var body: some View {
         AccountSetup { _ in
             Task {
-                await standard.authorizeAccessGroupForCurrentUser()
                 // Placing the nextStep() call inside this task will ensure that the sheet dismiss animation is
                 // played till the end before we navigate to the next step.
                 await standard.setAccountTimestamp()
@@ -46,11 +44,11 @@ struct AccountOnboarding: View {
     OnboardingStack {
         AccountOnboarding()
     }
-    .previewWith {
-        AccountConfiguration {
-            MockUserIdPasswordAccountService()
+        .previewWith {
+            AccountConfiguration {
+                MockUserIdPasswordAccountService()
+            }
         }
-    }
 }
 
 #Preview("Account Onboarding") {
@@ -61,8 +59,8 @@ struct AccountOnboarding: View {
     return OnboardingStack {
         AccountOnboarding()
     }
-    .previewWith {
-        AccountConfiguration(building: details, active: MockUserIdPasswordAccountService())
-    }
+        .previewWith {
+            AccountConfiguration(building: details, active: MockUserIdPasswordAccountService())
+        }
 }
 #endif

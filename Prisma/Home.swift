@@ -6,7 +6,6 @@
 // SPDX-License-Identifier: MIT
 //
 
-import FirebaseAuth
 import SpeziAccount
 import SpeziMockWebService
 import SwiftUI
@@ -27,7 +26,6 @@ struct HomeView: View {
 
 
     @AppStorage(StorageKeys.homeTabSelection) private var selectedTab = Tabs.schedule
-    @Environment(PrismaStandard.self) private var standard
     @State private var presentingAccount = false
 
     
@@ -68,9 +66,6 @@ struct HomeView: View {
                 AccountSheet()
             }
             .verifyRequiredAccountDetails(Self.accountEnabled)
-            .task {
-                await standard.authorizeAccessGroupForCurrentUser()
-            }
     }
 }
 

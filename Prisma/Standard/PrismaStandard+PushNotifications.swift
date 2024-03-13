@@ -28,7 +28,7 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(["received": timeReceived], merge: true)
+            try await Firestore.firestore().document(path).setData(["received": timeReceived])
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }
@@ -36,10 +36,7 @@ extension PrismaStandard {
     
     
     /// Stores the timestamp when a notification was opened by
-    /// the user's device to the specific notification document.
-    ///
-    /// - Parameter timeSent: The time which the notification was sent, used for the path in Firestore.
-    /// - Parameter timeOpened: The time which the notification was opened, generated when the user opens the notification.
+    /// the user to the specific notification document.
     func addNotificationOpenedTimestamp(timeSent: String, timeOpened: String) async {
         // path = user_id/notifications/data/logs/YYYY-MM-DDThh:mm:ss.mss
         let path: String
@@ -52,7 +49,7 @@ extension PrismaStandard {
         
         // try push to Firestore.
         do {
-            try await Firestore.firestore().document(path).setData(["opened": timeOpened], merge: true)
+            try await Firestore.firestore().document(path).setData(["opened": timeOpened])
         } catch {
             print("Failed to set data in Firestore: \(error.localizedDescription)")
         }

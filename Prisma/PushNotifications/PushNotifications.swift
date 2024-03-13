@@ -26,6 +26,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     @StandardActor var standard: PrismaStandard
     @Dependency private var configureFirebaseApp: ConfigureFirebaseApp
     
+    
     override init() {}
     
     
@@ -47,6 +48,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     
     func handleNotificationAction(_ response: UNNotificationResponse) async {
         // right now the default action is when a user taps on the notification. functionality can be expanded in the future.
+        _ = response.actionIdentifier
         if let sentTimestamp = response.notification.request.content.userInfo["sent_timestamp"] as? String {
             let openedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
             await standard.addNotificationOpenedTimestamp(timeSent: sentTimestamp, timeOpened: openedTimestamp)
@@ -69,14 +71,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     }
     
     func receiveRemoteNotification(_ remoteNotification: [AnyHashable: Any]) async -> BackgroundFetchResult {
-        let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
-        if let sentTimestamp = remoteNotification["sent_timestamp"] as? String {
-            Task {
-                await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
-            }
-        } else {
-            print("Sent timestamp is not a string or is nil")
-        }
+        print("bg")
         return .noData
     }
 
