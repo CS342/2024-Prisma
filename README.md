@@ -22,11 +22,8 @@ The CS342 2024 PRISMA application is using the [Spezi](https://github.com/Stanfo
 
 
 ## CS342 2024 PRISMA Features
-
-*Provide a comprehensive description of your application, including figures showing the application. You can learn more on how to structure a README in the [Stanford Spezi Documentation Guide](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/documentation-guide)*
-
-> [!NOTE]  
-> Do you want to learn more about the Stanford Spezi Template Application and how to use, extend, and modify this application? Check out the [Stanford Spezi Template Application documentation](https://stanfordspezi.github.io/SpeziTemplateApplication)
+The following are screenshots showing various aspects of the Prisma application.
+|![An account Onboarding page.](Prisma/Supporting Files/PrismaApplication.docc/Resources/Onboarding/AccounOnboarding.png#gh-light-mode-only)![An account Onboarding page.]
 
 
 ## Contributing
