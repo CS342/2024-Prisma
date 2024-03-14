@@ -33,11 +33,14 @@ The following are screenshots showing various aspects of the Prisma application.
 
 ## Contributing
 
-Caroline: Implemented the UI, publisher, fetching, and modifying features for Firestore data given the user’s selection on data upload and redaction of data for the privacy controls.
-Dhruv: Wrote centralized privacy module class for management and storage of selected data. Worked collaboratively with Evelyn S. to create an end to end pipeline of chat interface authentication.
-Evelyn H.: Implemented the UI for privacy controls, fetching and updating data in Firestore to reflect user changes in hiding data by timestamp or time range.
-Evelyn S.:  Worked collaboratively with Dhruv to create an end to end pipeline of chat interface authentication.
-Bryant: Implemented client side handling for push notification registration + handling, as well as the backend listener system and scheduling for notifcations/schedule changes. Also added testing framework to backend.
+| Name       | Contribution |
+|------------|--------------|
+| **Caroline** | Implemented the UI, publisher, fetching, and modifying features for Firestore data given the user’s selection on data upload and redaction of data for the privacy controls. |
+| **Dhruv**    | Wrote centralized privacy module class for management and storage of selected data. Worked collaboratively with Evelyn S. to create an end to end pipeline of chat interface authentication. |
+| **Evelyn H.** | Implemented the UI for privacy controls, fetching and updating data in Firestore to reflect user changes in hiding data by timestamp or time range. |
+| **Evelyn S.** | Worked collaboratively with Dhruv to create an end to end pipeline of chat interface authentication. |
+| **Bryant**   | Implemented client side handling for push notification registration + handling, as well as the backend listener system and scheduling for notifications/schedule changes. Also added testing framework to backend. |
+
 
 
 ## License
