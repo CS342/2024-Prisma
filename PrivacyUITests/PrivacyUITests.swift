@@ -9,25 +9,46 @@ import XCTest
 
 final class PrivacyUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
+    func testOnboarding() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
-        app.launch()
+                app.launch()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        elementsQuery.buttons["Learn More"].tap()
+        elementsQuery.buttons["Continue"].tap()
+        
+        let eMailAddressTextField = elementsQuery.textFields["E-Mail Address"]
+        eMailAddressTextField.tap()
+        eMailAddressTextField.typeText("carolinetran.sea@gmail.com")
+        
+        let passwordSecureTextField = elementsQuery.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.press(forDuration: 1.5)
+        let password = "123456"
+        UIPasteboard.general.string = password
+        print(UIPasteboard.general.string ?? "Pasteboard is empty")
+        let pasteMenuItem = app.menuItems["Paste"]
+        if pasteMenuItem.waitForExistence(timeout: 10) {
+            pasteMenuItem.tap()
+        } else {
+            XCTFail("Paste option not found")
+        }
+        
+        let loginButton = elementsQuery.buttons["Login"]
+        loginButton.tap()
+        sleep(5)
+        elementsQuery.buttons["Allow HealthKit Access"].tap()
+        app.tables.staticTexts["Turn On All"].tap()
+        app.navigationBars["Health Access"].buttons["UIA.Health.AuthSheet.DoneButton"].tap()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let nextButton = app.scrollViews.otherElements.buttons["Next"]
+        XCTAssertTrue(nextButton.waitForExistence(timeout: 10), "Next button did not appear")
+        nextButton.tap()
+        app.alerts["“Prisma” Would Like to Send You Notifications"]
+            .scrollViews.otherElements
+            .staticTexts["“Prisma” Would Like to Send You Notifications"].tap()
+
     }
 
     func testLaunchPerformance() throws {

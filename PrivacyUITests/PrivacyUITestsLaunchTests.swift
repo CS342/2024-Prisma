@@ -8,6 +8,7 @@
 import XCTest
 
 final class PrivacyUITestsLaunchTests: XCTestCase {
+
     override func setUpWithError() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
