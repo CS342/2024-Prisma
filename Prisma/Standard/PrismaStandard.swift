@@ -23,7 +23,6 @@ import SpeziOnboarding
 import SpeziQuestionnaire
 import SwiftUI
 
-
 actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, OnboardingConstraint, AccountStorageConstraint {
     enum PrismaStandardError: Error {
         case userNotAuthenticatedYet
@@ -38,6 +37,7 @@ actor PrismaStandard: Standard, EnvironmentAccessible, HealthKitConstraint, Onbo
 
     @Dependency var mockWebService: MockWebService?
     @Dependency var accountStorage: FirestoreAccountStorage?
+    @Dependency var privacyModule: PrivacyModule?
 
     @AccountReference var account: Account
 
