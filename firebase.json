@@ -19,33 +19,7 @@
     "storage": {
       "port": 9199
     },
-    "singleProjectMode": true,
-  },
-  "database": {
-    "rules": "database.rules.json"
-  },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "venv",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ]
-    }
-  ],
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  },
-  "remoteconfig": {
-    "template": "remoteconfig.template.json"
-  },
-  "extensions": {}
+    "singleProjectMode": true
+  }
 }
+  
