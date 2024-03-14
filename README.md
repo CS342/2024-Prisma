@@ -20,7 +20,7 @@ The CS342 2024 PRISMA application is using the [Spezi](https://github.com/Stanfo
 > [!NOTE]  
 > Do you want to try out the CS342 2024 PRISMA application? You can download it to your iOS device using [TestFlight](https://testflight.apple.com/join/bPu7kUoM)!
 >
-> The CS342 2024 Prisma app as of March 14, 2023 includes added functionality for push notifications, controlling personal data usage via privacy controls, and authenticated chat interface dialogue. 
+The CS342 2024 Prisma app as of March 14, 2023 includes added functionality for push notifications, controlling personal data usage via privacy controls, and authenticated chat interface dialogue. 
 
 
 ## CS342 2024 PRISMA Features
@@ -33,7 +33,11 @@ The following are screenshots showing various aspects of the Prisma application.
 
 ## Contributing
 
-*Ensure that you add an adequate contribution section to this README.*
+Caroline: Implemented the UI, publisher, fetching, and modifying features for Firestore data given the user’s selection on data upload and redaction of data for the privacy controls.
+Dhruv: Wrote centralized privacy module class for management and storage of selected data. Worked collaboratively with Evelyn S. to create an end to end pipeline of chat interface authentication.
+Evelyn H.: Implemented the UI for privacy controls, fetching and updating data in Firestore to reflect user changes in hiding data by timestamp or time range.
+Evelyn S.:  Worked collaboratively with Dhruv to create an end to end pipeline of chat interface authentication.
+Bryant: Implemented client side handling for push notification registration + handling, as well as the backend listener system and scheduling for notifcations/schedule changes. Also added testing framework to backend.
 
 
 ## License
