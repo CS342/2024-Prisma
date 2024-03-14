@@ -32,7 +32,7 @@ struct ManageDataView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 35, height: 35)
-                                .accessibility(label: Text("accessibility text temp"))
+                                .accessibility(label: Text(privacyModule.identifierInfo[sampleIdentifier]?.iconName ?? "missing icon name"))
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(privacyModule.identifierInfo[sampleIdentifier]?.uiString ?? "missing ui identifier string")
                                     .font(.headline)

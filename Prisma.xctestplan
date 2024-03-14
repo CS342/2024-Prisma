@@ -43,6 +43,13 @@
         "identifier" : "653A256628338800005D4D48",
         "name" : "PrismaUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Prisma.xcodeproj",
+        "identifier" : "D8CB46292BA2E526005B3B72",
+        "name" : "PrivacyUITests"
+      }
     }
   ],
   "version" : 1

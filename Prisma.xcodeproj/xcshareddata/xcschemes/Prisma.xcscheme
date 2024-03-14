@@ -54,6 +54,17 @@
                ReferencedContainer = "container:Prisma.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D8CB46292BA2E526005B3B72"
+               BuildableName = "PrivacyUITests.xctest"
+               BlueprintName = "PrivacyUITests"
+               ReferencedContainer = "container:Prisma.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

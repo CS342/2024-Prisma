@@ -80,6 +80,8 @@
 		AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */; };
 		ACB5DFBA2B9F9E76004F28E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DFB92B9F9E76004F28E6 /* GoogleService-Info.plist */; };
 		D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8027E902B90655700BB9466 /* ManageDataView.swift */; };
+		D8CB462D2BA2E526005B3B72 /* PrivacyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB462C2BA2E526005B3B72 /* PrivacyUITests.swift */; };
+		D8CB462F2BA2E526005B3B72 /* PrivacyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB462E2BA2E526005B3B72 /* PrivacyUITestsLaunchTests.swift */; };
 		D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
 		F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */; };
@@ -113,6 +115,13 @@
 			remoteInfo = Prisma;
 		};
 		653A256828338800005D4D48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653A2545283387FE005D4D48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653A254C283387FE005D4D48;
+			remoteInfo = Prisma;
+		};
+		D8CB46302BA2E526005B3B72 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 653A2545283387FE005D4D48 /* Project object */;
 			proxyType = 1;
@@ -188,6 +197,9 @@
 		AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModule.swift; sourceTree = "<group>"; };
 		ACB5DFB92B9F9E76004F28E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8027E902B90655700BB9466 /* ManageDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataView.swift; sourceTree = "<group>"; };
+		D8CB462A2BA2E526005B3B72 /* PrivacyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrivacyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8CB462C2BA2E526005B3B72 /* PrivacyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyUITests.swift; sourceTree = "<group>"; };
+		D8CB462E2BA2E526005B3B72 /* PrivacyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataView.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+TimeIndex.swift"; sourceTree = "<group>"; };
@@ -259,6 +271,13 @@
 			files = (
 				2FE5DC9929EDD9D9004B9AB4 /* XCTestExtensions in Frameworks */,
 				2FE5DC9C29EDD9EF004B9AB4 /* XCTHealthKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8CB46272BA2E526005B3B72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +408,7 @@
 				653A256028338800005D4D48 /* PrismaTests */,
 				653A256A28338800005D4D48 /* PrismaUITests */,
 				5F5ECC472B9F3B5C00B666BC /* PrismaPushNotificationsExtension */,
+				D8CB462B2BA2E526005B3B72 /* PrivacyUITests */,
 				653A254E283387FE005D4D48 /* Products */,
 				653A258B283395A7005D4D48 /* Frameworks */,
 			);
@@ -401,6 +421,7 @@
 				653A255D28338800005D4D48 /* PrismaTests.xctest */,
 				653A256728338800005D4D48 /* PrismaUITests.xctest */,
 				5F5ECC462B9F3B5C00B666BC /* PrismaPushNotificationsExtension.appex */,
+				D8CB462A2BA2E526005B3B72 /* PrivacyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -471,6 +492,15 @@
 				D8027E902B90655700BB9466 /* ManageDataView.swift */,
 			);
 			path = PrivacyControls;
+			sourceTree = "<group>";
+		};
+		D8CB462B2BA2E526005B3B72 /* PrivacyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB462C2BA2E526005B3B72 /* PrivacyUITests.swift */,
+				D8CB462E2BA2E526005B3B72 /* PrivacyUITestsLaunchTests.swift */,
+			);
+			path = PrivacyUITests;
 			sourceTree = "<group>";
 		};
 		F8AF6F9C2B5F352F0011C32D /* Chat */ = {
@@ -617,6 +647,24 @@
 			productReference = 653A256728338800005D4D48 /* PrismaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D8CB46292BA2E526005B3B72 /* PrivacyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8CB46352BA2E526005B3B72 /* Build configuration list for PBXNativeTarget "PrivacyUITests" */;
+			buildPhases = (
+				D8CB46262BA2E526005B3B72 /* Sources */,
+				D8CB46272BA2E526005B3B72 /* Frameworks */,
+				D8CB46282BA2E526005B3B72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8CB46312BA2E526005B3B72 /* PBXTargetDependency */,
+			);
+			name = PrivacyUITests;
+			productName = PrivacyUITests;
+			productReference = D8CB462A2BA2E526005B3B72 /* PrivacyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -639,6 +687,10 @@
 					};
 					653A256628338800005D4D48 = {
 						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 653A254C283387FE005D4D48;
+					};
+					D8CB46292BA2E526005B3B72 = {
+						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 653A254C283387FE005D4D48;
 					};
 				};
@@ -678,6 +730,7 @@
 				5F5ECC452B9F3B5C00B666BC /* PrismaPushNotificationsExtension */,
 				653A255C28338800005D4D48 /* PrismaTests */,
 				653A256628338800005D4D48 /* PrismaUITests */,
+				D8CB46292BA2E526005B3B72 /* PrivacyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -715,6 +768,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		653A256528338800005D4D48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8CB46282BA2E526005B3B72 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -822,6 +882,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8CB46262BA2E526005B3B72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8CB462D2BA2E526005B3B72 /* PrivacyUITests.swift in Sources */,
+				D8CB462F2BA2E526005B3B72 /* PrivacyUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -843,6 +912,11 @@
 			isa = PBXTargetDependency;
 			target = 653A254C283387FE005D4D48 /* Prisma */;
 			targetProxy = 653A256828338800005D4D48 /* PBXContainerItemProxy */;
+		};
+		D8CB46312BA2E526005B3B72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653A254C283387FE005D4D48 /* Prisma */;
+			targetProxy = D8CB46302BA2E526005B3B72 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1383,6 +1457,67 @@
 			};
 			name = Release;
 		};
+		D8CB46322BA2E526005B3B72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.PrivacyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Prisma;
+			};
+			name = Debug;
+		};
+		D8CB46332BA2E526005B3B72 /* Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.PrivacyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Prisma;
+			};
+			name = Test;
+		};
+		D8CB46342BA2E526005B3B72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2024.behavior.PrivacyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Prisma;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1432,6 +1567,16 @@
 				653A257828338800005D4D48 /* Debug */,
 				2FEE10332998C89C000822E1 /* Test */,
 				653A257928338800005D4D48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8CB46352BA2E526005B3B72 /* Build configuration list for PBXNativeTarget "PrivacyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8CB46322BA2E526005B3B72 /* Debug */,
+				D8CB46332BA2E526005B3B72 /* Test */,
+				D8CB46342BA2E526005B3B72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
