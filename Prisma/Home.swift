@@ -69,7 +69,25 @@ struct HomeView: View {
             }
             .verifyRequiredAccountDetails(Self.accountEnabled)
             .task {
-                await standard.authorizeAccessGroupForCurrentUser()
+                guard let user = Auth.auth().currentUser else {
+                    print("No signed in user.")
+                    return
+                }
+                let accessGroup = "637867499T.edu.stanford.cs342.2024.behavior"
+                
+                guard (try? Auth.auth().getStoredUser(forAccessGroup: accessGroup)) == nil else {
+                    print("Access group already shared ...")
+                    return
+                }
+                
+                do {
+                    try Auth.auth().useUserAccessGroup(accessGroup)
+                    try await Auth.auth().updateCurrentUser(user)
+                } catch let error as NSError {
+                    print("Error changing user access group: %@", error)
+                    // log out the user if fails
+                    try? Auth.auth().signOut()
+                }
             }
     }
 }
