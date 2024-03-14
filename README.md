@@ -19,11 +19,16 @@ The CS342 2024 PRISMA application is using the [Spezi](https://github.com/Stanfo
 
 > [!NOTE]  
 > Do you want to try out the CS342 2024 PRISMA application? You can download it to your iOS device using [TestFlight](https://testflight.apple.com/join/bPu7kUoM)!
+>
+> The CS342 2024 Prisma app as of March 14, 2023 includes added functionality for push notifications, controlling personal data usage via privacy controls, and authenticated chat interface dialogue. 
 
 
 ## CS342 2024 PRISMA Features
 The following are screenshots showing various aspects of the Prisma application.
-|![An account Onboarding page.](Prisma/Supporting Files/PrismaApplication.docc/Resources/Onboarding/AccounOnboarding.png#gh-light-mode-only)![An account Onboarding page.]
+
+| Account Onboarding | Notification Permissions | Data View |
+|:------------------:|:------------------------:|:---------:|
+| ![An account Onboarding page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/AccountOnboarding.png#gh-light-mode-only) ![An account Onboarding page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/AccountOnboarding~dark.png#gh-dark-mode-only) | ![A Notification Permissions page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/NotificationPermissions.png#gh-light-mode-only) ![A Notification Permissions page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/NotificationPermissions~dark.png#gh-dark-mode-only) | ![A data view.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/DataView.png#gh-light-mode-only) ![A data view.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/DataView~dark.png#gh-dark-mode-only) |
 
 
 ## Contributing
