@@ -26,9 +26,9 @@ The CS342 2024 Prisma app as of March 14, 2023 includes added functionality for 
 ## CS342 2024 PRISMA Features
 The following are screenshots showing various aspects of the Prisma application.
 
-| Account Onboarding | Notification Permissions | Data View |
+| Chat Interface | Notification Permissions | Data View |
 |:------------------:|:------------------------:|:---------:|
-| ![An account Onboarding page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/AccountOnboarding.png#gh-light-mode-only) ![An account Onboarding page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/AccountOnboarding~dark.png#gh-dark-mode-only) | ![A Notification Permissions page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/NotificationPermissions.png#gh-light-mode-only) ![A Notification Permissions page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/NotificationPermissions~dark.png#gh-dark-mode-only) | ![A data view.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/DataView.png#gh-light-mode-only) ![A data view.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/DataView~dark.png#gh-dark-mode-only) |
+| ![A Chat page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/Chat.png#gh-light-mode-only) ![A Chat page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/Chat~dark.png.png#gh-dark-mode-only) | ![A Notification Permissions page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/NotificationPermissions.png#gh-light-mode-only) ![A Notification Permissions page.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/NotificationPermissions~dark.png#gh-dark-mode-only) | ![A data view.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/DataView.png#gh-light-mode-only) ![A data view.](Prisma/Supporting%20Files/PrismaApplication.docc/Resources/Onboarding/DataView~dark.png#gh-dark-mode-only) |
 
 
 ## Contributing
