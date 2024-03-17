@@ -22,6 +22,7 @@ The CS342 2024 PRISMA application is using the [Spezi](https://github.com/Stanfo
 >
 The CS342 2024 Prisma app as of March 14, 2023 includes added functionality for push notifications, controlling personal data usage via privacy controls, and authenticated chat interface dialogue. 
 
+For the Chat Interface, to access this feature, please run the frontend + backend in the StanfordHCI/Prisma repository, so that chat is rendered on localhost, which this iOS repository depends on. Once the actual website is set up, replace the URL in ChatView with the permanent URL.
 
 ## CS342 2024 PRISMA Features
 The following are screenshots showing various aspects of the Prisma application.
