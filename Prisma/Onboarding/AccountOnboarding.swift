@@ -14,7 +14,6 @@ import SwiftUI
 
 struct AccountOnboarding: View {
     @Environment(Account.self) private var account
-    
     @Environment(PrismaStandard.self) private var standard
     @Environment(OnboardingNavigationPath.self) private var onboardingNavigationPath
     
@@ -22,30 +21,11 @@ struct AccountOnboarding: View {
     var body: some View {
         AccountSetup { _ in
             Task {
-                guard let user = Auth.auth().currentUser else {
-                    print("No signed in user.")
-                    return
-                }
-                let accessGroup = "637867499T.edu.stanford.cs342.2024.behavior"
-                
-                guard (try? Auth.auth().getStoredUser(forAccessGroup: accessGroup)) == nil else {
-                    print("Access group already shared ...")
-                    return
-                }
-                
-                do {
-                    try Auth.auth().useUserAccessGroup(accessGroup)
-                    try await Auth.auth().updateCurrentUser(user)
-                } catch let error as NSError {
-                    print("Error changing user access group: %@", error)
-                    // log out the user if fails
-                    try? Auth.auth().signOut()
-                }
-                
+                await standard.authorizeAccessGroupForCurrentUser()
+                await standard.setAccountTimestamp()
                 
                 // Placing the nextStep() call inside this task will ensure that the sheet dismiss animation is
                 // played till the end before we navigate to the next step.
-                await standard.setAccountTimestamp()
                 onboardingNavigationPath.nextStep()
             }
         } header: {
@@ -67,11 +47,11 @@ struct AccountOnboarding: View {
     OnboardingStack {
         AccountOnboarding()
     }
-    .previewWith {
-        AccountConfiguration {
-            MockUserIdPasswordAccountService()
+        .previewWith(standard: PrismaStandard()) {
+            AccountConfiguration {
+                MockUserIdPasswordAccountService()
+            }
         }
-    }
 }
 
 #Preview("Account Onboarding") {
@@ -82,8 +62,8 @@ struct AccountOnboarding: View {
     return OnboardingStack {
         AccountOnboarding()
     }
-    .previewWith {
-        AccountConfiguration(building: details, active: MockUserIdPasswordAccountService())
-    }
+        .previewWith(standard: PrismaStandard()) {
+            AccountConfiguration(building: details, active: MockUserIdPasswordAccountService())
+        }
 }
 #endif

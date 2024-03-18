@@ -13,17 +13,18 @@ import SwiftUI
 struct Welcome: View {
     @Environment(OnboardingNavigationPath.self) private var onboardingNavigationPath
     
+    
     var body: some View {
         Group {
             GeometryReader { geometry in
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .center) {
                         title
-                        Image(uiImage: Bundle.main.image(withName: "AppIcon-NoBG", fileExtension: "png"))
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 0.7 * geometry.size.width)
-                                .accessibilityHidden(true)
+                        Image(.appIconNoBackground)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 0.7 * geometry.size.width)
+                            .accessibilityHidden(true)
                         Spacer()
                         description
                         Spacer()
@@ -33,15 +34,15 @@ struct Welcome: View {
                         Spacer()
                             .frame(height: 10)
                     }
-                    .frame(minHeight: geometry.size.height)
+                        .frame(minHeight: geometry.size.height)
                 }
             }
-            .padding(24)
+                .padding(24)
         }
     }
     
     var title: some View {
-        Text("WELCOME_TITLE")
+        Text("PRISMA")
             .font(.system(size: 60))
             .fontWeight(.bold)
             .fontDesign(.rounded)

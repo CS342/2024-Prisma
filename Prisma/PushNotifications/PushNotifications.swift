@@ -5,12 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
-// This file implements functions necessary for push notifications to be implemented within the Prisma application.
-// Includes methods for monitoring token refresh, using methods from the PrismaStandard to upload them to a user's
-// collection in Firebase.
-//
-// Created by Bryant Jimenez on 2/1/24.
-//
 
 import Firebase
 import FirebaseCore
@@ -20,6 +14,9 @@ import SpeziFirebaseConfiguration
 import SwiftUI
 
 
+/// This file implements functions necessary for push notifications to be implemented within the Prisma application.
+/// Includes methods for monitoring token refresh, using methods from the PrismaStandard to upload them to a user's
+/// collection in Firebase.
 class PrismaPushNotifications: NSObject, Module, NotificationHandler, NotificationTokenHandler, MessagingDelegate,
                                UNUserNotificationCenterDelegate, EnvironmentAccessible {
     @Application(\.registerRemoteNotifications) var registerRemoteNotifications
@@ -58,9 +55,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     func receiveIncomingNotification(_ notification: UNNotification) async -> UNNotificationPresentationOptions? {
         let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
         if let sentTimestamp = notification.request.content.userInfo["sent_timestamp"] as? String {
-            Task {
-                await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
-            }
+            await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
         } else {
             print("Sent timestamp is not a string or is nil")
         }
@@ -71,9 +66,7 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     func receiveRemoteNotification(_ remoteNotification: [AnyHashable: Any]) async -> BackgroundFetchResult {
         let receivedTimestamp = Date().toISOFormat(timezone: TimeZone(abbreviation: "UTC"))
         if let sentTimestamp = remoteNotification["sent_timestamp"] as? String {
-            Task {
-                await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
-            }
+            await standard.addNotificationReceivedTimestamp(timeSent: sentTimestamp, timeReceived: receivedTimestamp)
         } else {
             print("Sent timestamp is not a string or is nil")
         }
@@ -90,7 +83,6 @@ class PrismaPushNotifications: NSObject, Module, NotificationHandler, Notificati
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // Update the token in Firestore:
         // The standard is an actor, which protects against data races and conforms to
-
         // immutable data practice. Therefore we get into new asynchronous context and execute
         Task {
             await standard.storeToken(token: fcmToken)

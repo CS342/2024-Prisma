@@ -12,60 +12,30 @@ import ModelsR4
 import SpeziFirestore
 import SpeziHealthKit
 
-extension PrismaStandard {
-    func getSampleIdentifier(sample: HKSample) -> String? {
-        switch sample {
-        case let quantitySample as HKQuantitySample:
-            return quantitySample.quantityType.identifier
-        case let categorySample as HKCategorySample:
-            return categorySample.categoryType.identifier
-        case is HKWorkout:
-            //  return "\lcal(workout.workoutActivityType)"
-            return "workout"
-        // Add more cases for other HKSample subclasses if needed
-        default:
-            return nil
-        }
-    }
 
-    /// Takes in HKSampleType and returns the corresponding identifier string
-    ///
-    /// - Parameters:
-    ///   - sampleType: HKSampleType to find identifier for
-    /// - Returns: A string for the sample type identifier.
-    public func getSampleIdentifierFromHKSampleType(sampleType: HKSampleType) -> String? {
-        if let quantityType = sampleType as? HKQuantityType {
-            return quantityType.identifier
-        } else if let categoryType = sampleType as? HKCategoryType {
-            return categoryType.identifier
-        } else if sampleType is HKWorkoutType {
-            return "workout"
+extension PrismaStandard: HealthKitConstraint {
+    /// Adds a new `HKSample` to the Firestore.
+    /// - Parameter response: The `HKSample` that should be added.
+    func add(sample: HKSample) async {
+        guard let collectDataTypes = privacyModule?.collectDataTypes else {
+            return
         }
-        // Default case for other HKSampleTypes
-        else {
-            return "Unknown Sample Type"
+        
+        // Only upload types that the user gave permission for.
+        guard collectDataTypes[sample.sampleType] ?? false else {
+            return
         }
-    }
-    
-    func writeToFirestore(sample: HKSample, identifier: String) async {
+        
         // convert the startDate of the HKSample to local time
-        let timeIndex = constructTimeIndex(startDate: sample.startDate, endDate: sample.endDate)
+        let timeIndex = Date.constructTimeIndex(startDate: sample.startDate, endDate: sample.endDate)
         let effectiveTimestamp = sample.startDate.toISOFormat()
         
         let path: String
         // path = HEALTH_KIT_PATH/raw/YYYY-MM-DDThh:mm:ss.mss
         do {
-            path = try await getPath(module: .health(identifier)) + "raw/\(effectiveTimestamp)"
+            path = try await getPath(module: .health(sample.sampleType.identifier)) + "raw/\(effectiveTimestamp)"
         } catch {
             print("Failed to define path: \(error.localizedDescription)")
-            return
-        }
-        
-        if let mockWebService {
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
-            let jsonRepresentation = (try? String(data: encoder.encode(sample.resource), encoding: .utf8)) ?? ""
-            try? await mockWebService.upload(path: path, body: jsonRepresentation)
             return
         }
         
@@ -83,45 +53,25 @@ extension PrismaStandard {
             firestoreResource["datetimeStart"] = effectiveTimestamp
             try await Firestore.firestore().document(path).setData(firestoreResource)
         } catch {
-            print("Failed to set data in Firestore: \(error.localizedDescription)")
+            logger.warning("Failed to set data in Firestore: \(error.localizedDescription)")
         }
     }
     
-    /// Adds a new `HKSample` to the Firestore.
-    /// - Parameter response: The `HKSample` that should be added.
-    func add(sample: HKSample) async {
-        guard let privacyModule = privacyModule else {
-            return
-        }
-        let toggleMap = await privacyModule.getHKSampleTypeMappings()
-        
-        let identifier: String
-        if let id = getSampleIdentifier(sample: sample) {
-            identifier = id
-        } else {
-            print("Failed to upload HealtHkit sample. Unknown sample type: \(sample)")
-            return
-        }
-        if !(toggleMap[identifier] ?? false) {
-            return
-        }
-        await writeToFirestore(sample: sample, identifier: identifier)
-    }
+    func remove(sample: HKDeletedObject) async {}
     
-    func remove(sample: HKDeletedObject) async { }
     
-    func switchHideFlag(selectedTypeIdentifier: String, timestamp: String, alwaysHide: Bool) async {
+    func toggleHideFlag(sampleType: HKSampleType, documentId: String, alwaysHide: Bool) async throws {
         let firestore = Firestore.firestore()
         let path: String
         
         do {
             // call getPath to get the path for this user, up until this specific quantityType
-            path = try await getPath(module: .health(selectedTypeIdentifier)) + "raw/\(timestamp)"
-            print("selectedindentifier:" + selectedTypeIdentifier)
-            print("PATH FROM GET PATH: " + path)
+            path = try await getPath(module: .health(sampleType.identifier)) + "raw/\(documentId)"
+            logger.debug("Selected identifier: \(sampleType.identifier)")
+            logger.debug("Path from getPath: \(path)")
         } catch {
-            print("Failed to define path: \(error.localizedDescription)")
-            return
+            logger.error("Failed to define path: \(error.localizedDescription)")
+            throw error
         }
         
         do {
@@ -133,75 +83,73 @@ extension PrismaStandard {
                 if alwaysHide {
                     // If alwaysHide is true, always set hideFlag to true regardless of original value
                     try await document.setData(["hideFlag": true], merge: true)
-                    print("AlwaysHide is enabled; set hideFlag to true.")
+                    logger.debug("AlwaysHide is enabled; set hideFlag to true.")
                 } else {
                     // Toggle hideFlag if alwaysHide is not true
                     try await document.setData(["hideFlag": !hideFlagExists], merge: true)
-                    print("Toggled hideFlag to \(!hideFlagExists).")
+                    logger.debug("Toggled hideFlag to \(!hideFlagExists).")
                 }
             } else {
                 // If hideFlag does not exist, create it and set to true
                 try await document.setData(["hideFlag": true], merge: true)
-                print("hideFlag was missing; set to true.")
+                logger.debug("hideFlag was missing; set to true.")
             }
         } catch {
-            print("Failed to set data in Firestore: \(error.localizedDescription)")
+            logger.error("Failed to set data in Firestore: \(error.localizedDescription)")
+            throw error
         }
     }
 
-    func fetchTop10RecentTimeStamps(selectedTypeIdentifier: String) async -> [String] {
-        let firestore = Firestore.firestore()
-        let path: String
-        var timestampsArr: [String] = []
-
+    func fetchRecentSamples(for sampleType: HKSampleType, limit: Int = 50) async -> [QueryDocumentSnapshot] {
+        guard !ProcessInfo.processInfo.isPreviewSimulator else {
+            return []
+        }
+        
         do {
-            path = try await getPath(module: .health(selectedTypeIdentifier)) + "raw/"
-            print("Selected identifier: " + selectedTypeIdentifier)
-            print("Path from getPath: " + path)
+            let path = try await getPath(module: .health(sampleType.identifier)) + "raw/"
+            logger.debug("Selected identifier: \(sampleType.identifier)")
+            logger.debug("Path from getPath: \(path)")
             
-            let querySnapshot = try await firestore.collection(path)
-                .order(by: "datetimeStart", descending: true)
-                .limit(to: 10)
+            #warning("The logic should ideally not be based on the issued date but rather datetimeStart once this is reflected in the mock data.")
+            let querySnapshot = try await Firestore
+                .firestore()
+                .collection(path)
+                .order(by: "issued", descending: true)
+                .limit(to: limit)
                 .getDocuments()
-
-            for document in querySnapshot.documents {
-                timestampsArr.append(document.documentID)
-            }
             
-            return timestampsArr
+            return querySnapshot.documents
         } catch {
-            print("Failed to fetch documents or define path: \(error.localizedDescription)")
+            logger.error("Failed to fetch documents or define path: \(error.localizedDescription)")
             return []
         }
     }
     
     // Fetches timestamp based on documentID date
-    func fetchCustomRangeTimeStamps(selectedTypeIdentifier: String, startDate: String, endDate: String) async -> [String] {
-        let firestore = Firestore.firestore()
-        let path: String
-        var timestampsArr: [String] = []
-        
+    func hideSamples(sampleType: HKSampleType, startDate: Date, endDate: Date) async {
         do {
-            path = try await getPath(module: .health(selectedTypeIdentifier)) + "raw/"
-            print("Selected identifier: " + selectedTypeIdentifier)
-            print("Path from getPath: " + path)
+            let path = try await getPath(module: .health(sampleType.identifier)) + "raw/"
+            logger.debug("Selected identifier: \(sampleType.identifier)")
+            logger.debug("Path from getPath: \(path)")
             
-            let querySnapshot = try await firestore.collection(path)
-                .whereField("datetimeStart", isGreaterThanOrEqualTo: startDate)
-                .whereField("datetimeStart", isLessThanOrEqualTo: endDate)
+            #warning("The logic should ideally not be based on the issued date but rather datetimeStart once this is reflected in the mock data.")
+            let querySnapshot = try await Firestore
+                .firestore()
+                .collection(path)
+                .whereField("issued", isGreaterThanOrEqualTo: startDate.toISOFormat())
+                .whereField("issued", isLessThanOrEqualTo: endDate.toISOFormat())
                 .getDocuments()
             
+            #warning("This execution is slow. We should have a clound function or backend endpoint for this.")
             for document in querySnapshot.documents {
-                timestampsArr.append(document.documentID)
+                try await toggleHideFlag(sampleType: sampleType, documentId: document.documentID, alwaysHide: true)
             }
-            return timestampsArr
         } catch {
             if let firestoreError = error as? FirestoreError {
-                print("Error fetching documents: \(firestoreError.localizedDescription)")
+                logger.error("Error fetching documents: \(firestoreError.localizedDescription)")
             } else {
-                print("Unexpected error: \(error.localizedDescription)")
+                logger.error("Unexpected error: \(error.localizedDescription)")
             }
-            return []
         }
     }
 }

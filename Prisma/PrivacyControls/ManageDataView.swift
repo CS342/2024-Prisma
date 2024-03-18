@@ -6,53 +6,59 @@
 // SPDX-License-Identifier: MIT
 //
 
-//
-//  ManageDataView.swift
-//  Prisma
-//
-//  Created by Evelyn Hur on 2/28/24.
-//
-
 import SwiftUI
 
 struct ManageDataView: View {
-    @EnvironmentObject var privacyModule: PrivacyModule
-
+    @Environment(PrivacyModule.self) var privacyModule
+    @Environment(PrismaStandard.self) var prismaStandard
+    
+    @Binding var presentingAccount: Bool
+    
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(privacyModule.sortedSampleIdentifiers, id: \.self) { sampleIdentifier in
+                ForEach(privacyModule.sampleTypes, id: \.identifier) { sampleIdentifier in
                     NavigationLink(
-                        destination: DeleteDataView(
-                            categoryIdentifier: privacyModule.identifierInfo[sampleIdentifier]?.identifier ?? "missing identifier string"
-                        )
+                        destination: PrivacyDetailView(sampleIdentifier, standard: prismaStandard)
                     ) {
-                        HStack(alignment: .center, spacing: 10) {
-                            Image(systemName: privacyModule.identifierInfo[sampleIdentifier]?.iconName ?? "missing icon name")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 35, height: 35)
-                                .accessibility(label: Text("accessibility text temp"))
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(privacyModule.identifierInfo[sampleIdentifier]?.uiString ?? "missing ui identifier string")
-                                    .font(.headline)
-                                // assume a default value of false if there is a nil value in enabledBool
-                                Text((privacyModule.identifierInfo[sampleIdentifier]?.enabledBool ?? false) ? "Enabled" : "Disabled")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
+                        HStack {
+                            Label(
+                                title: {
+                                    Text(sampleIdentifier.title)
+                                },
+                                icon: {
+                                    Image(systemName: sampleIdentifier.systemImage)
+                                        .accessibilityHidden(true)
+                                }
+                            )
+                            Spacer()
+                            Text("\(privacyModule.collectDataTypes[sampleIdentifier, default: false] ? Text("Enabled") : Text("Disabled"))")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
                         }
                     }
                 }
             }
-            .navigationTitle("Manage Data")
+                .navigationTitle("Manage Data")
+                .toolbar {
+                    if AccountButton.shouldDisplay {
+                        AccountButton(isPresented: $presentingAccount)
+                    }
+                }
         }
-        .onReceive(privacyModule.identifierInfoPublisher) { _ in
-            self.privacyModule.objectWillChange.send()
-        }
+    }
+    
+    
+    init(presentingAccount: Binding<Bool>) {
+        self._presentingAccount = presentingAccount
     }
 }
 
+
 #Preview {
-    ManageDataView()
+    ManageDataView(presentingAccount: .constant(false))
+        .previewWith {
+            PrivacyModule(sampleTypes: PrismaDelegate.healthKitSampleTypes)
+        }
 }

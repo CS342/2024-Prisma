@@ -35,11 +35,9 @@ struct OnboardingFlow: View {
         OnboardingStack(onboardingFlowComplete: $completedOnboardingFlow) {
             Welcome()
             Features()
-            
             if !FeatureFlags.disableFirebase {
                 AccountOnboarding()
             }
-            
             if HKHealthStore.isHealthDataAvailable() && !healthKitAuthorization {
                 HealthKitPermissions()
             }

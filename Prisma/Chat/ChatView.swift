@@ -7,72 +7,79 @@
 //
 
 import Firebase
-import Foundation
-import SpeziAccount
 import SwiftUI
-import WebKit
+
 
 struct ChatView: View {
     @Binding var presentingAccount: Bool
     @State private var token: String?
+    
+    
+    private var url: URL? {
+        guard let token else {
+            return nil
+        }
+        
+        return Constants.hostname.appending(queryItems: [URLQueryItem(name: token, value: token)])
+    }
 
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
-                // Fetch JWT token asynchronously
-                if let token = token {
-                    if let url = URL(string: "http://localhost:3000?token=\(token)") {  // this needs to be sent to the frontend
+                Group {
+                    if let url {
                         WebView(url: url)
-                            .navigationTitle("Chat")
-                            .frame(
-                                width: geometry.size.width,
-                                height: geometry.size.height
-                            )
                     } else {
-                        Text("Invalid URL")
+                        VStack(spacing: 16) {
+                            ProgressView()
+                            Text("Loading Chat View")
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                        }
                     }
-                } else {
-                    ProgressView()
                 }
+                    .frame(
+                        width: geometry.size.width,
+                        height: geometry.size.height
+                    )
             }
-            /*
-             .onChange(of: account.signedIn) {
-             guard account.signedIn else {
-             return
-             }
-             
-             Task {
-             try await self.signInWithFirebase()
-             }
-             }
-             */
-            .task {
-                do {
-                    try await self.getFirebaseIDToken()
-                } catch {
-                    print("Firebase Auth failed \(error)")
+                .navigationTitle("Chat")
+                .task {
+                    await self.getFirebaseIDToken()
                 }
-            }
+                .toolbar {
+                    if AccountButton.shouldDisplay {
+                        AccountButton(isPresented: $presentingAccount)
+                    }
+                }
         }
     }
+    
     
     init(presentingAccount: Binding<Bool>) {
         self._presentingAccount = presentingAccount
     }
-}
-
-extension ChatView {
-    func getFirebaseIDToken() async throws {
-        token = try await Auth.auth().currentUser?.getIDToken()
-        print("token is:", token ?? "")
+    
+    
+    private func getFirebaseIDToken() async {
+        guard !ProcessInfo.processInfo.isPreviewSimulator else {
+            try? await Task.sleep(for: .seconds(1.0))
+            token = "TOKEN"
+            return
+        }
+        
+        do {
+            token = try await Auth.auth().currentUser?.getIDToken()
+        } catch {
+            print("Firebase Auth failed \(error)")
+        }
     }
 }
+
 
 #if DEBUG
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(presentingAccount: .constant(false))
-    }
+#Preview {
+    ChatView(presentingAccount: .constant(false))
 }
 #endif
