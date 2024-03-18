@@ -8,13 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		27FA29902A388E9B009CAC45 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA298F2A388E9B009CAC45 /* ModalView.swift */; };
+		2F116D1E2BA79FAF00600A71 /* Date+ISOFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D1D2BA79FAF00600A71 /* Date+ISOFormat.swift */; };
+		2F116D202BA79FE400600A71 /* PrismaStandard+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D1F2BA79FE400600A71 /* PrismaStandard+Account.swift */; };
+		2F116D242BA7A10400600A71 /* PrismaStandard+Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D232BA7A10400600A71 /* PrismaStandard+Consent.swift */; };
+		2F116D282BA7A26F00600A71 /* Date+ConstructTimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D272BA7A26F00600A71 /* Date+ConstructTimeIndex.swift */; };
+		2F116D2B2BA7A37300600A71 /* Date+ISOFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D1D2BA79FAF00600A71 /* Date+ISOFormat.swift */; };
+		2F116D2E2BA7AB9000600A71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D2D2BA7AB9000600A71 /* Constants.swift */; };
+		2F116D302BA7ACB800600A71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D2D2BA7AB9000600A71 /* Constants.swift */; };
+		2F116D322BA7ACE800600A71 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3F29EDD7EE004B9AB4 /* StorageKeys.swift */; };
+		2F116D342BA7ACEB00600A71 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DC3E29EDD7ED004B9AB4 /* FeatureFlags.swift */; };
+		2F116D372BA7C72700600A71 /* PrivacyDetailHideByTimeRangeSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D362BA7C72700600A71 /* PrivacyDetailHideByTimeRangeSection.swift */; };
+		2F116D3A2BA7C79900600A71 /* PrivacyDetailHideByListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D392BA7C79900600A71 /* PrivacyDetailHideByListSection.swift */; };
+		2F116D3D2BA7CC3C00600A71 /* HKSampleType+UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D3C2BA7CC3C00600A71 /* HKSampleType+UIElements.swift */; };
+		2F116D402BA7F8B800600A71 /* HKSampleType+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D3F2BA7F8B800600A71 /* HKSampleType+Encodable.swift */; };
+		2F116D432BA7F90500600A71 /* HKSampleTypeDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D422BA7F90500600A71 /* HKSampleTypeDecodable.swift */; };
+		2F116D462BA801E100600A71 /* PrivacyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F116D452BA801E100600A71 /* PrivacyDetailViewModel.swift */; };
 		2F1AC9DF2B4E840E00C24973 /* Prisma.docc in Sources */ = {isa = PBXBuildFile; fileRef = 2F1AC9DE2B4E840E00C24973 /* Prisma.docc */; };
 		2F249FA42BA1826100D74C12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DFB92B9F9E76004F28E6 /* GoogleService-Info.plist */; };
 		2F3D4ABC2A4E7C290068FB2F /* SpeziScheduler in Frameworks */ = {isa = PBXBuildFile; productRef = 2F3D4ABB2A4E7C290068FB2F /* SpeziScheduler */; };
 		2F49B7762980407C00BCB272 /* Spezi in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7752980407B00BCB272 /* Spezi */; };
 		2F4E237E2989A2FE0013F3D9 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E237D2989A2FE0013F3D9 /* LaunchTests.swift */; };
 		2F4E23832989D51F0013F3D9 /* PrismaTestingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E23822989D51F0013F3D9 /* PrismaTestingSetup.swift */; };
-		2F4FC8D729EE69D300BFFE26 /* MockUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4FC8D629EE69D300BFFE26 /* MockUpload.swift */; };
 		2F5E32BD297E05EA003432F8 /* PrismaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E32BC297E05EA003432F8 /* PrismaDelegate.swift */; };
 		2FA0BFED2ACC977500E0EF83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */; };
 		2FB099AF2A875DF100B20952 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2FB099AE2A875DF100B20952 /* FirebaseAuth */; };
@@ -53,7 +67,6 @@
 		2FE5DC9929EDD9D9004B9AB4 /* XCTestExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE5DC9829EDD9D9004B9AB4 /* XCTestExtensions */; };
 		2FE5DC9C29EDD9EF004B9AB4 /* XCTHealthKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2FE5DC9B29EDD9EF004B9AB4 /* XCTHealthKit */; };
 		2FE5DCB129EE6107004B9AB4 /* AccountOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5DCAC29EE6107004B9AB4 /* AccountOnboarding.swift */; };
-		2FF53D8B2A8725DE00042B76 /* SpeziMockWebService in Frameworks */ = {isa = PBXBuildFile; productRef = 2FF53D8A2A8725DE00042B76 /* SpeziMockWebService */; };
 		2FF53D8D2A8729D600042B76 /* PrismaStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF53D8C2A8729D600042B76 /* PrismaStandard.swift */; };
 		5661551D2AB8384200209B80 /* SwiftPackageList in Frameworks */ = {isa = PBXBuildFile; productRef = 5661551C2AB8384200209B80 /* SwiftPackageList */; };
 		566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566155282AB8447C00209B80 /* Package+LicenseType.swift */; };
@@ -80,10 +93,8 @@
 		AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */; };
 		ACB5DFBA2B9F9E76004F28E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACB5DFB92B9F9E76004F28E6 /* GoogleService-Info.plist */; };
 		D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8027E902B90655700BB9466 /* ManageDataView.swift */; };
-		D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */; };
+		D8F136C52B85CEED000BA7AE /* PrivacyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F136C42B85CEED000BA7AE /* PrivacyDetailView.swift */; };
 		E4C766262B72D50500C1DEDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C766252B72D50500C1DEDA /* WebView.swift */; };
-		F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */; };
-		F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */; };
 		F8AF6F9F2B5F35400011C32D /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6F9E2B5F35400011C32D /* ChatView.swift */; };
 		F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */; };
 		F8AF6FAC2B5F42C40011C32D /* afternoon-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */; };
@@ -91,7 +102,7 @@
 		F8AF6FAE2B5F42C40011C32D /* morning-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */; };
 		F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */ = {isa = PBXBuildFile; fileRef = F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */; };
 		F8AF6FB42B5F6EDC0011C32D /* PrismaModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */; };
-		F8AF6FB62B5F71460011C32D /* PrismaStandard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */; };
+		F8AF6FB62B5F71460011C32D /* String+HealthKitIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB52B5F71460011C32D /* String+HealthKitIdentifier.swift */; };
 		F8AF6FB92B5F72650011C32D /* PrismaStandard+HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */; };
 		F8AF6FBC2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */; };
 		F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */; };
@@ -137,10 +148,20 @@
 
 /* Begin PBXFileReference section */
 		27FA298F2A388E9B009CAC45 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		2F116D1D2BA79FAF00600A71 /* Date+ISOFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ISOFormat.swift"; sourceTree = "<group>"; };
+		2F116D1F2BA79FE400600A71 /* PrismaStandard+Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+Account.swift"; sourceTree = "<group>"; };
+		2F116D232BA7A10400600A71 /* PrismaStandard+Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+Consent.swift"; sourceTree = "<group>"; };
+		2F116D272BA7A26F00600A71 /* Date+ConstructTimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ConstructTimeIndex.swift"; sourceTree = "<group>"; };
+		2F116D2D2BA7AB9000600A71 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2F116D362BA7C72700600A71 /* PrivacyDetailHideByTimeRangeSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyDetailHideByTimeRangeSection.swift; sourceTree = "<group>"; };
+		2F116D392BA7C79900600A71 /* PrivacyDetailHideByListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyDetailHideByListSection.swift; sourceTree = "<group>"; };
+		2F116D3C2BA7CC3C00600A71 /* HKSampleType+UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKSampleType+UIElements.swift"; sourceTree = "<group>"; };
+		2F116D3F2BA7F8B800600A71 /* HKSampleType+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKSampleType+Encodable.swift"; sourceTree = "<group>"; };
+		2F116D422BA7F90500600A71 /* HKSampleTypeDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKSampleTypeDecodable.swift; sourceTree = "<group>"; };
+		2F116D452BA801E100600A71 /* PrivacyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyDetailViewModel.swift; sourceTree = "<group>"; };
 		2F1AC9DE2B4E840E00C24973 /* Prisma.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Prisma.docc; sourceTree = "<group>"; };
 		2F4E237D2989A2FE0013F3D9 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
 		2F4E23822989D51F0013F3D9 /* PrismaTestingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrismaTestingSetup.swift; sourceTree = "<group>"; };
-		2F4FC8D629EE69D300BFFE26 /* MockUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUpload.swift; sourceTree = "<group>"; };
 		2F5E32BC297E05EA003432F8 /* PrismaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrismaDelegate.swift; sourceTree = "<group>"; };
 		2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2FAEC07F297F583900C11C42 /* Prisma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Prisma.entitlements; sourceTree = "<group>"; };
@@ -188,10 +209,8 @@
 		AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModule.swift; sourceTree = "<group>"; };
 		ACB5DFB92B9F9E76004F28E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8027E902B90655700BB9466 /* ManageDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataView.swift; sourceTree = "<group>"; };
-		D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataView.swift; sourceTree = "<group>"; };
+		D8F136C42B85CEED000BA7AE /* PrivacyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyDetailView.swift; sourceTree = "<group>"; };
 		E4C766252B72D50500C1DEDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+TimeIndex.swift"; sourceTree = "<group>"; };
-		F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-NoBG.png"; sourceTree = "<group>"; };
 		F8AF6F9E2B5F35400011C32D /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F8AF6FA42B5F3AE70011C32D /* EventContextCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContextCard.swift; sourceTree = "<group>"; };
 		F8AF6FA82B5F42C40011C32D /* afternoon-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "afternoon-en-US.json"; sourceTree = "<group>"; };
@@ -199,7 +218,7 @@
 		F8AF6FAA2B5F42C40011C32D /* morning-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "morning-en-US.json"; sourceTree = "<group>"; };
 		F8AF6FAB2B5F42C40011C32D /* mid-day-en-US.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mid-day-en-US.json"; sourceTree = "<group>"; };
 		F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrismaModule.swift; sourceTree = "<group>"; };
-		F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+Extension.swift"; sourceTree = "<group>"; };
+		F8AF6FB52B5F71460011C32D /* String+HealthKitIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HealthKitIdentifier.swift"; sourceTree = "<group>"; };
 		F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+HealthKit.swift"; sourceTree = "<group>"; };
 		F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+Questionnaire.swift"; sourceTree = "<group>"; };
 		F8D35CE12B60A909001A8FA5 /* NotificationPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissions.swift; sourceTree = "<group>"; };
@@ -235,7 +254,6 @@
 				2FE5DC8C29EDD972004B9AB4 /* SpeziSecureStorage in Frameworks */,
 				2FE5DC7529EDD8E6004B9AB4 /* SpeziFirebaseAccount in Frameworks */,
 				9739A0C62AD7B5730084BEA5 /* FirebaseStorage in Frameworks */,
-				2FF53D8B2A8725DE00042B76 /* SpeziMockWebService in Frameworks */,
 				2FE5DC7229EDD8D3004B9AB4 /* SpeziHealthKit in Frameworks */,
 				2F49B7762980407C00BCB272 /* Spezi in Frameworks */,
 				2FE5DC8F29EDD980004B9AB4 /* SpeziViews in Frameworks */,
@@ -265,14 +283,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F4FC8D529EE69BE00BFFE26 /* MockUpload */ = {
-			isa = PBXGroup;
-			children = (
-				2F4FC8D629EE69D300BFFE26 /* MockUpload.swift */,
-			);
-			path = MockUpload;
-			sourceTree = "<group>";
-		};
 		2FC9759D2978E30800BA99FE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,7 +325,6 @@
 				653A255428338800005D4D48 /* Assets.xcassets */,
 				2FA0BFEC2ACC977500E0EF83 /* Localizable.xcstrings */,
 				2FE5DC2C29EDD78E004B9AB4 /* ConsentDocument.md */,
-				F8AF6F992B5F2B1A0011C32D /* AppIcon-NoBG.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -338,6 +347,7 @@
 			children = (
 				2FE5DC3E29EDD7ED004B9AB4 /* FeatureFlags.swift */,
 				2FE5DC3F29EDD7EE004B9AB4 /* StorageKeys.swift */,
+				2F116D2D2BA7AB9000600A71 /* Constants.swift */,
 			);
 			path = SharedContext;
 			sourceTree = "<group>";
@@ -345,9 +355,12 @@
 		2FE5DC3D29EDD7E4004B9AB4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F8AF6FB52B5F71460011C32D /* String+HealthKitIdentifier.swift */,
+				2F116D1D2BA79FAF00600A71 /* Date+ISOFormat.swift */,
 				2FE5DC4229EDD7F2004B9AB4 /* Binding+Negate.swift */,
 				2FE5DC4329EDD7F2004B9AB4 /* Bundle+Image.swift */,
 				2FE5DC4429EDD7F2004B9AB4 /* CodableArray+RawRepresentable.swift */,
+				2F116D272BA7A26F00600A71 /* Date+ConstructTimeIndex.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -408,8 +421,6 @@
 		653A254F283387FE005D4D48 /* Prisma */ = {
 			isa = PBXGroup;
 			children = (
-				5FECE9542B6C9A3E00C06B13 /* PushNotifications */,
-				AC4A1ED12B69D91D0095D1AE /* PrivacyControls */,
 				653A2550283387FE005D4D48 /* Prisma.swift */,
 				2F5E32BC297E05EA003432F8 /* PrismaDelegate.swift */,
 				2F4E23822989D51F0013F3D9 /* PrismaTestingSetup.swift */,
@@ -420,8 +431,9 @@
 				2FE5DC2829EDD398004B9AB4 /* Onboarding */,
 				2FE5DC3B29EDD7D0004B9AB4 /* Schedule */,
 				2FE5DC2729EDD38D004B9AB4 /* Contacts */,
+				AC4A1ED12B69D91D0095D1AE /* PrivacyControls */,
+				5FECE9542B6C9A3E00C06B13 /* PushNotifications */,
 				56F6F29E2AB441640022FE5A /* Contributions */,
-				2F4FC8D529EE69BE00BFFE26 /* MockUpload */,
 				2FE5DC3C29EDD7DA004B9AB4 /* SharedContext */,
 				2FE5DC3D29EDD7E4004B9AB4 /* Helper */,
 				2FE5DC2D29EDD792004B9AB4 /* Resources */,
@@ -467,8 +479,14 @@
 			isa = PBXGroup;
 			children = (
 				AC69903D2B6C5A2F00D92970 /* PrivacyModule.swift */,
-				D8F136C42B85CEED000BA7AE /* DeleteDataView.swift */,
+				D8F136C42B85CEED000BA7AE /* PrivacyDetailView.swift */,
+				2F116D452BA801E100600A71 /* PrivacyDetailViewModel.swift */,
+				2F116D362BA7C72700600A71 /* PrivacyDetailHideByTimeRangeSection.swift */,
+				2F116D392BA7C79900600A71 /* PrivacyDetailHideByListSection.swift */,
 				D8027E902B90655700BB9466 /* ManageDataView.swift */,
+				2F116D3C2BA7CC3C00600A71 /* HKSampleType+UIElements.swift */,
+				2F116D3F2BA7F8B800600A71 /* HKSampleType+Encodable.swift */,
+				2F116D422BA7F90500600A71 /* HKSampleTypeDecodable.swift */,
 			);
 			path = PrivacyControls;
 			sourceTree = "<group>";
@@ -495,12 +513,12 @@
 		F8AF6FB12B5F6EC80011C32D /* Standard */ = {
 			isa = PBXGroup;
 			children = (
-				2FF53D8C2A8729D600042B76 /* PrismaStandard.swift */,
-				5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */,
-				F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */,
 				F8AF6FB32B5F6EDC0011C32D /* PrismaModule.swift */,
-				F8AF6FB52B5F71460011C32D /* PrismaStandard+Extension.swift */,
-				F83B7CBD2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift */,
+				2FF53D8C2A8729D600042B76 /* PrismaStandard.swift */,
+				2F116D1F2BA79FE400600A71 /* PrismaStandard+Account.swift */,
+				2F116D232BA7A10400600A71 /* PrismaStandard+Consent.swift */,
+				F8AF6FB82B5F72650011C32D /* PrismaStandard+HealthKit.swift */,
+				5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */,
 				F8AF6FBB2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift */,
 			);
 			path = Standard;
@@ -562,7 +580,6 @@
 				2FBD738B2A3BD150004228E7 /* SpeziScheduler */,
 				2F3D4ABB2A4E7C290068FB2F /* SpeziScheduler */,
 				2FE5DC8029EDD91D004B9AB4 /* SpeziOnboarding */,
-				2FF53D8A2A8725DE00042B76 /* SpeziMockWebService */,
 				2FB099AE2A875DF100B20952 /* FirebaseAuth */,
 				2FB099B02A875DF100B20952 /* FirebaseFirestore */,
 				2FB099B22A875DF100B20952 /* FirebaseFirestoreSwift */,
@@ -666,7 +683,6 @@
 				2FE5DC9A29EDD9EF004B9AB4 /* XCRemoteSwiftPackageReference "XCTHealthKit" */,
 				2F3D4ABA2A4E7C290068FB2F /* XCRemoteSwiftPackageReference "SpeziScheduler" */,
 				97F466E62A76BBEE005DC9B4 /* XCRemoteSwiftPackageReference "SpeziOnboarding" */,
-				2FE750CA2A87240100723EAE /* XCRemoteSwiftPackageReference "SpeziMockWebService" */,
 				2FB099B42A875E2B00B20952 /* XCRemoteSwiftPackageReference "HealthKitOnFHIR" */,
 				5661551B2AB8384200209B80 /* XCRemoteSwiftPackageReference "swift-package-list" */,
 			);
@@ -696,7 +712,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FC3439229EE634B002D773C /* ConsentDocument.md in Resources */,
-				F8AF6F9A2B5F2B1A0011C32D /* AppIcon-NoBG.png in Resources */,
 				ACB5DFBA2B9F9E76004F28E6 /* GoogleService-Info.plist in Resources */,
 				F8AF6FAF2B5F42C40011C32D /* mid-day-en-US.json in Resources */,
 				F8AF6FAD2B5F42C40011C32D /* end-of-day-en-US.json in Resources */,
@@ -749,7 +764,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F116D2B2BA7A37300600A71 /* Date+ISOFormat.swift in Sources */,
+				2F116D322BA7ACE800600A71 /* StorageKeys.swift in Sources */,
 				5F5ECC492B9F3B5C00B666BC /* NotificationService.swift in Sources */,
+				2F116D302BA7ACB800600A71 /* Constants.swift in Sources */,
+				2F116D342BA7ACEB00600A71 /* FeatureFlags.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,13 +778,15 @@
 			files = (
 				2FE5DC4129EDD7EE004B9AB4 /* StorageKeys.swift in Sources */,
 				2FE5DCB129EE6107004B9AB4 /* AccountOnboarding.swift in Sources */,
-				2F4FC8D729EE69D300BFFE26 /* MockUpload.swift in Sources */,
 				5FBBD2B62B875DB800B75E9F /* PrismaStandard+PushNotifications.swift in Sources */,
 				2FE5DC3A29EDD7CA004B9AB4 /* Welcome.swift in Sources */,
 				2FE5DC3829EDD7CA004B9AB4 /* Features.swift in Sources */,
 				E4C766262B72D50500C1DEDA /* WebView.swift in Sources */,
+				2F116D1E2BA79FAF00600A71 /* Date+ISOFormat.swift in Sources */,
 				2FE5DC4529EDD7F2004B9AB4 /* Binding+Negate.swift in Sources */,
 				2FC975A82978F11A00BA99FE /* Home.swift in Sources */,
+				2F116D242BA7A10400600A71 /* PrismaStandard+Consent.swift in Sources */,
+				2F116D462BA801E100600A71 /* PrivacyDetailViewModel.swift in Sources */,
 				2FE5DC4E29EDD7FA004B9AB4 /* ScheduleView.swift in Sources */,
 				A9DFE8A92ABE551400428242 /* AccountButton.swift in Sources */,
 				2FE5DC3729EDD7CA004B9AB4 /* OnboardingFlow.swift in Sources */,
@@ -776,20 +797,25 @@
 				A9720E432ABB68CC00872D23 /* AccountSetupHeader.swift in Sources */,
 				2FE5DC4029EDD7EE004B9AB4 /* FeatureFlags.swift in Sources */,
 				F8AF6FA52B5F3AE70011C32D /* EventContextCard.swift in Sources */,
+				2F116D202BA79FE400600A71 /* PrismaStandard+Account.swift in Sources */,
 				2FE5DC4629EDD7F2004B9AB4 /* Bundle+Image.swift in Sources */,
-				D8F136C52B85CEED000BA7AE /* DeleteDataView.swift in Sources */,
+				2F116D402BA7F8B800600A71 /* HKSampleType+Encodable.swift in Sources */,
+				D8F136C52B85CEED000BA7AE /* PrivacyDetailView.swift in Sources */,
+				2F116D3A2BA7C79900600A71 /* PrivacyDetailHideByListSection.swift in Sources */,
 				F8AF6FB92B5F72650011C32D /* PrismaStandard+HealthKit.swift in Sources */,
 				2FE5DC4F29EDD7FA004B9AB4 /* EventContext.swift in Sources */,
 				2FE5DC5029EDD7FA004B9AB4 /* EventContextView.swift in Sources */,
-				F8AF6FB62B5F71460011C32D /* PrismaStandard+Extension.swift in Sources */,
+				F8AF6FB62B5F71460011C32D /* String+HealthKitIdentifier.swift in Sources */,
 				2F4E23832989D51F0013F3D9 /* PrismaTestingSetup.swift in Sources */,
-				F83B7CBE2B8FFE6800662914 /* PrismaStandard+TimeIndex.swift in Sources */,
 				2FE5DC5329EDD7FA004B9AB4 /* Bundle+Questionnaire.swift in Sources */,
+				2F116D372BA7C72700600A71 /* PrivacyDetailHideByTimeRangeSection.swift in Sources */,
 				2FE5DC5129EDD7FA004B9AB4 /* PrismaTaskContext.swift in Sources */,
 				F8AF6FBC2B5F74EA0011C32D /* PrismaStandard+Questionnaire.swift in Sources */,
+				2F116D3D2BA7CC3C00600A71 /* HKSampleType+UIElements.swift in Sources */,
 				56F6F2A02AB441930022FE5A /* ContributionsList.swift in Sources */,
 				5FECE9562B6C9A5F00C06B13 /* PushNotifications.swift in Sources */,
 				566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */,
+				2F116D432BA7F90500600A71 /* HKSampleTypeDecodable.swift in Sources */,
 				5680DD392AB8983D004E6D4A /* PackageCell.swift in Sources */,
 				F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */,
 				2F5E32BD297E05EA003432F8 /* PrismaDelegate.swift in Sources */,
@@ -798,9 +824,11 @@
 				D8027E912B90655700BB9466 /* ManageDataView.swift in Sources */,
 				F8AF6FB42B5F6EDC0011C32D /* PrismaModule.swift in Sources */,
 				AC69903E2B6C5A2F00D92970 /* PrivacyModule.swift in Sources */,
+				2F116D282BA7A26F00600A71 /* Date+ConstructTimeIndex.swift in Sources */,
 				653A2551283387FE005D4D48 /* Prisma.swift in Sources */,
 				2FE5DC3629EDD7CA004B9AB4 /* HealthKitPermissions.swift in Sources */,
 				5661552E2AB854C000209B80 /* PackageHelper.swift in Sources */,
+				2F116D2E2BA7AB9000600A71 /* Constants.swift in Sources */,
 				27FA29902A388E9B009CAC45 /* ModalView.swift in Sources */,
 				2FE5DC2629EDD38A004B9AB4 /* Contacts.swift in Sources */,
 			);
@@ -1543,14 +1571,6 @@
 				minimumVersion = 0.3.5;
 			};
 		};
-		2FE750CA2A87240100723EAE /* XCRemoteSwiftPackageReference "SpeziMockWebService" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/StanfordSpezi/SpeziMockWebService.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		5661551B2AB8384200209B80 /* XCRemoteSwiftPackageReference "swift-package-list" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/FelixHerrmann/swift-package-list";
@@ -1668,11 +1688,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2FE5DC9A29EDD9EF004B9AB4 /* XCRemoteSwiftPackageReference "XCTHealthKit" */;
 			productName = XCTHealthKit;
-		};
-		2FF53D8A2A8725DE00042B76 /* SpeziMockWebService */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2FE750CA2A87240100723EAE /* XCRemoteSwiftPackageReference "SpeziMockWebService" */;
-			productName = SpeziMockWebService;
 		};
 		5661551C2AB8384200209B80 /* SwiftPackageList */ = {
 			isa = XCSwiftPackageProductDependency;

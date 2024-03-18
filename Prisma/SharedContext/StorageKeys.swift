@@ -17,4 +17,9 @@ enum StorageKeys {
     // MARK: - Home
     /// The currently selected home tab.
     static let homeTabSelection = "home.tabselection"
+    
+    
+    // MARK: - Privacy Controls
+    /// The privacy control settings of a user which sample types should be collected
+    static let privacyControlsSampleTypes = "privacy.controlsampletypes"
 }

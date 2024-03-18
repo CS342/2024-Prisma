@@ -71,8 +71,9 @@ struct NotificationPermissions: View {
     OnboardingStack {
         NotificationPermissions()
     }
-        .previewWith {
+        .previewWith(standard: PrismaStandard()) {
             PrismaScheduler()
+            PrismaPushNotifications()
         }
 }
 #endif

@@ -11,13 +11,12 @@ import SwiftUI
 
 
 struct AccountSheet: View {
-    @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.dismiss) private var dismiss
     @Environment(Account.self) private var account
-    @Environment(\.accountRequired) var accountRequired
+    @Environment(\.accountRequired) private var accountRequired
     
-    @State var isInSetup = false
-    @State var overviewIsEditing = false
+    @State private var isInSetup = false
+    @State private var overviewIsEditing = false
     
     
     var body: some View {
@@ -57,7 +56,7 @@ struct AccountSheet: View {
             }
         }
     }
-
+    
     var closeButton: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button("CLOSE") {

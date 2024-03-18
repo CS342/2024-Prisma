@@ -34,12 +34,6 @@ extension PrismaStandard {
             return
         }
         
-        if let mockWebService {
-            let jsonRepresentation = (try? String(data: JSONEncoder().encode(response), encoding: .utf8)) ?? ""
-            try? await mockWebService.upload(path: path, body: jsonRepresentation)
-            return
-        }
-        
         do {
             try await Firestore.firestore().document(path).setData(from: response)
         } catch {

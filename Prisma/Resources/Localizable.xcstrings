@@ -4,10 +4,10 @@
     "" : {
 
     },
-    "About" : {
+    "%@" : {
 
     },
-    "accessibility text temp" : {
+    "About" : {
 
     },
     "ACCOUNT_NEXT" : {
@@ -61,6 +61,9 @@
           }
         }
       }
+    },
+    "Active Energy Burned" : {
+
     },
     "ACTIVE_ENERGY_BURNED" : {
       "extractionState" : "manual"
@@ -141,6 +144,9 @@
           }
         }
       }
+    },
+    "Body Temperature" : {
+
     },
     "BODY_TEMPERATURE_DESCRIPTION" : {
       "extractionState" : "manual",
@@ -230,11 +236,28 @@
     "Disabled" : {
 
     },
-    "distance walking description" : {
+    "Distance Walking Running" : {
 
     },
+    "DISTANCE_WALKING_DESCRIPTION" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A quantity sample type that measures the distance the user has moved by walking or running."
+          }
+        }
+      }
+    },
     "EMMA_BRUNSKILL_BIO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emma Brunskill is an associate tenured professor in the Computer Science Department at Stanford University. Prof. Brunskill's goal is to create AI systems that learn from few samples to robustly make good decisions, motivated by our applications to healthcare and education. Their lab is part of the Stanford AI Lab, the Stanford Statistical ML group, and AI Safety @Stanford. Prof. Brunskill was previously an assistant professor at Carnegie Mellon University, whose work has been honored by early faculty career awards (National Science Foundation, Office of Naval Research, Microsoft Research (1 of 7 worldwide) ). Their work, together with their amazing lab members, has received several best research paper nominations (CHI, EDMx3) and awards (UAI, RLDM, ITS). They are privileged to serve on the International Machine Learning Society (which coordinates ICML) Board, the Khan Academy Research Advisory Board, the Stanford Faculty Women's Forum Steering Committee, and previously served on the Women in Machine Learning (WIML) board."
+          }
+        }
+      }
     },
     "Enabled" : {
 
@@ -261,6 +284,9 @@
           }
         }
       }
+    },
+    "Exercise Time" : {
+
     },
     "Expired at %@" : {
 
@@ -359,6 +385,9 @@
         }
       }
     },
+    "Flights Climbed" : {
+
+    },
     "FLIGHTS_CLIMBED_DESCRIPTION" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -411,6 +440,12 @@
         }
       }
     },
+    "Heart Rate" : {
+
+    },
+    "Heart Rate Variability" : {
+
+    },
     "HEART_RATE_DESCRIPTION" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -439,13 +474,7 @@
     "Hide Data by Custom Range" : {
 
     },
-    "Hide Data by Recent Timestamps" : {
-
-    },
     "Hide Timestamp" : {
-
-    },
-    "Invalid URL" : {
 
     },
     "JAMES_LANDAY_BIO" : {
@@ -468,11 +497,21 @@
         }
       }
     },
+    "Loading Chat View" : {
+
+    },
     "Manage Data" : {
 
     },
     "MATTHEW_JOERKE_BIO" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matthew is a fourth year PhD student at Stanford University, where he is co-advised by Prof. Emma Brunskill and Prof. James Landay. His research is at the intersection of human-computer interaction and machine learning, with an emphasis on studying and designing technology to promote wellbeing."
+          }
+        }
+      }
     },
     "MID_DAY_SURVEY_DESCRIPTION" : {
       "localizations" : {
@@ -490,20 +529,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mid-day Survey"
-          }
-        }
-      }
-    },
-    "Missing Description." : {
-
-    },
-    "MOCK_WEB_SERVICE_TAB_TITLE" : {
-      "comment" : "MARK: - Mock Upload Data Storage Provider",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mock Web Service"
           }
         }
       }
@@ -527,6 +552,9 @@
           }
         }
       }
+    },
+    "Move Time" : {
+
     },
     "NO_SURVEYS_MESSAGE" : {
       "extractionState" : "manual",
@@ -580,6 +608,9 @@
         }
       }
     },
+    "Oxygen Saturation" : {
+
+    },
     "OXYGEN_SATURATION_DESCRIPTION" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -590,6 +621,9 @@
           }
         }
       }
+    },
+    "PRISMA" : {
+
     },
     "PRIVACY_CONTROLS_TITLE" : {
       "comment" : "MARK: - Privacy Controls",
@@ -623,6 +657,9 @@
         }
       }
     },
+    "Respiratory Rate" : {
+
+    },
     "RESPIRATORY_RATE_DESCRIPTION" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -634,8 +671,22 @@
         }
       }
     },
+    "Resting Energy Burned" : {
+
+    },
+    "Resting Heart Rate" : {
+
+    },
     "RESTING_HEART_RATE_DESCRIPTION" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A quantity sample type that measures the user’s resting heart rate."
+          }
+        }
+      }
     },
     "SCHEDULE_LIST_TITLE" : {
       "localizations" : {
@@ -674,6 +725,9 @@
     "Show Timestamp" : {
 
     },
+    "Sleep Analysis" : {
+
+    },
     "SLEEP_ANALYSIS_DESCRIPTION" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -685,7 +739,13 @@
         }
       }
     },
+    "Stand Time" : {
+
+    },
     "Start date" : {
+
+    },
+    "Step Count" : {
 
     },
     "STEP_COUNT_DESCRIPTION" : {
@@ -719,40 +779,13 @@
         }
       }
     },
-    "TASK_LABEL %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Task: %@"
-          }
-        }
-      }
-    },
-    "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please fill out the Social Support Questionnaire every day."
-          }
-        }
-      }
-    },
-    "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Social Support Questionnaire"
-          }
-        }
-      }
+    "Unknown HealthKit Type" : {
+
     },
     "Upcoming notification" : {
+
+    },
+    "Walking Heart Rate Average" : {
 
     },
     "WALKING_HEART_RATE_AVERAGE_DESCRIPTION" : {
@@ -786,22 +819,21 @@
         }
       }
     },
-    "WELCOME_TITLE" : {
-      "comment" : "MARK: Welcome",
+    "Welcome!" : {
+
+    },
+    "Workout" : {
+
+    },
+    "WORKOUT_DESCRIPTION" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PRISMA"
+            "value" : "A type that identifies samples that store information about a workout."
           }
         }
       }
-    },
-    "Welcome!" : {
-
-    },
-    "workout description" : {
-
     }
   },
   "version" : "1.0"

@@ -5,13 +5,41 @@
 //
 // SPDX-License-Identifier: MIT
 //
-// Created by Bryant Jimenez on 2/22/24.
-//
 
 import FirebaseFirestore
 import Foundation
 
+
 extension PrismaStandard {
+    /// Stores the user device APNs Token in the user's document directory.
+    ///
+    /// - Parameter token: The specific device token to be stored as a `String`.
+    func storeToken(token: String?) async {
+        struct FirebaseDocumentTokenData: Codable {
+            let apnsToken: String?
+        }
+        
+        do {
+            let userDocument = try await userDocumentReference.getDocument()
+            if userDocument.exists {
+                let existingTokenData = try await userDocumentReference.getDocument(as: FirebaseDocumentTokenData.self)
+                
+                // Unwrap existingTokenData.apns_token and provide a default value if it's nil
+                if existingTokenData.apnsToken != nil {
+                    if existingTokenData.apnsToken != token {
+                        try await userDocumentReference.updateData(["apnsToken": token ?? ""])
+                    }
+                }
+                // user currently doesn't have apns token, must initialize a new field
+                else {
+                    try await userDocumentReference.setData(["apnsToken": token ?? ""], merge: true)
+                }
+            }
+        } catch {
+            print("Error retrieving user document: \(error)")
+        }
+    }
+    
     /// Stores the timestamp when a notification was received by
     /// the user's device to the specific notification document.
     ///

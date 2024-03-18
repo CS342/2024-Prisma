@@ -14,14 +14,14 @@ import SpeziFirebaseAccount
 import SpeziFirebaseStorage
 import SpeziFirestore
 import SpeziHealthKit
-import SpeziMockWebService
 import SpeziOnboarding
 import SpeziScheduler
 import SwiftUI
 
 
 class PrismaDelegate: SpeziAppDelegate {
-    private let sampleList = [
+    // https://developer.apple.com/documentation/healthkit/data_types#2939032
+    static let healthKitSampleTypes = [
         // Activity
         HKQuantityType(.stepCount),
         HKQuantityType(.distanceWalkingRunning),
@@ -46,6 +46,7 @@ class PrismaDelegate: SpeziAppDelegate {
         HKWorkoutType.workoutType()
     ]
     
+    
     override var configuration: Configuration {
         Configuration(standard: PrismaStandard()) {
             if !FeatureFlags.disableFirebase {
@@ -53,7 +54,6 @@ class PrismaDelegate: SpeziAppDelegate {
                     .requires(\.userId),
                     .requires(\.name)
                 ])
-                
                 if FeatureFlags.useFirebaseEmulator {
                     FirebaseAccountConfiguration(
                         authenticationMethods: [.emailAndPassword, .signInWithApple],
@@ -68,17 +68,14 @@ class PrismaDelegate: SpeziAppDelegate {
                 } else {
                     FirebaseStorageConfiguration()
                 }
-            } else {
-                MockWebService()
             }
-            
             if HKHealthStore.isHealthDataAvailable() {
                 healthKit
             }
             PrismaScheduler()
             OnboardingDataSource()
             PrismaPushNotifications()
-            PrivacyModule(sampleTypeList: sampleList)
+            PrivacyModule(sampleTypes: PrismaDelegate.healthKitSampleTypes)
         }
     }
     
@@ -99,8 +96,7 @@ class PrismaDelegate: SpeziAppDelegate {
     private var healthKit: HealthKit {
         HealthKit {
             CollectSamples(
-            // https://developer.apple.com/documentation/healthkit/data_types#2939032
-                Set(sampleList),
+                Set(PrismaDelegate.healthKitSampleTypes),
                 /// predicate to request data from one month in the past to present.
                 predicate: HKQuery.predicateForSamples(
                     withStart: Calendar.current.date(byAdding: .month, value: -1, to: .now),

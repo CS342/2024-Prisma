@@ -19,12 +19,12 @@ The CS342 2024 PRISMA application is using the [Spezi](https://github.com/Stanfo
 
 > [!NOTE]  
 > Do you want to try out the CS342 2024 PRISMA application? You can download it to your iOS device using [TestFlight](https://testflight.apple.com/join/bPu7kUoM)!
->
-The CS342 2024 Prisma app as of March 14, 2023 includes added functionality for push notifications, controlling personal data usage via privacy controls, and authenticated chat interface dialogue. 
 
-For the Chat Interface, to access this feature, please run the frontend + backend in the StanfordHCI/Prisma repository, so that chat is rendered on localhost, which this iOS repository depends on. Once the actual website is set up, replace the URL in ChatView with the permanent URL.
+For the Chat Interface, to access this feature, please run the frontend + backend in the StanfordHCI/Prisma repository, so that chat is rendered on localhost, which this iOS repository depends on.
+
 
 ## CS342 2024 PRISMA Features
+
 The following are screenshots showing various aspects of the Prisma application.
 
 | Chat Interface | Notification Permissions | Data View |
@@ -34,16 +34,12 @@ The following are screenshots showing various aspects of the Prisma application.
 
 ## Contributing
 
-| Name       | Contribution |
-|------------|--------------|
-| **Caroline** | Implemented the UI, publisher, fetching, and modifying features for Firestore data given the user’s selection on data upload and redaction of data for the privacy controls. |
-| **Dhruv**    | Wrote centralized privacy module class for management and storage of selected data. Worked collaboratively with Evelyn S. to create an end to end pipeline of chat interface authentication. |
-| **Evelyn H.** | Implemented the UI for privacy controls, fetching and updating data in Firestore to reflect user changes in hiding data by timestamp or time range. |
-| **Evelyn S.** | Worked collaboratively with Dhruv to create an end to end pipeline of chat interface authentication. The iOS app sends a JWT to the frontend, which then verifies the JWT using Firebase Admin SDK in the backend, and the user can then access the chat view
-| **Bryant**   | Implemented client side handling for push notification registration + handling, as well as the backend listener system and scheduling for notifications/schedule changes. Also added testing framework to backend. |
-
+Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/StanfordSpezi/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/StanfordSpezi/.github/blob/main/CODE_OF_CONDUCT.md) first.
 
 
 ## License
 
-This project is licensed under the MIT License. See [Licenses](LICENSES) for more information.
+This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordSpezi/Spezi/tree/main/LICENSES) for more information.
+
+![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/Footer.png#gh-light-mode-only)
+![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/Footer~dark.png#gh-dark-mode-only)

@@ -34,10 +34,10 @@ struct Features: View {
                         Spacer()
                             .frame(height: 10)
                     }
-                    .frame(minHeight: geometry.size.height)
+                        .frame(minHeight: geometry.size.height)
                 }
             }
-            .padding(24)
+                .padding(24)
         }
     }
     
