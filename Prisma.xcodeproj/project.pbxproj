@@ -407,7 +407,6 @@
 		653A2544283387FE005D4D48 = {
 			isa = PBXGroup;
 			children = (
-				5FF4C1582BB5869D00A8950D /* HKUploadProgress */,
 				2FC94CD4298B0A1D009C8209 /* Prisma.xctestplan */,
 				653A254F283387FE005D4D48 /* Prisma */,
 				653A256028338800005D4D48 /* PrismaTests */,
@@ -442,6 +441,7 @@
 				2FE5DC2829EDD398004B9AB4 /* Onboarding */,
 				2FE5DC3B29EDD7D0004B9AB4 /* Schedule */,
 				2FE5DC2729EDD38D004B9AB4 /* Contacts */,
+				5FF4C1582BB5869D00A8950D /* HKUploadProgress */,
 				AC4A1ED12B69D91D0095D1AE /* PrivacyControls */,
 				5FECE9542B6C9A3E00C06B13 /* PushNotifications */,
 				56F6F29E2AB441640022FE5A /* Contributions */,
