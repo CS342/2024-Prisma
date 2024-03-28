@@ -399,6 +399,9 @@
         }
       }
     },
+    "HealthKit Data Upload Progress" : {
+
+    },
     "HEALTHKIT_PERMISSIONS_BUTTON" : {
       "localizations" : {
         "en" : {
@@ -621,9 +624,6 @@
           }
         }
       }
-    },
-    "PRISMA" : {
-
     },
     "PRIVACY_CONTROLS_TITLE" : {
       "comment" : "MARK: - Privacy Controls",

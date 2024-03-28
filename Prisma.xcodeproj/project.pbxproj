@@ -80,6 +80,7 @@
 		5FBBD2B62B875DB800B75E9F /* PrismaStandard+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */; };
 		5FECE9562B6C9A5F00C06B13 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FECE9552B6C9A5F00C06B13 /* PushNotifications.swift */; };
 		5FECE9592B6CCF0B00C06B13 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5FECE9582B6CCF0B00C06B13 /* FirebaseMessaging */; };
+		5FF4C15C2BB586B500A8950D /* HKUploadProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4C15B2BB586B500A8950D /* HKUploadProgress.swift */; };
 		653A2551283387FE005D4D48 /* Prisma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A2550283387FE005D4D48 /* Prisma.swift */; };
 		653A255528338800005D4D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653A255428338800005D4D48 /* Assets.xcassets */; };
 		653A256228338800005D4D48 /* PrismaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256128338800005D4D48 /* PrismaTests.swift */; };
@@ -196,6 +197,7 @@
 		5FA07FE72BA0BABF00A3D38D /* PrismaPushNotificationsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrismaPushNotificationsExtension.entitlements; sourceTree = "<group>"; };
 		5FBBD2B52B875DB800B75E9F /* PrismaStandard+PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrismaStandard+PushNotifications.swift"; sourceTree = "<group>"; };
 		5FECE9552B6C9A5F00C06B13 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
+		5FF4C15B2BB586B500A8950D /* HKUploadProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKUploadProgress.swift; sourceTree = "<group>"; };
 		653A254D283387FE005D4D48 /* Prisma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prisma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A2550283387FE005D4D48 /* Prisma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prisma.swift; sourceTree = "<group>"; };
 		653A255428338800005D4D48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -394,9 +396,18 @@
 			path = PushNotifications;
 			sourceTree = "<group>";
 		};
+		5FF4C1582BB5869D00A8950D /* HKUploadProgress */ = {
+			isa = PBXGroup;
+			children = (
+				5FF4C15B2BB586B500A8950D /* HKUploadProgress.swift */,
+			);
+			path = HKUploadProgress;
+			sourceTree = "<group>";
+		};
 		653A2544283387FE005D4D48 = {
 			isa = PBXGroup;
 			children = (
+				5FF4C1582BB5869D00A8950D /* HKUploadProgress */,
 				2FC94CD4298B0A1D009C8209 /* Prisma.xctestplan */,
 				653A254F283387FE005D4D48 /* Prisma */,
 				653A256028338800005D4D48 /* PrismaTests */,
@@ -816,6 +827,7 @@
 				5FECE9562B6C9A5F00C06B13 /* PushNotifications.swift in Sources */,
 				566155292AB8447C00209B80 /* Package+LicenseType.swift in Sources */,
 				2F116D432BA7F90500600A71 /* HKSampleTypeDecodable.swift in Sources */,
+				5FF4C15C2BB586B500A8950D /* HKUploadProgress.swift in Sources */,
 				5680DD392AB8983D004E6D4A /* PackageCell.swift in Sources */,
 				F8D35CE22B60A909001A8FA5 /* NotificationPermissions.swift in Sources */,
 				2F5E32BD297E05EA003432F8 /* PrismaDelegate.swift in Sources */,
@@ -952,7 +964,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Prisma/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
+				INFOPLIST_KEY_CFBundleDisplayName = "HealthKit Upload";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Prisma uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Prisma uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -1252,7 +1264,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Prisma/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
+				INFOPLIST_KEY_CFBundleDisplayName = "HealthKit Upload";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Prisma uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Prisma uses the step count to demonstrate Spezi's integration with HealthKit.";
@@ -1300,7 +1312,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Prisma/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Prisma;
+				INFOPLIST_KEY_CFBundleDisplayName = "HealthKit Upload";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "The Prisma uses the step count to demonstrate Spezi's integration with HealthKit.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The Prisma uses the step count to demonstrate Spezi's integration with HealthKit.";

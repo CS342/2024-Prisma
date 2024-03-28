@@ -13,7 +13,7 @@ import SpeziOnboarding
 import SwiftUI
 
 
-/// Displays an multi-step onboarding flow for the Prisma.
+/// Displays an multi-step onboarding flow for Prisma.
 struct OnboardingFlow: View {
     @Environment(HealthKit.self) private var healthKitDataSource
     @Environment(PrismaScheduler.self) private var scheduler
@@ -34,14 +34,18 @@ struct OnboardingFlow: View {
     var body: some View {
         OnboardingStack(onboardingFlowComplete: $completedOnboardingFlow) {
             Welcome()
-            Features()
+            if !FeatureFlags.healthKitUploadOnly {
+                Features()
+            }
             if !FeatureFlags.disableFirebase {
                 AccountOnboarding()
             }
             if HKHealthStore.isHealthDataAvailable() && !healthKitAuthorization {
                 HealthKitPermissions()
             }
-            NotificationPermissions()
+            if !FeatureFlags.healthKitUploadOnly {
+                NotificationPermissions()
+            }
         }
             .interactiveDismissDisabled(!completedOnboardingFlow)
     }

@@ -23,4 +23,6 @@ enum FeatureFlags {
     #endif
     /// Adds a test task to the schedule at the current time
     static let testSchedule = CommandLine.arguments.contains("--testSchedule")
+    /// Strips down the application to just onboarding + healthkit data upload, for research study purposes.
+    static let healthKitUploadOnly = CommandLine.arguments.contains("--healthKitUploadOnly")
 }

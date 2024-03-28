@@ -32,26 +32,30 @@ struct HomeView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            ChatView(presentingAccount: $presentingAccount)
-                .tag(Tabs.chat)
-                .tabItem {
-                    Label("Chat", systemImage: "message.fill")
-                }
-            ScheduleView(presentingAccount: $presentingAccount)
-                .tag(Tabs.schedule)
-                .tabItem {
-                    Label("SCHEDULE_TAB_TITLE", systemImage: "list.clipboard")
-                }
-            Contacts(presentingAccount: $presentingAccount)
-                .tag(Tabs.contact)
-                .tabItem {
-                    Label("CONTACTS_TAB_TITLE", systemImage: "person.fill")
-                }
-            ManageDataView(presentingAccount: $presentingAccount)
-                .tag(Tabs.privacy)
-                .tabItem {
-                    Label("PRIVACY_CONTROLS_TITLE", systemImage: "gear")
-                }
+            if FeatureFlags.healthKitUploadOnly {
+                HKUploadProgressView(presentingAccount: $presentingAccount)
+            } else {
+                ChatView(presentingAccount: $presentingAccount)
+                    .tag(Tabs.chat)
+                    .tabItem {
+                        Label("Chat", systemImage: "message.fill")
+                    }
+                ScheduleView(presentingAccount: $presentingAccount)
+                    .tag(Tabs.schedule)
+                    .tabItem {
+                        Label("SCHEDULE_TAB_TITLE", systemImage: "list.clipboard")
+                    }
+                Contacts(presentingAccount: $presentingAccount)
+                    .tag(Tabs.contact)
+                    .tabItem {
+                        Label("CONTACTS_TAB_TITLE", systemImage: "person.fill")
+                    }
+                ManageDataView(presentingAccount: $presentingAccount)
+                    .tag(Tabs.privacy)
+                    .tabItem {
+                        Label("PRIVACY_CONTROLS_TITLE", systemImage: "gear")
+                    }
+            }
         }
             .sheet(isPresented: $presentingAccount) {
                 AccountSheet()

@@ -42,7 +42,12 @@ struct Welcome: View {
     }
     
     var title: some View {
-        Text("PRISMA")
+        var titleText = "PRISMA"
+        if FeatureFlags.healthKitUploadOnly {
+            titleText = "HealthKit Upload"
+        }
+        
+        return Text(titleText)
             .font(.system(size: 60))
             .fontWeight(.bold)
             .fontDesign(.rounded)
